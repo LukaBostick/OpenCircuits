@@ -3,27 +3,6 @@
 # *SuperCircuits* Superconducting Circuit Simulator
 #### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
 
-<<<<<<< HEAD
-### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-### 1. [Current Controlled Current Source](/Components/CurrentControlledCurrentSource.md)
-
-
-1. [Resistor](/Components/Resistor.md)
-1. [Introduction](/OpenCircuits/README.md)
-1. [Inductor](/Components/Inductor.md)
-1. [JosephsonJunction](/Components/JosephsonJunction.md)
-1. [Voltage Source](/Components/VoltageSource.md)
-1. [Current Source](/Components/CurrentSource.md)
-1. [Phase Source](/Components/PhaseSource.md)
-1. [TransmissionLine](/Components/TransmissionLine.md)
-1. [Mutual inductance](/Components/Mutualinductance.md)
-1. [Current Controlled Voltage Source](/Components/CurrentControlledVoltageSource.md)
-1. [Voltage Controlled Current Source](/Components/VoltageControlledCurrentSource.md)
-1. [Voltage Controlled Voltage Source](/Components/VoltageControlledCurrentSource.md)
-=======
 ### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 
 
@@ -31,7 +10,6 @@
 ### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 
 
->>>>>>> parent of d33be997 (fix readme)
 >>>>>>> d6e1203881d9facd26d03a14b0c32954cdd641b1
 1. [Resistor](#Resistor)
 1. [Introduction](#introduction)
@@ -46,13 +24,8 @@
 1. [Current Controlled Voltage Source](#CurrentControlledVoltageSource)
 1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
 1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> parent of d33be997 (fix readme)
-=======
->>>>>>> parent of d33be997 (fix readme)
 
 
->>>>>>> d6e1203881d9facd26d03a14b0c32954cdd641b1
+
+
 ![](/img/cccs_figure.png)
