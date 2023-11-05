@@ -20,20 +20,20 @@ Super Circuits is an open source circuit designer created by [Leon Montealegre](
 OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits).
 
 
-1. [Introduction](#introduction)
-2. [Components](#Components)
-    1. [Resistor](#Resistor)
-    1. [Inductor](#Inductor)
-    1. [JosephsonJunction](#JosephsonJunction)
-    1. [Voltage Source](#VoltageSource)
-    1. [Current Source](#CurrentSource)
-    1. [Phase Source](#PhaseSource)
-    1. [TransmissionLine](#TransmissionLine)
-    1. [Mutual inductance](#Mutualinductance)
-    1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
-    1. [Current Controlled Voltage Source](#CurrentControlledVoltageSource)
-    1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
-    1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
+1. [Introduction](###introduction)
+2. [Components](###Components)
+    1. [Resistor](###Resistor)
+    1. [Inductor](###Inductor)
+    1. [JosephsonJunction](###JosephsonJunction)
+    1. [Voltage Source](###VoltageSource)
+    1. [Current Source](###CurrentSource)
+    1. [Phase Source](###PhaseSource)
+    1. [TransmissionLine](###TransmissionLine)
+    1. [Mutual inductance](###Mutualinductance)
+    1. [Current Controlled Current Source](###CurrentControlledCurrentSource)
+    1. [Current Controlled Voltage Source](###CurrentControlledVoltageSource)
+    1. [Voltage Controlled Current Source](###VoltageControlledCurrentSource)
+    1. [Voltage Controlled Voltage Source](###VoltageControlledVoltageSource)
 
 
 
