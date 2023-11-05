@@ -71,27 +71,27 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
         ---
 
     
-    1. [Current Controlled Current Source](/Components/CurrentControlledCurrentSource.md)
+    1. [Current Controlled Current Source](Components/CurrentControlledCurrentSource.md)
         ---
     2.   # Current Controlled Current Source [Visualzation](/Components/CurrentControlledCurrentSource.md)
             ![](/img/CurrentControlledCurrentSource.jpg)
         ---
 
     
-    1. [Current Controlled Voltage Source](//Components/CurrentControlledVoltageSource.md)
+    1. [Current Controlled Voltage Source](/Components/CurrentControlledVoltageSource.md)
         ---
      2.  # Current Controlled Voltage Source [Visualzation](/Components/CurrentControlledVoltageSource.md)
             ![](/img/CurrentControlledVoltageSource.jpg)
         ---
 
     
-    1. [Voltage Controlled Current Source](//Components/VoltageControlledCurrentSource.md)
+    1. [Voltage Controlled Current Source](/Components/VoltageControlledCurrentSource.md)
         ---
        2.  # Voltage Controlled Current Source [Visualzation](/Components/VoltageControlledCurrentSourcer.md)
         ![](/img/VoltageControlledCurrentSource.jpg)
         ---
     
-    1. [Voltage Controlled Voltage Source](//Components/VoltageControlledVoltageSource.md)
+    1. [Voltage Controlled Voltage Source](/Components/VoltageControlledVoltageSource.md)
 
          ---
         2. # Voltage Controlled Voltage Source [Visualzation](/Components/VoltageControlledVoltageSource.md)
