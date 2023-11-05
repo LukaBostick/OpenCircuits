@@ -6,11 +6,9 @@
 ### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 
 
-=======
 ### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 
 
->>>>>>> d6e1203881d9facd26d03a14b0c32954cdd641b1
 1. [Resistor](#Resistor)
 1. [Introduction](#introduction)
 2. [Components](#Components)
