@@ -13,6 +13,14 @@ Found at [supercircuit.tech](http:/www.supercircuit.tech/).
 
 Instructions and tutorials located in the [wiki](https:/github.com/OpenCircuits/OpenCircuits/wiki).
 
+## Overview
+Fifty years ago, a semiconductor revolution ushered in the era of Moore's Law, driving rapid technological advancements from cell phones to our communication landscape. However, consistent transistor growth is ending, raising concerns about the United States losing its semiconductor industry dominance. Adapting to this changing landscape, we must explore new technologies and collaborations to maintain our competitive edge and economic advantage.
+
+SQF circuits are the future of computing. Using Josephson Junctions, they create a state of quantum flux, a current type with no resistance, allowing for high-speed computing with highly efficient power draw. 
+
+Currently, no one allows for this visualization creation of SQF circuits. By creating a simple visualization software with intuitive controls, there will be a much lower skill ceiling in the design and learning of superconductive circuits. 
+
+This tool was made to be used in educational settings, where its simplicity will make learning about SQF circuits much easier, as well as in professional settings, where its simple and intuitive nature will increase efficiency.
 ## Background
 
 Super Circuits is an open source Single Flux Quantum circuit designer, based on OpenCircuits, which was created by [Leon Montealegre](https:/leonmontealegre.com/), originally for an independent study for [Professor Paul Wilkinson](http:/www.drpjw.org/) of Pasadena City College.
