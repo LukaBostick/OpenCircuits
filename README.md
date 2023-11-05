@@ -21,103 +21,80 @@ OpenCircuits is hosted on [GitHub](https:/github.com/OpenCircuits/OpenCircuits).
 
 1. [Introduction](#introduction)
 2. [Components](#Components)
-    1. [Resistor](/docs/SuperCircuits
-/Components/Resistor.md)
+    1. [Resistor](/docs/SuperCircuits/Components/Resistor.md)
         ---
-        2. # Resistor  [Visualzation](/docs/SuperCircuits
-/Components/Resistor.md) 
+        2. # Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md) 
         ![](/img/Resistor.jpg)
         ---
-    1. [Inductor](/docs/SuperCircuits
-/Components/Inductor.md)
+    1. [Inductor](/docs/SuperCircuits/Components/Inductor.md)
         ---
-        2. # Inductor [Visualzation](/ocs/SuperCircuits
-/Components/Inductor.md)
+        2. # Inductor [Visualzation](/ocs/SuperCircuits/Components/Inductor.md)
         ![](/img/Inductor.jpg)
         ---
 
-    1. [Josephson Junction](/docs/SuperCircuits
-/Components/JosephsonJunction.md)
+    1. [Josephson Junction](/docs/SuperCircuits/Components/JosephsonJunction.md)
         ---
-        2. # Josephson Junction [Visualzation](/ocs/SuperCircuits
-/Components/JosephsonJunction.md)
+        2. # Josephson Junction [Visualzation](/ocs/SuperCircuits/Components/JosephsonJunction.md)
         ![](/img/jj.jpg)
         ---
 
-    1. [Voltage Source](/docs/SuperCircuits
-/Components/VoltageSource.md)
+    1. [Voltage Source](/docs/SuperCircuits/Components/VoltageSource.md)
         ---
-        2. # Voltage Source [Visualzation](/docs/SuperCircuits
-/Components/VoltageSource.md)
+        2. # Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageSource.md)
         ![](/img/VoltageSource.jpg)
         ---
 
-    1. [Current Source](/docs/SuperCircuits
-/Components/CurrentSource.md)
+    1. [Current Source](/docs/SuperCircuits/Components/CurrentSource.md)
 
         ---
-    2.  # Current Source [Visualzation](/docs/SuperCircuits
-/Components/CurrentSource.md)
+    2.  # Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentSource.md)
         ![](/img/CurrentSource.jpg)
         ---
 
 
-    1. [Phase Source](/docs/SuperCircuits
-/Components/PhaseSource.md)
+    1. [Phase Source](/docs/SuperCircuits/Components/PhaseSource.md)
 
         ---
         2. Pending Results
         ---
 
-    1. [Transmission Line](/docs/SuperCircuits
-/Components/TransmissionLine.md)
+    1. [Transmission Line](/docs/SuperCircuits/Components/TransmissionLine.md)
         ---
-        2. # Transmission Line [Visualzation](/docs/SuperCircuits
-/Components/TransmissionLine.md)
+        2. # Transmission Line [Visualzation](/docs/SuperCircuits/Components/TransmissionLine.md)
             ![](/img/TransmissionLine.jpg)
         ---
 
-    1. [Mutual inductance](/docs/SuperCircuits
-/Components/Mutualinductance.md)
+    1. [Mutual inductance](/docs/SuperCircuits/Components/Mutualinductance.md)
         ---
-      2.  # Mutual inductance [Visualzation](/docs/SuperCircuits
-/Components/Mutualinductance.md)
+      2.  # Mutual inductance [Visualzation](/docs/SuperCircuits/Components/Mutualinductance.md)
             ![](/img/MutualInductance.jpg)
         ---
 
     
-    1. [Current Controlled Current Source](/docs/SuperCircuits
-/Components/CurrentControlledCurrentSource.md)
+    1. [Current Controlled Current Source](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
         ---
-    2.   # Current Controlled Current Source [Visualzation](/docs/SuperCircuits
-/Components/CurrentControlledCurrentSource.md)
+    2.   # Current Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
             ![](/img/CurrentControlledCurrentSource.jpg)
         ---
 
     
-    1. [Current Controlled Voltage Source](/docs/SuperCircuits
-/Components/CurrentControlledVoltageSource.md)
+    1. [Current Controlled Voltage Source](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
         ---
-     2.  # Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits
-/Components/CurrentControlledVoltageSource.md)
+     2.  # Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
             ![](/img/CurrentControlledVoltageSource.jpg)
         ---
 
     
-    1. [Voltage Controlled Current Source](/docs/SuperCircuits
-/Components/VoltageControlledCurrentSource.md)
+    1. [Voltage Controlled Current Source](/docs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
         ---
-       2.  # Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits
-/Components/VoltageControlledCurrentSourcer.md)
+       2.  # Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledCurrentSourcer.md)
         ![](/img/VoltageControlledCurrentSource.jpg)
         ---
     
-    1. [Voltage Controlled Voltage Source](/docs/SuperCircuits
-/Components/VoltageControlledVoltageSource.md)
+    1. [Voltage Controlled Voltage Source](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
 
          ---
-        2. # Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits
-/Components/VoltageControlledVoltageSource.md)
+        2. # Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
         ![](/img/VoltageControlledVoltageSource.jpg)
         ---
 
@@ -138,98 +115,8 @@ This tool was made to be used in educational setting, where its simplicity will 
 
 
 
-## Goals & Non-Goals
-
-### Goals:
 
 
-### Non-Goals:
-- (list of things you DON'T plan on doing in this feature)
-
-
-
-## Milestones
-
-<Timeline 
-    start="11/5/2023" 
-    milestones={[{
-        date: "Date 1",
-        explanation: "Brief explanation",
-    }, {
-        date: "Date 2",
-        explanation: "Brief explanation",
-    }, {
-        date: "Date 3",
-        explanation: "Brief explanation",
-    }]} 
-    end="End Date" />
-
-
-
-## Existing Solution
-
-(describe if the issue/feature is already doable and how it's doable)
-
-
-
-## Proposed Solution
-
-(write a specific "walk-through" of how the solution fixes the problem)
-
-
-
-## Alternative Solutions
-
-- (describe other considered solutions and explain why they were not chosen)
-
-
-
-## Testability
-
-(describe how the issue/feature will be tested)
-
-
-
-## Impact
-
-(does this impact other parts of the project? i.e. potentially exposes security vulnerabilities,
- causes lag? What are some of the negative consequences and side effects?)
-
-
-
-## Known Unknowns
-
-(describe open issues that you aren't sure about)
-
-
-
-## Detailed Scoping
-
-(breakdown exactly HOW you plan on executing each part of the project,
-go in order of when you plan doing each part as well
-THIS IS THE PLACE TO VERY TECHNICAL ABOUT EXACT IMPLEMENTATION DETAILS
-AND WILL MOST LIKELY BE THE LONGEST PART OF THE DESIGN DOC)
-
-
-### Milestone 1
-
-Detailed explanation
-
-
-### Milestone 2
-
-Detailed explanation
-
-
-### Milestone 3
-
-Detailed explanation
-
-## Screenshots
-
-<img src="" width="80%" />
-<img src="" width="80%" />
-<img src="" width="80%" />
 
 
  [![OpenCircuits Repo](https:/github.com/LukaBostick/OpenCircuits/blob/master/src/site/pages/digital/public/img/icons/superlogo.svg)](https:/github.com/LukaBostick/OpenCircuits)
