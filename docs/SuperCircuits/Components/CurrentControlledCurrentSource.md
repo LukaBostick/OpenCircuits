@@ -4,6 +4,7 @@
 #### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### 1. [Current Controlled Current Source](/Components/CurrentControlledCurrentSource.md)
 
 
@@ -23,6 +24,11 @@
 ### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 
 
+=======
+### 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
+
+
+>>>>>>> parent of d33be997 (fix readme)
 1. [Resistor](#Resistor)
 1. [Introduction](#introduction)
 2. [Components](#Components)
@@ -36,6 +42,9 @@
 1. [Current Controlled Voltage Source](#CurrentControlledVoltageSource)
 1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
 1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
+<<<<<<< HEAD
+>>>>>>> parent of d33be997 (fix readme)
+=======
 >>>>>>> parent of d33be997 (fix readme)
 
 
