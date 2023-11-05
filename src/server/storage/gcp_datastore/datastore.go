@@ -13,7 +13,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-// A flat data structure to load data to/from
+/A flat data structure to load data to/from
 type datastoreCircuit struct {
 	ID              model.CircuitId
 	Name            string
@@ -51,8 +51,8 @@ func fromCircuit(c model.Circuit) (*datastore.Key, datastoreCircuit) {
 		}
 }
 
-// A GCP cloud datastore interface provider that assumes the GCP DS state is valid for the current version of the
-//	application; Migrations may be required and a new "version" field may need to be added
+/A GCP cloud datastore interface provider that assumes the GCP DS state is valid for the current version of the
+/application; Migrations may be required and a new "version" field may need to be added
 type datastoreStorageInterface struct {
 	dsClient *datastore.Client
 	ctx      context.Context
@@ -70,7 +70,7 @@ func NewInterfaceFactory(ctx context.Context, ops ...option.ClientOption) (inter
 	return &datastoreStorageInterface{dsClient: ds, ctx: ctx}, nil
 }
 
-// Creates a new GCP datastore instance for use with the local datastore emulator
+/Creates a new GCP datastore instance for use with the local datastore emulator
 func NewEmuInterfaceFactory(ctx context.Context, projectId string, emuHost string, ops ...option.ClientOption) (interfaces.CircuitStorageInterfaceFactory, error) {
 	_ = os.Setenv("DATASTORE_EMULATOR_HOST", emuHost)
 	ds, err := datastore.NewClient(ctx, projectId, ops...)
@@ -123,10 +123,10 @@ func (d *datastoreStorageInterface) UpdateCircuit(c model.Circuit) {
 }
 
 func (d *datastoreStorageInterface) NewCircuit() model.Circuit {
-	// NOTE: If the user loads their list of circuits in between the `NewCircuit` and
-	//		 the `UpdateCircuit` call, they will see an empty listing.  In practice
-	//		 this should not happen very often, but could be avoided by merging
-	//		 the `Update` and `Create` actions into one and perform a transaction.
+	/NOTE: If the user loads their list of circuits in between the `NewCircuit` and
+	/	 the `UpdateCircuit` call, they will see an empty listing.  In practice
+	/	 this should not happen very often, but could be avoided by merging
+	/	 the `Update` and `Create` actions into one and perform a transaction.
 	key := datastore.IncompleteKey("Circuit", nil)
 	dCircuit := datastoreCircuit{}
 	nk, err := d.dsClient.Put(d.ctx, key, &dCircuit)

@@ -54,7 +54,7 @@ func circuitStoreHandler(m interfaces.CircuitStorageInterfaceFactory, c *gin.Con
 	circuit.Update(newCircuit)
 	storageInterface.UpdateCircuit(*circuit)
 
-	// Returned the updated metadata so the client can get any changes the server made to it
+	/Returned the updated metadata so the client can get any changes the server made to it
 	c.JSON(http.StatusAccepted, circuit.Metadata)
 }
 
@@ -72,7 +72,7 @@ func circuitCreateHandler(m interfaces.CircuitStorageInterfaceFactory, c *gin.Co
 	circuit.Update(newCircuit)
 	storageInterface.UpdateCircuit(circuit)
 
-	// Returned the updated metadata so the client can get any changes the server made to it
+	/Returned the updated metadata so the client can get any changes the server made to it
 	c.JSON(http.StatusAccepted, circuit.Metadata)
 }
 
@@ -86,7 +86,7 @@ func circuitLoadHandler(m interfaces.CircuitStorageInterfaceFactory, c *gin.Cont
 		return
 	}
 
-	// Only owner can access... for now
+	/Only owner can access... for now
 	if circuit.Metadata.Owner != userId {
 		c.JSON(http.StatusNotFound, nil)
 		return
@@ -108,7 +108,7 @@ func circuitDeleteHandler(m interfaces.CircuitStorageInterfaceFactory, c *gin.Co
 	circuitId := c.Param("id")
 	storageInterface := m.CreateCircuitStorageInterface()
 
-	// The initial "Can Delete" logic is the same as "Is Owner"
+	/The initial "Can Delete" logic is the same as "Is Owner"
 	circuit := storageInterface.LoadCircuit(circuitId)
 	if circuit == nil || circuit.Metadata.Owner != userId {
 		c.JSON(http.StatusForbidden, nil)

@@ -19,7 +19,7 @@ func randToken(encoding *base64.Encoding, l int) string {
 	return encoding.EncodeToString(b)
 }
 
-// RandToken Generates a random string of the specified length
+/RandToken Generates a random string of the specified length
 func RandToken(l int) string {
 	return randToken(base64.StdEncoding, l)
 }

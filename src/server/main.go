@@ -35,7 +35,7 @@ func getPort() string {
 func main() {
 	var err error
 
-	// Parse flags
+	/Parse flags
 	googleAuthConfig := flag.String("google_auth", "", "<path-to-config>; Enables google sign-in API login")
 	noAuthConfig := flag.Bool("no_auth", false, "Enables username-only authentication for testing and development")
 	userCsifConfig := flag.String("interface", "sqlite", "The storage interface")
@@ -46,13 +46,13 @@ func main() {
 	portConfig := flag.String("port", "8080", "Port to serve application, use \"auto\" to select the first available port starting at 8080")
 	flag.Parse()
 
-	// Bad way of registering if we're in prod and using gcp datastore and OAuth credentials
+	/Bad way of registering if we're in prod and using gcp datastore and OAuth credentials
 	if os.Getenv("DATASTORE_PROJECT_ID") != "" {
 		*googleAuthConfig = "credentials.json"
 		*userCsifConfig = "gcp_datastore"
 	}
 
-	// Register authentication method
+	/Register authentication method
 	authManager := auth.AuthenticationManager{}
 	if *googleAuthConfig != "" {
 		authManager.RegisterAuthenticationMethod(google.New(*googleAuthConfig))
@@ -61,7 +61,7 @@ func main() {
 		authManager.RegisterAuthenticationMethod(auth.NewNoAuth())
 	}
 
-	// Set up the storage interface
+	/Set up the storage interface
 	var userCsif interfaces.CircuitStorageInterfaceFactory
 	if *userCsifConfig == "mem" {
 		userCsif = storage.NewMemStorageInterfaceFactory()
@@ -76,11 +76,11 @@ func main() {
 		core.CheckErrorMessage(err, "Failed to load gcp datastore instance: ")
 	}
 
-	// Route through Gin
+	/Route through Gin
 	router := gin.Default()
 	router.Use(gin.Recovery())
 
-	// Generate CSRF Token...
+	/Generate CSRF Token...
 	store := sessions.NewCookieStore([]byte(utils.RandToken(64)))
 	store.Options(sessions.Options{
 		Path:   "/",
@@ -88,12 +88,12 @@ func main() {
 	})
 	router.Use(sessions.Sessions("opencircuitssession", store))
 
-	// Register pages
+	/Register pages
 	web.RegisterPages(router, authManager)
 	authManager.RegisterHandlers(router)
 	api.RegisterRoutes(router, authManager, userCsif)
 
-	// Check if portConfig is set to auto, if so find available port
+	/Check if portConfig is set to auto, if so find available port
 	if *portConfig == "auto" {
 		*portConfig = getPort()
 	}

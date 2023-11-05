@@ -35,10 +35,10 @@ func pingHandler(c *gin.Context, userId model.UserId) {
 }
 
 func RegisterRoutes(router *gin.Engine, manager auth.AuthenticationManager, userCsif interfaces.CircuitStorageInterfaceFactory) {
-	// TODO: api versioning
+	/TODO: api versioning
 	router.GET("/api/ping", authenticatedHandler(manager, pingHandler))
 
-	// User-saveable circuits
+	/User-saveable circuits
 	router.GET("/api/circuits/:id", authenticatedHandler(manager, circuitHandler(userCsif, circuitLoadHandler)))
 	router.GET("/api/circuits", authenticatedHandler(manager, circuitHandler(userCsif, circuitQueryHandler)))
 	router.POST("/api/circuits", authenticatedHandler(manager, circuitHandler(userCsif, circuitCreateHandler)))

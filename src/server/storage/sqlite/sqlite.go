@@ -9,7 +9,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// TODO: most of this could be factored into a common sql implementation
+/TODO: most of this could be factored into a common sql implementation
 type sqliteCircuitStorageInterface struct {
 	db *sql.DB
 
@@ -25,11 +25,11 @@ func NewInterfaceFactory(sqliteDir string) (interfaces.CircuitStorageInterfaceFa
 }
 
 func (d *sqliteCircuitStorageInterface) CreateCircuitStorageInterface() interfaces.CircuitStorageInterface {
-	// Since the sqlite storage interface only needs one instance, it can be its own factory
+	/Since the sqlite storage interface only needs one instance, it can be its own factory
 	return d
 }
 
-// TODO: remove this when migrations are supported
+/TODO: remove this when migrations are supported
 func schemaInitialized(db *sql.DB) bool {
 	rows, err := db.Query("SELECT name FROM sqlite_master WHERE type='table' AND name='circuits'")
 	if err != nil {
@@ -43,7 +43,7 @@ func initializeSchema(db *sql.DB, path string) error {
 	if err != nil {
 		return err
 	}
-	// This doesn't set up migrations (intentionally)
+	/This doesn't set up migrations (intentionally)
 	_, err = schemaDot.Exec(db, "create-circuits-table")
 	return err
 }
@@ -62,7 +62,7 @@ func genSqliteInterface(workingDir string) (*sqliteCircuitStorageInterface, erro
 		}
 	}
 
-	// Generate the statements for storing/loading from a generic SQL db
+	/Generate the statements for storing/loading from a generic SQL db
 	dot, err := dotsql.LoadFromFile(workingDir + "/queries.sql")
 	if err != nil {
 		return nil, err
@@ -91,7 +91,7 @@ func genSqliteInterface(workingDir string) (*sqliteCircuitStorageInterface, erro
 
 	store.db = db
 
-	// Return success
+	/Return success
 	return &store, nil
 }
 

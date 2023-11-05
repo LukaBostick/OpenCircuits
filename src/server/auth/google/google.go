@@ -18,7 +18,7 @@ type authenticationMethod struct {
 	service *oauth2.Service
 }
 
-// Credentials which stores google ids.
+/Credentials which stores google ids.
 type oauth2Config struct {
 	ClientID  string `json:"client_id"`
 	ProjectID string `json:"project_id"`
@@ -30,7 +30,7 @@ type oauth2ConfigWrapper struct {
 func (g authenticationMethod) RegisterHandlers(engine *gin.Engine) {
 }
 
-// New Creates a new instance of the google authentication method with the provided config path
+/New Creates a new instance of the google authentication method with the provided config path
 func New(configPath string) auth.AuthenticationMethod {
 	file, err := ioutil.ReadFile(configPath)
 	if err != nil {
@@ -45,7 +45,7 @@ func New(configPath string) auth.AuthenticationMethod {
 		panic(err)
 	}
 
-	// The IdToken endpoint does not need authentication
+	/The IdToken endpoint does not need authentication
 	oauth2Service, err := oauth2.NewService(context.Background(), option.WithoutAuthentication())
 	if err != nil {
 		panic(err)
@@ -58,10 +58,10 @@ func New(configPath string) auth.AuthenticationMethod {
 }
 
 func (g authenticationMethod) ExtractIdentity(token string) (string, error) {
-	// This is poorly documented, so the code for verifying a token is credit to
-	// https://stackoverflow.com/a/36717411/2972004
-	// NOTE: This should be replaced with manual JWT verification. This endpoint
-	//	is only designed for debugging and validation
+	/This is poorly documented, so the code for verifying a token is credit to
+	/https://ackoverflow.com/a/36717411/2972004
+	/NOTE: This should be replaced with manual JWT verification. This endpoint
+	/is only designed for debugging and validation
 	tokenInfo, err := g.service.Tokeninfo().IdToken(token).Do()
 	if err != nil {
 		return "", err

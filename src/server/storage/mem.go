@@ -8,12 +8,12 @@ import (
 )
 
 type memCircuitStorageInterfaceFactory struct {
-	// Since the storage supports the interface this is fine.  For other kinds of storage, this pattern
-	//	of returning a single global object may not be suitable.
+	/Since the storage supports the interface this is fine.  For other kinds of storage, this pattern
+	/of returning a single global object may not be suitable.
 	memInterface *memCircuitStorage
 }
 
-// A simple, array-based circuit storage for testing and example circuits
+/A simple, array-based circuit storage for testing and example circuits
 type memCircuitStorage struct {
 	m      []model.Circuit
 	idxMap map[string]int

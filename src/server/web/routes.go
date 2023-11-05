@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// RegisterPages Registers the web-page-serving routes
+/RegisterPages Registers the web-page-serving routes
 func RegisterPages(router *gin.Engine, authManager auth.AuthenticationManager) {
 	router.Static("/assets", "./site/assets")
 	router.Static("/img", "./site/img")
