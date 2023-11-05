@@ -22,9 +22,10 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 1. [Introduction](###introduction)
 2. [Components](###Components)
     1. [Resistor](/docs/SuperCircuits/Components/Resistor.md)
+        ---
         2. # Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md) 
-        ![] (/img/Resistor.jpg)
-
+        ![](/img/Resistor.jpg)
+        ---
     1. [Inductor](/docs/SuperCircuits/Components/Inductor.md)
         ---
         2. # Inductor [Visualzation](/docs/SuperCircuits/Components/Inductor.md)
