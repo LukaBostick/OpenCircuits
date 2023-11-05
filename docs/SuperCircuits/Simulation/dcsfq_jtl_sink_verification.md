@@ -2,9 +2,9 @@
 
 # *SuperCircuits* Superconducting Circuit Simulator
 #### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
-
-### 1. [Simulations](#CurrentControlledCurrentSource)
-##  2. [dcsfq-jtl-sink]
-# [Verification](/docs/SuperCircuits/Simulation/dcsfq_jtl_sink.md)
-![](/img/ex_dcsfq_jtl_sink_figure.png)
-
+ 
+ 1. [dcsfq-jtl-sink](/docs/SuperCircuits/Simulation/dcsfq_jtl_sink.md)
+        ---
+        2. #  [Pending Verification]()
+        ![](/img/ex_dcsfq_jtl_sink_figure.png)
+        ---

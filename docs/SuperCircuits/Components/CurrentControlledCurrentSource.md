@@ -21,4 +21,4 @@
 1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
 
 
-![A quick mockup of what the area might look like](/img/cccs_figure.png)
+![](/img/cccs_figure.png)
