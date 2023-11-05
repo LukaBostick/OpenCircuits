@@ -1,16 +1,3 @@
----
-title: Resistor
----
-
-
-import TOCInline from '@theme/TOCInline';
-import Timeline from './_timeline';
-
-
-##### Copy the markdown below this line for your design docs!
----
-
-
 ![A quick mockup of what the area might look like](/img/external_image.png)
 
 # *SuperCircuits* Superconducting Circuit Simulator

@@ -82,9 +82,7 @@ import Timeline from './_timeline';
 
 
 ## Proposed Solution
-
-(write a specific "walk-through" of how the solution fixes the problem)
-
+Convert 
 
 
 ## Alternative Solutions
