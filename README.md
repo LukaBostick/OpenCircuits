@@ -1,5 +1,4 @@
 
-
 ![ ](/img/external_image.png)
  
 # *SuperCircuits* Superconducting Circuit Simulator
@@ -23,19 +22,80 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 1. [Introduction](###introduction)
 2. [Components](###Components)
     1. [Resistor](/docs/SuperCircuits/Components/Resistor.md)
+        2. # Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md) 
+        ![] (/img/Resistor.jpg)
+
     1. [Inductor](/docs/SuperCircuits/Components/Inductor.md)
-    1. [JosephsonJunction](/docs/SuperCircuits/Components/JosephsonJunction.md)
+        ---
+        2. # Inductor [Visualzation](/docs/SuperCircuits/Components/Inductor.md)
+        ![](/img/Inductor.jpg)
+        ---
+
+    1. [Josephson Junction](/docs/SuperCircuits/Components/JosephsonJunction.md)
+        ---
+        2. # Josephson Junction [Visualzation](/docs/SuperCircuits/Components/JosephsonJunction.md)
+        ![](/img/jj.jpg)
+        ---
+
     1. [Voltage Source](/docs/SuperCircuits/Components/VoltageSource.md)
-    1. [Current Source](/docs/SuperCircuits/Components/CurrentSourceor.md)
+        ---
+        2. # Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageSource.md)
+        ![](/img/VoltageSource.jpg)
+        ---
+
+    1. [Current Source](/docs/SuperCircuits/Components/CurrentSource.md)
+
+        ---
+    2.  # Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentSource.md)
+        ![](/img/CurrentSource.jpg)
+        ---
+
+
     1. [Phase Source](/docs/SuperCircuits/Components/PhaseSource.md)
-    1. [TransmissionLine](/docs/SuperCircuits/Components/TransmissionLine.mde)
+
+        ---
+        2. Pending Results
+        ---
+
+    1. [Transmission Line](/docs/SuperCircuits/Components/TransmissionLine.md)
+        ---
+        2. # Transmission Line [Visualzation](/docs/SuperCircuits/Components/TransmissionLine.md)
+            ![](/img/TransmissionLine.jpg)
+        ---
+
     1. [Mutual inductance](/docs/SuperCircuits/Components/Mutualinductance.md)
-    1. [Current Controlled Current Source](/docs/SuperCircuits/Components/CurrentControlledCurrentSourc.md)
-    1. [Current Controlled Voltage Source](/docs/SuperCircuits/Components/CurrentControlledVoltageSourcer.md)
-    1. [Voltage Controlled Current Source](/docs/SuperCircuits/Components/VoltageControlledCurrentSourc.md)
+        ---
+      2.  # Mutual inductance [Visualzation](/docs/SuperCircuits/Components/Mutualinductance.md)
+            ![](/img/MutualInductance.jpg)
+        ---
+
+    
+    1. [Current Controlled Current Source](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+        ---
+    2.   # Current Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+            ![](/img/CurrentControlledCurrentSource.jpg)
+        ---
+
+    
+    1. [Current Controlled Voltage Source](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
+        ---
+     2.  # Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
+            ![](/img/CurrentControlledVoltageSource.jpg)
+        ---
+
+    
+    1. [Voltage Controlled Current Source](/docs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
+        ---
+       2.  # Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledCurrentSourcer.md)
+        ![](/img/VoltageControlledCurrentSource.jpg)
+        ---
+    
     1. [Voltage Controlled Voltage Source](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
 
-
+         ---
+        2. # Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
+        ![](/img/VoltageControlledVoltageSource.jpg)
+        ---
 
 
 ## Overview
@@ -140,67 +200,6 @@ Detailed explanation
 ### Milestone 3
 
 Detailed explanation
-
-### Components
-
----
-# Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md)
-![A quick mockup of what the area might look like](/img/Resistor.jpg)
----
-
----
-# Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md)
-![A quick mockup of what the area might look like](/img/Resistor.jpg)
----
-
----
- # Inductor [Visualzation](/docs/SuperCircuits/Components/Inductor.md)
-![A quick mockup of what the area might look like](/img/Inductor.jpg)
----
----
-# Josephson Junction [Visualzation](/docs/SuperCircuits/Components/JosephsonJunction.md)
-![A quick mockup of what the area might look like](/img/jj.jpg)
----
-
----
-# Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageSource.md)
-![A quick mockup of what the area might look like](/img/VoltageSource.jpg)
----
-
----
-# Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentSource.md)
-![A quick mockup of what the area might look like](/img/CurrentSource.jpg)
----
-
-# Transmission Line [Visualzation](/docs/SuperCircuits/Components/TransmissionLine.md)
-![A quick mockup of what the area might look like](/img/TransmissionLine.jpg)
----
-
----
-# Mutual inductance [Visualzation](/docs/SuperCircuits/Components/Mutualinductance.md)
-![A quick mockup of what the area might look like](/img/MutualInductance.jpg)
----
-
----
-# Current Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
-![A quick mockup of what the area might look like](/img/CurrentControlledCurrentSource.jpg)
----
-
----
-# Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
-![A quick mockup of what the area might look like](/img/CurrentControlledVoltageSource.jpg)
----
-
----
-# Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledCurrentSourcer.md)
-![A quick mockup of what the area might look like](/img/VoltageControlledCurrentSource.jpg)
----
-
----
-# Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
-![A quick mockup of what the area might look like](/img/VoltageControlledVoltageSource.jpg)
----
-
 
 ## Screenshots
 

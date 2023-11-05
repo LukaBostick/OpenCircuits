@@ -33,6 +33,16 @@ import Timeline from './_timeline';
     1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
 
 
+3. [Simulation](/docs/SuperCircuits/Simulation/Simulation.md)
+ 1. [Resistor](#Resistor)
+    1. [Inductor](#Inductor)
+    1. [JosephsonJunction](#JosephsonJunction)
+    1. [Voltage Source](#VoltageSource)
+    1. [Current Source](#CurrentSource)
+    1. [Phase Source](#PhaseSource)
+    1. [TransmissionLine](#TransmissionLine)
+    1. [Mutual inductance](#Mutualinductance)
+    1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 
 
 ## Overview
