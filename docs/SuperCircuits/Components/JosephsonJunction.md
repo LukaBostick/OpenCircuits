@@ -6,25 +6,16 @@
  ###  1. [JosephsonJunction](#JosephsonJunction)
 
 
-1. [Current Controlled Current Source](/ocs/SuperCircuits
-/Components/CurrentControlledCurrentSource.md)
-1. [Resistor](/ocs/SuperCircuits
-/Components/Resistor.md)
+1. [Current Controlled Current Source](/ocs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+1. [Resistor](/ocs/SuperCircuits/Components/Resistor.md)
 1. [Introduction](/OpenCircuits/README.md)
-1. [Inductor](/ocs/SuperCircuits
-/Components/Inductor.md)
-1. [Voltage Source](/ocs/SuperCircuits
-/Components/VoltageSource.md)
-1. [Phase Source](/ocs/SuperCircuits
-/Components/PhaseSource.md)
-1. [TransmissionLine](/ocs/SuperCircuits
-/Components/TransmissionLine.md)
-1. [Mutual inductance](/ocs/SuperCircuits
-/Components/Mutualinductance.md)
-1. [Voltage Controlled Current Source](/ocs/SuperCircuits
-/Components/VoltageControlledCurrentSource.md)
-1. [Voltage Controlled Voltage Source](/ocs/SuperCircuits
-/Components/VoltageControlledCurrentSource.md)
+1. [Inductor](/ocs/SuperCircuits/Components/Inductor.md)
+1. [Voltage Source](/ocs/SuperCircuits/Components/VoltageSource.md)
+1. [Phase Source](/ocs/SuperCircuits/Components/PhaseSource.md)
+1. [TransmissionLine](/ocs/SuperCircuits/Components/TransmissionLine.md)
+1. [Mutual inductance](/ocs/SuperCircuits/Components/Mutualinductance.md)
+1. [Voltage Controlled Current Source](/ocs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
+1. [Voltage Controlled Voltage Source](/ocs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
 
  
 1. [Resistor](#Resistor)
