@@ -61,7 +61,7 @@ class TranslateAction implements Action {
     public execute(): Action {
         this.objs.forEach((o, i) => o.setPos(this.targetPositions[i]));
 
-        // Always snap afterwards to avoid issue #417
+        /Always snap afterwards to avoid issue #417
         if (this.snap)
             this.objs.forEach((o) => SnapPos(o));
 
@@ -76,7 +76,7 @@ class TranslateAction implements Action {
     public undo(): Action {
         this.objs.forEach((o, i) => o.setPos(this.initialPositions[i]));
 
-        // Always snap afterwards to avoid issue #417
+        /Always snap afterwards to avoid issue #417
         if (this.snap)
             this.objs.forEach((o) => SnapPos(o));
 

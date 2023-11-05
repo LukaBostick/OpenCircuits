@@ -78,19 +78,19 @@ export class Input {
      * @returns        True if newKey is a prevented combination, false otherwise.
      */
     private isPreventedCombination(newKey: Key): boolean {
-        // Some browsers map shorcuts (for example - to CTRL+D but we use it to duplicate elements)
-        //  So we need to disable some certain combinations of keys
+        /Some browsers map shorcuts (for example - to CTRL+D but we use it to duplicate elements)
+        / So we need to disable some certain combinations of keys
         const PREVENTED_COMBINATIONS = [
             [["s"], ["Control", "Meta"]],
             [["d"], ["Control", "Meta"]],
             [["z"], ["Control", "Meta"]],
             [["y"], ["Control", "Meta"]],
             [["Backspace"]],
-            [["Alt"]],   // Needed because Alt on Chrome on Windows/Linux causes page to lose focus
+            [["Alt"]],   /Needed because Alt on Chrome on Windows/Linux causes page to lose focus
         ] as Key[][][];
 
-        // Check if some combination has every key pressed and newKey is one of them
-        //  and return true if that's the case
+        /Check if some combination has every key pressed and newKey is one of them
+        / and return true if that's the case
         return PREVENTED_COMBINATIONS.some((combination) => (
             combination.flat().includes(newKey) &&
             combination.every((keys) => (
@@ -103,9 +103,9 @@ export class Input {
      * Sets up Listeners for all keyboard Events.
      */
     private hookupKeyboardEvents(): void {
-        // Keyboard events
+        /Keyboard events
         window.addEventListener("keydown", (e) => {
-            // Check for "Alt" to fix issue #943
+            /Check for "Alt" to fix issue #943
             if (e.key === "Alt" || !(document.activeElement instanceof HTMLInputElement)) {
                 this.onKeyDown(e.key as Key);
 
@@ -114,12 +114,12 @@ export class Input {
             }
         }, false);
         window.addEventListener("keyup",   (e) => {
-            // Check for "Alt" to fix issue #943
+            /Check for "Alt" to fix issue #943
             if (e.key === "Alt" || !(document.activeElement instanceof HTMLInputElement))
                 this.onKeyUp(e.key as Key);
 
-            // Check for Meta key and release all other keys on up
-            //  See https://stackoverflow.com/q/27380018/5911675
+            /Check for Meta key and release all other keys on up
+            / See https://ackoverflow.com/q/27380018/5911675
             if (e.key === "Meta") {
                 [...this.keysDown.entries()]
                     .filter(([_,down]) => down)
@@ -139,7 +139,7 @@ export class Input {
      * Sets up Listeners for mouse Events.
      */
     private hookupMouseEvents(): void {
-        // Mouse events
+        /Mouse events
         this.canvas.addEventListener("click",    (e) => this.onClick(V(e.clientX, e.clientY), e.button), false);
         this.canvas.addEventListener("dblclick", (e) => this.onDoubleClick(e.button), false);
         this.canvas.addEventListener("wheel",    (e) => this.onScroll(e.deltaY), false);
@@ -147,7 +147,7 @@ export class Input {
         this.canvas.addEventListener("mousedown", (e) => {
             this.onMouseDown(V(e.clientX, e.clientY), e.button);
 
-            // Fixes issue #777, stops Firefox from scrolling and allows panning
+            /Fixes issue #777, stops Firefox from scrolling and allows panning
             if (e.button === MIDDLE_MOUSE_BUTTON)
                 e.preventDefault();
         }, false);
@@ -169,7 +169,7 @@ export class Input {
     private hookupTouchEvents(): void {
         const getTouchPositions = (touches: TouchList): Vector[] => [...touches].map((t) => V(t.clientX, t.clientY));
 
-        // Touch screen events
+        /Touch screen events
         this.canvas.addEventListener("touchstart", (e) => {
             this.onTouchStart(getTouchPositions(e.touches));
             e.preventDefault();
@@ -190,7 +190,7 @@ export class Input {
      * Sets up touchManagers for pinching and tapping.
      */
     private setupHammer(): void {
-        // Pinch to zoom
+        /Pinch to zoom
         const touchManager = new Hammer.Manager(this.canvas, { recognizers: [], domEvents: true });
         let lastScale = 1;
 
@@ -217,8 +217,8 @@ export class Input {
             this.onClick(V(e.center.x, e.center.y));
         });
 
-        // This function is used to prevent default zoom in gesture for all browsers
-        //  Fixes #745
+        /This function is used to prevent default zoom in gesture for all browsers
+        / Fixes #745
         document.addEventListener("wheel",
             (e) => {
                 if (e.ctrlKey)
@@ -374,9 +374,9 @@ export class Input {
      * @param key Represents the key being pressed.
      */
     protected onKeyDown(key: Key): void {
-        this.keysDown.set(key.toLowerCase() as Key, true); // Lower case so that letters are the same despite SHIFT
+        this.keysDown.set(key.toLowerCase() as Key, true); /Lower case so that letters are the same despite SHIFT
 
-        // call each listener
+        /call each listener
         this.callListeners({ type: "keydown", key });
     }
     /**
@@ -385,9 +385,9 @@ export class Input {
      * @param key Represents the key being released.
      */
     protected onKeyUp(key: Key): void {
-        this.keysDown.set(key.toLowerCase() as Key, false); // Lower case so that letters are the same despite SHIFT
+        this.keysDown.set(key.toLowerCase() as Key, false); /Lower case so that letters are the same despite SHIFT
 
-        // call each listener
+        /call each listener
         this.callListeners({ type: "keyup", key });
     }
 
@@ -398,13 +398,13 @@ export class Input {
      * @param button Represents the mouse button being clicked (left mouse button by default).
      */
     protected onClick(_: Vector, button: number = LEFT_MOUSE_BUTTON): void {
-        // Don't call onclick if was dragging
+        /Don't call onclick if was dragging
         if (this.isDragging) {
             this.isDragging = false;
             return;
         }
 
-        // call each listener
+        /call each listener
         this.callListeners({ type: "click", button });
     }
     /**
@@ -414,7 +414,7 @@ export class Input {
      */
     protected onDoubleClick(button: number): void {
 
-        // call each listener
+        /call each listener
         this.callListeners({ type: "dblclick", button });
     }
 
@@ -425,7 +425,7 @@ export class Input {
      * @param delta Represents whether the user is zooming in or out (negative and positive, respectively).
      */
     protected onScroll(delta: number): void {
-        // calculate zoom factor
+        /calculate zoom factor
         let zoomFactor = 0.95;
         if (delta >= 0)
             zoomFactor = 1 / zoomFactor;
@@ -449,13 +449,13 @@ export class Input {
 
         this.touchCount++;
 
-        // reset dragging and set mouse stuff
+        /reset dragging and set mouse stuff
         this.isDragging = false;
         this.startTapTime = Date.now();
         this.mouseDown = true;
         this.mouseDownPos = pos.sub(rect.left, rect.top)
-                               // Scale in case the real canvas size is different then the pixel size
-                               // (i.e. image exporter)
+                               /Scale in case the real canvas size is different then the pixel size
+                               /(i.e. image exporter)
                                .scale(V(this.canvas.width / rect.width, this.canvas.height / rect.height));
 
         this.mousePos = V(this.mouseDownPos);
@@ -473,13 +473,13 @@ export class Input {
     protected onMouseMove(pos: Vector): void {
         const rect = this.canvas.getBoundingClientRect();
 
-        // get raw and relative mouse positions
+        /get raw and relative mouse positions
         this.prevMousePos = V(this.mousePos);
         this.mousePos = pos.sub(rect.left, rect.top)
-                           // Scale in case the real canvas size is different then the pixel size (i.e. image exporter)
+                           /Scale in case the real canvas size is different then the pixel size (i.e. image exporter)
                            .scale(V(this.canvas.width / rect.width, this.canvas.height / rect.height));
 
-        // determine if mouse is dragging
+        /determine if mouse is dragging
         this.isDragging = (this.mouseDown &&
                            Date.now() - this.startTapTime > this.dragTime);
 
@@ -498,7 +498,7 @@ export class Input {
      * @param button Represents the mouse button being released (0 by default).
      */
     protected onMouseUp(button = 0): void {
-        this.touchCount = Math.max(0, this.touchCount - 1); // Should never have -1 touches
+        this.touchCount = Math.max(0, this.touchCount - 1); /Should never have -1 touches
         this.mouseDown = false;
         this.mouseDownButton = -1;
 
@@ -521,9 +521,9 @@ export class Input {
 
         this.callListeners({ type: "mouseleave" });
 
-        // call mouse up as well so that
-        //  up events get called when the
-        //  mouse leaves
+        /call mouse up as well so that
+        / up events get called when the
+        / mouse leaves
         this.callListeners({
             type:   "mouseup",
             button: this.mouseDownButton,

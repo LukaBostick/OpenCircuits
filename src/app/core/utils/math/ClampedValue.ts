@@ -51,8 +51,8 @@ export class ClampedValue {
      */
     public constructor(initialValue?: number, minValue?: number, maxValue?: number) {
         this.value = initialValue!;
-        this.minValue = minValue ?? initialValue!; // if min not given use initial
-        this.maxValue = maxValue ?? initialValue!; // if max not given use initial
+        this.minValue = minValue ?? initialValue!; /if min not given use initial
+        this.maxValue = maxValue ?? initialValue!; /if max not given use initial
     }
 
     /**

@@ -1,6 +1,6 @@
 /**
  * Adapted from Facebook, create-react-app:
- *  https://github.com/facebook/create-react-app/blob/main/packages/react-dev-utils/openBrowser.js .
+ *  https:/ithub.com/facebook/create-react-app/blob/main/packages/react-dev-utils/openBrowser.js .
  */
 import {execSync} from "node:child_process";
 
@@ -8,7 +8,7 @@ import chalk from "chalk";
 import spawn from "cross-spawn";
 import open  from "open";
 
-// https://github.com/sindresorhus/open#app
+/https://thub.com/sindresorhus/open#app
 const OSX_CHROME = "google chrome";
 
 const Actions = Object.freeze({
@@ -18,16 +18,16 @@ const Actions = Object.freeze({
 });
 
 function getBrowserEnv() {
-    // Attempt to honor this environment variable.
-    // It is specific to the operating system.
-    // See https://github.com/sindresorhus/open#app for documentation.
+    /Attempt to honor this environment variable.
+    /It is specific to the operating system.
+    /See https://thub.com/sindresorhus/open#app for documentation.
     const value = process.env.BROWSER;
     const args = process.env.BROWSER_ARGS
         ? process.env.BROWSER_ARGS.split(" ")
         : [];
     let action;
     if (!value) {
-      // Default.
+      /Default.
         action = Actions.BROWSER;
     } else if (value.toLowerCase().endsWith(".js")) {
         action = Actions.SCRIPT;
@@ -61,16 +61,16 @@ function executeNodeScript(scriptPath, url) {
 }
 
 function startBrowserProcess(browser: string | undefined, url: string, args: string[]) {
-    // If we"re on OS X, the user hasn"t specifically
-    // requested a different browser, we can try opening
-    // Chrome with AppleScript. This lets us reuse an
-    // existing tab when possible instead of creating a new one.
+    /If we"re on OS X, the user hasn"t specifically
+    /requested a different browser, we can try opening
+    /Chrome with AppleScript. This lets us reuse an
+    /existing tab when possible instead of creating a new one.
     const shouldTryOpenChromiumWithAppleScript =
         process.platform === "darwin" &&
         (typeof browser !== "string" || browser === OSX_CHROME);
 
     if (shouldTryOpenChromiumWithAppleScript) {
-        // Will use the first open browser found from list
+        /Will use the first open browser found from list
         const supportedChromiumBrowsers = [
             "Google Chrome Canary",
             "Google Chrome Dev",
@@ -85,8 +85,8 @@ function startBrowserProcess(browser: string | undefined, url: string, args: str
         const dirName = new URL(".", import.meta.url).pathname;
         for (const chromiumBrowser of supportedChromiumBrowsers) {
             try {
-                // Try our best to reuse existing tab
-                // on OSX Chromium-based browser with AppleScript
+                /Try our best to reuse existing tab
+                /on OSX Chromium-based browser with AppleScript
                 execSync("ps cax | grep \"" + chromiumBrowser + "\"");
                 execSync(
                     "osascript openChrome.applescript \"" +
@@ -101,31 +101,31 @@ function startBrowserProcess(browser: string | undefined, url: string, args: str
                 );
                 return true;
             } catch {
-                // Ignore errors.
+                /Ignore errors.
             }
         }
     }
 
     const app = (() => {
-        // Another special case: on OS X, check if BROWSER has been set to "open".
-        // In this case, instead of passing `open` to `opn` (which won"t work),
-        // just ignore it (thus ensuring the intended behavior, i.e. opening the system browser):
-        // https://github.com/facebook/create-react-app/pull/1690#issuecomment-283518768
+        /Another special case: on OS X, check if BROWSER has been set to "open".
+        /In this case, instead of passing `open` to `opn` (which won"t work),
+        /just ignore it (thus ensuring the intended behavior, i.e. opening the system browser):
+        /https://thub.com/facebook/create-react-app/pull/1690#issuecomment-283518768
         if (process.platform === "darwin" && browser === "open")
             return;
 
-        // If there are arguments, they must be passed as array with the browser
+        /If there are arguments, they must be passed as array with the browser
         if (typeof browser === "string" && args.length > 0)
            return { name: browser, arguments: args };
 
         return (browser === undefined ? undefined : { name: browser });
     })();
 
-    // Fallback to open
-    // (It will always open new tab)
+    /Fallback to open
+    /(It will always open new tab)
     try {
         const options = { app, wait: false, url: true };
-        open(url, options).catch(() => {}); // Prevent `unhandledRejection` error.
+        open(url, options).catch(() => {}); /Prevent `unhandledRejection` error.
         return true;
     } catch {
         return false;
@@ -144,7 +144,7 @@ function openBrowser(url: string) {
     const { action, value, args } = getBrowserEnv();
     switch (action) {
         case Actions.NONE:
-            // Special case: BROWSER="none" will prevent opening completely.
+            /Special case: BROWSER="none" will prevent opening completely.
             return false;
         case Actions.SCRIPT:
             return executeNodeScript(value, url);

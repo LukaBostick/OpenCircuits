@@ -41,7 +41,7 @@ on run argv
       -- 2: Looking for Empty tab
       -- In case debugging tab was not found
       -- We try to find an empty tab instead
-      set found to my lookupTabWithUrl("chrome://newtab/")
+      set found to my lookupTabWithUrl("chrome:/ewtab/")
       if found then
         set targetWindow's active tab index to targetTabIndex
         set URL of targetTab to theURL

@@ -22,8 +22,8 @@ import {reducers}   from "site/digital/state/reducers";
 import {ExprToCircuitPopup} from "site/digital/containers/ExprToCircuitPopup";
 
 
-// beforeAll and beforeEach can be used to avoid duplicating store/render code, but is not recommended
-//  see: https://testing-library.com/docs/user-event/intro
+/beforeAll and beforeEach can be used to avoid duplicating store/render code, but is not recommended
+/ see: https://sting-library.com/docs/user-event/intro
 describe("Main Popup", () => {
     const info = Setup();
     const store = createStore(reducers, applyMiddleware(thunk as ThunkMiddleware<AppState, AllActions>));
@@ -39,23 +39,23 @@ describe("Main Popup", () => {
     });
 
     test("Popup Created with default states", () => {
-        // Check header and button states
+        /Check header and button states
         expect(screen.getByText("Digital Expression To Circuit Generator")).toBeVisible();
         expect(screen.getByText("Cancel")).toBeVisible();
         expect(screen.getByText("Generate")).toBeVisible();
         expect(screen.getByText("Generate")).toBeDisabled();
 
-        // Check format options
+        /Check format options
         expect(/Programming 1/).toBeToggledOn();
         expect(/Custom/).toBeToggledOff();
         expect(screen.queryByText(/Custom AND/)).toBeNull();
 
-        // Check toggle switches
+        /Check toggle switches
         expect(/Place labels for inputs/).toBeToggledOff();
         expect(/Generate into IC/).toBeToggledOff();
         expect(screen.queryByText(/Connect Clocks/)).toBeNull();
 
-        // Check dropdowns
+        /Check dropdowns
         const inputOptions = screen.getByLabelText(/Input Component/).querySelectorAll("option");
         const switchInputOption = [...inputOptions].find((input) => input.text === "Switch");
         expect(switchInputOption?.selected).toBeTruthy();
@@ -63,7 +63,7 @@ describe("Main Popup", () => {
         const ledOutputOption = [...outputOptions].find((input) => input.text === "LED");
         expect(ledOutputOption?.selected).toBeTruthy();
 
-        // Text input is empty
+        /Text input is empty
         const input = screen.getByRole<HTMLInputElement>("textbox");
         expect(input.value).toBe("");
     });
@@ -75,19 +75,19 @@ describe("Main Popup", () => {
         expect(screen.getByText("Cancel")).not.toBeVisible();
         expect(screen.getByText("Digital Expression To Circuit Generator")).not.toBeVisible();
 
-        // Reopen and requery in case reference changed
+        /Reopen and requery in case reference changed
         act(() => { store.dispatch(OpenHeaderPopup("expr_to_circuit")) });
         expect((screen.getByRole<HTMLInputElement>("textbox")).value).toBe("");
     });
 
     test("Generate Button", async () => {
-        // Enter the expression and generate
+        /Enter the expression and generate
         await user.type(screen.getByRole("textbox"), "a | b");
         expect(screen.getByText("Generate")).toBeEnabled();
         await user.click(screen.getByText("Generate"));
         expect(screen.getByText("Digital Expression To Circuit Generator")).not.toBeVisible();
 
-        // Check that the components are placed and connected
+        /Check that the components are placed and connected
         const components = info.designer.getObjects();
         expect(components).toHaveLength(4);
         const inputA = components.find((component) => component instanceof Switch
@@ -107,7 +107,7 @@ describe("Main Popup", () => {
         inputB.click();
         expect(led.isOn()).toBeTruthy();
 
-        // Reopen and requery in case reference changed
+        /Reopen and requery in case reference changed
         act(() => { store.dispatch(OpenHeaderPopup("expr_to_circuit")) });
         expect((screen.getByRole<HTMLInputElement>("textbox")).value).toBe("");
     });

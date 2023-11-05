@@ -31,7 +31,7 @@ export class DigitalWire extends Wire {
     }
 
     public activate(signal: boolean): void {
-        // Don't do anything if signal is same as current state
+        /Don't do anything if signal is same as current state
         if (signal === this.isOn)
             return;
 
@@ -44,14 +44,14 @@ export class DigitalWire extends Wire {
         if (!super.canConnectTo(port))
             return false;
 
-        // If p1 is defined then `port` must be an InputPort to connect
+        /If p1 is defined then `port` must be an InputPort to connect
         if (this.p1 && port instanceof InputPort) {
-            // If `port` is an InputPort then it
-            //  must not already have a connection
+            /If `port` is an InputPort then it
+            / must not already have a connection
             return port.getInput() === undefined;
         }
 
-        // if p2 is defined then `port` must be an OutputPort
+        /if p2 is defined then `port` must be an OutputPort
         return (this.p2 && port instanceof OutputPort);
     }
 

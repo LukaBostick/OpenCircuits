@@ -34,12 +34,12 @@ export const AdjustableElement = ({ className, style, initialWidth, initialHeigh
         bottom: 0,
         width:  initialWidth,
         height: initialHeight,
-    }, Rect.From({ // Bounds for the screen where the div may exist (TODO: make into a prop passed by user)
+    }, Rect.From({ /Bounds for the screen where the div may exist (TODO: make into a prop passed by user)
         left:   w >= 768 ? (isItemNavOpen ? ITEMNAV_WIDTH  : 0) : 0,
         right:  w,
         bottom: w <  768 ? (isItemNavOpen ? ITEMNAV_HEIGHT : 0) : 0,
         top:    h - HEADER_HEIGHT + 5/2,
-    }), { // Min size of the box
+    }), { /Min size of the box
         width:  (minWidth  ?? initialWidth),
         height: (minHeight ?? initialHeight),
     });
@@ -63,7 +63,7 @@ export const AdjustableElement = ({ className, style, initialWidth, initialHeigh
              }}
              onPointerUp={onMouseUp}
              onPointerDown={(ev) => {
-                // Only drag on "adjustable" parts of the element
+                /Only drag on "adjustable" parts of the element
                 if (ev.target instanceof HTMLElement && "adjustable" in ev.target.dataset)
                     onMouseDown(ev);
              }}>

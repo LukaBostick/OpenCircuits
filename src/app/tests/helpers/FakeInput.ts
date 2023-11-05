@@ -13,7 +13,7 @@ export class FakeInput extends Input {
     private readonly camera: Camera;
 
     public constructor(camera: Camera) {
-        // Fake canvas and instant drag time
+        /Fake canvas and instant drag time
         super({
             addEventListener:      () => {},
             getBoundingClientRect: () => ({ left: 0, top: 0, width: camera.getSize().x, height: camera.getSize().y }),
@@ -51,7 +51,7 @@ export class FakeInput extends Input {
         return this;
     }
 
-    // Note that `pos` is in WORLD COORDINATES for testing purposes
+    /Note that `pos` is in WORLD COORDINATES for testing purposes
     public press(pos?: Vector, button: number = LEFT_MOUSE_BUTTON): FakeInput {
         pos = (pos === undefined ? super.getMousePos() : this.camera.getScreenPos(pos));
         super.onMouseDown(pos, button);
@@ -64,11 +64,11 @@ export class FakeInput extends Input {
         return this;
     }
     public moveTo(target: Vector, steps = 5): FakeInput {
-        // Calculate step Vector
-        // Keep in world coordinates since we're passing to `move`
+        /Calculate step Vector
+        /Keep in world coordinates since we're passing to `move`
         const step = target.sub(this.camera.getWorldPos(this.getMousePos())).scale(1 / steps);
 
-        // Move a bit for each step
+        /Move a bit for each step
         for (let i = 1; i <= steps; i++)
             this.move(step, 1);
 

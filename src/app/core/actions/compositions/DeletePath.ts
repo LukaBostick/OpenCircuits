@@ -13,12 +13,12 @@ import {Wire}      from "core/models/Wire";
 export function DeletePath(designer: CircuitDesigner, path: Array<Wire | (Component & Node)>): GroupAction {
     const action = new GroupAction([], "Delete Path Action");
 
-    // Remove wires first
+    /Remove wires first
     path.filter((p) => p instanceof Wire)
             .map((p) => p as Wire)
             .forEach((w) => action.add(Disconnect(designer, w)));
 
-    // Then remove WirePorts
+    /Then remove WirePorts
     path.filter((p) => p instanceof Component)
             .map((p) => p as Component)
             .forEach((wp) => action.add(Delete(designer, wp)));

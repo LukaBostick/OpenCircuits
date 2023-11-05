@@ -9,7 +9,7 @@ import {Prop}       from "core/models/PropInfo";
 export abstract class IOObject extends BaseObject implements Selectable {
     protected constructor(initialProps: Record<string, Prop> = {}) {
         super({
-            name: false, // Initially is "false" for "not set"
+            name: false, /Initially is "false" for "not set"
             ...initialProps,
         });
     }

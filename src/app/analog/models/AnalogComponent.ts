@@ -70,7 +70,7 @@ export abstract class AnalogComponent extends Component {
     }
 
     public override getConnections(): AnalogWire[] {
-        // Get each wire connected to each port and then filter out the null ones
+        /Get each wire connected to each port and then filter out the null ones
         return this.getPorts().flatMap((p) => p.getWires())
                 .filter((w) => !!w);
     }

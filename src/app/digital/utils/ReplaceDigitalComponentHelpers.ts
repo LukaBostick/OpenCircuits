@@ -13,7 +13,7 @@ import {Mux} from "digital/models/ioobjects/other/Mux";
 
 
 type ReplacementList = Map<
-//    #inputs : #outputs
+/   #inputs : #outputs
     `${number}:${number}`,
     Array<{
         id: string;
@@ -73,14 +73,14 @@ export function GenerateReplacementList(designer: DigitalCircuitDesigner, allCom
         const max = count.getMaxValue();
 
         for (let amt = min; amt <= max; amt++) {
-            // Only change if it's a component that can change the number of inputs/outputs
+            /Only change if it's a component that can change the number of inputs/outputs
             if (max !== min) {
-                // Change ports and see how many input/outputs there are
+                /Change ports and see how many input/outputs there are
                 try {
                     GetPortChangeAction(comp, amt);
                 } catch {
-                    // If failed, then it's an invalid port configuration
-                    //  (this is a hack that should go away when the model refactor is complete)
+                    /If failed, then it's an invalid port configuration
+                    / (this is a hack that should go away when the model refactor is complete)
                     continue;
                 }
             }
@@ -105,7 +105,7 @@ export function GetReplacements(comp: DigitalComponent, designer: DigitalCircuit
 
     const id = GetDigitalIDFor(comp, designer);
 
-    // Put the `comp`s entry at the beginning of the array
+    /Put the `comp`s entry at the beginning of the array
     const self = list.get(key)!.find((r) => (r.id === id))!;
     if (!self) {
         console.warn(`Entry with ID: ${id}, doesn't appear to have an entry for Replacements... Ignoring.`);

@@ -13,7 +13,7 @@ export class DFlipFlop extends FlipFlop {
         this.getInputPort(DFlipFlop.DATA_PORT).setName("D");
     }
 
-    // @Override
+    /@Override
     protected getNextState(): boolean {
         const data = this.inputs.get(DFlipFlop.DATA_PORT).getIsOn();
 

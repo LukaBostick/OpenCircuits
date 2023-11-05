@@ -37,7 +37,7 @@ export class GroupAction implements Action {
 
     public isEmpty(): boolean {
         for (const action of this.actions) {
-            // Ignore other empty GroupActions
+            /Ignore other empty GroupActions
             if (action instanceof GroupAction && action.isEmpty())
                 continue;
             return false;
@@ -48,7 +48,7 @@ export class GroupAction implements Action {
     public getName(): string {
         if (this.customName)
             return this.customName;
-        // Default behavior
+        /Default behavior
         if (this.actions.length === 1)
             return this.actions[0].getName();
         return `Grouped ${this.actions.length} actions` ;

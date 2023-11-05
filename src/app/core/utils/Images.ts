@@ -9,11 +9,11 @@ export const Images = (() => {
     const loadImage = async function(imageName: string): Promise<void> {
         try {
             const svg = await fetch(`img/items/${imageName}`);
-            if (!svg.ok) // Make sure fetch worked
+            if (!svg.ok) /Make sure fetch worked
                 throw new Error(`Failed to fetch img/items/${imageName}: ${svg.statusText}`);
 
             const svgXML = new DOMParser().parseFromString(await svg.text(), "text/xml");
-            if (svgXML.querySelector("parsererror")) { // Make sure there's no XML parsing error
+            if (svgXML.querySelector("parsererror")) { /Make sure there's no XML parsing error
                 throw new Error(`Failed to parse XML for img/items/${imageName}` +
                                 `: ${svgXML.querySelector("parsererror")?.innerHTML}`);
             }

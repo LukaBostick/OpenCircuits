@@ -14,7 +14,7 @@ import Timeline from './_timeline';
 ![A quick mockup of what the area might look like](/img/external_image.png)
  
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
  
 
 1. [Introduction](#introduction)
@@ -33,7 +33,7 @@ import Timeline from './_timeline';
     1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
 
 
-3. [Simulation](//Simulation/Simulation.md)
+3. [Simulation](/imulation/Simulation.md)
  1. [Resistor](#Resistor)
     1. [Inductor](#Inductor)
     1. [JosephsonJunction](#JosephsonJunction)
@@ -145,35 +145,46 @@ Detailed explanation
 ### Components
 
 
-# Resistor  [Visualzation](//Components/Resistor.md)
+# Resistor  [Visualzation](/docs/SuperCircuits
+/Components/Resistor.md)
 ![A quick mockup of what the area might look like](/img/Resistor.jpg)
 
- # Inductor [Visualzation](//Components/Inductor.md)
+ # Inductor [Visualzation](/docs/SuperCircuits
+/Components/Inductor.md)
 ![A quick mockup of what the area might look like](/img/Inductor.jpg)
 
-# Josephson Junction [Visualzation](//Components/JosephsonJunction.md)
+# Josephson Junction [Visualzation](/docs/SuperCircuits
+/Components/JosephsonJunction.md)
 ![A quick mockup of what the area might look like](/img/jj.jpg)
 
-# Voltage Source [Visualzation](//Components/VoltageSource.md)
+# Voltage Source [Visualzation](/docs/SuperCircuits
+/Components/VoltageSource.md)
 ![A quick mockup of what the area might look like](/img/VoltageSource.jpg)
 
-# Current Source [Visualzation](//Components/CurrentSource.md)
+# Current Source [Visualzation](/docs/SuperCircuits
+/Components/CurrentSource.md)
 ![A quick mockup of what the area might look like](/img/CurrentSource.jpg)
 
-# Transmission Line [Visualzation](//Components/TransmissionLine.md)
+# Transmission Line [Visualzation](/docs/SuperCircuits
+/Components/TransmissionLine.md)
 ![A quick mockup of what the area might look like](/img/TransmissionLine.jpg)
 
-# Mutual inductance [Visualzation](//Components/Mutualinductance.md)
+# Mutual inductance [Visualzation](/docs/SuperCircuits
+/Components/Mutualinductance.md)
 ![A quick mockup of what the area might look like](/img/MutualInductance.jpg)
 
-# Current Controlled Current Source [Visualzation](//Components/CurrentControlledCurrentSource.md)
+# Current Controlled Current Source [Visualzation](/docs/SuperCircuits
+/Components/CurrentControlledCurrentSource.md)
 ![A quick mockup of what the area might look like](/img/CurrentControlledCurrentSource.jpg)
 
-# Current Controlled Voltage Source [Visualzation](//Components/CurrentControlledVoltageSource.md)
+# Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits
+/Components/CurrentControlledVoltageSource.md)
 ![A quick mockup of what the area might look like](/img/CurrentControlledVoltageSource.jpg)
 
-# Voltage Controlled Current Source [Visualzation](//Components/VoltageControlledCurrentSourcer.md)
+# Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits
+/Components/VoltageControlledCurrentSourcer.md)
 ![A quick mockup of what the area might look like](/img/VoltageControlledCurrentSource.jpg)
 
-# Voltage Controlled Voltage Source [Visualzation](//Components/VoltageControlledVoltageSource.md)
+# Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits
+/Components/VoltageControlledVoltageSource.md)
 ![A quick mockup of what the area might look like](/img/VoltageControlledVoltageSource.jpg)

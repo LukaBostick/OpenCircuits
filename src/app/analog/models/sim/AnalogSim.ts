@@ -28,34 +28,34 @@ export class AnalogSim {
     }
 
     public uploadNetlist(netlist: Netlist) {
-        // If netlist already exists, free it
+        /If netlist already exists, free it
         if (this.netlistPtrs)
             this.netlistPtrs.forEach((ptr) => this.lib.free_array(ptr));
 
-        // Convert netlist to format for NGSpice
+        /Convert netlist to format for NGSpice
         const ngNetList = NetlistToNGSpice(netlist).map((line) => line.join(" "));
 
-        // console.log(ngNetList.join("\n"));
+        /console.log(ngNetList.join("\n"));
 
-        // Upload data to NGSpice
+        /Upload data to NGSpice
         this.netlistPtrs = this.lib.create_str_array(ngNetList);
         this.lib.set_data(this.netlistPtrs[0]);
     }
 
     public run() {
-        // Happens sychronously which is fine for now but needs to change
+        /Happens sychronously which is fine for now but needs to change
         this.lib.run();
 
-        // Gather data (slice off end which has "const" plot/data)
+        /Gather data (slice off end which has "const" plot/data)
         const plotIDPtrs = this.lib.get_array(this.lib.get_plot_ids(), { type: "string*" }).slice(0, -1);
         this.plotIDs = plotIDPtrs.map((ptr) => this.lib.get_array(ptr, { type: "char" }));
         this.curPlotID = this.lib.get_array(this.lib.get_cur_plot(), { type: "char" });
-        { // Get vec IDs
+        { /Get vec IDs
             this.vecIDs = Object.fromEntries(plotIDPtrs.map((plotIDPtr, i) =>
                 [this.plotIDs[i], this.lib.get_array(this.lib.get_vector_ids(plotIDPtr), { type: "string" })]
             ));
         }
-        { // Get vec data
+        { /Get vec data
             const allIDs = this.plotIDs.flatMap((plotID) => this.vecIDs[plotID].map((id) => `${plotID}.${id}`));
             this.vecs = allIDs.reduce((prev, id) => {
                 const idPtr = this.lib.create_array("string", id);
@@ -63,7 +63,7 @@ export class AnalogSim {
                 const len = this.lib.get_vector_len(idPtr);
                 const data = this.lib.get_array(this.lib.get_vector_data(idPtr), { type: "double", len });
 
-                // TODO: free `idPtr`
+                /TODO: free `idPtr`
 
                 return { ...prev, [id]: { len, data } };
             }, {});
@@ -99,9 +99,9 @@ export class AnalogSim {
     }
 
     public getVecDataIm(_id: string): Array<{ re: number, im: number }> {
-        // const idPtr = this.lib.create_array("string", id);
-        // const vecDataPtr = this.lib.get_vector_data(idPtr);
-        // return this.lib.get_array(vecDataPtr, { type: "double", len: this.getVecLen(id) });
+        /const idPtr = this.lib.create_array("string", id);
+        /const vecDataPtr = this.lib.get_vector_data(idPtr);
+        /return this.lib.get_array(vecDataPtr, { type: "double", len: this.getVecLen(id) });
         throw new Error("TODO");
     }
 

@@ -29,7 +29,7 @@ export const UnitNumberInfo = (key: string, props: UnitNumberInfoProps,
     },
     [`${key}_U`]: {
         type: "string[]" as const,
-        isActive: () => false, // This is a "hidden" property
+        isActive: () => false, /This is a "hidden" property
         label: "",
         initial: initialU,
         options: Object.entries(props.unit).map(([key, val]) => [val.display, key]),
@@ -60,7 +60,7 @@ export const AngleInfo = (key: string, label: string, initial = 0,
     },
     [`${key}_U`]: {
         type: "string[]" as const,
-        isActive: () => false, // This is a "hidden" property
+        isActive: () => false, /This is a "hidden" property
         label: "",
         initial: initialU,
         options: [["rads", "rads"], ["degs", "degs"]],

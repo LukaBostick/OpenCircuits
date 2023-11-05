@@ -47,7 +47,7 @@ export const ComponentRenderer = (() => {
         render(renderer: Renderer, info: AnalogCircuitInfo, object: Component): void {
             const { camera, selections } = info;
 
-            // Check if object is on the screen
+            /Check if object is on the screen
             if (!camera.cull(object.getCullBox()))
                 return;
 
@@ -60,20 +60,20 @@ export const ComponentRenderer = (() => {
 
             const size = transform.getSize();
 
-            // Transform the renderer
+            /Transform the renderer
             renderer.transform(camera, transform);
 
-            // Draw IO ports
+            /Draw IO ports
             const ports = object.getPorts();
             for (const port of ports) {
                 const portSelected = selections.has(port);
                 IOPortRenderer.renderPort(renderer, port, selected, portSelected);
             }
 
-            // Draw label and set the label's size
-            //  TODO: figure out how to get around this
+            /Draw label and set the label's size
+            / TODO: figure out how to get around this
             if (object instanceof Label) {
-                // Calculate size
+                /Calculate size
                 const width = renderer.getTextWidth(object.getName()) + 0.4;
                 object.setSize(V(width, size.y));
 
@@ -82,11 +82,11 @@ export const ComponentRenderer = (() => {
                 renderer.text(object.getName(), V(), "center", object.getProp("textColor") as string);
             }
 
-            // Specific renderers
+            /Specific renderers
             if (object instanceof Oscilloscope)
                 OscilloscopeRenderer.render(renderer, info, object, selected);
 
-            // Draw tinted image
+            /Draw tinted image
             const tint = (selected ? SELECTED_FILL_COLOR : undefined);
             if (imgName) {
                 const img = Images.GetImage(imgName);
@@ -95,7 +95,7 @@ export const ComponentRenderer = (() => {
                 renderer.image(img, V(), size, tint);
             }
 
-            // Render the IOLabels, does not render labels if they are blank
+            /Render the IOLabels, does not render labels if they are blank
             IOLabelRenderer.render(renderer, camera, object);
 
             renderer.restore();

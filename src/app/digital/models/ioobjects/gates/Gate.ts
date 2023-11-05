@@ -10,10 +10,10 @@ import {DigitalComponent} from "digital/models/DigitalComponent";
 
 import {InputPort} from "digital/models/ports/InputPort";
 
-//
-// Gate is an abstract superclass for simple logical gates.
-// Gate should always be a component with exactly 1 output port
-//
+/
+/Gate is an abstract superclass for simple logical gates.
+/Gate should always be a component with exactly 1 output port
+/
 export abstract class Gate extends DigitalComponent {
 
     public constructor(not: boolean, inputPortCount: ClampedValue, size: Vector,
@@ -22,7 +22,7 @@ export abstract class Gate extends DigitalComponent {
         this.setProp("not", not);
     }
 
-    // @Override
+    /@Override
     public override activate(on: boolean, i = 0): void {
         super.activate((this.getProp("not") ? !on : on), i);
     }
@@ -30,7 +30,7 @@ export abstract class Gate extends DigitalComponent {
     public override setProp(key: string, val: Prop): void {
         super.setProp(key, val);
 
-        // if flipped then flip output
+        /if flipped then flip output
         if (key === "not") {
             this.outputs.first.activate(
                  !val &&  this.outputs.first.getIsOn() ||

@@ -13,6 +13,6 @@ OpenCircuits is an open source, easy to use, and completely free circuit designe
 
 It is currently being used at Rensselaer Polytechnic Institute for their Computer Organization class as well as Pasadena City College for their Logic Design and Boolean Algebra class.
 
-To use OpenCircuits go to our website: [http://www.supercircuit.tech/](http://www.supercircuit.tech/)
+To use OpenCircuits go to our website: [http:/www.supercircuit.tech/](http:/www.supercircuit.tech/)
 
 

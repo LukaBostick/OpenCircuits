@@ -31,12 +31,12 @@ export class QuadraticCurvePositioner extends Positioner<InputPort> {
             if (t < 0)
                 t += 1;
 
-            // @TODO move to a MathUtils QuadCurve function or something
+            /@TODO move to a MathUtils QuadCurve function or something
             const s = parent.getSize().x/2 - DEFAULT_BORDER_WIDTH;
             const l = parent.getSize().x/5 - DEFAULT_BORDER_WIDTH;
             const t2 = 1 - t;
 
-            // Calculate x position along quadratic curve
+            /Calculate x position along quadratic curve
             const x = (t2*t2)*(-s) + 2*t*(t2)*(-l) + (t*t)*(-s);
             port.setOriginPos(V(x, port.getOriginPos().y));
         });

@@ -15,7 +15,7 @@ export const SelectPathHandler: EventHandler = ({
     conditions: (event: Event, { input, camera, designer }: CircuitInfo) =>
         (event.type === "dblclick" &&
          event.button === LEFT_MOUSE_BUTTON &&
-         designer // is there a wire or component within select bounds?
+         designer /is there a wire or component within select bounds?
            .getAll()
            .some((o) => o.isWithinSelectBounds(camera.getWorldPos(input.getMousePos())))
         ),

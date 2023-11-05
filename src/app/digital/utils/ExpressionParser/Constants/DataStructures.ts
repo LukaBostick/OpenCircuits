@@ -28,8 +28,8 @@ export interface InputTreeUnOpNode {
 export interface InputTreeBinOpNode {
     kind: "binop";
     type: InputTreeBinOpType;
-    isNot: boolean; // true for NAND, false for AND
-    // Can have 2-8 children
+    isNot: boolean; /true for NAND, false for AND
+    /Can have 2-8 children
     children: BinOpChildren;
 }
 /** Represents all possible types of nodes for the input tree. */
@@ -59,8 +59,8 @@ export type OperatorFormatLabel = "|" | "||" | "+" | "+_" | "OR" | "or" | "custo
 
 /** Represents a format to represent the operators in the expression. */
 export type OperatorFormat = {
-    label: string; // Text displayed to explain the OperatorFormat
+    label: string; /Text displayed to explain the OperatorFormat
     separator: string;
-    icon: OperatorFormatLabel; // All icons should be unique (and "custom" should be reserved for frontend)
+    icon: OperatorFormatLabel; /All icons should be unique (and "custom" should be reserved for frontend)
     ops: Record<TokenType, string>;
 }

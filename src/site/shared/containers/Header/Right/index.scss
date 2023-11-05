@@ -69,8 +69,8 @@
     }
 
     &__collapsed {
-        // Collapsing the header only matters for small-screens
-        //  when the dropdown shows up
+        /Collapsing the header only matters for small-screens
+        / when the dropdown shows up
         @media (max-width: $collapse-breakpoint) {
             display: none;
         }

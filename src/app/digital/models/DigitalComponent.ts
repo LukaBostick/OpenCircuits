@@ -42,7 +42,7 @@ export abstract class DigitalComponent extends Component {
      * @param i      The index of the output port, must be $\in [0, outputs.length)$.
      */
     public activate(signal: boolean, i = 0): void {
-        // Don't try to activate an Output component since it has no outputs
+        /Don't try to activate an Output component since it has no outputs
         if (this.outputs.isEmpty())
             return;
 
@@ -83,8 +83,8 @@ export abstract class DigitalComponent extends Component {
     }
 
     public getInputs(): DigitalWire[] {
-        // Get each wire connected to each InputPort
-        //  and then filter out the null ones
+        /Get each wire connected to each InputPort
+        / and then filter out the null ones
         return this.getInputPorts().map((p) => p.getInput())
                 .filter((w) => !!w);
     }
@@ -111,7 +111,7 @@ export abstract class DigitalComponent extends Component {
     }
 
     public getOutputs(): DigitalWire[] {
-        // Accumulate all the OutputPort connections
+        /Accumulate all the OutputPort connections
         return this.getOutputPorts().flatMap((p) => p.getConnections());
     }
 

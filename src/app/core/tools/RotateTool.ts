@@ -42,9 +42,9 @@ export const RotateTool = (() => {
             const { input, selections, locked } = info;
             if (locked)
                 return false;
-            // Activate if the user pressed their mouse or finger down
-            //  over the "rotation circle" which only appears if
-            //  there are Components being selected
+            /Activate if the user pressed their mouse or finger down
+            / over the "rotation circle" which only appears if
+            / there are Components being selected
             return (event.type === "mousedown" &&
                     input.getTouchCount() === 1 &&
                     selections.amount() > 0 &&
@@ -52,7 +52,7 @@ export const RotateTool = (() => {
                     isMouseOnCircle(info));
         },
         shouldDeactivate(event: Event, {}: CircuitInfo): boolean {
-            // Deactivate only mouse release
+            /Deactivate only mouse release
             return (event.type === "mouseup");
         },
 
@@ -61,14 +61,14 @@ export const RotateTool = (() => {
             const worldMousePos = camera.getWorldPos(input.getMousePos());
             const components = selections.get() as Component[];
 
-            // Get initial component angles
+            /Get initial component angles
             initialAngles = components.map((o) => o.getAngle());
             currentAngles = [...initialAngles];
 
-            // Get initial positions as well since we can rotate around a point which moves the components
+            /Get initial positions as well since we can rotate around a point which moves the components
             initialPositions = components.map((o) => o.getPos());
 
-            // Get initial overall angle
+            /Get initial overall angle
             startAngle = getAngle(worldMousePos, selections.midpoint());
             prevAngle = startAngle;
         },
@@ -77,8 +77,8 @@ export const RotateTool = (() => {
             const finalAngles = components.map((o) => o.getAngle());
             const finalPositions = components.map((o) => o.getPos());
 
-            // Translate and rotate back to original position, so that it undo's properly
-            // TODO: use a `tempAction` instead so that they don't need to be stored
+            /Translate and rotate back to original position, so that it undo's properly
+            /TODO: use a `tempAction` instead so that they don't need to be stored
             Translate(components, initialPositions);
             components.forEach((c, i) => Rotate(c, initialAngles[i]));
 
@@ -98,7 +98,7 @@ export const RotateTool = (() => {
             if (event.type !== "mousedrag")
                 return false;
 
-            // Get whether z is presesed for independent rotation
+            /Get whether z is presesed for independent rotation
             const isIndependent = input.isKeyDown("z");
 
             const worldMousePos = camera.getWorldPos(input.getMousePos());
@@ -108,15 +108,15 @@ export const RotateTool = (() => {
 
             const dAngle = getAngle(worldMousePos, midpoint) - prevAngle;
 
-            // Calculate new angles
+            /Calculate new angles
             currentAngles = currentAngles.map((a) => a + dAngle);
 
-            // Get snapped angles if shift is held
+            /Get snapped angles if shift is held
             const newAngles = input.isShiftKeyDown() ?
                 currentAngles.map((a) => Math.floor(a/ROTATION_SNAP_AMT)*ROTATION_SNAP_AMT) :
                 currentAngles;
 
-            // Rotate independently if z is held
+            /Rotate independently if z is held
             if (isIndependent)
                 components.forEach((c, i) => c.setAngle(newAngles[i]));
             else
@@ -124,8 +124,8 @@ export const RotateTool = (() => {
 
             prevAngle += dAngle;
 
-            // Return true since we did something
-            //  that requires a re-render
+            /Return true since we did something
+            / that requires a re-render
             return true;
         },
 

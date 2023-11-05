@@ -14,11 +14,11 @@ export default async function choosePort(host: string, defaultPort: number) {
     try {
         const port: number = await detect(defaultPort, host);
 
-        // All good to use
+        /All good to use
         if (port === defaultPort)
             return port;
 
-        // Prompt to see if they want to change the port
+        /Prompt to see if they want to change the port
         const { changePort } = await prompts({
             type:    "confirm",
             name:    "changePort",

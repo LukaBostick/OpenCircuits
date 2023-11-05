@@ -32,7 +32,7 @@ export function ReplaceComponent(designer: DigitalCircuitDesigner,
                                  comp: DigitalComponent,
                                  replacement: { id: string, amt?: number },
                                  selections?: SelectionsWrapper): [GroupAction, DigitalComponent] {
-    // Create replacement component
+    /Create replacement component
     const replacementComponent = CreateDigitalComponent(replacement.id, designer);
     if (!replacementComponent)
         throw new Error(`Supplied replacement id "${replacement.id}" is invalid`);
@@ -42,11 +42,11 @@ export function ReplaceComponent(designer: DigitalCircuitDesigner,
         [`Replacing "${comp.getName()}" with a(n) "${replacementComponent.getName()}"`]
     );
 
-    // Change name of replacement component to be the replaced one if set
+    /Change name of replacement component to be the replaced one if set
     if (comp.isNameSet())
         replacementComponent.setName(comp.getName());
 
-    // Move replacement to the replaced position
+    /Move replacement to the replaced position
     action.add(Translate([replacementComponent], [comp.getPos()]));
 
     if (selections)
@@ -55,7 +55,7 @@ export function ReplaceComponent(designer: DigitalCircuitDesigner,
     if (selections)
         action.add(SelectGroup(selections, [replacementComponent]));
 
-    // Only set ports if there is an amount to set, otherwise the ports can't be changed
+    /Only set ports if there is an amount to set, otherwise the ports can't be changed
     if (replacement.amt)
         action.add(GetPortChangeAction(replacementComponent, replacement.amt));
 
@@ -79,7 +79,7 @@ export function ReplaceComponent(designer: DigitalCircuitDesigner,
         });
     });
 
-    // Finally, delete the original component
+    /Finally, delete the original component
     action.add(Delete(designer, comp));
 
     return [action, replacementComponent];

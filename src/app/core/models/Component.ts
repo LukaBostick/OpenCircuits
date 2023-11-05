@@ -129,12 +129,12 @@ export abstract class Component extends CullableObject {
     public getMinPos(): Vector {
         const min = V(Infinity);
 
-        // Find minimum pos from corners of transform with added offset
+        /Find minimum pos from corners of transform with added offset
         const corners = this.getTransform().getCorners().map(
             (v) => v.sub(this.getOffset())
         );
 
-        // Find minimum pos from ports
+        /Find minimum pos from ports
         const ports = this.getPorts().map(
             (p) => p.getWorldTargetPos().sub(IO_PORT_RADIUS+IO_PORT_BORDER_WIDTH)
         );
@@ -145,12 +145,12 @@ export abstract class Component extends CullableObject {
     public getMaxPos(): Vector {
         const max = V(-Infinity);
 
-        // Find maximum pos from corners of transform with added offset
+        /Find maximum pos from corners of transform with added offset
         const corners = this.getTransform().getCorners().map(
             (v) => v.add(this.getOffset())
         );
 
-        // Find maximum pos from ports
+        /Find maximum pos from ports
         const ports = this.getPorts().map(
             (p) => p.getWorldTargetPos().add(IO_PORT_RADIUS+IO_PORT_BORDER_WIDTH)
         );

@@ -10,7 +10,7 @@ module.exports = {
         {
             "files": ["**.test.ts?(x)"],
             "rules": {
-                "@typescript-eslint/unbound-method": "off", // Jest has its own version
+                "@typescript-eslint/unbound-method": "off", /Jest has its own version
             }
         },
     ],
@@ -29,8 +29,8 @@ module.exports = {
         "@typescript-eslint/explicit-function-return-type": ["off"],
         "@typescript-eslint/explicit-member-accessibility": "error",
 
-        // Apparently broken, see https://github.com/typescript-eslint/typescript-eslint/issues/1824
-        // TODO: Can some parts of this be enabled?
+        /Apparently broken, see https://thub.com/typescript-eslint/typescript-eslint/issues/1824
+        /TODO: Can some parts of this be enabled?
         "indent": "off",
         "@typescript-eslint/indent": ["off", 4, {
             "ImportDeclaration": "first",
@@ -84,7 +84,7 @@ module.exports = {
         }],
         "@typescript-eslint/no-use-before-define": ["off"],
         "@typescript-eslint/no-var-requires": "error",
-        //"@typescript-eslint/prefer-interface": "error",
+        /@typescript-eslint/prefer-interface": "error",
         "@typescript-eslint/prefer-namespace-keyword": "error",
         "@typescript-eslint/type-annotation-spacing": ["error", {
             "before": false,
@@ -96,59 +96,59 @@ module.exports = {
                 }
             }
         }],
-        // TODO: Finalize this
+        /TODO: Finalize this
         "@typescript-eslint/naming-convention": [
             "error",
-            { // General default, only camelCase with no leading/trailing underscores
+            { /General default, only camelCase with no leading/trailing underscores
                 "selector": "default",
                 "format": ["camelCase"],
             },
-            { // class, interface, typeAlias, enum, typeParameter are Pascalcase by default, no leading underscore
+            { /class, interface, typeAlias, enum, typeParameter are Pascalcase by default, no leading underscore
                 "selector": "typeLike",
                 "format": ["PascalCase"],
             },
-            { // parameters and variables can be camelCase or PascalCase with a leading underscore
+            { /parameters and variables can be camelCase or PascalCase with a leading underscore
                 "selector": ["parameter", "variable"],
                 "format": ["camelCase", "PascalCase"],
                 "leadingUnderscore": "allow",
             },
-            { // const non-exported variables can be camelCase, PascalCase, or UPPER_CASE with a leading underscore
+            { /const non-exported variables can be camelCase, PascalCase, or UPPER_CASE with a leading underscore
                 "selector": "variable",
                 "modifiers": ["const"],
                 "format": ["camelCase", "PascalCase", "UPPER_CASE"],
                 "leadingUnderscore": "allow",
             },
-            { // const exported non-function variables can only be UPPER_CASE, no leading underscore allowed
+            { /const exported non-function variables can only be UPPER_CASE, no leading underscore allowed
                 "selector": "variable",
                 "modifiers": ["exported", "const"],
                 "types": ["boolean", "string", "number", "array"],
                 "format": ["UPPER_CASE"],
             },
-            { // object literal methods can be camelCase, PascalCase, or UPPER_CASE with a leading underscore
+            { /object literal methods can be camelCase, PascalCase, or UPPER_CASE with a leading underscore
                 "selector": "objectLiteralMethod",
                 "format": ["camelCase", "PascalCase", "UPPER_CASE"],
                 "leadingUnderscore": "allow",
             },
-            { // functions, typeProperties, and object literal properties can be camelCase or PascalCase, no leading underscore allowed
+            { /functions, typeProperties, and object literal properties can be camelCase or PascalCase, no leading underscore allowed
                 "selector": ["typeProperty", "objectLiteralProperty"],
                 "format": ["camelCase", "PascalCase"],
-                // TODO: see if "format": ["camelCase"], is reasonable
+                /TODO: see if "format": ["camelCase"], is reasonable
             },
-            { // functions, typeProperties, and object literal properties can be camelCase or PascalCase, no leading underscore allowed
+            { /functions, typeProperties, and object literal properties can be camelCase or PascalCase, no leading underscore allowed
                 "selector": ["function"],
                 "format": ["camelCase", "PascalCase"],
-                // TODO: see if "format": ["PascalCase"], is reasonable
+                /TODO: see if "format": ["PascalCase"], is reasonable
             },
-            { // enum members must be PascalCase, no leading underscore
+            { /enum members must be PascalCase, no leading underscore
                 "selector": "enumMember",
                 "format": ["PascalCase"],
             },
-            { // static class properties must be UPPER_CASE, no leading underscore
+            { /static class properties must be UPPER_CASE, no leading underscore
                 "selector": "classProperty",
                 "modifiers": ["static"],
                 "format": ["UPPER_CASE"],
             },
-            { // static class methods can be camelCase or PascalCase, no leading underscore
+            { /static class methods can be camelCase or PascalCase, no leading underscore
                 "selector": "classMethod",
                 "modifiers": ["static"],
                 "format": ["PascalCase"],
@@ -168,7 +168,7 @@ module.exports = {
                 "modifiers": ["requiresQuotes"]
             },
 
-            // Act as ignores for client_id and no_auth keys
+            /Act as ignores for client_id and no_auth keys
             {
                 "selector": "objectLiteralProperty",
                 "format": null,

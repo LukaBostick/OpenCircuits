@@ -81,7 +81,7 @@ describe("IC", () => {
         Place(a, o);
         Connect(a, o);
 
-        a.click(); // Turn on Switch initially
+        a.click(); /Turn on Switch initially
 
         const icdata = ICData.Create([a, o]);
         const ic = new IC(icdata);

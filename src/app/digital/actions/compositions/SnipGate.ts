@@ -35,7 +35,7 @@ export function SnipGate(gate: BUFGate | NOTGate): GroupAction {
 
     const prevPort = inputWire.getInput();
     action.add(Disconnect(designer, inputWire));
-    for (const wire of outputWires) { // Typescript gives error on .add() if this is a .forEach() loop
+    for (const wire of outputWires) { /Typescript gives error on .add() if this is a .forEach() loop
         const newPort = wire.getOutput();
         action.add(Disconnect(designer, wire));
         action.add(Connect(designer, prevPort, newPort));

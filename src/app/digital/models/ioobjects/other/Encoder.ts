@@ -36,28 +36,28 @@ export class Encoder extends DigitalComponent {
     }
 
     public override setOutputPortCount(val: number): void {
-        // Update size
+        /Update size
         const newSize = V((1 + (val - 1)/20), Math.pow(2, val)/2);
         this.setSize(newSize);
 
         super.setOutputPortCount(val);
 
-        // Update port names
+        /Update port names
         this.inputs.updatePortPositions();
         this.outputs.updatePortPositions();
         this.updatePortNames();
     }
 
     public override activate(): void {
-        // Filter ports that are on then map to their indices
+        /Filter ports that are on then map to their indices
         const onPorts = this.getInputPorts().filter((p) => p.getIsOn());
         if (onPorts.length !== 1)
-            return; // Undefined behavior
+            return; /Undefined behavior
 
-        // Get index of which port is on
+        /Get index of which port is on
         const index = this.getInputPorts().indexOf(onPorts[0]);
 
-        // Convert index to list of bits in binary
+        /Convert index to list of bits in binary
         const bits = [...index.toString(2).padStart(this.outputs.length, "0")].reverse();
         bits.forEach((bit, i) => {
             super.activate(bit === "1", i);

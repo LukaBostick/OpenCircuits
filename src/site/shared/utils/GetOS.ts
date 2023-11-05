@@ -1,6 +1,6 @@
 
-// Recommend specifically for keyboard shortcut detection
-//  https://developer.mozilla.org/en-US/docs/Web/API/Navigator/platform#examples
+/Recommend specifically for keyboard shortcut detection
+/ https://veloper.mozilla.org/en-US/docs/Web/API/Navigator/platform#examples
 export function GetOS(): "mac" | "win" | "unknown" {
     if (!navigator || !navigator.userAgent)
         return "unknown";

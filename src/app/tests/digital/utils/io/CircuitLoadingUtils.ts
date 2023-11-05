@@ -23,9 +23,9 @@ export function LoadCircuit(circuit: Circuit): LoadedCircuit {
 }
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
+    /eslint-disable-next-line @typescript-eslint/no-namespace
     namespace jest {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        /eslint-disable-next-line @typescript-eslint/no-unused-vars
         interface Matchers<R> {
             toMatchCircuit(expected: LoadedCircuit): CustomMatcherResult;
         }
@@ -50,14 +50,14 @@ expect.extend({
         function expectSameComponent(c1: Component, c2: Component): void {
             expect(c1.getName()).toEqual(c2.getName());
             expect(c1.getPos()).toApproximatelyEqual(c2.getPos());
-            // TODO: enable this
-            // expect(c1.getSize()).toApproximatelyEqual(c2.getSize());
+            /TODO: enable this
+            /expect(c1.getSize()).toApproximatelyEqual(c2.getSize());
             expect(c1.getAngle()).toApproximatelyEqual(c2.getAngle());
             expect(c1.getConnections()).toHaveLength(c2.getConnections().length);
 
-            // Expect all props to be the same
+            /Expect all props to be the same
             Object.entries(c1.getProps()).forEach(([key, prop]) => {
-                if (key === "size") // TODO: enable this
+                if (key === "size") /TODO: enable this
                     return;
 
                 expect(c2.hasProp(key)).toBeTruthy();
@@ -68,11 +68,11 @@ expect.extend({
             });
         }
 
-        // Make sure metadata is the same
+        /Make sure metadata is the same
         expect(received.metadata.name).toEqual(expected.metadata.name);
         expect(received.metadata.desc).toEqual(expected.metadata.desc);
 
-        // Make sure camera is the same
+        /Make sure camera is the same
         const cam1 = received.contents.camera;
         const cam2 = expected.contents.camera;
         expect(cam1.getPos()).toApproximatelyEqual(cam2.getPos());
@@ -81,14 +81,14 @@ expect.extend({
         const circuit1 = received.contents.designer;
         const circuit2 = expected.contents.designer;
 
-        // Expect same objects
+        /Expect same objects
         expect(circuit1.getObjects()).toHaveLength(circuit2.getObjects().length);
         circuit1.getObjects().forEach((o1, i) => {
             const o2 = circuit2.getObjects()[i];
             expectSameComponent(o1, o2);
         });
 
-        // Expect same wires
+        /Expect same wires
         expect(circuit1.getWires()).toHaveLength(circuit2.getWires().length);
         circuit1.getWires().forEach((w1, i) => {
             const w2 = circuit2.getWires()[i];

@@ -31,7 +31,7 @@ import {WireRenderer} from "./WireRenderer";
 export const ToolRenderer = (() => {
 
     const drawRotationCircleOutline = function(renderer: Renderer, camera: Camera, midpoint: Vector): void {
-        // Get position, radius, and thickness
+        /Get position, radius, and thickness
         const pos = camera.getScreenPos(midpoint);
         const radius = ROTATION_CIRCLE_RADIUS / camera.getZoom();
         const thickness = ROTATION_CIRCLE_THICKNESS / camera.getZoom();
@@ -41,11 +41,11 @@ export const ToolRenderer = (() => {
 
     const drawRotationCircleArc = function(renderer: Renderer, camera: Camera, midpoint: Vector,
                                            a0: number, a1: number): void {
-        // Get position, radius, and angles
+        /Get position, radius, and angles
         const pos = camera.getScreenPos(midpoint);
         const radius = ROTATION_CIRCLE_RADIUS / camera.getZoom();
 
-        // Draw arc'd circle
+        /Draw arc'd circle
         renderer.draw(new ArcCircle(pos, radius, a0, a1), ROTATION_ARC_STYLE, 0.4);
     }
 
@@ -59,7 +59,7 @@ export const ToolRenderer = (() => {
             const midpoint = selections.midpoint();
 
             if (tool instanceof InteractionTool) {
-                // Draw rotation circle outline
+                /Draw rotation circle outline
                 if (hasOnlyComponents && selections.amount() > 0 && toolManager.hasTool(RotateTool)) {
                     drawRotationCircleOutline(renderer, camera, midpoint);
                 }
@@ -72,7 +72,7 @@ export const ToolRenderer = (() => {
                 renderer.draw(new Rectangle(pos, size), SELECTION_BOX_STYLE, 0.4);
             }
             else if (tool === RotateTool) {
-                // Draw rotation circle and outline
+                /Draw rotation circle and outline
                 if (hasOnlyComponents) {
                     drawRotationCircleOutline(renderer, camera, midpoint);
                     drawRotationCircleArc(renderer, camera, midpoint,
@@ -80,7 +80,7 @@ export const ToolRenderer = (() => {
                 }
             }
             else if (tool === WiringTool) {
-                // Draw fake wire
+                /Draw fake wire
                 WireRenderer.render(renderer, info, WiringTool.getWire());
             }
         },

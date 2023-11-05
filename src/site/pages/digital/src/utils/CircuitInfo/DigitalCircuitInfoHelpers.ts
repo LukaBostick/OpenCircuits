@@ -34,7 +34,7 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
         LoadCircuit: async (getData) => {
             const { circuit } = store.getState();
 
-            // Prompt to load
+            /Prompt to load
             const open = circuit.isSaved || window.confirm(OVERWRITE_CIRCUIT_MESSAGE);
             if (!open)
                 return;
@@ -50,14 +50,14 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
 
             const { camera, history, designer, selections, renderer } = info;
 
-            // Load data and run through version conflict resolution
+            /Load data and run through version conflict resolution
             const circuitData = VersionConflictResolver(circuitDataRaw);
             const { metadata, contents } = JSON.parse(circuitData) as Circuit;
 
             const data = Deserialize<ContentsData>(contents);
             VersionConflictPostResolver(metadata.version, data);
 
-            // Load camera, reset selections, clear history, and replace circuit
+            /Load camera, reset selections, clear history, and replace circuit
             camera.setPos(data.camera.getPos());
             camera.setZoom(data.camera.getZoom());
 
@@ -69,7 +69,7 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
 
             renderer.render();
 
-            // Set name, id, and set unsaved
+            /Set name, id, and set unsaved
             store.dispatch(SetCircuitName(metadata.name));
             store.dispatch(SetCircuitId(metadata.id));
             store.dispatch(SetCircuitSaved(false));
@@ -79,14 +79,14 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
         ResetCircuit: async () => {
             const { circuit } = store.getState();
 
-            // Prompt to load
+            /Prompt to load
             const open = circuit.isSaved || window.confirm(OVERWRITE_CIRCUIT_MESSAGE);
             if (!open)
                 return;
 
             const { camera, history, designer, selections, renderer } = info;
 
-            // Load camera, reset selections, clear history, and replace circuit
+            /Load camera, reset selections, clear history, and replace circuit
             camera.setPos(V());
             camera.setZoom(1);
 
@@ -96,7 +96,7 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
             designer.reset();
             renderer.render();
 
-            // Set name, id, and set unsaved
+            /Set name, id, and set unsaved
             store.dispatch(SetCircuitName(""));
             store.dispatch(SetCircuitId(""));
             store.dispatch(SetCircuitSaved(true));
@@ -105,7 +105,7 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
         SaveCircuitRemote: async () => {
             const { circuit, user } = store.getState();
 
-            // Don't save while loading
+            /Don't save while loading
             if (circuit.saving || user.loading)
                 return;
 
@@ -118,7 +118,7 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
         DeleteCircuitRemote: async (circuitData) => {
             const { user } = store.getState();
 
-            // Can't delete if not logged in
+            /Can't delete if not logged in
             if (!user.auth)
                 return;
 
@@ -128,7 +128,7 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
 
             await DeleteUserCircuit(user.auth, circuitData.getId());
 
-            store.dispatch(SetCircuitId("")); // Reset id
+            store.dispatch(SetCircuitId("")); /Reset id
 
             await store.dispatch(LoadUserCircuits());
         },
@@ -153,13 +153,13 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
         DuplicateCircuitRemote: async () => {
             const { user } = store.getState();
 
-            // Can't duplicate if not logged in
+            /Can't duplicate if not logged in
             if (!user.auth)
                 return;
 
             const { circuit } = store.getState();
 
-            // Shouldn't be able to duplicate if circuit has never been saved
+            /Shouldn't be able to duplicate if circuit has never been saved
             if (circuit.id === "")
                 return;
 
@@ -176,14 +176,14 @@ export function GetDigitalCircuitInfoHelpers(store: AppStore, canvas: RefObject<
                 )
             );
 
-            // Create circuit copy
+            /Create circuit copy
             const circuitCopyMetadata = await CreateUserCircuit(user.auth, circuitCopy);
 
             if (!circuitCopyMetadata)
                 throw new Error("GetDigitalCircuitInfoHelpers.DuplicateCircuitRemote failed: " +
                                 "circuitCopyMetadata is undefined");
 
-            // Load circuit copy onto canvas
+            /Load circuit copy onto canvas
             await helpers.LoadCircuit(() => LoadUserCircuit(user.auth!, circuitCopyMetadata.getId()));
 
             await store.dispatch(LoadUserCircuits());

@@ -10,26 +10,26 @@ export type NGElementID = string | number;
 export type NGUnit = number;
 
 export type NGNetlistElement = [
-    `${NGSymbol}${NGElementID | ""}`, // symbol + uid
-    NGElementID, // node1
-    NGElementID, // node2
-    ...Array<string | `${string}=${string}`>, // values, options
+    `${NGSymbol}${NGElementID | ""}`, /symbol + uid
+    NGElementID, /node1
+    NGElementID, /node2
+    ...Array<string | `${string}=${string}`>, /values, options
 ];
 
 export type NGNetlistOPAnalysis = [".op"];
 export type NGNetlistDCSweepAnalysis = [
     ".dc",
-    NGElementID, // srcname
-    NGUnit,      // vstart
-    NGUnit,      // vstop
-    NGUnit,      // vincr
+    NGElementID, /srcname
+    NGUnit,      /vstart
+    NGUnit,      /vstop
+    NGUnit,      /vincr
 ];
 export type NGNetlistTranAnalysis = [
     ".tran",
-    NGUnit,  // tstep
-    NGUnit,  // tstop
-    NGUnit?, // <tstart>
-    NGUnit?, // <<tmax>>
+    NGUnit,  /tstep
+    NGUnit,  /tstop
+    NGUnit?, /<tstart>
+    NGUnit?, /<<tmax>>
 ];
 
 export type NGNetlistAnalysis =

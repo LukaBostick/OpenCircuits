@@ -67,7 +67,7 @@ type Props = {
 export const App = ({ info, helpers, canvas }: Props) => {
     const { h } = useWindowSize();
 
-    // Memoize for eslint(react/no-unstable-nested-components)
+    /Memoize for eslint(react/no-unstable-nested-components)
     const imageExporterPreview = useCallback((props: ImageExporterPreviewProps) => (
         <ImageExporterPreview mainInfo={info} {...props} />
     ), [info]);

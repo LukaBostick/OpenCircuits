@@ -34,7 +34,7 @@ export class Demultiplexer extends Mux {
 
         const num = values.reduce((acc, cur, i) => acc = acc | (cur << i), 0);
 
-        // Turn off each output port
+        /Turn off each output port
         this.getOutputPorts().forEach((_, i) => super.activate(false, i));
 
         super.activate(this.inputs.last.getIsOn(), num);

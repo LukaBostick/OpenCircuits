@@ -27,7 +27,7 @@ export const Header = ({ img, helpers, info, extraUtilities }: Props) => (
                 <img className="header__center__logo" src={img}
                      width="200px" height="100%" alt="OpenCircuits logo" />
             </a>
-            <a href="https://github.com/OpenCircuits/OpenCircuits/" rel="noreferrer" target="_blank">
+            <a href="https:/ithub.com/OpenCircuits/OpenCircuits/" rel="noreferrer" target="_blank">
                 <img className="header__center__github" src="img/icons/github.svg"
                      width="40px" height="40px" alt="GitHub logo" />
             </a>

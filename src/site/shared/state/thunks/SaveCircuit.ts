@@ -1,4 +1,4 @@
-// HOA = Higher-Order Action (creator)
+/HOA = Higher-Order Action (creator)
 
 import {ThunkAction} from "redux-thunk";
 
@@ -33,11 +33,11 @@ export function SaveCircuit(data: string): ThunkResult<Promise<boolean>> {
             dispatch(SetCircuitId(newData.getId()));
             dispatch(_SetCircuitSavingFinish());
 
-            return true; // Success
+            return true; /Success
         } catch (e) {
             dispatch(_SetCircuitSavingFinish(e));
 
-            return false; // Failure
+            return false; /Failure
         }
     }
 }

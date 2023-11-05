@@ -6,9 +6,9 @@ import {DigitalComponent} from "digital/models/DigitalComponent";
 
 import {FlipFlopPositioner} from "digital/models/ports/positioners/FlipFlopPositioner";
 
-//
-// FlipFlop is an abstract superclass for general flip flops.
-//
+/
+/FlipFlop is an abstract superclass for general flip flops.
+/
 export abstract class FlipFlop extends DigitalComponent {
     public static readonly PRE_PORT = 0;
     public static readonly CLR_PORT = 1;
@@ -33,7 +33,7 @@ export abstract class FlipFlop extends DigitalComponent {
         this.getInputPort(FlipFlop.PRE_PORT).setName("PRE");
         this.getInputPort(FlipFlop.CLR_PORT).setName("CLR");
 
-        // Initial state
+        /Initial state
         super.activate(false, FlipFlop.Q_PORT);
         super.activate(true, FlipFlop.Q2_PORT);
     }
@@ -54,9 +54,9 @@ export abstract class FlipFlop extends DigitalComponent {
         const clr = this.inputs.get(FlipFlop.CLR_PORT).getIsOn();
 
         const state = (() => {
-            // If PRE or CLR are set, then don't care about data or clock since asynchronous
+            /If PRE or CLR are set, then don't care about data or clock since asynchronous
             if (pre && clr) {
-                // undefined, just keep same state
+                /undefined, just keep same state
                 return this.getProp("state") as boolean;
             } else if (pre) {
                 return true;

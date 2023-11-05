@@ -76,8 +76,8 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
     }
 
     public reset(): void {
-        // Remove ics, objects, and wires 1-by-1
-        //  (so that the proper callbacks get called)
+        /Remove ics, objects, and wires 1-by-1
+        / (so that the proper callbacks get called)
         for (let i = this.ics.length-1; i >= 0; i--)
             this.removeICData(this.ics[i]);
         for (let i = this.objects.length-1; i >= 0; i--)
@@ -130,21 +130,21 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
 
         this.updateRequests++;
 
-        // instant propagation
+        /instant propagation
         if (this.propagationTime === 0)
             this.update();
         else if (this.propagationTime > 0)
             this.timeout = window.setTimeout(() => this.update(), this.propagationTime);
-        // Else if propagation time is < 0 then don't propagate at all
+        /Else if propagation time is < 0 then don't propagate at all
     }
 
-    // Returns true if the updated component(s) require rendering.
+    /Returns true if the updated component(s) require rendering.
     private update(): boolean {
         if (this.paused)
             return false;
 
-        // Create temp queue before sending, in the case that sending them triggers
-        //   more propagations to occur
+        /Create temp queue before sending, in the case that sending them triggers
+        /  more propagations to occur
         const tempQueue = [];
         while (this.propagationQueue.length > 0)
             tempQueue.push(this.propagationQueue.pop());
@@ -152,7 +152,7 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
         while (tempQueue.length > 0)
             tempQueue.pop()?.send();
 
-        // If something else was added during the sending, add request
+        /If something else was added during the sending, add request
         if (this.propagationQueue.length > 0)
             this.updateRequests++;
 
@@ -180,7 +180,7 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
     }
 
     public resume(): void {
-        if (!this.paused) // Already not paused
+        if (!this.paused) /Already not paused
             return;
         this.paused = false;
         if (this.updateRequests > 0)
@@ -193,7 +193,7 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
         const input  = (p1 instanceof InputPort  ? p1 : p2) as InputPort;
         const output = (p1 instanceof OutputPort ? p1 : p2) as OutputPort;
 
-        // Return undefined if InputPort already has a connection
+        /Return undefined if InputPort already has a connection
         if (input && input.getWires().length > 0)
             return;
         return new DigitalWire(output, input);
@@ -224,7 +224,7 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
 
         this.callback({ type: "obj", op: "added", obj });
 
-        // Checking all ports (issue #613)
+        /Checking all ports (issue #613)
         for (const p of obj.getPorts().filter((r) => r instanceof InputPort) as InputPort[])
             p.activate(p.getInput() !== undefined && p.getInput().getIsOn());
     }
@@ -272,30 +272,30 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
 
         this.propagationTime = designer.propagationTime;
 
-        // Copy propagations so that circuit will continue
-        //  propagating if it was previously doing so
+        /Copy propagations so that circuit will continue
+        / propagating if it was previously doing so
         this.propagationQueue = [...designer.propagationQueue];
         this.updateRequests = designer.updateRequests;
 
         this.update();
     }
 
-    // Shift an object to a certain position
-    //  within it's list
+    /Shift an object to a certain position
+    / within it's list
     public shift(obj: DigitalComponent | DigitalWire, i?: number): number {
-        // Find initial position in list
+        /Find initial position in list
         const arr: IOObject[] =
                 (obj instanceof DigitalComponent) ? (this.objects) : (this.wires);
         const i0 = arr.indexOf(obj);
         if (i0 === -1)
             throw new Error("Can't move object! Object doesn't exist!");
 
-        // Shift object to position
+        /Shift object to position
         i = (i === undefined ? arr.length : i);
         arr.splice(i0, 1);
         arr.splice(i, 0, obj);
 
-        // Return initial position
+        /Return initial position
         return i0;
     }
 
@@ -304,14 +304,14 @@ export class DigitalCircuitDesigner extends CircuitDesigner {
     }
 
     public getObjects(): DigitalComponent[] {
-        return [...this.objects]; // Shallow copy array
+        return [...this.objects]; /Shallow copy array
     }
 
     public getWires(): DigitalWire[] {
-        return [...this.wires]; // Shallow copy array
+        return [...this.wires]; /Shallow copy array
     }
 
     public getICData(): ICData[] {
-        return [...this.ics]; // Shallow copy array
+        return [...this.ics]; /Shallow copy array
     }
 }

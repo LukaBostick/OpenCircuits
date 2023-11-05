@@ -19,20 +19,20 @@ import {ConstantNumber} from "digital/models/ioobjects";
 
 export const ConstantNumberRenderer = (() => {
 
-    // Function to draw the line connecting the 4 outputs
+    /Function to draw the line connecting the 4 outputs
     const drawOutputConnector = function(renderer: Renderer, size: Vector, borderColor: string): void {
         const style = new Style(undefined, borderColor, DEFAULT_BORDER_WIDTH);
-        // Y coordinates of the top and bottom
+        /Y coordinates of the top and bottom
         const l1 = -(size.y/2)*(1.5);
         const l2 =  (size.y/2)*(1.5);
-        // X coordinate to draw the vertical line
+        /X coordinate to draw the vertical line
         const s = (size.x-DEFAULT_BORDER_WIDTH)/2;
         renderer.draw(new Line(V(s, l1), V(s, l2)), style);
     }
 
-    // Function to draw the input value on the component
+    /Function to draw the input value on the component
     const drawInputText = function(renderer: Renderer, value: number): void {
-        // to adjust for cap-height of the Arial font (see https://stackoverflow.com/questions/61747006)
+        /to adjust for cap-height of the Arial font (see https://ackoverflow.com/questions/61747006)
         const FONT_CAP_OFFSET = 0.06;
 
         const text = value < 10 ? value.toString() : "ABCDEF".charAt(value - 10);
@@ -47,11 +47,11 @@ export const ConstantNumberRenderer = (() => {
             const borderColor = selected ? SELECTED_BORDER_COLOR : DEFAULT_BORDER_COLOR;
             const style = new Style(fillColor, borderColor, DEFAULT_BORDER_WIDTH);
 
-            // Draw the rectangle first, subtracting border width for alignment
+            /Draw the rectangle first, subtracting border width for alignment
             const rectSize = transform.getSize().sub(DEFAULT_BORDER_WIDTH);
             renderer.draw(new Rectangle(V(), rectSize), style);
 
-            // Connect the output lines together and draw the text
+            /Connect the output lines together and draw the text
             drawOutputConnector(renderer, transform.getSize(), borderColor);
             drawInputText(renderer, object.getProp("inputNum") as number);
         },

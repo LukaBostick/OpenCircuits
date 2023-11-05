@@ -43,11 +43,11 @@ function CheckForInteraction(ev: Event, { toolManager, camera, designer, input, 
         const obj = designer.getObjects().reverse()
             .find((p) => isPressable(p) && p.isWithinPressBounds(worldMousePos));
 
-        // Check if Switch was clicked
+        /Check if Switch was clicked
         if (obj instanceof Switch && ev.type === "click")
             return true;
 
-        // Or if Button was pressed/released
+        /Or if Button was pressed/released
         if (currentlyPressedObject === obj && obj instanceof Button
                  && (ev.type === "mousedown" || ev.type === "mouseup"))
             return true;
@@ -62,7 +62,7 @@ type Props = {
 export const ICViewer = (() => {
     const info = CreateInfo(new InteractionTool([]), PanTool);
 
-    // eslint-disable-next-line react/display-name
+    /eslint-disable-next-line react/display-name
     return ({ mainInfo }: Props) => {
         const { isActive, ic } = useDigitalSelector(
             (state) => ({ ...state.icViewer })
@@ -72,14 +72,14 @@ export const ICViewer = (() => {
         const { w, h } = useWindowSize();
         const canvas = useRef<HTMLCanvasElement>(null);
 
-        // State controller for main designer callback
+        /State controller for main designer callback
         const [pauseUpdates, setPauseUpdates] = useState(false);
 
         const updateViewer = useCallback(() => {
             if (!ic)
                 return;
-            // loop through all the inputs for this IC
-            //  set their input value to be what the info.designer has for their input
+            /loop through all the inputs for this IC
+            / set their input value to be what the info.designer has for their input
             const viewerInputs = info.designer.getObjects().filter(
                 (input) => [Switch, Button].some((type) => input instanceof type)
             );
@@ -87,28 +87,28 @@ export const ICViewer = (() => {
                 viewerInputs[i].activate(ic.getInputPort(i).getIsOn());
         }, [ic]);
 
-        // On resize (useLayoutEffect happens sychronously so
-        //  there's no pause/glitch when resizing the screen)
+        /On resize (useLayoutEffect happens sychronously so
+        / there's no pause/glitch when resizing the screen)
         useLayoutEffect(() => {
             if (!isActive)
                 return;
-            info.camera.resize(w*IC_DESIGNER_VW, h*IC_DESIGNER_VH); // Update camera size when w/h changes
-            info.renderer.render(); // Re-render
+            info.camera.resize(w*IC_DESIGNER_VW, h*IC_DESIGNER_VH); /Update camera size when w/h changes
+            info.renderer.render(); /Re-render
         }, [isActive, w, h]);
 
 
-        // Initial function called after the canvas first shows up
+        /Initial function called after the canvas first shows up
         useEffect(() => {
             if (!canvas.current)
                 throw new Error("ICViewer.useEffect failed: canvas.current is null");
 
-            // Create input w/ canvas
+            /Create input w/ canvas
             info.input = new Input(canvas.current);
 
-            // Get render function
+            /Get render function
             const renderFunc = GetRenderFunc({ canvas: canvas.current, info });
 
-            // Add input listener
+            /Add input listener
             info.input.addListener((event) => {
                 const change = info.toolManager.onEvent(event, info);
                 if (!change)
@@ -119,48 +119,48 @@ export const ICViewer = (() => {
                     setPauseUpdates(true);
             });
 
-            // Input should be blocked initially
+            /Input should be blocked initially
             info.input.block();
 
-            // Add render callbacks and set render function
+            /Add render callbacks and set render function
             info.designer.addCallback(() => info.renderer.render());
 
             info.renderer.setRenderFunction(() => renderFunc());
             info.renderer.render();
-        }, []); // Pass empty array so that this only runs once on mount
+        }, []); /Pass empty array so that this only runs once on mount
 
-        // Synchronize the inputs in the original designer and this IC viewer
-        //  (issue #754)
+        /Synchronize the inputs in the original designer and this IC viewer
+        / (issue #754)
         useEffect(() => {
             if (pauseUpdates)
-                return; // if paused, don't add callback
+                return; /if paused, don't add callback
             mainInfo.designer.addCallback(updateViewer);
-            // remove callback when done
+            /remove callback when done
             return () => mainInfo.designer.removeCallback(updateViewer);
         }, [pauseUpdates, mainInfo, updateViewer]);
 
-        // Happens when activated
+        /Happens when activated
         useLayoutEffect(() => {
             if (!isActive || !ic)
                 return;
 
             const { input } = mainInfo;
 
-            // Retrieve current debug info from mainInfo
+            /Retrieve current debug info from mainInfo
             info.debugOptions = mainInfo.debugOptions;
 
-            // Unlock input
+            /Unlock input
             info.input.unblock();
 
-            // Block input for main designer
+            /Block input for main designer
             input.block();
 
-            // Reset designer and add IC insides
+            /Reset designer and add IC insides
             info.designer.reset();
             const inside = CopyGroup(ic.getCollection().toList());
             AddGroup(info.designer, inside);
 
-            // Adjust the camera so it all fits in the viewer
+            /Adjust the camera so it all fits in the viewer
             const [pos, zoom] = GetCameraFit(
                 info.camera, inside.toList() as CullableObject[], IC_VIEWER_ZOOM_PADDING_RATIO
             );
@@ -172,13 +172,13 @@ export const ICViewer = (() => {
         }, [mainInfo, isActive, ic, updateViewer]);
 
         const close = () => {
-            // Reset in case for next time
+            /Reset in case for next time
             setPauseUpdates(false);
 
-            // Block input while closed
+            /Block input while closed
             info.input.block();
 
-            // Unblock main input
+            /Unblock main input
             mainInfo.input.unblock();
 
             dispatch(CloseICViewer());

@@ -67,7 +67,7 @@ export function DigitalCreateN(pos: Vector, itemId: string, designer: DigitalCir
 
         comps.push(comp);
 
-        // Place the components vertically
+        /Place the components vertically
         pos = pos.add(0, -comp.getCullBox().getSize().y);
     }
 
@@ -106,8 +106,8 @@ export function SmartPlace(pos: Vector, itemId: string, designer: DigitalCircuit
         const comp = DigitalCreate(itemId, designer);
         comp.setPos(pos);
 
-        // Need to do it like this rather then comp.getInputPorts() since this can
-        //  account for things like the Select ports on Multiplexers
+        /Need to do it like this rather then comp.getInputPorts() since this can
+        / account for things like the Select ports on Multiplexers
         const inputPorts  = (options & SmartPlaceOptions.Inputs) ?
             comp.getPorts().filter((p) => p instanceof InputPort)  : [];
 
@@ -123,15 +123,15 @@ export function SmartPlace(pos: Vector, itemId: string, designer: DigitalCircuit
         });
         outputs.forEach((l, i) => {
             l.setPos(V(comp.getCullBox().getSize().x/2 + AUTO_PLACE_LED_SPACE*(i+1),
-                       // This centers the LED around the port of the LED
+                       /This centers the LED around the port of the LED
                        outputPorts[i].getTargetPos().y - l.getInputPort(0).getTargetPos().y).add(comp.getPos()));
         });
 
         action.add(new GroupAction([
             PlaceGroup(designer, [comp, ...inputs, ...outputs]),
-            // TODO: Have these use Bus action to connect better, since sometimes
-            //  indices don't match up well. This will require improvement of bussing though
-            //  since a quick test showed that it didn't work too well currently
+            /TODO: Have these use Bus action to connect better, since sometimes
+            / indices don't match up well. This will require improvement of bussing though
+            / since a quick test showed that it didn't work too well currently
             new GroupAction(
                 inputs.map((v, i) => Connect(designer, v.getOutputPort(0), inputPorts[i]))
             ),

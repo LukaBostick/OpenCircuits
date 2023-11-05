@@ -16,7 +16,7 @@ export default function getEnv(dir: string, publicRoot: string) {
     const NODE_ENV = process.env.NODE_ENV || "development";
     const dotenv = path.resolve(dir, ".env");
 
-    // Load dotenv files
+    /Load dotenv files
     [
         `${dotenv}.${NODE_ENV}.local`,
         `${dotenv}.${NODE_ENV}`,
@@ -30,7 +30,7 @@ export default function getEnv(dir: string, publicRoot: string) {
                  .reduce(
                      (env, key) => ({ ...env, [key]: process.env[key] }),
                      {
-                         // eslint-disable-next-line @typescript-eslint/naming-convention
+                         /eslint-disable-next-line @typescript-eslint/naming-convention
                          NODE_ENV, PUBLIC_URL: publicRoot.slice(0, -1),
                      }
                  );

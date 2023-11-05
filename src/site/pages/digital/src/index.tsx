@@ -77,28 +77,28 @@ async function Init(): Promise<void> {
                         await store.dispatch(Login(new NoAuthState(username)));
                 },
                 "google": async () => {
-                    // Load auth2 from GAPI and initialize w/ metadata
+                    /Load auth2 from GAPI and initialize w/ metadata
                     const clientId = process.env.OC_OAUTH2_ID;
                     if (!clientId)
                         throw new Error("No client_id/OAUTH2_ID specificed for google auth!");
 
-                    // Wait for GAPI to load
+                    /Wait for GAPI to load
                     if (!gapi) {
                         const loaded = await new Promise<boolean>((resolve) => {
                             let numChecks = 0;
                             const interval = setInterval(() => {
-                                // Check if GAPI loaded
+                                /Check if GAPI loaded
                                 if (gapi) {
                                     clearInterval(interval);
                                     resolve(true);
                                 }
-                                // Stop trying to load GAPI after 100 iterations
+                                /Stop trying to load GAPI after 100 iterations
                                 else if (numChecks > 100) {
                                     clearInterval(interval);
                                     resolve(false);
                                 }
                                 numChecks++;
-                            }, 50); // Poll every 1/20th of a second
+                            }, 50); /Poll every 1/20th of a second
                         });
 
                         if (!loaded)
@@ -106,7 +106,7 @@ async function Init(): Promise<void> {
                     }
 
                     await new Promise((resolve) => gapi.load("auth2", resolve));
-                    await gapi.auth2.init({ "client_id": clientId }).then(async (_) => {}); // Have to explicitly call .then
+                    await gapi.auth2.init({ "client_id": clientId }).then(async (_) => {}); /Have to explicitly call .then
                 },
             };
             try {
@@ -127,10 +127,10 @@ async function Init(): Promise<void> {
             }
         }],
         [100, "Rendering", async () => {
-            // Setup
+            /Setup
             const canvas = createRef<HTMLCanvasElement>();
 
-            // Setup circuit and get the CircuitInfo and helpers
+            /Setup circuit and get the CircuitInfo and helpers
             const [info, helpers] = Setup(
                 store, canvas,
                 new InteractionTool([
@@ -151,7 +151,7 @@ async function Init(): Promise<void> {
             });
 
             if (process.env.NODE_ENV === "development") {
-                // Load dev state
+                /Load dev state
                 const files = await DevListFiles();
                 if (files.includes(DEV_CACHED_CIRCUIT_FILE))
                     await helpers.LoadCircuit(() => DevGetFile(DEV_CACHED_CIRCUIT_FILE));

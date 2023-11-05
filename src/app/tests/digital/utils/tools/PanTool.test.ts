@@ -67,8 +67,8 @@ describe("Pan Tool", () => {
     });
 
     test("Pan with arrow keys no shift", () => {
-        // Checking up/right and down/left at the same time
-        //  since they don't affect each other
+        /Checking up/right and down/left at the same time
+        / since they don't affect each other
         input.pressKey("ArrowUp")
                 .releaseKey("ArrowUp")
                 .pressKey("ArrowRight")
@@ -85,8 +85,8 @@ describe("Pan Tool", () => {
     });
 
     test("Pan with arrow keys holding shift", () => {
-        // Checking up/right and down/left at the same time
-        //  since they don't affect each other
+        /Checking up/right and down/left at the same time
+        / since they don't affect each other
 
         input.pressKey("Shift")
                 .pressKey("ArrowUp")

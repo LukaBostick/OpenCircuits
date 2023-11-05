@@ -37,11 +37,11 @@ export default async (dir: string, project: string, mode: "development" | "produ
 
         rootDir: dirPath,
 
-        // Needs to be relative paths from root
+        /Needs to be relative paths from root
         entry:      `./${dir}/src/index.tsx`,
         publicPath: `./${dir}/public`,
 
-        // Needs to be absolute path
+        /Needs to be absolute path
         buildDir,
 
         stats: "none",
@@ -51,30 +51,30 @@ export default async (dir: string, project: string, mode: "development" | "produ
 
     if (mode === "development") {
         const formatURL = (protocol: "http" | "https", hostname: string, port: number | string, pathname: string) => (
-            `${protocol}://${hostname}:${port}${pathname}`
+            `${protocol}:/{hostname}:${port}${pathname}`
         );
 
         const protocol = "http";
-        const hostname = "localhost"; // Allow any connections
+        const hostname = "localhost"; /Allow any connections
         const pathname = publicRoot.slice(0, -1);
 
-        // Start dev server
+        /Start dev server
         const port = await choosePort("0.0.0.0", 3000);
         if (!port)
-            return; // No port found
+            return; /No port found
 
-        // Attempt to get full IPv4 local address
+        /Attempt to get full IPv4 local address
         const lanUrl = (() => {
             try {
                 const ip = address.ip();
                 if (ip) {
                     const privateTest = /^10\.|^172\.(1[6-9]|2\d|3[01])\.|^192\.168\./;
-                    // Check if private
+                    /Check if private
                     if (privateTest.test(ip))
                         return formatURL(protocol, ip, chalk.bold(port), pathname);
                 }
             } catch {
-                // Ignore, just defer to localhost
+                /Ignore, just defer to localhost
             }
         })();
 
@@ -98,7 +98,7 @@ export default async (dir: string, project: string, mode: "development" | "produ
         });
 
         const server = new WebpackDevServer({
-            // Explanations: https://stackoverflow.com/a/62992178
+            /Explanations: https://ackoverflow.com/a/62992178
             static: {
                 directory:  path.resolve(dirPath, "public"),
                 publicPath: [pathname],
@@ -108,7 +108,7 @@ export default async (dir: string, project: string, mode: "development" | "produ
             port,
             proxy: {
                 "/api/**": {
-                    target:       `http://${hostname}:8080`,
+                    target:       `http:/{hostname}:8080`,
                     secure:       false,
                     changeOrigin: true,
                 },
@@ -119,7 +119,7 @@ export default async (dir: string, project: string, mode: "development" | "produ
             client: {
                 overlay: true,
             },
-            // Allows devs to save local circuits for use in #1037
+            /Allows devs to save local circuits for use in #1037
             setupMiddlewares: customDevServer(project),
         }, compiler);
 

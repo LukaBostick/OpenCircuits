@@ -31,7 +31,7 @@ export const HeaderRight = ({ helpers, info, extraUtilities }: Props) => {
 
             <div className={`header__right__btns ${isHidden ? "header__right__collapsed" : ""}`}>
                 <SignInOutButtons />
-                {  // Render only if there are utilities or in dev mode for dev utilities
+                {  /Render only if there are utilities or in dev mode for dev utilities
                 (extraUtilities.length > 0 || process.env.NODE_ENV === "development") &&
                     <UtilitiesDropdown helpers={helpers} extraUtilities={extraUtilities} />
                 }

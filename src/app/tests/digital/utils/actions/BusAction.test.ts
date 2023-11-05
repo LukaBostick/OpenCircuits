@@ -18,31 +18,31 @@ describe("Bus Action", () => {
     const { Place } = GetHelpers(designer);
 
     function expectBusConnections(outs: OutputPort[], ins: InputPort[]) {
-        // Helper functions to for expected connectivity
+        /Helper functions to for expected connectivity
         const expectAllDisconnected = () => {
             expect(designer.getWires()).toHaveLength(0);
         }
         const expectConnected = () => {
-            expect(designer.getWires()).toHaveLength(outs.length); // outs.length = ins.length
+            expect(designer.getWires()).toHaveLength(outs.length); /outs.length = ins.length
 
-            // Make sure all ports have exactly 1 connection
+            /Make sure all ports have exactly 1 connection
             [...ins, ...outs].forEach((p) => {
                 expect(p.getWires()).toHaveLength(1);
             });
         }
 
-        // Initial state
+        /Initial state
         expectAllDisconnected();
 
-        // Bus
+        /Bus
         const a1 = Bus(outs, ins);
         expectConnected();
 
-        // Reverted
+        /Reverted
         a1.undo();
         expectAllDisconnected();
 
-        // Back to bus'd
+        /Back to bus'd
         a1.execute();
         expectConnected();
     }
@@ -69,7 +69,7 @@ describe("Bus Action", () => {
 
         expectBusConnections([i1.getOutputPort(0), i2.getOutputPort(0)], g1.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(g1.getConnections()[0]);
         expect(i2.getConnections()[0]).toBe(g1.getConnections()[1]);
     });
@@ -81,7 +81,7 @@ describe("Bus Action", () => {
 
         expectBusConnections(i1.getOutputPorts(), o1.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(o1.getConnections()[0]);
         expect(i1.getConnections()[1]).toBe(o1.getConnections()[1]);
         expect(i1.getConnections()[2]).toBe(o1.getConnections()[2]);
@@ -90,13 +90,13 @@ describe("Bus Action", () => {
     test("Offset Constant Number -> BCD 4-port", () => {
         const [i1, o1] = Place(new ConstantNumber(), new BCDDisplay());
 
-        // From issue #882
+        /From issue #882
         i1.setPos(V(-5, 0.34));
         o1.setPos(V(-0.8, 0.62));
 
         expectBusConnections(i1.getOutputPorts(), o1.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(o1.getConnections()[0]);
         expect(i1.getConnections()[1]).toBe(o1.getConnections()[1]);
         expect(i1.getConnections()[2]).toBe(o1.getConnections()[2]);
@@ -105,14 +105,14 @@ describe("Bus Action", () => {
     test("Rotated Constant Number -> BCD 4-port", () => {
         const [i1, o1] = Place(new ConstantNumber(), new BCDDisplay());
 
-        // From PR #1020 (https://github.com/OpenCircuits/OpenCircuits/pull/1020#pullrequestreview-914672445)
+        /From PR #1020 (https://thub.com/OpenCircuits/OpenCircuits/pull/1020#pullrequestreview-914672445)
         i1.setPos(V(-2, 2));
         i1.setAngle(-Math.PI/2);
         o1.setPos(V(2, -2));
 
         expectBusConnections(i1.getOutputPorts(), o1.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(o1.getConnections()[0]);
         expect(i1.getConnections()[1]).toBe(o1.getConnections()[1]);
         expect(i1.getConnections()[2]).toBe(o1.getConnections()[2]);
@@ -135,7 +135,7 @@ describe("Bus Action", () => {
 
         expectBusConnections([i1,i2,i3,i4].map((i) => i.getOutputPort(0)), o1.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(o1.getConnections()[0]);
         expect(i2.getConnections()[0]).toBe(o1.getConnections()[1]);
         expect(i3.getConnections()[0]).toBe(o1.getConnections()[2]);
@@ -165,13 +165,13 @@ describe("Bus Action", () => {
         expectBusConnections([i1,i2,i3,i4,i5,i6].map((i) => i.getOutputPort(0)),
                              [...o1.getInputPorts(), ...o1.getSelectPorts()]);
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(o1.getConnections()[0]);
         expect(i2.getConnections()[0]).toBe(o1.getConnections()[1]);
         expect(i3.getConnections()[0]).toBe(o1.getConnections()[2]);
         expect(i4.getConnections()[0]).toBe(o1.getConnections()[3]);
-        expect(i5.getConnections()[0]).toBe(o1.getConnections()[4]); // select 0
-        expect(i6.getConnections()[0]).toBe(o1.getConnections()[5]); // select 1
+        expect(i5.getConnections()[0]).toBe(o1.getConnections()[4]); /select 0
+        expect(i6.getConnections()[0]).toBe(o1.getConnections()[5]); /select 1
     });
     test("Multiple Rotated Switches + Constant Number -> Mux 6-port", () => {
         const [i1, i2, i3, o1] = Place(new Switch(), new Switch(), new ConstantNumber(), new Multiplexer());
@@ -190,13 +190,13 @@ describe("Bus Action", () => {
         expectBusConnections([i1,i2,i3].flatMap((i) => i.getOutputPorts()),
                              [...o1.getInputPorts(), ...o1.getSelectPorts()]);
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(o1.getConnections()[0]);
         expect(i2.getConnections()[0]).toBe(o1.getConnections()[1]);
         expect(i3.getConnections()[0]).toBe(o1.getConnections()[2]);
         expect(i3.getConnections()[1]).toBe(o1.getConnections()[3]);
-        expect(i3.getConnections()[2]).toBe(o1.getConnections()[4]); // select 0
-        expect(i3.getConnections()[3]).toBe(o1.getConnections()[5]); // select 1
+        expect(i3.getConnections()[2]).toBe(o1.getConnections()[4]); /select 0
+        expect(i3.getConnections()[3]).toBe(o1.getConnections()[5]); /select 1
     });
     test("Simple IC 4-port", () => {
         /*
@@ -216,7 +216,7 @@ describe("Bus Action", () => {
         i3.setPos(V(-4, -2));
         i4.setPos(V(-4, -4));
 
-        // Create IC
+        /Create IC
         const icdata = ICData.Create([i1,i2,i3,i4]);
         {
             icdata?.setSize(V(4, 2));
@@ -235,7 +235,7 @@ describe("Bus Action", () => {
 
         expectBusConnections([i1,i2,i3,i4].flatMap((i) => i.getOutputPorts()), ic.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(ic.getConnections()[0]);
         expect(i2.getConnections()[0]).toBe(ic.getConnections()[2]);
         expect(i3.getConnections()[0]).toBe(ic.getConnections()[3]);
@@ -259,7 +259,7 @@ describe("Bus Action", () => {
         i3.setPos(V(-4, -2));
         i4.setPos(V(-4, -4));
 
-        // Create IC
+        /Create IC
         const icdata = ICData.Create([i1,i2,i3,i4]);
         {
             icdata?.setSize(V(4, 2));
@@ -270,7 +270,7 @@ describe("Bus Action", () => {
             }
 
             setPort(0, V(-2,  1), V(-1,  0));
-            setPort(1, V( 2, -1), V( 1, -1)); // Diagonal
+            setPort(1, V( 2, -1), V( 1, -1)); /Diagonal
             setPort(2, V(-2, -1), V(-1,  0));
             setPort(3, V(-1, -1), V( 0, -1));
         }
@@ -279,7 +279,7 @@ describe("Bus Action", () => {
 
         expectBusConnections([i1,i2,i3,i4].flatMap((i) => i.getOutputPorts()), ic.getInputPorts());
 
-        // Assert order of connections
+        /Assert order of connections
         expect(i1.getConnections()[0]).toBe(ic.getConnections()[0]);
         expect(i2.getConnections()[0]).toBe(ic.getConnections()[2]);
         expect(i3.getConnections()[0]).toBe(ic.getConnections()[3]);
@@ -295,12 +295,12 @@ describe("Bus Action", () => {
         i4.setPos(V(0,0));
         bcd1.setPos(V(4,0));
 
-        // Expect every single switch to connect, but we can't assert anything about the order of connections
+        /Expect every single switch to connect, but we can't assert anything about the order of connections
         expectBusConnections([i1,i2,i3,i4].flatMap((i) => i.getOutputPorts()), bcd1.getInputPorts());
     });
 
     describe("Bus Components", () => {
-        // Buses that should work
+        /Buses that should work
         test("Constant Number -> BCD Display", () => {
             const [c1, bcd1] = Place(new ConstantNumber(), new BCDDisplay());
 
@@ -345,7 +345,7 @@ describe("Bus Action", () => {
             expectBusConnections(oports, iports);
         });
 
-        // Buses that should not work
+        /Buses that should not work
         test("Fail: BUFGate -> BUFGate", () => {
             const [b1, b2] = Place(new BUFGate(), new BUFGate());
 

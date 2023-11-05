@@ -8,9 +8,9 @@ import {DigitalComponent} from "digital/models/DigitalComponent";
 
 import {InputPort} from "digital/models/ports/InputPort";
 
-//
-// Latch is an abstract superclass for general latches.
-//
+/
+/Latch is an abstract superclass for general latches.
+/
 export abstract class Latch extends DigitalComponent {
     public static readonly E_PORT = 1;
 
@@ -30,7 +30,7 @@ export abstract class Latch extends DigitalComponent {
 
         this.getInputPort(Latch.E_PORT).setName("E");
 
-        // Initial state
+        /Initial state
         super.activate(false, Latch.Q_PORT);
         super.activate(true, Latch.Q2_PORT);
     }

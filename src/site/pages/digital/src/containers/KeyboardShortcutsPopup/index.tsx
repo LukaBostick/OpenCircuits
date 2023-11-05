@@ -6,7 +6,8 @@ import {useSharedDispatch, useSharedSelector} from "shared/utils/hooks/useShared
 
 import {CloseHeaderPopups} from "shared/state/Header";
 
-import {Popup} from "shared/components/Popup";
+import {Popup} from "shared/ocs/SuperCircuits
+/Components/Popup";
 
 import "./index.scss";
 

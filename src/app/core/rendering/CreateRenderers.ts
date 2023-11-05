@@ -1,6 +1,6 @@
 
 
-// export class CircuitRenderer {
+/export class CircuitRenderer {
 
 import {CircuitInfo} from "core/utils/CircuitInfo"
 
@@ -8,7 +8,7 @@ import {Renderer} from "./Renderer"
 
 
 
-// }
+/}
 
 type RendererInstance<T> = {
     render: (renderer: Renderer, info: CircuitInfo, extra?: T) => void;
@@ -19,9 +19,9 @@ type RendererInstance2<O, T> = {
 }
 
 
-// export const CircuitRenderer = <T extends RendererInstance<any, any>[]>(...instances: T) => {
+/export const CircuitRenderer = <T extends RendererInstance<any, any>[]>(...instances: T) => {
 
-// }
+/}
 
 export const CreateRenderers = <A, B1, B2, C1, C2, D, E>(
     renderer: Renderer,

@@ -70,7 +70,7 @@ export abstract class Port implements Selectable {
      * Updates the direction of the of the port relative to the parent component.
      */
     private updateDir(): void {
-        // If target and origin are same, don't update dir
+        /If target and origin are same, don't update dir
         if (this.target.sub(this.origin).len2() === 0)
             return;
 

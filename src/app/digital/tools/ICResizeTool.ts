@@ -18,8 +18,8 @@ export const ICResizeTool = (() => {
     function findEdge({ input, camera, ic }: ICCircuitInfo): ICEdge {
         if (!ic)
             throw new Error("ICResizeTool.findEdge failed: ic is undefined");
-        // Create slightly larger and smaller box and check
-        //  if the mouse is between the two for an edge check
+        /Create slightly larger and smaller box and check
+        / if the mouse is between the two for an edge check
         const t1 = new Transform(ic.getPos(), ic.getSize().add(V(DEFAULT_BORDER_WIDTH*5)));
         const t2 = new Transform(ic.getPos(), ic.getSize().sub(V(DEFAULT_BORDER_WIDTH*5)));
 
@@ -27,7 +27,7 @@ export const ICResizeTool = (() => {
         if (!(RectContains(t1, worldMousePos) && !RectContains(t2, worldMousePos)))
             return "none";
 
-        // Determine if mouse is over horizontal or vertical edge
+        /Determine if mouse is over horizontal or vertical edge
         return (worldMousePos.y < ic.getPos().y + ic.getSize().y/2 - DEFAULT_BORDER_WIDTH*5/2 &&
                 worldMousePos.y > ic.getPos().y - ic.getSize().y/2 + DEFAULT_BORDER_WIDTH*5/2)
                ? "horizontal"
@@ -36,14 +36,14 @@ export const ICResizeTool = (() => {
 
     return {
         shouldActivate(event: Event, info: ICCircuitInfo): boolean {
-            // Activate if the user began dragging over an edge
+            /Activate if the user began dragging over an edge
             return (event.type === "mousedrag" &&
                     event.button === LEFT_MOUSE_BUTTON &&
                     info.input.getTouchCount() === 1 &&
                     findEdge(info) !== "none");
         },
         shouldDeactivate(event: Event, _: ICCircuitInfo): boolean {
-            // Deactivate if stopped dragging by releasing mouse
+            /Deactivate if stopped dragging by releasing mouse
             return (event.type === "mouseup");
         },
 
@@ -51,7 +51,7 @@ export const ICResizeTool = (() => {
         onActivate(event: Event, info: ICCircuitInfo): void {
             edge = findEdge(info);
             if (event.type === "mousedrag")
-                this.onEvent(event, info); // Explicitly call drag event
+                this.onEvent(event, info); /Explicitly call drag event
         },
         onDeactivate(): void {
             edge = "none";
@@ -80,8 +80,8 @@ export const ICResizeTool = (() => {
             data.positionPorts();
             ic.update();
 
-            // Return true since we did something
-            //  that requires a re-render
+            /Return true since we did something
+            / that requires a re-render
             return true;
         },
 

@@ -29,7 +29,7 @@ export const GenerateThumbnail = (() => {
 
         camera.resize(canvas.width, canvas.height);
 
-        // Get final camera position and zoom
+        /Get final camera position and zoom
         const objs = info.designer.getAll() as CullableObject[];
         const [pos, zoom] = GetCameraFit(camera, objs, THUMBNAIL_ZOOM_PADDING_RATIO);
         camera.setPos(pos);

@@ -41,7 +41,7 @@ export type VectorPropInfo = BasePropInfo & {
 }
 export type StringPropInfo = BasePropInfo & {
     type: "string";
-    constraint?: RegExp; // TODO: use this
+    constraint?: RegExp; /TODO: use this
 }
 export type ColorPropInfo = BasePropInfo & {
     type: "color";
@@ -49,15 +49,15 @@ export type ColorPropInfo = BasePropInfo & {
 export type StringSelectPropInfo = BasePropInfo & {
     type: "string[]";
     options: Array<[
-        string, // Display value
-        string, // Option value
+        string, /Display value
+        string, /Option value
     ]>;
 }
 export type NumberSelectPropInfo = BasePropInfo & {
     type: "number[]";
     options: Array<[
-        string, // Display value
-        number, // Option value
+        string, /Display value
+        number, /Option value
     ]>;
 }
 

@@ -8,21 +8,21 @@ describe("Comparator", () => {
     const designer = new DigitalCircuitDesigner(0);
     const { Place,Connect } = GetHelpers(designer);
 
-    // create necessary components for testing
+    /create necessary components for testing
     const [c] = Place(new Comparator());
     const [a,b] = Place(new ConstantNumber(), new ConstantNumber());
     const [lt,eq,gt] = Place(new LED(), new LED(), new LED());
 
-    c.setInputPortCount(8); // 4 -> 4 comparison
+    c.setInputPortCount(8); /4 -> 4 comparison
 
-    // Connect everything together
+    /Connect everything together
     Connect(a, c);
     Connect(b, c);
     Connect(c, Comparator.LT_PORT, lt, 0);
     Connect(c, Comparator.EQ_PORT, eq, 0);
     Connect(c, Comparator.GT_PORT, gt, 0);
 
-    // testing numbers 0-15 to make sure they work
+    /testing numbers 0-15 to make sure they work
     test("Numbers 0-15", () => {
         a.setProp("inputNum", 5);
         b.setProp("inputNum", 6);

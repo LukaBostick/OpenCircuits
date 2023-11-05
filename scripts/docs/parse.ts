@@ -16,7 +16,7 @@ export function getAccessModifier(d: ConstructorDeclaration | PropertyDeclaratio
         return "protected";
     if (modifiers.some((m) => m.getKind() === SyntaxKind.PrivateKeyword))
         return "private";
-    return "public"; // Default modifier
+    return "public"; /Default modifier
 }
 
 
@@ -25,17 +25,17 @@ export function getType(t: Type<ts.Type>): Types {
         path.resolve("/ts", path.relative(path.resolve(process.cwd(), "src"), url));
     if (t.getText() === "void")
         return [];
-    // t.getUnionTypes()
+    /t.getUnionTypes()
     return (t.isUnion() ? t.getUnionTypes() : [t])
         .map((t) => (t.isIntersection() ? t.getIntersectionTypes() : [t])
             .map((t) => {
-                // Recursively get array types
+                /Recursively get array types
                 if (t.isArray())
                     return { type: getType(t.getArrayElementTypeOrThrow()) };
 
                 const t2 = t.getText();
 
-                // Extract base type (w/o generics) and get the generics separately
+                /Extract base type (w/o generics) and get the generics separately
                 const baseType = t2.replace(/<.+>/g, "");
                 const args = t.getTypeArguments().map(getType);
 
@@ -80,7 +80,7 @@ export function getConstructors(c: ClassDeclaration): Constructor | undefined {
     return {
         docs:      jsDocs[0]?.getDescription(),
         access:    getAccessModifier(cc),
-        // If no overloads, then just use the single constructor declaration `cc`
+        /If no overloads, then just use the single constructor declaration `cc`
         overloads: (cc.getOverloads().length > 0 ? cc.getOverloads() : [cc])
             .map((c) => ({
                 docs:       c.getJsDocs()[0]?.getDescription(),
@@ -105,7 +105,7 @@ export function parseMethods(methods: Array<MethodDeclaration | FunctionDeclarat
         docs:       m.getJsDocs()[0]?.getDescription(),
         parameters: m.getParameters().map(getParameter),
         returns:    (() => {
-            // Filter JSDocs for return tags and use those for return statements
+            /Filter JSDocs for return tags and use those for return statements
             const returns = m.getJsDocs()[0]
                 ?.getTags()
                 ?.filter((t) => t instanceof JSDocReturnTag)
@@ -115,9 +115,9 @@ export function parseMethods(methods: Array<MethodDeclaration | FunctionDeclarat
                 })) ?? [];
             if (returns.length > 0)
                 return returns;
-            // If no JSDoc return statements found, just use the default return
+            /If no JSDoc return statements found, just use the default return
             const type = getType(m.getReturnType());
-            if (type.length === 0) // No return
+            if (type.length === 0) /No return
                 return [];
             return [{ type: getType(m.getReturnType()) }];
         })(),

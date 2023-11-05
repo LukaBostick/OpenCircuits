@@ -1,4 +1,4 @@
-// List from https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
+/List from https://veloper.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values
 
 export type ModifierKeys =
     | "Alt" | "AltGraph" | "CapsLock" | "Control" | "Fn" | "FnLock"

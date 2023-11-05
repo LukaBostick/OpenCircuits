@@ -5,9 +5,9 @@ import {Camera} from "math/Camera";
 import {CircuitDesigner}    from "./CircuitDesigner";
 import {CircuitMetadataDef} from "./CircuitMetadata";
 
-// THIS IS ALL A HACK
-// TODO: improve serialeazy to allow specifying set ids for reference
-//  so that it's easier to interface with and we can just Deserialize<Circuit>
+/THIS IS ALL A HACK
+/TODO: improve serialeazy to allow specifying set ids for reference
+/ so that it's easier to interface with and we can just Deserialize<Circuit>
 
 @serializable("ContentsData")
 export class ContentsData {

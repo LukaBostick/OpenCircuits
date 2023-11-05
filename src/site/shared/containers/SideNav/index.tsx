@@ -9,8 +9,10 @@ import {LoadUserCircuit} from "shared/api/Circuits";
 
 import {ToggleSideNav} from "shared/state/SideNav";
 
-import {CircuitPreview} from "shared/components/CircuitPreview";
-import {Overlay}        from "shared/components/Overlay";
+import {CircuitPreview} from "shared/ocs/SuperCircuits
+/Components/CircuitPreview";
+import {Overlay}        from "shared/ocs/SuperCircuits
+/Components/Overlay";
 
 import {SignInOutButtons} from "shared/containers/Header/Right/SignInOutButtons";
 
@@ -41,7 +43,7 @@ export const SideNav = ({ helpers, exampleCircuits }: Props) => {
         <Overlay
             isOpen={isOpen}
             close={() => {
-                if (!loading) // Don't let user close the SideNav until finished loading circuit
+                if (!loading) /Don't let user close the SideNav until finished loading circuit
                     dispatch(ToggleSideNav())
             }}>
             {loading && <div></div>}
@@ -70,7 +72,7 @@ export const SideNav = ({ helpers, exampleCircuits }: Props) => {
                             key={`sidenav-user-circuit-${i}`}
                             data={circuit}
                             onClick={async () => {
-                                if (loading) // Don't load another circuit if already loading
+                                if (loading) /Don't load another circuit if already loading
                                     return;
                                 if (!auth)
                                     throw new Error("Sidenav failed: auth is undefined");
@@ -78,7 +80,7 @@ export const SideNav = ({ helpers, exampleCircuits }: Props) => {
                                 dispatch(ToggleSideNav());
                             }}
                             onDelete={() => {
-                                if (loading) // Don't let user delete circuit while loading
+                                if (loading) /Don't let user delete circuit while loading
                                     return;
                                 helpers.DeleteCircuitRemote(circuit);
                             }} />)
@@ -92,7 +94,7 @@ export const SideNav = ({ helpers, exampleCircuits }: Props) => {
                                      readonly
                                      onDelete={() => { /* Do nothing */ }}
                                      onClick={async () => {
-                                        if (loading) // Don't load another circuit if already loading
+                                        if (loading) /Don't load another circuit if already loading
                                             return;
                                         await helpers.LoadCircuit(() => LoadExampleCircuit(example));
                                         dispatch(ToggleSideNav());
@@ -100,9 +102,9 @@ export const SideNav = ({ helpers, exampleCircuits }: Props) => {
                 )}
                 </div>
                 <div className="sidenav__content__footer">
-                    A program made with love by <a href="http://leonmontealeg.re/" target="_blank"
+                    A program made with love by <a href="http:/eonmontealeg.re/" target="_blank"
                                                    rel="noopener noreferrer">Leon Montealegre </a>
-                    and our great <a href="https://www.github.com/OpenCircuits/OpenCircuits/blob/master/AUTHORS.md"
+                    and our great <a href="https:/ww.github.com/OpenCircuits/OpenCircuits/blob/master/AUTHORS.md"
                                      target="_blank" rel="noopener noreferrer">team</a>
                 </div>
             </div>

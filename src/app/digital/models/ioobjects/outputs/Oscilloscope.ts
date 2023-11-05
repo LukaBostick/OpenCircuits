@@ -51,7 +51,7 @@ export class Oscilloscope extends TimedComponent {
 
     protected onTick(): void {
         const numSamples = this.props["samples"] as number;
-        // Add signals
+        /Add signals
         for (let i = 0; i < this.numInputs(); i++) {
             this.signals[i].push(this.inputs.get(i).getIsOn());
             if (this.signals[i].length > numSamples)
@@ -59,9 +59,9 @@ export class Oscilloscope extends TimedComponent {
         }
     }
 
-    // @Override
+    /@Override
     public override setInputPortCount(val: number): void {
-        // Update size (first so that ports update positions properly)
+        /Update size (first so that ports update positions properly)
         super.setSize((this.props["displaySize"] as Vector).scale(V(1, val)));
 
         super.setInputPortCount(val);
@@ -80,7 +80,7 @@ export class Oscilloscope extends TimedComponent {
 
             super.setSize(size.scale(V(1, this.numInputs())));
 
-            // Update spacing amount for port-positioner
+            /Update spacing amount for port-positioner
             (this.inputs.getPositioner() as ConstantSpacePositioner<InputPort>).spacing = size.y*2;
 
             this.inputs.updatePortPositions();

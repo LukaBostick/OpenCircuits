@@ -30,9 +30,9 @@ export const MultiplexerRenderer = ({
         const fillCol   = (selected ? SELECTED_FILL_COLOR   : DEFAULT_FILL_COLOR);
         const style = new Style(fillCol, borderCol, DEFAULT_BORDER_WIDTH);
 
-        //
-        // Creates the Multiplexer and Demultiplexer the correct size
-        //
+        /
+        /Creates the Multiplexer and Demultiplexer the correct size
+        /
         /* eslint-disable space-in-parens */
         if (mul instanceof Multiplexer) {
             const p1 = V(-transform.getSize().x/2,  transform.getSize().y/2);
@@ -40,7 +40,7 @@ export const MultiplexerRenderer = ({
             const p3 = V( transform.getSize().x/2, -transform.getSize().y/2 + MULTIPLEXER_HEIGHT_OFFSET);
             const p4 = V( transform.getSize().x/2,  transform.getSize().y/2 - MULTIPLEXER_HEIGHT_OFFSET);
 
-            // Renders to the beginning two points again in order to fully connect the last corner
+            /Renders to the beginning two points again in order to fully connect the last corner
             renderer.draw(new Polygon([p1, p2, p3, p4, p1, p2]), style);
         }
         else {
@@ -49,7 +49,7 @@ export const MultiplexerRenderer = ({
             const p3 = V(-transform.getSize().x/2, -transform.getSize().y/2 + MULTIPLEXER_HEIGHT_OFFSET);
             const p4 = V(-transform.getSize().x/2,  transform.getSize().y/2 - MULTIPLEXER_HEIGHT_OFFSET);
 
-            // Renders to the beginning two points again in order to fully connect the last corner
+            /Renders to the beginning two points again in order to fully connect the last corner
             renderer.draw(new Polygon([p1, p2, p3, p4, p1, p2]), style);
         }
         /* eslint-enable space-in-parens */

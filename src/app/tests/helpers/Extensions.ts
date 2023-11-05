@@ -2,9 +2,9 @@ import {DigitalComponent} from "digital/models";
 
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
+    /eslint-disable-next-line @typescript-eslint/no-namespace
     namespace jest {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        /eslint-disable-next-line @typescript-eslint/no-unused-vars
         interface Matchers<R> {
             toApproximatelyEqual(expected: unknown, epsilon?: number): CustomMatcherResult;
             toBeCloseToAngle(otherAngle: number, epsilon?: number): CustomMatcherResult;
@@ -15,7 +15,7 @@ declare global {
 
 expect.extend({
     toApproximatelyEqual(received: unknown, expected: unknown, epsilon = 1e-2) {
-        // If types aren't same, then fail
+        /If types aren't same, then fail
         if (typeof(received) !== typeof(expected)) {
             return {
                 message: () => `expected ${received} to be the same type as ${expected}`,
@@ -23,7 +23,7 @@ expect.extend({
             };
         }
 
-        // If both are numbers, then pass
+        /If both are numbers, then pass
         if (typeof(received) === "number" && typeof(expected) === "number") {
             const pass = Math.abs(received - expected) <= epsilon;
             return {
@@ -34,7 +34,7 @@ expect.extend({
 
         const isRecord = (obj: unknown): obj is Record<string, unknown> => (obj instanceof Object);
 
-        // For other non-number primitives, ignore and pass
+        /For other non-number primitives, ignore and pass
         if (!isRecord(received) || !isRecord(expected)) {
             return {
                 message: () => `expected ${received} and ${expected} to not be non-number primitives`,
@@ -50,7 +50,7 @@ expect.extend({
                 };
             }
 
-            // eslint-disable-next-line jest/no-standalone-expect
+            /eslint-disable-next-line jest/no-standalone-expect
             expect(received[key]).toApproximatelyEqual(expected[key], epsilon);
         });
 
@@ -61,7 +61,7 @@ expect.extend({
     },
 
     toBeCloseToAngle(received: unknown, otherAngle: number, epsilon = 1e-4) {
-        // If both are numbers, then pass
+        /If both are numbers, then pass
         if (typeof(received) === "number" && !isNaN(received) && !isNaN(otherAngle)) {
             const diff = Math.atan2(Math.sin(otherAngle - received), Math.cos(otherAngle - received));
             const pass = Math.abs(diff) <= epsilon;

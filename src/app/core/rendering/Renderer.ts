@@ -38,7 +38,7 @@ export class Renderer {
         this.context.setTransform(
             m.get(0), m.get(1),
             m.get(2), m.get(3),
-            // Shift over to the center
+            /Shift over to the center
             m.get(4) + camera.getCenter().x, m.get(5) + camera.getCenter().y
         );
     }
@@ -61,11 +61,11 @@ export class Renderer {
         this.save();
         this.setStyle(style, alpha);
 
-        // Begin path and draw the shape
+        /Begin path and draw the shape
         this.context.beginPath();
         shape.draw(this.context);
 
-        // Only fill or stroke if we have to
+        /Only fill or stroke if we have to
         if (style.fill())
             this.context.fill();
         if (style.stroke())
@@ -77,7 +77,7 @@ export class Renderer {
     public image(img: SVGDrawing, pos: Vector, size: Vector, tint?: string): void {
         const col = (tint ? parseColor(tint) : undefined);
 
-        // Flip y-axis scale
+        /Flip y-axis scale
         img.draw(this.context, pos.x, pos.y, size.x, -size.y, col);
     }
 
@@ -90,7 +90,7 @@ export class Renderer {
         this.context.textBaseline = textBaseline;
 
         this.translate(pos);
-        // Flip y-axis scale
+        /Flip y-axis scale
         this.context.scale(1, -1);
         if (angle !== 0)
             this.rotate(angle);
@@ -170,7 +170,7 @@ export class Renderer {
             this.context.miterLimit = style.miterLimit;
     }
     public setStyle(style: Style, alpha = 1): void {
-        // Set styles but only change them if they're different for optimization purposes
+        /Set styles but only change them if they're different for optimization purposes
         if (alpha !== this.context.globalAlpha)
             this.context.globalAlpha = alpha;
 

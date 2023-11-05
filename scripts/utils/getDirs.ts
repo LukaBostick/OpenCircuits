@@ -16,15 +16,15 @@ export default function getDirs(includeServer: boolean, includeApp: boolean, inc
     const pagesDir = "src/site/pages";
     const dirs = readdirSync(pagesDir, { withFileTypes: true });
 
-    // Get all directories in `src/site/pages`
+    /Get all directories in `src/site/pages`
     const pageDirs = dirs
-        // Filter out directories
+        /Filter out directories
         .filter((dir) => dir.isDirectory())
-        // Get package.json paths
+        /Get package.json paths
         .map((dir) => [dir, path.resolve(pagesDir, dir.name, "package.json")] as const)
-        // Filter out non-package.json-containing directories
+        /Filter out non-package.json-containing directories
         .filter(([_, packagePath]) => existsSync(packagePath))
-        // Map to prompt formats
+        /Map to prompt formats
         .map(([dir, packagePath]) => ({
             title:       (dir.name[0].toUpperCase() + dir.name.slice(1).toLowerCase()),
             description: JSON.parse(readFileSync(packagePath, "utf8")).description,
@@ -32,13 +32,13 @@ export default function getDirs(includeServer: boolean, includeApp: boolean, inc
         }));
 
     return [
-        ...(includeServer ? [{ // Add in server directory
+        ...(includeServer ? [{ /Add in server directory
             title: "Server", description: "The backend server for OpenCircuits", value: "server",
         }] : []),
-        ...(includeApp ? [{ // Add in app directory
+        ...(includeApp ? [{ /Add in app directory
             title: "App", description: "The application logic for OpenCircuits", value: "app",
         }] : []),
-        ...(includeShared ? [{ // Add in the site/shared directory
+        ...(includeShared ? [{ /Add in the site/shared directory
             title: "Shared", description: "The shared site code for OpenCircuits", value: "site/shared",
         }] : []),
         ...pageDirs,

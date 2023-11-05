@@ -98,14 +98,14 @@ export function Setup(props?: Props): Omit<DigitalCircuitInfo, "input"> &
             debugNoFill:          false,
         },
 
-        // Utility function to reset the state of the CircuitInfo
+        /Utility function to reset the state of the CircuitInfo
         reset: (resetDesigner = false) => {
             history.reset();
-            camera.setPos(V()); camera.setZoom(0.02); // Reset camera
+            camera.setPos(V()); camera.setZoom(0.02); /Reset camera
             if (resetDesigner)
                 designer.reset();
             input.reset();
-            selections.get().forEach((s) => selections.deselect(s)); // Reset selections
+            selections.get().forEach((s) => selections.deselect(s)); /Reset selections
             toolManager.reset(info);
         },
     };

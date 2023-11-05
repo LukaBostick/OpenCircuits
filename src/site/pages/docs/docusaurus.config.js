@@ -4,16 +4,16 @@ const math = require("remark-math");
 module.exports = {
   title: "OpenCircuits",
   tagline: "The free, online, circuit designer",
-  url: "https://docs.supercircuit.tech",
+  url: "https:/ocs.supercircuit.tech",
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "OpenCircuits", // Usually your GitHub org/user name.
-  projectName: "OpenCircuits", // Usually your repo name.
+  organizationName: "OpenCircuits", /Usually your GitHub org/user name.
+  projectName: "OpenCircuits", /Usually your repo name.
   stylesheets: [
     {
-      href: "https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
+      href: "https:/dn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css",
       type: "text/css"
     },
   ],
@@ -50,7 +50,7 @@ module.exports = {
           position: "left"
         },
         {
-          href: "https://github.com/OpenCircuits/OpenCircuits",
+          href: "https:/ithub.com/OpenCircuits/OpenCircuits",
           label: "GitHub",
           position: "right",
         },
@@ -77,7 +77,7 @@ module.exports = {
           items: [
             {
               label: "Discord",
-              href: "https://discordapp.com/invite/bCV2tYFer9",
+              href: "https:/iscordapp.com/invite/bCV2tYFer9",
             }
           ],
         },
@@ -86,7 +86,7 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/OpenCircuits/OpenCircuits",
+              href: "https:/ithub.com/OpenCircuits/OpenCircuits",
             },
           ],
         },
@@ -107,10 +107,10 @@ module.exports = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: ({ versionDocsDirPath, docPath }) => {
-            if (docPath.startsWith("ts/")) { // JSDoc so edit page will be the TS file not doc file
-              return `https://github.com/OpenCircuits/OpenCircuits/edit/master/src/${docPath.slice(3, -3)}.ts`;
+            if (docPath.startsWith("ts/")) { /JSDoc so edit page will be the TS file not doc file
+              return `https:/ithub.com/OpenCircuits/OpenCircuits/edit/master/src/${docPath.slice(3, -3)}.ts`;
             }
-            return `https://github.com/OpenCircuits/OpenCircuits/edit/master/docs/${docPath}`;
+            return `https:/ithub.com/OpenCircuits/OpenCircuits/edit/master/docs/${docPath}`;
           },
           remarkPlugins: [math],
           rehypePlugins: [katex]

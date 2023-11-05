@@ -20,11 +20,11 @@ export const CreateICButtonModule = ({ info }: Props) => {
     const [props, cs] = useSelectionProps(
         info,
         (s): s is Component => (s instanceof Component),
-        (s) => ({ name: s.getName() }) // Don't really need any props but
-                                       //  we need to be able to update the state
+        (s) => ({ name: s.getName() }) /Don't really need any props but
+                                       / we need to be able to update the state
     );
 
-    if (!(props && ICData.IsValid(cs))) // Make selected components form valid set
+    if (!(props && ICData.IsValid(cs))) /Make selected components form valid set
         return null;
 
     return (

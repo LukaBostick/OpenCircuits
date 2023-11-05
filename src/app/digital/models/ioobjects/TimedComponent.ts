@@ -25,9 +25,9 @@ const [Info] = GenPropInfo({
             type:    "button",
             initial: false,
 
-            // Specifically default to pausing. Meaning only Resume when every component
-            //  is paused, and so if there's a single non-paused component, pressing
-            //  the button will pause them all and the text will say "Pause"
+            /Specifically default to pausing. Meaning only Resume when every component
+            / is paused, and so if there's a single non-paused component, pressing
+            / the button will pause them all and the text will say "Pause"
             getText:     (states) => (states.every((s) => (s === true)) ? "Resume" : "Pause"),
             getNewState: (states) => (states.every((s) => (s === true)) ? false : true),
         },
@@ -48,7 +48,7 @@ export abstract class TimedComponent extends DigitalComponent {
     }
 
     private stopTimeout(): void {
-        // Clear the timeout if it's currently set
+        /Clear the timeout if it's currently set
         if (this.timeout !== undefined) {
             window.clearTimeout(this.timeout);
             this.timeout = undefined;
@@ -77,11 +77,11 @@ export abstract class TimedComponent extends DigitalComponent {
 
         this.onTick();
 
-        // Send an update to the designer
+        /Send an update to the designer
         if (this.designer !== undefined)
             this.designer.forceUpdate();
 
-        // Recursively call `tick` to continuously update
+        /Recursively call `tick` to continuously update
         this.timeout = window.setTimeout(() => {
             this.timeout = undefined;
             this.tick();
@@ -92,7 +92,7 @@ export abstract class TimedComponent extends DigitalComponent {
         return Info[key] ?? super.getPropInfo(key);
     }
 
-    // Restart ticking
+    /Restart ticking
     public reset(): void {
         if (!this.props["paused"])
             this.tick();

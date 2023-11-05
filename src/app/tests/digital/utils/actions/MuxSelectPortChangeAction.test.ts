@@ -19,26 +19,26 @@ describe("Select Port Change Action", () => {
 
         const [mux] = Place(new Multiplexer());
 
-        // before connection
+        /before connection
         expect(mux.getSelectPortCount().getValue()).toBe(2);
         expect(mux.getInputPortCount().getValue()).toBe(4);
         expect(mux.getOutputPortCount().getValue()).toBe(1);
 
-        // change select port count
+        /change select port count
         const a1 = SetMuxPortCount(mux, 4);
 
-        // initial
+        /initial
         expect(mux.getSelectPortCount().getValue()).toBe(4);
         expect(mux.getInputPortCount().getValue()).toBe(16);
         expect(mux.getOutputPortCount().getValue()).toBe(1);
 
-        // reverted
+        /reverted
         a1.undo();
         expect(mux.getSelectPortCount().getValue()).toBe(2);
         expect(mux.getInputPortCount().getValue()).toBe(4);
         expect(mux.getOutputPortCount().getValue()).toBe(1);
 
-        // back to initial
+        /back to initial
         a1.execute();
         expect(mux.getSelectPortCount().getValue()).toBe(4);
         expect(mux.getInputPortCount().getValue()).toBe(16);
@@ -50,7 +50,7 @@ describe("Select Port Change Action", () => {
 
         const [sw, n, mux] = Place(new Switch(), new DigitalNode(), new Multiplexer());
 
-        // Connect switch to node and then then to input and select ports of Mux
+        /Connect switch to node and then then to input and select ports of Mux
         Connect(sw, n);
         Connect(n, 0, mux, 3);
         CreateConnection(designer, n.getOutputPorts()[0], mux.getSelectPorts()[1]);
@@ -58,19 +58,19 @@ describe("Select Port Change Action", () => {
         expect(designer.getObjects()).toHaveLength(3);
         expect(designer.getWires()).toHaveLength(3);
 
-        // change select port count
+        /change select port count
         const a1 = SetMuxPortCount(mux, 1);
 
-        // initial
+        /initial
         expect(designer.getObjects()).toHaveLength(2);
         expect(designer.getWires()).toHaveLength(0);
 
-        // reverted
+        /reverted
         a1.undo();
         expect(designer.getObjects()).toHaveLength(3);
         expect(designer.getWires()).toHaveLength(3);
 
-        // back to initial
+        /back to initial
         a1.execute();
         expect(designer.getObjects()).toHaveLength(2);
         expect(designer.getWires()).toHaveLength(0);

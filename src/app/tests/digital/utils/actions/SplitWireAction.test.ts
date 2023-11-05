@@ -21,7 +21,7 @@ describe("Split Wire Action", () => {
 
         const w = Connect(a, b)[0].getWire();
 
-        // before split
+        /before split
         expect(designer.getObjects()).toHaveLength(2);
         expect(designer.getWires()).toHaveLength(1);
         expect(designer.getWires()[0]).toBe(w);
@@ -33,7 +33,7 @@ describe("Split Wire Action", () => {
         const n = new DigitalNode();
         const ac = SplitWire(designer, w, n);
 
-        // after split
+        /after split
         expect(designer.getObjects()).toHaveLength(3);
         expect(designer.getWires()).toHaveLength(2);
         expect(a.getOutputs()).toHaveLength(1);
@@ -43,7 +43,7 @@ describe("Split Wire Action", () => {
         expect(b.getInputs()).toHaveLength(1);
         expect(b.getInputs()[0]).toBe(n.getOutputs()[0]);
 
-        // undo
+        /undo
         ac.undo();
 
         expect(designer.getObjects()).toHaveLength(2);
@@ -54,7 +54,7 @@ describe("Split Wire Action", () => {
         expect(b.getInputs()).toHaveLength(1);
         expect(b.getInputs()[0]).toBe(w);
 
-        // redo
+        /redo
         ac.execute();
 
         expect(designer.getObjects()).toHaveLength(3);

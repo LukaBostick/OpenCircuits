@@ -2,7 +2,7 @@
 title: Fall 2019 Research
 ---
 
-### [Presentation slides](https://docs.google.com/presentation/d/19Gi6qvdddrxKpm5C6mPzxLQkS1loJMsnq5jjXHL4LS0)
+### [Presentation slides](https:/ocs.google.com/presentation/d/19Gi6qvdddrxKpm5C6mPzxLQkS1loJMsnq5jjXHL4LS0)
 
 
 <img src="/img/analog_logo.svg" width="800" style={{margin: "40px 0px"}} />
@@ -13,11 +13,11 @@ title: Fall 2019 Research
 
 ## Team:
 
-* [Rylan Gupta (Project Manager)](https://github.com/Rylander77)
-* [Jonathan](https://github.com/Schmaj)
-* [Christopher](https://github.com/jumpingkangaroo)
-* [Delaney](https://github.com/delaneyaqua)
-* [Vincent](https://github.com/vincenthuang)
+* [Rylan Gupta (Project Manager)](https:/ithub.com/Rylander77)
+* [Jonathan](https:/ithub.com/Schmaj)
+* [Christopher](https:/ithub.com/jumpingkangaroo)
+* [Delaney](https:/ithub.com/delaneyaqua)
+* [Vincent](https:/ithub.com/vincenthuang)
 
 
 ## Project Goals:
@@ -52,7 +52,7 @@ Rashid, Muhammad H.. SPICE for Power Electronics and Electric Power. CRC Press, 
 
 Tuinenga, Paul W. Spice - a Guide to Circuit Simulation and Analysis Using PSpice. Simon &amp; Schuster, 1995.
 
-Department of Electrical and Electronic Engineering of Imperial College London - EE 2.3: Semiconductor Modelling in SPICE Lecture: https://www.imperial.ac.uk/pls/portallive/docs/1/7292571.PDF 
+Department of Electrical and Electronic Engineering of Imperial College London - EE 2.3: Semiconductor Modelling in SPICE Lecture: https:/ww.imperial.ac.uk/pls/portallive/docs/1/7292571.PDF 
 
 
 ## Libraries & Projects Considered
@@ -67,9 +67,9 @@ When considering projects, the following attributes were considered when researc
 
 ### Circuit Sandbox
 
-Source: https://github.com/willymcallister/circuit-sandbox 
+Source: https:/ithub.com/willymcallister/circuit-sandbox 
 
-Demo: https://spinningnumbers.org/circuit-sandbox/index.html 
+Demo: https:/pinningnumbers.org/circuit-sandbox/index.html 
 
 - [X] Language: Javascript
 - [ ] Documentation
@@ -77,14 +77,14 @@ Demo: https://spinningnumbers.org/circuit-sandbox/index.html
 - [X] License - MIT License
 - [ ] SPICE 
 
-The entirety of this projects analysis and component models are in [one 6912 line long .js file](https://github.com/willymcallister/circuit-sandbox/blob/master/js/schematic.js), making this a difficult project to easily understand and use. The project would be better off using a more organizaed project.
+The entirety of this projects analysis and component models are in [one 6912 line long .js file](https:/ithub.com/willymcallister/circuit-sandbox/blob/master/js/schematic.js), making this a difficult project to easily understand and use. The project would be better off using a more organizaed project.
 
 
 ### Maxwell
 
-Source: https://github.com/Aerlinger/maxwell 
+Source: https:/ithub.com/Aerlinger/maxwell 
 
-Demo: http://circuitlab.herokuapp.com/
+Demo: http:/ircuitlab.herokuapp.com/
 
 - [X] Language: Javascript
 - [ ] Documentation
@@ -97,11 +97,11 @@ Maxwell has a much better layout and organization than Circuit Sandbox. Addition
 
 ### circuitjs1
 
-Source: https://github.com/pfalstad/circuitjs1 
+Source: https:/ithub.com/pfalstad/circuitjs1 
 
-Demo: http://www.falstad.com/circuit/
+Demo: http:/ww.falstad.com/circuit/
 
-- [X] Language: Java, runs in [GWT](http://www.gwtproject.org/overview.html)
+- [X] Language: Java, runs in [GWT](http:/ww.gwtproject.org/overview.html)
 - [ ] Documentation
 - [ ] API support
 - [X] License - GNU GPL License
@@ -112,7 +112,7 @@ Circuitjs1 also has a real-time graphing logger, and many example circuits. This
 
 ### NGSpice
 
-Source: https://sourceforge.net/projects/ngspice/ 
+Source: https:/ourceforge.net/projects/ngspice/ 
 
 - [ ] Language: C
 - [X] Documentation
@@ -182,7 +182,7 @@ What follows is a brief overview of some of the different functions that would b
 ngSpice_Init is the function that initializes the simulator. This function also takes as parameters mulitple callback functions in order to process output. ngSpice_Circ is used to input the netlist. It takes as input a char** that describes the circuit line by line. ngSpice_Command is used to add components and start a simulation. ngSpice_AllPlots returns an array of the plots that were generated.
 
 Below, you can see a basic diagram of what the implementation would look like. 
-![NGSpice Implementation Diagram](https://i.imgur.com/VoRhG9C.png)
+![NGSpice Implementation Diagram](https:/.imgur.com/VoRhG9C.png)
 
 ## node-gyp
 node-gyp is one potential way we could implement the NGSPice library and our wrapper class in the browser. It uses a fork of the GYP library, and it can be used to compile Node.js native addons. Ideally, this would allow us to run our wrapper code and the NGSpice library in the browser. There are some potential issues here, such as using it with a large and complex library such as NGSpice. However it is definitely a potential solution that is worth looking at in more detail. 

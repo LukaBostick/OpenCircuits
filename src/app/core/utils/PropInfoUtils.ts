@@ -26,12 +26,12 @@ export type PropInfoLayout = {
 export const GenPropInfo = (rootLayout: PropInfoLayout) => {
     const allInfos: Record<string, PropInfoWithInitial[]> = {};
 
-    // Flatten layouts into single record of all properties and their associated infos
+    /Flatten layouts into single record of all properties and their associated infos
     const collectLayouts = (layouts: PropInfoLayout[], parentIsActive?: PropInfoLayout["isActive"]): void => {
         layouts.forEach((layout) => {
             const { isActive, infos, sublayouts } = layout;
 
-            // Merge isActive w/ parentIsActive
+            /Merge isActive w/ parentIsActive
             const groupIsActive = merge(isActive, parentIsActive);
 
             Object.entries(infos).forEach(([key, info]) => {
@@ -39,7 +39,7 @@ export const GenPropInfo = (rootLayout: PropInfoLayout) => {
                     allInfos[key] = [];
                 allInfos[key].push(info);
 
-                // Merge isActive with groupIsActive
+                /Merge isActive with groupIsActive
                 info.isActive = merge(info.isActive, groupIsActive);
             });
             collectLayouts(sublayouts ?? [], groupIsActive);
@@ -48,8 +48,8 @@ export const GenPropInfo = (rootLayout: PropInfoLayout) => {
     collectLayouts([rootLayout]);
 
 
-    // Take each property and their associated infos and flatten them down to a single
-    //  `info` based on the isActive's of each one
+    /Take each property and their associated infos and flatten them down to a single
+    / `info` based on the isActive's of each one
     const info: Record<string, PropInfo> = {};
     const initialProps: Record<string, Prop> = {};
 
@@ -58,17 +58,17 @@ export const GenPropInfo = (rootLayout: PropInfoLayout) => {
         info[key] = info0;
         initialProps[key] = initial;
 
-        // If exactly one info, then no need to merge
+        /If exactly one info, then no need to merge
         if (infos.length === 1)
             return;
 
-        // Merge displays
+        /Merge displays
         if (infos.some((i) => i.label !== info0.label)) {
-            // This is necessary in the case where a property has multiple labels but shares
-            //  the same ID, and is active at different times, so the label for the currently
-            //  active state
+            /This is necessary in the case where a property has multiple labels but shares
+            / the same ID, and is active at different times, so the label for the currently
+            / active state
             info0.label = (states) => {
-                // Display based on isActive of the infos
+                /Display based on isActive of the infos
                 const display = infos.find((i) => (i.isActive?.(states) ?? true))?.label ?? "";
                 return (
                     typeof display === "string"
@@ -78,9 +78,9 @@ export const GenPropInfo = (rootLayout: PropInfoLayout) => {
             }
         }
 
-        // Merge isActives via union
+        /Merge isActives via union
         if (infos.some((i) => !!i.isActive)) {
-            // isActive if at least one of the infos is active
+            /isActive if at least one of the infos is active
             info0.isActive = (states) => infos.some((i) => (i.isActive?.(states) ?? true));
         }
     });

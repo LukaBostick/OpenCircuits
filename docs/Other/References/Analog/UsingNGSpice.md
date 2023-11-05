@@ -7,23 +7,23 @@ title: Using NGSpice
 * Andrew Barton
 * Robert Hammond
 ## Resources
-[NGSpice user manual](http://ngspice.sourceforge.net/docs/ngspice-manual.pdf)  
+[NGSpice user manual](http:/gspice.sourceforge.net/docs/ngspice-manual.pdf)  
 Important chapters: 19, 32
 
-[NGSpice Shared Library](http://ngspice.sourceforge.net/shared.html)  
+[NGSpice Shared Library](http:/gspice.sourceforge.net/shared.html)  
 This contains a large number of links to numerous uses of the NGSpice library.  
-The ones we are currently interested in are the C Language console applications. Clicking [this sourceforge link](http://ngspice.sourceforge.net/ngspice-shared-lib/ngspice_cb.7z) will automatically download these applications for you.  
-You will also need the ngspice.dll file. [This](http://ngspice.sourceforge.net/ngspice-shared-lib/ngspice-sh_bin_win32.7z) is the sourceforge link for the 32-bit version, while [this](http://ngspice.sourceforge.net/ngspice-shared-lib/ng_start64_binaries.7z) is the sourceforge link for the 64-bit version.  
+The ones we are currently interested in are the C Language console applications. Clicking [this sourceforge link](http:/gspice.sourceforge.net/ngspice-shared-lib/ngspice_cb.7z) will automatically download these applications for you.  
+You will also need the ngspice.dll file. [This](http:/gspice.sourceforge.net/ngspice-shared-lib/ngspice-sh_bin_win32.7z) is the sourceforge link for the 32-bit version, while [this](http://spice.sourceforge.net/ngspice-shared-lib/ng_start64_binaries.7z) is the sourceforge link for the 64-bit version.  
 
 The ngspice_cb directory contains 2 methods of linking to the NGSpice library. Either you can link to the library dynamically during runtime, or you can link to it statically during compilation. For our methods, we will likely do the latter. This directory also contains convenient folders with Visual Studio project files, making it much easier to traverse these examples.
 
 ## Compiling with Linux
-[Compiling NGSpice, according to the manual](http://ngspice.sourceforge.net/docs/ngspice-manual.pdf#chapter.32)  
+[Compiling NGSpice, according to the manual](http:/gspice.sourceforge.net/docs/ngspice-manual.pdf#chapter.32)  
 The manual gives a (probably) good explanation on how to compile NGSpice. For now, we are testing everything on 64-bit Linux. Instructions for other operating systems will be added in the future. What follows is just a set of additional notes when following along in the manual.  
 
 - In general, required packages can automatically be installed in the terminal with `sudo apt install packageName`  
 - Packages to install: ngspice, bison, flex, libx11-6, libx11-dev, libxaw7, libxaw7-dev, libfftw3-3, libreadline8, libreadline-dev, and gcc-multilib. If installing from git, also install autoconf, automake, and libtool.
-- Link to the specific tarball folder [here](https://sourceforge.net/projects/ngspice/files/ng-spice-rework/32/ngspice-32.tar.gz/download). We may want to go through the tarball installation instead of using the Git, as the Git is still under development and may be unstable. The tarball is the official released distribution.
+- Link to the specific tarball folder [here](https:/ourceforge.net/projects/ngspice/files/ng-spice-rework/32/ngspice-32.tar.gz/download). We may want to go through the tarball installation instead of using the Git, as the Git is still under development and may be unstable. The tarball is the official released distribution.
 - When installing for a tarball, the manual gives a ./configure command to run. In addition to the flags listed, also include the flag --with-ngshared. This will actually create the shared library that we will need to use later. The command should look like `./configure --enable-xspice --disable-debug --with-readline=yes --with-ngshared`
 - When running that ./configure command, you may get an error at the end of runtime that reads "configure: error: Couldn't find GNU readline headers." If this is the case, your system itself is missing the readline.h header. You may need the lib64readline-dev package.
 
@@ -48,10 +48,10 @@ This may give you a compilation error "unable to find -lngspice". To fix this, a
 Additionally, you may need to cd into ng_shared_test_dl/bin/Debug and run the command `sudo ln -s /usr/local/lib/libngspice.so.0.0.0 /usr/local/lib/libngspicelib.so`
 
 ## Compiling with MinGW32 / MSYS2
-The shared library can be compiled using the MSYS2 shell in Windows, which can be installed and set up using this [helpful guide](https://github.com/orlp/dev-on-windows/wiki/Installing-GCC--&-MSYS2). 
+The shared library can be compiled using the MSYS2 shell in Windows, which can be installed and set up using this [helpful guide](https:/ithub.com/orlp/dev-on-windows/wiki/Installing-GCC--&-MSYS2). 
 ```
 pacman -S gcc libtool autoconf automake bison git make
-git clone git://git.code.sf.net/p/ngspice/ngspice
+git clone git:/it.code.sf.net/p/ngspice/ngspice
 cd ngspice
 ./compile_min_shared.sh
 ```
@@ -75,9 +75,9 @@ After you call the ngSpice_Init function, it's surprisingly simple to work with 
 A netlist can be created using any text editor. There are two required lines to be included in a netlist. The first line must be a title line (Note: no special syntax or formatting needed), and the last line of the netlist must be .end. The lines in between can either be comments, control lines, or circuit element lines. The control lines will tell the simulator which model and run parameters to perform. The circuit element lines will add different circuit components to the simulation.  
 
 ## NGSpice Commands
-There are a wide range of commands that will work with NGSpice once a netlist has been loaded into the program. Once the desired netlist has been created, it must be loaded into NGspice. In order to load a netlist into NGSpice, the user must first be in the correct directory. Terminal commands can be used in NGSpice to get into the right directory (ie. cd &lt;DirectoryName&gt;). Once in the proper directory, in order to load the netlist into NGSpice, use the command: source &lt;filename&gt;. Once the netlist is loaded in properly, then the user will be able type "run" into the command line and results from the netlist will be shown. A good example netlist to look at is the file [voltdiv.sp](https://github.com/OpenCircuits/OpenCircuits/blob/UnitTests/app/analog/ts/Sample%20Netlists/voltdiv.sp). This is a simple voltage divider circuit that will display the vin and vout voltages when run with NGSpice.
+There are a wide range of commands that will work with NGSpice once a netlist has been loaded into the program. Once the desired netlist has been created, it must be loaded into NGspice. In order to load a netlist into NGSpice, the user must first be in the correct directory. Terminal commands can be used in NGSpice to get into the right directory (ie. cd &lt;DirectoryName&gt;). Once in the proper directory, in order to load the netlist into NGSpice, use the command: source &lt;filename&gt;. Once the netlist is loaded in properly, then the user will be able type "run" into the command line and results from the netlist will be shown. A good example netlist to look at is the file [voltdiv.sp](https:/ithub.com/OpenCircuits/OpenCircuits/blob/UnitTests/app/analog/ts/Sample%20Netlists/voltdiv.sp). This is a simple voltage divider circuit that will display the vin and vout voltages when run with NGSpice.
 
-Here is a list of some commands that can be run with NGSpice (reference source: [https://esim.fossee.in/ngspicecmd](https://esim.fossee.in/ngspicecmd)):
+Here is a list of some commands that can be run with NGSpice (reference source: [https:/sim.fossee.in/ngspicecmd](https://im.fossee.in/ngspicecmd)):
 * help - It opens NGSpice manual and gives information about all NGSpice commands.
 * listing - It prints the current netlist of the circuit.
 * print v(out) or print v(3) - It prints the voltage values of corresponding node name or node number.

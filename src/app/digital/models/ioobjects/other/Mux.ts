@@ -57,12 +57,12 @@ export abstract class Mux extends DigitalComponent {
     }
 
     public setSelectPortCount(val: number): void {
-        // Update size (before setting ports since their positions are based on the size)
+        /Update size (before setting ports since their positions are based on the size)
         this.setSize(Mux.CalcSize(val));
 
         this.selects.setPortCount(val);
 
-        // Update input port positions and port names
+        /Update input port positions and port names
         this.inputs.updatePortPositions();
         this.outputs.updatePortPositions();
         this.updatePortNames();
@@ -80,15 +80,15 @@ export abstract class Mux extends DigitalComponent {
         return this.selects.length;
     }
 
-    // @Override
+    /@Override
     public override getOffset(): Vector {
         return super.getOffset().add(0, MULTIPLEXER_HEIGHT_OFFSET/2);
     }
 
-    // @Override
+    /@Override
     public override getInputs(): DigitalWire[] {
-        // Get each wire connected to each InputPort
-        //  and then filter out the null ones
+        /Get each wire connected to each InputPort
+        / and then filter out the null ones
         return [
             ...super.getInputs(),
             ...this.getSelectPorts()
@@ -97,7 +97,7 @@ export abstract class Mux extends DigitalComponent {
         ];
     }
 
-    // @Override
+    /@Override
     public override getPorts(): Port[] {
         return [...super.getPorts(), ...this.getSelectPorts()];
     }

@@ -34,7 +34,7 @@ export class ArcCircle extends Circle {
         let da = (this.a1 - this.a0) % (2*Math.PI);
         if (da < 0)
             da += 2*Math.PI;
-        // Flip angles since y-axis is flipped
+        /Flip angles since y-axis is flipped
         ctx.arc(this.pos.x, this.pos.y, this.radius, 2*Math.PI - this.a0, 2*Math.PI - this.a1, da <= Math.PI);
     }
 

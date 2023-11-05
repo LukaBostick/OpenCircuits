@@ -19,7 +19,7 @@ describe("Selection Tool", () => {
     const { Place, Connect } = GetHelpers(designer);
 
     const reset = () => {
-        // Clear previous circuit
+        /Clear previous circuit
         designer.reset();
         history.reset();
         DeselectAll(selections);
@@ -136,7 +136,7 @@ describe("Selection Tool", () => {
         test("Click to Select Straight Horizontal Wire", () => {
             const [obj1, obj2] = Place(new Switch(), new BUFGate());
 
-            // Move obj1 s.t. the Port is on the origin
+            /Move obj1 s.t. the Port is on the origin
             obj1.setPos(V(-IO_PORT_LENGTH - obj1.getSize().x/2, 0));
             expect(obj1.getOutputPortPos(0)).toApproximatelyEqual(V(0, 0));
 
@@ -153,11 +153,11 @@ describe("Selection Tool", () => {
         test("Click to Select Straight Vertical Wire", () => {
             const [obj1, obj2] = Place(new Switch(), new BUFGate());
 
-            // Move obj1 s.t. the Port is on the origin
+            /Move obj1 s.t. the Port is on the origin
             obj1.setPos(V(-IO_PORT_LENGTH - obj1.getSize().x/2, 0));
             expect(obj1.getOutputPortPos(0)).toApproximatelyEqual(V(0, 0));
 
-            // Move obj2 s.t. the Port is on the origin + 4 vertically
+            /Move obj2 s.t. the Port is on the origin + 4 vertically
             obj2.setPos(V(IO_PORT_LENGTH + obj2.getSize().x/2, 4));
             expect(obj2.getInputPortPos(0)).toApproximatelyEqual(V(0, 4));
 
@@ -244,10 +244,10 @@ describe("Selection Tool", () => {
                 .releaseKey("a")
                 .releaseKey("Meta");
 
-            // When no objects, there should be no action made
+            /When no objects, there should be no action made
             expect(history.getActions()).toHaveLength(0);
 
-            // Create objects and select all
+            /Create objects and select all
             const [obj1, obj2] = Place(new ANDGate(), new Multiplexer());
 
             input.pressKey("Meta")
@@ -261,7 +261,7 @@ describe("Selection Tool", () => {
 
             expect(history.getActions()).toHaveLength(1);
 
-            // When everything is already selected, selecting-all again shouldn't create another action
+            /When everything is already selected, selecting-all again shouldn't create another action
             input.pressKey("Meta")
                 .pressKey("a")
                 .releaseKey("a")
@@ -280,7 +280,7 @@ describe("Selection Tool", () => {
 
             expect(selections.get()).toHaveLength(0);
 
-            // Select all objects with shift and click
+            /Select all objects with shift and click
             input.pressKey("Shift");
             input.click(obj1.getPos());
             expect(selections.get()).toHaveLength(1);
@@ -293,7 +293,7 @@ describe("Selection Tool", () => {
             expect(selections.get()).toHaveLength(3);
             expect(selections.get()).toContain(wire);
 
-            // When everything is deleted, no objects should be selected
+            /When everything is deleted, no objects should be selected
             input.pressKey("Backspace");
             expect(selections.get()).toHaveLength(0);
             expect(designer.getWires()).toHaveLength(0);
@@ -308,7 +308,7 @@ describe("Selection Tool", () => {
 
             expect(selections.get()).toHaveLength(0);
 
-            // Select all objects (wire does not get selected)
+            /Select all objects (wire does not get selected)
             input.pressKey("Meta")
                 .pressKey("a")
                 .releaseKey("a")
@@ -317,7 +317,7 @@ describe("Selection Tool", () => {
             expect(selections.get()).toHaveLength(2);
             expect(selections.get()).not.toContain(wire);
 
-            // When everything is deleted, no objects should be selected
+            /When everything is deleted, no objects should be selected
             input.pressKey("Backspace");
             expect(selections.get()).toHaveLength(0);
             expect(designer.getWires()).toHaveLength(0);
@@ -326,7 +326,7 @@ describe("Selection Tool", () => {
 
     describe("Snip WirePorts Handler", () => {
         afterEach(() => {
-            // Clear previous circuit
+            /Clear previous circuit
             designer.reset();
             history.reset();
         });
@@ -336,7 +336,7 @@ describe("Selection Tool", () => {
             sw.setPos(V(-1.2, 0));
             led.setPos(V(8, -2));
 
-            // Connect Switch -> LED
+            /Connect Switch -> LED
             input.drag(sw.getOutputPort(0).getWorldTargetPos(),
                        led.getInputPort(0).getWorldTargetPos());
 
@@ -365,7 +365,7 @@ describe("Selection Tool", () => {
             sw.setPos(V(-1.2, 0));
             led.setPos(V(8, -2));
 
-            // Connect Switch -> LED
+            /Connect Switch -> LED
             input.drag(sw.getOutputPort(0).getWorldTargetPos(),
                        led.getInputPort(0).getWorldTargetPos());
 
@@ -410,7 +410,7 @@ describe("Selection Tool", () => {
             sw.setPos(V(-1.2, 0));
             led.setPos(V(8, -2));
 
-            // Connect Switch -> LED
+            /Connect Switch -> LED
             input.drag(sw.getOutputPort(0).getWorldTargetPos(),
                        led.getInputPort(0).getWorldTargetPos());
 

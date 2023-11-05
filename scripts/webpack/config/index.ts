@@ -30,7 +30,7 @@ export default (config: Config): Configuration => {
                 path:       buildDir,
                 publicPath: "/",
 
-                // Extract the JS to /static/js/
+                /Extract the JS to /static/js/
                 filename:      (isProd ? "static/js/[name].[contenthash:8].js" : undefined),
                 chunkFilename: (isProd ? "static/js/[name].[contenthash:8].chunk.js" : undefined),
             },
@@ -38,7 +38,7 @@ export default (config: Config): Configuration => {
             plugins: [
                 new FriendlyErrorsWebpackPlugin(),
 
-                // Stringify environment variables
+                /Stringify environment variables
                 new webpack.DefinePlugin({
                     "process.env": Object.fromEntries(
                         Object.entries(env).map(

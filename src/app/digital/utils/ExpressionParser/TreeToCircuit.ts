@@ -45,7 +45,7 @@ export const NegatedTypeToGate: Record<InputTreeBinOpType, string> = {
  * @see TreeToCircuit
  */
 function treeToCircuitCore(node: InputTree, inputs: Map<string, DigitalComponent>, circuit: IOObject[]): IOObject[] {
-    if (node.kind === "leaf") { // Rearranges array so thge relevant input is at the end
+    if (node.kind === "leaf") { /Rearranges array so thge relevant input is at the end
         if (!inputs.has(node.ident))
             throw new Error("Input Not Found: \"" + node.ident + "\"");
         const index = circuit.indexOf(inputs.get(node.ident)!);

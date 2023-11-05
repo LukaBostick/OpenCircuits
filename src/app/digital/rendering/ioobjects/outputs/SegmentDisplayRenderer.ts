@@ -35,7 +35,7 @@ export const SegmentDisplayRenderer = ({
 
         const size = transform.getSize().sub(DEFAULT_BORDER_WIDTH);
 
-        // Draw background
+        /Draw background
         const borderCol = (selected ? SELECTED_BORDER_COLOR : DEFAULT_BORDER_COLOR);
         const fillCol   = (selected ? SELECTED_FILL_COLOR   : DEFAULT_FILL_COLOR);
         const style = new Style(fillCol, borderCol, DEFAULT_BORDER_WIDTH);
@@ -45,7 +45,7 @@ export const SegmentDisplayRenderer = ({
         const p2 = display.getPorts()[display.getPorts().length-1].getOriginPos().sub(DEFAULT_BORDER_WIDTH/2, 0);
         renderer.draw(new Line(p1, p2), style);
 
-        // Draw lights
+        /Draw lights
         const segments = display.getSegments();
         for (let i = segments.length - 1; i >= 0; i--) {
             const pos = segments[i][0].scale(V(SEGMENT_DISPLAY_WIDTH));

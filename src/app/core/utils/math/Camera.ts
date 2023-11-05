@@ -60,7 +60,7 @@ export class Camera extends BaseObject {
 
         this.dirty = false;
 
-        // Create matrix (w/ flipped y-axis)
+        /Create matrix (w/ flipped y-axis)
         this.mat = new Matrix2x3();
         this.mat.translate(this.getPos());
         this.mat.scale(this.getScale());
@@ -124,7 +124,7 @@ export class Camera extends BaseObject {
      * @param z The amount it is zooming.
      */
     public zoomTo(c: Vector, z: number): void {
-        // Calculate position to zoom in/out of
+        /Calculate position to zoom in/out of
         const pos0 = this.getWorldPos(c);
         this.zoomBy(z);
         const pos1 = this.getScreenPos(pos0);

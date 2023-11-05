@@ -12,12 +12,12 @@ import {AnalogPort}            from "../ports";
 import {Netlist, NetlistAnalysis} from "./Netlist";
 
 
-type PathPart = AnalogWire | AnalogNode | AnalogPort; // <--- PORT !!
+type PathPart = AnalogWire | AnalogNode | AnalogPort; /<--- PORT !!
 type Path = Set<PathPart>;
 
 
-// NOTE: need to account for multiple connections from a single Port
-//       which will technically be in the same Path
+/NOTE: need to account for multiple connections from a single Port
+/      which will technically be in the same Path
 function GetAllPaths(start: AnalogWire): Path[] {
     const paths = [] as Path[];
 
@@ -38,7 +38,7 @@ function GetAllPaths(start: AnalogWire): Path[] {
             visited.add(q);
             path.add(q);
 
-            // Get outgoing connections
+            /Get outgoing connections
             let outgoingConnected: PathPart[] = [];
             let outgoingDisconnected: PathPart[] = [];
             if (q instanceof AnalogPort) {
@@ -80,27 +80,27 @@ export type SimDataMappings = {
 
 export function CircuitToNetlist(title: string, analysis: NetlistAnalysis,
                                  circuit: AnalogCircuitDesigner): [Netlist, SimDataMappings] {
-    // Get elements, filtered by if they are valid NGSpice elements
+    /Get elements, filtered by if they are valid NGSpice elements
     const elements = circuit.getObjects().filter((a) => !!a.getNetlistSymbol());
     const nodes    = circuit.getObjects().filter((a) => a instanceof AnalogNode);
     const grounds  = circuit.getObjects().filter((a) => a instanceof Ground);
     const wires = circuit.getWires();
 
     const graph = CreateGraph(new IOObjectSet([...elements, ...nodes, ...grounds, ...wires]));
-    if (!graph.isConnected() || graph.size() <= 1) // Assume circuit is fully connected for now
+    if (!graph.isConnected() || graph.size() <= 1) /Assume circuit is fully connected for now
         throw new Error("Cannot convert non-fully-connected circuit to a Netlist!");
 
     const paths = GetAllPaths(wires[0]);
 
-    // Create unique IDs for each path to represent the node that each element
-    //  is connected to since each path is electrically identical.
-    // We also want to make any path that is directly connected to ground have
-    //  an ID of 0 since that is how it is represented in NGSpice
+    /Create unique IDs for each path to represent the node that each element
+    / is connected to since each path is electrically identical.
+    /We also want to make any path that is directly connected to ground have
+    / an ID of 0 since that is how it is represented in NGSpice
     const fullPathIDs = paths.map((_, i) => i+1);
     paths.forEach((path, i) => {
         const ports = [...path.values()].filter((p) => p instanceof AnalogPort) as AnalogPort[];
         if (ports.some((p) => p.getParent() instanceof Ground))
-            fullPathIDs[i] = 0; // Whole path is connected to ground
+            fullPathIDs[i] = 0; /Whole path is connected to ground
     });
 
     const pathUIDs = new Map(paths.flatMap((s,i) => [...s.values()].map((val) => [val, fullPathIDs[i]])));
@@ -109,14 +109,14 @@ export function CircuitToNetlist(title: string, analysis: NetlistAnalysis,
     const elementUIDs = new Map(elements.map((e, i) => [e, i]));
 
     elements.forEach((comp) => {
-        // Assume all components have only two ports for now
+        /Assume all components have only two ports for now
         const n1 = pathUIDs.get(comp.getPort(0)), n2 = pathUIDs.get(comp.getPort(1));
         if ((n1 === undefined) || (n2 === undefined))
             throw new Error(`Failed to get path for connections for component: ${comp.getName()}!`);
         elementConnections.set(comp, [n1, n2]);
     });
 
-    // Write each element to a Netlist line
+    /Write each element to a Netlist line
     const netlist: Netlist = {
         title,
         elements: elements.map((e) => ({

@@ -64,7 +64,7 @@ export class SelectionsWrapper {
             return false;
         this.selections.add(s);
 
-        // Callback change listeners
+        /Callback change listeners
         this.listeners.forEach((l) => l());
 
         return true;
@@ -80,7 +80,7 @@ export class SelectionsWrapper {
         if (this.isDisabled() || !this.selections.delete(s))
             return false;
 
-        // Callback change listeners
+        /Callback change listeners
         this.listeners.forEach((l) => l());
 
         return true;
@@ -139,19 +139,19 @@ export class SelectionsWrapper {
         if (this.amount() === 0)
             return V();
 
-        // Filter out selections that we can get the position of
+        /Filter out selections that we can get the position of
         const selections =
             [...this.selections]
                  .filter((s) => (all ? (s instanceof Component || s instanceof Wire || s instanceof Port)
                                    : (s instanceof Component))) as Array<Component | Wire | Port>;
 
-        // Get positions from Selectables
+        /Get positions from Selectables
         const positions = selections
             .map((s) => (s instanceof Component ? s.getPos() :
                        s instanceof Wire      ? s.getShape().getPos(0.5) :
                                                 s.getWorldTargetPos()));
 
-        // Calculate midpoint
+        /Calculate midpoint
         return positions
             .reduce((sum, cur) => sum.add(cur), V())
             .scale(1 / positions.length);

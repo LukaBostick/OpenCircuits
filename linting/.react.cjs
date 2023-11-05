@@ -41,7 +41,7 @@ module.exports = {
                 "react/no-unused-state": "error",
                 "react/no-will-update-set-state": "error",
                 "react/prefer-read-only-props": "error",
-                "react/prop-types": "off", // This just does what TypeScript already does (but worse)
+                "react/prop-types": "off", /This just does what TypeScript already does (but worse)
                 "react/self-closing-comp": ["error", {
                     "component": true,
                     "html": false,
@@ -54,7 +54,7 @@ module.exports = {
                     "noSortAlphabetically": false,
                     "ignoreCase": false,
                 }],
-                // Applies only to React classes which we do not use
+                /Applies only to React classes which we do not use
                 "react/static-property-placement": "off",
                 "react/style-prop-object": "error",
                 "react/void-dom-elements-no-children": "error",
@@ -86,7 +86,7 @@ module.exports = {
                 "react/jsx-no-useless-fragment": "error",
                 "react/jsx-one-expression-per-line": "off",
                 "react/jsx-pascal-case": "error",
-                "react/jsx-props-no-multi-spaces": "off", // It's useful to align things vertically
+                "react/jsx-props-no-multi-spaces": "off", /It's useful to align things vertically
                 "react/jsx-sort-props": ["error", {
                     "callbacksLast": true,
                     "shorthandFirst": false,
@@ -94,31 +94,31 @@ module.exports = {
                     "multiline": "last",
                     "ignoreCase": false,
                     "reservedFirst": ["key", "ref"],
-                    "noSortAlphabetically": true, // TODO: Maybe consider this as false
+                    "noSortAlphabetically": true, /TODO: Maybe consider this as false
                 }],
-                "react/jsx-space-before-closing": "off", // Deprecated rule
+                "react/jsx-space-before-closing": "off", /Deprecated rule
                 "react/jsx-tag-spacing": ["error", {
                     "closingSlash": "never",
                     "beforeSelfClosing": "always",
                     "afterOpening": "never",
                     "beforeClosing": "never",
                 }],
-                // TODO: would be good to have parens-new-line, but only for non-fragment children
-                //  i.e.
-                //  return (<>
-                //     {...}
-                //  </>);
-                //  would still be fine, but
-                //  return (<div>
-                //     {...}
-                //  </div>)
-                //  would need to be
-                //  return (
-                //      <div>
-                //         {...}
-                //      </div>
-                //  );
-                //  (this would require custom plugin)
+                /TODO: would be good to have parens-new-line, but only for non-fragment children
+                / i.e.
+                / return (<>
+                /    {...}
+                / </>);
+                / would still be fine, but
+                / return (<div>
+                /    {...}
+                / </div>)
+                / would need to be
+                / return (
+                /     <div>
+                /        {...}
+                /     </div>
+                / );
+                / (this would require custom plugin)
                 "react/jsx-wrap-multilines": ["error", {
                     "declaration": "parens",
                     "assignment": "parens",

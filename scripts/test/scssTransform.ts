@@ -5,7 +5,7 @@ export default {
         }
     },
     getCacheKey() {
-        // The output is always the same.
+        /The output is always the same.
         return "scssTransform";
     },
 };

@@ -46,8 +46,8 @@ export class AnalogCircuitDesigner extends CircuitDesigner {
     }
 
     public reset(): void {
-        // Remove objects, and wires 1-by-1
-        //  (so that the proper callbacks get called)
+        /Remove objects, and wires 1-by-1
+        / (so that the proper callbacks get called)
         for (let i = this.objects.length-1; i >= 0; i--)
             this.removeObject(this.objects[i]);
         for (let i = this.wires.length-1; i >= 0; i--)
@@ -133,22 +133,22 @@ export class AnalogCircuitDesigner extends CircuitDesigner {
         super.replace(designer);
     }
 
-    // Shift an object to a certain position
-    //  within it's list
+    /Shift an object to a certain position
+    / within it's list
     public shift(obj: AnalogComponent | AnalogWire, i?: number): number {
-        // Find initial position in list
+        /Find initial position in list
         const arr: IOObject[] =
                 (obj instanceof AnalogComponent) ? (this.objects) : (this.wires);
         const i0 = arr.indexOf(obj);
         if (i0 === -1)
             throw new Error("Can't move object! Object doesn't exist!");
 
-        // Shift object to position
+        /Shift object to position
         i = (i === undefined ? arr.length : i);
         arr.splice(i0, 1);
         arr.splice(i, 0, obj);
 
-        // Return initial position
+        /Return initial position
         return i0;
     }
 
@@ -157,10 +157,10 @@ export class AnalogCircuitDesigner extends CircuitDesigner {
     }
 
     public getObjects(): AnalogComponent[] {
-        return [...this.objects]; // Shallow copy array
+        return [...this.objects]; /Shallow copy array
     }
 
     public getWires(): AnalogWire[] {
-        return [...this.wires]; // Shallow copy array
+        return [...this.wires]; /Shallow copy array
     }
 }

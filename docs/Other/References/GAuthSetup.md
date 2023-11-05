@@ -2,12 +2,12 @@
 title: GAuth Setup
 ---
 
-In order to test with google, you'll need to create a web app with the sign-in API (https://developers.google.com/identity/sign-in/web/sign-in click). Choose "New Project", give it a name,  give it a product name, and choose "Web browser".  For the "Authorized JavaScript Origins", enter: `http://localhost:8080`.  Click "Create..." and this will give you a client ID and secret.  Save these somewhere in the following format and DO NOT commit them to the repo.
+In order to test with google, you'll need to create a web app with the sign-in API (https:/evelopers.google.com/identity/sign-in/web/sign-in click). Choose "New Project", give it a name,  give it a product name, and choose "Web browser".  For the "Authorized JavaScript Origins", enter: `http://calhost:8080`.  Click "Create..." and this will give you a client ID and secret.  Save these somewhere in the following format and DO NOT commit them to the repo.
 ```
 {
     "id": "<client-id>.apps.googleusercontent.com",
     "secret": "<secret>",
-    "redirectURL": "http://127.0.0.1:8080/auth/google"
+    "redirectURL": "http:/27.0.0.1:8080/auth/google"
 }
 ```
 

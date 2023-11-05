@@ -47,7 +47,7 @@ export function AnalogCreateN(pos: Vector, itemId: string, designer: AnalogCircu
 
         comps.push(comp);
 
-        // Place the components vertically
+        /Place the components vertically
         pos = pos.add(0, comp.getCullBox().getSize().y);
     }
 

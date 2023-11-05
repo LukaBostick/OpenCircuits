@@ -29,7 +29,7 @@ export const DuplicateHandler: EventHandler = ({
         const copies = CopyGroup(objs);
         const components = copies.getComponents();
 
-        // Copy the group and then select them and move them over slightly
+        /Copy the group and then select them and move them over slightly
         history.add(new GroupAction([
             AddGroup(designer, copies),
             DeselectAll(selections),

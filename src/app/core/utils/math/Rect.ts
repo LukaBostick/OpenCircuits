@@ -3,16 +3,16 @@ import {V, Vector} from "Vector";
 import {Clamp} from "./MathUtils";
 
 
-// Turn union of keys to union of records with that key
+/Turn union of keys to union of records with that key
 type KeysToRecord<K> = K extends string ? Record<K, number> : never;
 
-// Distribute each entry to an intersection of it with a new record of only new keys from `K`
+/Distribute each entry to an intersection of it with a new record of only new keys from `K`
 type ExpandTypes<K, T> = T extends Record<string, number> ? (T & KeysToRecord<Exclude<K, keyof T>>) : never;
 
 type XKeys = "left" | "right" | "cx" | "width";
 type YKeys = "top" | "bottom" | "cy" | "height";
 
-// A valid rectangle is the combination of any two of XKeys + any two of YKeys
+/A valid rectangle is the combination of any two of XKeys + any two of YKeys
 type XRectProps = ExpandTypes<XKeys, KeysToRecord<XKeys>>;
 type YRectProps = ExpandTypes<YKeys, KeysToRecord<YKeys>>;
 export type RectProps = (XRectProps) & (YRectProps);
@@ -36,7 +36,7 @@ export function Margin(left: number, right: number, bottom?: number, top?: numbe
 
 
 export class Rect {
-    private readonly yIsUp: number; // +1 or -1
+    private readonly yIsUp: number; /+1 or -1
 
     public left:   number;
     public right:  number;
@@ -52,7 +52,7 @@ export class Rect {
         this.bottom = center.y - this.yIsUp * size.y / 2;
     }
 
-    // Utility methods to update left/right/top/bottom as a 1-liner in set x/y/width/height
+    /Utility methods to update left/right/top/bottom as a 1-liner in set x/y/width/height
     private updateX(x: number, w: number) {
         this.left  = x - w / 2;
         this.right = x + w / 2;
@@ -96,7 +96,7 @@ export class Rect {
      * @param bounds The bounds to clamp this rectangle into.
      */
     public clamp(bounds: Rect) {
-        // Clamp to be as big as bounds if too big
+        /Clamp to be as big as bounds if too big
         if (this.width > bounds.width)
             this.width = bounds.width;
         if (this.height > bounds.height)
@@ -115,7 +115,7 @@ export class Rect {
 
     /**
      * Performs a rectangle subtraction (essentially a XOR), see
-     *   https://stackoverflow.com/questions/3765283/how-to-subtract-a-rectangle-from-another.
+     *   https:/tackoverflow.com/questions/3765283/how-to-subtract-a-rectangle-from-another.
      * This method works slightly differently by instead of calculating the minimum rectangles for the subtraction,
      *  calculates all possible 8 rectangles from each side and corner.
      *
@@ -161,31 +161,31 @@ export class Rect {
 
         const shift = dir.scale(amt);
 
-        // Make new rect in shifted directions
-        //  and clamped such that it's within the bounds and >= minSize
+        /Make new rect in shifted directions
+        / and clamped such that it's within the bounds and >= minSize
         return Rect.From({
-            left: (dir.x < 0 // Shift left
+            left: (dir.x < 0 /Shift left
                 ? Clamp(
                     this.left + shift.x,
                     bounds.left,
                     this.right - minSize.width,
                 ) : this.left),
 
-            right: (dir.x > 0 // Shift right
+            right: (dir.x > 0 /Shift right
                 ? Clamp(
                     this.right + shift.x,
                     this.left + minSize.width,
                     bounds.right,
                 ) : this.right),
 
-            bottom: (dir.y < 0 // Shift down
+            bottom: (dir.y < 0 /Shift down
                 ? Clamp(
                     this.bottom + shift.y,
                     bounds.bottom,
                     this.top - minSize.height,
                 ) : this.bottom),
 
-            top: (dir.y > 0 // Shift up
+            top: (dir.y > 0 /Shift up
                 ? Clamp(
                     this.top + shift.y,
                     this.bottom + minSize.height,
@@ -269,7 +269,7 @@ export class Rect {
         type BoundKeys = "min" | "max" | "center" | "size";
         type BoundProps = ExpandTypes<BoundKeys, KeysToRecord<BoundKeys>>;
 
-        // Generalized "center" and "size" methods to apply for both x/y directions
+        /Generalized "center" and "size" methods to apply for both x/y directions
         const GetCenter = (b: BoundProps) => (
             "center" in b
                 ? b.center
@@ -289,7 +289,7 @@ export class Rect {
                     : (2 * (b.max - b.center)))
         );
 
-        // Get "bounds" for each direction
+        /Get "bounds" for each direction
         const boundsX = {
             ...("left"  in bounds ? { min: bounds.left } : {}),
             ...("right" in bounds ? { max: bounds.right } : {}),

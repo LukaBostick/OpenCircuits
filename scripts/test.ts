@@ -14,7 +14,7 @@ import getDirs    from "./utils/getDirs.js";
 import type {Arguments} from "yargs";
 
 
-// Do this as the first thing so that any code reading it knows the right env.
+/Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = "test";
 process.env.NODE_ENV = "test";
 
@@ -39,7 +39,7 @@ async function LaunchTest(args: Arguments, dir: string, flags: Record<string, un
 }
 
 
-// CLI
+/CLI
 (async () => {
     const argv = await yargs(process.argv.slice(2))
         .boolean("ci")
@@ -51,10 +51,10 @@ async function LaunchTest(args: Arguments, dir: string, flags: Record<string, un
 
     let dirs = argv._;
     if (ci && dirs.length === 0) {
-        // Run tests on all directories
+        /Run tests on all directories
         dirs = Object.keys(DIR_MAP);
     } else if (dirs.length === 0) {
-        // Prompt user for directory
+        /Prompt user for directory
         const { value } = await prompts({
             type:    "select",
             name:    "value",
@@ -79,11 +79,11 @@ async function LaunchTest(args: Arguments, dir: string, flags: Record<string, un
 
     const results = [];
 
-    // Launch test in each directory
+    /Launch test in each directory
     for (const dir of dirs) {
         const info = DIR_MAP[dir];
 
-        // Ensure all environment variables are read
+        /Ensure all environment variables are read
         getEnv(`${dir}`, "");
 
         console.log();
@@ -106,6 +106,6 @@ async function LaunchTest(args: Arguments, dir: string, flags: Record<string, un
     }
 
     const pass = results.every((r) => r.success);
-    if (!pass && ci) // Exit with failure
+    if (!pass && ci) /Exit with failure
         throw new Error("Not all tests passed!");
 })();

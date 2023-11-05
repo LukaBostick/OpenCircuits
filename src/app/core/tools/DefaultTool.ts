@@ -13,9 +13,9 @@ export class DefaultTool {
 
     public onActivate(_event: Event, _info: CircuitInfo): void {}
 
-    // Method called when this tool is currently active and an event occurs
+    /Method called when this tool is currently active and an event occurs
     public onEvent(event: Event, info: CircuitInfo): boolean {
-        // Zoom
+        /Zoom
         if (event.type === "zoom") {
             info.camera.zoomTo(event.pos, event.factor);
             return true;

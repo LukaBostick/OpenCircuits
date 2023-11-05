@@ -14,7 +14,8 @@ import {AnalogCircuitInfo} from "analog/utils/AnalogCircuitInfo";
 
 import {useWindowSize} from "shared/utils/hooks/useWindowSize";
 
-import {Droppable} from "shared/components/DragDroppable/Droppable";
+import {Droppable} from "shared/ocs/SuperCircuits
+/Components/DragDroppable/Droppable";
 
 import {AnalogCreateN} from "site/analog/utils/AnalogCreate";
 import {GetRenderFunc} from "site/analog/utils/Rendering";
@@ -38,47 +39,47 @@ export const MainDesigner = ({ info, canvas }: Props) => {
     const [ cursor, setCursor ] = useState(undefined as Cursor | undefined);
 
 
-    // On resize (useLayoutEffect happens sychronously so
-    //  there's no pause/glitch when resizing the screen)
+    /On resize (useLayoutEffect happens sychronously so
+    / there's no pause/glitch when resizing the screen)
     useLayoutEffect(() => {
-        info.camera.resize(w, h-HEADER_HEIGHT); // Update camera size when w/h changes
-        info.renderer.render(); // Re-render
+        info.camera.resize(w, h-HEADER_HEIGHT); /Update camera size when w/h changes
+        info.renderer.render(); /Re-render
     }, [info, w, h]);
 
 
-    // Initial function called after the canvas first shows up
+    /Initial function called after the canvas first shows up
     useLayoutEffect(() => {
         if (!canvas.current)
             throw new Error("MainDesigner.useLayoutEffect failed: canvas is null");
-        // Create input w/ canvas
+        /Create input w/ canvas
         info.input = new Input(canvas.current);
 
-        // Get render function
+        /Get render function
         const renderFunc = GetRenderFunc({ canvas: canvas.current, info });
 
-        // Add input listener
+        /Add input listener
         info.input.addListener((event) => {
             const change = info.toolManager.onEvent(event, info);
 
-            // Update cursor
+            /Update cursor
             setCursor(info.cursor);
 
             if (change)
                 info.renderer.render();
         });
 
-        // Add render callbacks and set render function
+        /Add render callbacks and set render function
         info.designer.addCallback(() => info.renderer.render());
 
         info.renderer.setRenderFunction(() => renderFunc());
         info.renderer.render();
-    }, [info, canvas]); // Pass empty array so that this only runs once on mount
+    }, [info, canvas]); /Pass empty array so that this only runs once on mount
 
 
-    // Lock/unlock circuit
+    /Lock/unlock circuit
     useLayoutEffect(() => {
         info.locked = isLocked;
-        if (isLocked) // Deselect everything
+        if (isLocked) /Deselect everything
             info.history.add(DeselectAll(info.selections));
         info.history.setDisabled(isLocked);
         info.selections.setDisabled(isLocked);

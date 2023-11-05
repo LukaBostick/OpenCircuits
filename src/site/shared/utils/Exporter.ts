@@ -9,7 +9,7 @@
  * @param type    The type of file to save, i.e. "circuit", "png", "jpeg", etc.
  */
 export function SaveFile(dataURL: string, name: string, type: string): void {
-    // Get name
+    /Get name
     if (name.replace(/\s+/g, "") === "")
         name = "Untitled Circuit";
     const filename = `${name}.${type}`;

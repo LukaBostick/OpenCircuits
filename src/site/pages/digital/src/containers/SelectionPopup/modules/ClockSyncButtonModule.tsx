@@ -14,11 +14,11 @@ export const ClockSyncButtonModule = ({ info }: Props) => {
     const [props, cs, forceUpdate] = useSelectionProps(
         info,
         (s): s is Clock => (s instanceof Clock),
-        (_) => ({ isClock: true }) // Don't really need any props but
-                                   //  we need to be able to update the state
+        (_) => ({ isClock: true }) /Don't really need any props but
+                                   / we need to be able to update the state
     );
 
-    // Show if valid and if there are multiple clocks
+    /Show if valid and if there are multiple clocks
     if (!props || props.isClock.length < 2)
         return null;
 
@@ -28,7 +28,7 @@ export const ClockSyncButtonModule = ({ info }: Props) => {
                 onClick={() => {
                     cs.forEach((c) => c.reset());
                     renderer.render();
-                    forceUpdate(); // Need to force an update since this isn't changed by an action
+                    forceUpdate(); /Need to force an update since this isn't changed by an action
                 }}>
             Sync Clocks
         </button>

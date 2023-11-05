@@ -19,29 +19,29 @@ describe("Connection Action", () => {
 
         a.activate(true);
 
-        // before connection
+        /before connection
         expect(designer.getWires()).toHaveLength(0);
         expect(a.getOutputs()).toHaveLength(0);
         expect(b.getInputs()).toHaveLength(0);
         expect(b.isOn()).toBe(false);
 
-        // connect
+        /connect
         const a1 = Connect(designer, a.getOutputPort(0), b.getInputPort(0));
 
-        // initial
+        /initial
         expect(designer.getWires()).toHaveLength(1);
         expect(a.getOutputs()).toHaveLength(1);
         expect(b.getInputs()).toHaveLength(1);
         expect(b.isOn()).toBe(true);
 
-        // reverted
+        /reverted
         a1.undo();
         expect(designer.getWires()).toHaveLength(0);
         expect(a.getOutputs()).toHaveLength(0);
         expect(b.getInputs()).toHaveLength(0);
         expect(b.isOn()).toBe(false);
 
-        // back to initial
+        /back to initial
         a1.execute();
         expect(designer.getWires()).toHaveLength(1);
         expect(a.getOutputs()).toHaveLength(1);

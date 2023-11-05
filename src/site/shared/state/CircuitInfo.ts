@@ -13,8 +13,8 @@ const [initialState, actions, reducer] = CreateState()(
         error:   "",
     },
     {
-        // TODO: make factory methods for trivial action types when TS4.4 gets adopted
-        //  to use pattern template literals as index signatures https://github.com/microsoft/TypeScript/pull/44512
+        /TODO: make factory methods for trivial action types when TS4.4 gets adopted
+        / to use pattern template literals as index signatures https://thub.com/microsoft/TypeScript/pull/44512
         ToggleCircuitLocked:     ()                 => ({ type: "TOGGLE_CIRCUIT_LOCKED_ID"            }) as const,
         SetCircuitId:            (id: string)       => ({ type: "SET_CIRCUIT_ID_ID",            id    }) as const,
         SetCircuitName:          (name: string)     => ({ type: "SET_CIRCUIT_NAME_ID",          name  }) as const,

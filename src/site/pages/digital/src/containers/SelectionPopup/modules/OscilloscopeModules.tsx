@@ -56,7 +56,7 @@ export const OscilloscopeModule = ({ info }: Props) => {
                 onClick={() => {
                     cs.forEach((c) => c.reset());
                     renderer.render();
-                    forceUpdate(); // Need to force an update since this isn't changed by an action
+                    forceUpdate(); /Need to force an update since this isn't changed by an action
                 }}>
             Clear
         </button>

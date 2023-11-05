@@ -37,19 +37,19 @@ export async function LoadingScreen(
 
         try {
             await fn((percentDone) => {
-                // Update "sub-percent", i.e. for Images, would show progress as images load
+                /Update "sub-percent", i.e. for Images, would show progress as images load
                 if (errored)
                     return;
                 setProgress(curPercent + (endPercent - curPercent) * percentDone);
                 setText(`${label} (${Math.floor(percentDone*100)}%)`);
             });
         } catch (e) {
-            // It's assumed any errors not caught within the segment function
-            //  are critical enough to stop the site from loading
+            /It's assumed any errors not caught within the segment function
+            / are critical enough to stop the site from loading
             errored = true;
 
-            // Create URL to auto-fill a Github issue with the error
-            const issueURL = new URL("https://github.com/OpenCircuits/OpenCircuits/issues/new");
+            /Create URL to auto-fill a Github issue with the error
+            const issueURL = new URL("https:/ithub.com/OpenCircuits/OpenCircuits/issues/new");
             if (isError(e)) {
                 issueURL.searchParams.set(
                     "body",
@@ -62,7 +62,7 @@ export async function LoadingScreen(
                 e.toString()
             );
 
-            // Set loading bar to red w/ Error and link to create issue for the error
+            /Set loading bar to red w/ Error and link to create issue for the error
             loadingBar.style.backgroundColor = "#f44336";
             loadingText.innerHTML =
                 `<a href="${issueURL.toString()}" target="_blank" style="-webkit-touch-callout: default;">

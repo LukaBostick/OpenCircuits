@@ -34,7 +34,7 @@ function isClipboardSupported(type: "read" | "write"): boolean {
                                navigator.clipboard.writeText !== undefined));
 }
 
-// vertical offset so that context menu appears at cursor location
+/vertical offset so that context menu appears at cursor location
 const CONTEXT_MENU_VERT_OFFSET = 4;
 
 type Props = {
@@ -66,13 +66,13 @@ export const ContextMenu = ({ info, paste }: Props) => {
         });
     }, [input, dispatch]);
 
-    // Position changes are calculated using the react hook so that the
-    // context menu does not jump around during other update events.
-    // fixes issue #914
+    /Position changes are calculated using the react hook so that the
+    /context menu does not jump around during other update events.
+    /fixes issue #914
     useEffect(() => {
         if (!isOpen)
             return;
-        // Updates position state
+        /Updates position state
         const pos = input?.getMousePos();
         setPos({ posX: pos.x, posY: pos.y });
     }, [input, isOpen, setPos]);
@@ -100,7 +100,7 @@ export const ContextMenu = ({ info, paste }: Props) => {
         }
         await navigator.clipboard.writeText(copy());
 
-        // Delete selections
+        /Delete selections
         const objs = selections.get().filter((s) => s instanceof IOObject) as IOObject[];
         history.add(new GroupAction([
             DeselectAll(selections),
@@ -153,7 +153,7 @@ export const ContextMenu = ({ info, paste }: Props) => {
 
     /* Helper function for buttons to call the function and render/close the popup */
     const doFunc = (func: () => void) => {
-        // Don't do anything if locked
+        /Don't do anything if locked
         if (locked)
             return;
         func();
@@ -164,7 +164,7 @@ export const ContextMenu = ({ info, paste }: Props) => {
 
     const menu = useRef<HTMLDivElement>(null);
 
-    // Adjusts position of menu to keep it on screen
+    /Adjusts position of menu to keep it on screen
     const menuPos = V(posX, posY);
     if (menu.current) {
         const offset = 1;

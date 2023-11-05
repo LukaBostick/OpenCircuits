@@ -3,7 +3,7 @@ import {CircuitDesigner, Wire} from "core/models";
 import {Action} from "../Action";
 
 
-// TODO: delete this once model refactor is done
+/TODO: delete this once model refactor is done
 class AddWireAction implements Action {
     private readonly designer: CircuitDesigner;
     private readonly wire: Wire;

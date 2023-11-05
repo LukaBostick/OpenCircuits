@@ -81,7 +81,7 @@ export class SegmentDisplay extends DigitalComponent {
     public getSegments(): Array<[Vector, SegmentType]> {
         const segments = Segments[`${this.getSegmentCount()}`];
 
-        // Turns the array into an array of Vectors and SegmentTypes
+        /Turns the array into an array of Vectors and SegmentTypes
         return segments.map((value: [number[], SegmentType]) =>
             [V(value[0][0], value[0][1]), value[1]]
         );

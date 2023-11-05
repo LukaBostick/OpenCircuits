@@ -27,7 +27,7 @@ describe("Tool Manager", () => {
     }
 
     afterEach(() => {
-        // Reset circuit
+        /Reset circuit
         designer.reset();
     })
 
@@ -40,22 +40,22 @@ describe("Tool Manager", () => {
 
         expect(tool()).toBe(defaultTool);
 
-        // Click Switch
+        /Click Switch
         input.click(V(0, 0));
         expect(tool()).toBe(defaultTool);
 
-        // Wire Switch -> LED
+        /Wire Switch -> LED
         input.click(sPortPos);
         expect(tool()).toBe(WiringTool);
         input.click(lPortPos);
         expect(tool()).toBe(defaultTool);
 
-        // Select All
+        /Select All
         input.drag(V(-100, -100),
                    V(300, 300));
         expect(tool()).toBe(defaultTool);
 
-        // Rotate All
+        /Rotate All
         const midpoint = s.getPos().add(l.getPos()).scale(0.5);
         input.moveTo(midpoint)
                 .move(V(-ROTATION_CIRCLE_RADIUS, 0))
@@ -83,13 +83,13 @@ describe("Tool Manager", () => {
 
         expect(tool()).toBe(defaultTool);
 
-        // Wire ANDGate -> LED
+        /Wire ANDGate -> LED
         input.click(aOutPos);
         expect(tool()).toBe(WiringTool);
         input.click(lPortPos);
         expect(tool()).toBe(defaultTool);
 
-        // Wire Switches -> ANDGate
+        /Wire Switches -> ANDGate
         input.click(s1PortPos);
         expect(tool()).toBe(WiringTool);
         input.click(aIn1Pos);
@@ -100,7 +100,7 @@ describe("Tool Manager", () => {
         input.click(aIn2Pos);
         expect(tool()).toBe(defaultTool);
 
-        // Turn on Switches
+        /Turn on Switches
         input.click(s1.getPos());
         expect(tool()).toBe(defaultTool);
         input.click(s2.getPos());

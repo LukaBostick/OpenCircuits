@@ -56,8 +56,8 @@ const defaultOptions: ExprToCirGeneratorOptions = {
 
 function addLabels(inputMap: Map<string, DigitalComponent>, action: GroupAction,
     circuitComponents: DigitalComponent[], designer: DigitalCircuitDesigner) {
-    // Add labels next to inputs
-    // TODO: This will have to be redone when there is a better organization algorithm
+    /Add labels next to inputs
+    /TODO: This will have to be redone when there is a better organization algorithm
     for (const [name, component] of inputMap) {
         const newLabel = Create<Label>("Label");
         const pos = component.getPos().sub(newLabel.getSize().x + component.getSize().x, 0);
@@ -71,12 +71,12 @@ function addLabels(inputMap: Map<string, DigitalComponent>, action: GroupAction,
 function setClocks(inputMap: Map<string, Clock>, action: GroupAction, options: ExprToCirGeneratorOptions,
     o: DigitalComponent, designer: DigitalCircuitDesigner) {
     let inIndex = 0;
-    // Set clock frequencies
+    /Set clock frequencies
     for (const clock of inputMap.values()) {
         action.add(SetProperty(clock, "delay", 500 * (2 ** inIndex)));
         inIndex = Math.min(inIndex + 1, 4);
     }
-    // Connect clocks to oscilloscope
+    /Connect clocks to oscilloscope
     if (options.connectClocksToOscope) {
         inIndex = 0;
         action.add(SetInputPortCount(o, Math.min(inputMap.size + 1, 6)));
@@ -104,7 +104,7 @@ function handleIC(action: GroupAction, circuitComponents: DigitalComponent[], ex
     action.add(Select(info.selections, ic));
 }
 
-// TODO: Refactor this to a GroupAction factory once there is a better (and Action) algorithm to arrange the circuit
+/TODO: Refactor this to a GroupAction factory once there is a better (and Action) algorithm to arrange the circuit
 export function Generate(info: DigitalCircuitInfo, expression: string,
                          userOptions: Partial<ExprToCirGeneratorOptions>) {
     const options = { ...defaultOptions, ...userOptions };
@@ -122,40 +122,40 @@ export function Generate(info: DigitalCircuitInfo, expression: string,
         action.add(SetName(inputMap.get(token.name)!, token.name));
     }
 
-    // Create output LED
+    /Create output LED
     const o = Create<DigitalComponent>(options.output);
     action.add(SetName(o, "Output"));
 
-    // Get the generated circuit
+    /Get the generated circuit
     let circuit = new DigitalObjectSet();
     try {
         circuit = ExpressionToCircuit(inputMap, expression, o, ops);
     } catch (e) {
-        action.undo(); // Undo any actions that have been done so far
+        action.undo(); /Undo any actions that have been done so far
         throw e;
     }
 
     action.add(AddGroup(info.designer, circuit));
 
-    // Get the location of the top left corner of the screen, the 1.5 acts as a modifier
-    //  so that the components are not literally in the uppermost leftmost corner
-    // const startPos = info.camera.getPos().sub(info.camera.getCenter().scale(info.camera.getZoom()/1.5));
-    // TODO: Replace with a better (action based) way of organizing a circuit
+    /Get the location of the top left corner of the screen, the 1.5 acts as a modifier
+    / so that the components are not literally in the uppermost leftmost corner
+    /const startPos = info.camera.getPos().sub(info.camera.getCenter().scale(info.camera.getZoom()/1.5));
+    /TODO: Replace with a better (action based) way of organizing a circuit
     OrganizeMinDepth(circuit, info.camera.getPos());
 
     const circuitComponents = circuit.getComponents();
 
-    // Add labels if necessary
+    /Add labels if necessary
     if (options.label)
         addLabels(inputMap, action, circuitComponents, info.designer);
 
-    // Set clock frequencies, also connect to oscilloscope if that option is set
+    /Set clock frequencies, also connect to oscilloscope if that option is set
     if (options.input === "Clock")
         setClocks(inputMap as Map<string, Clock>, action, options, o, info.designer);
 
-    if (options.isIC) // If creating as IC
+    if (options.isIC) /If creating as IC
         handleIC(action, circuitComponents, expression, info);
-    else // If placing directly
+    else /If placing directly
         action.add(SelectGroup(info.selections, circuitComponents));
 
     info.history.add(action);

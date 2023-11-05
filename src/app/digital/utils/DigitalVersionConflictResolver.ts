@@ -41,22 +41,22 @@ export function VersionConflictResolver(fileContents: string | Circuit): string 
 
         Object.values(contents).forEach(({ type, data }) => {
             const transformation = transformations[type] ?? [];
-            // Replace positioners
+            /Replace positioners
             transformation.forEach(({ ports, positioner: type }) => {
-                // Get PortSet from (inputs/outputs) of Component
+                /Get PortSet from (inputs/outputs) of Component
                 const set = contents[(data[ports] as Ref)["ref"]];
-                const positionerRef = (set.data["positioner"] as Ref)["ref"]; // Get positioner ID from PortSet
+                const positionerRef = (set.data["positioner"] as Ref)["ref"]; /Get positioner ID from PortSet
 
                 contents[positionerRef] = { "type": type, "data": {} };
             });
         });
     }
 
-    // Migrate from old property system to new "props" property system
-    //  https://github.com/OpenCircuits/OpenCircuits/pull/1087
+    /Migrate from old property system to new "props" property system
+    / https://thub.com/OpenCircuits/OpenCircuits/pull/1087
     if (v < 3.1) {
-        // Represents the transformation of property keys by object type,
-        //  `newKey` is assumed to be part of the object's `props` struct
+        /Represents the transformation of property keys by object type,
+        / `newKey` is assumed to be part of the object's `props` struct
         const transformations = {
             "Clock": [
                 { prevKey: "frequency", newKey: "delay",  defaultVal: 0 },
@@ -89,7 +89,7 @@ export function VersionConflictResolver(fileContents: string | Circuit): string 
             if (transformation.length === 0)
                 return;
 
-            // Add props with all the new properties
+            /Add props with all the new properties
             data["props"] = {
                 type: "",
                 data: Object.fromEntries(
@@ -99,14 +99,14 @@ export function VersionConflictResolver(fileContents: string | Circuit): string 
                 ),
             };
 
-            // Remove old properties
+            /Remove old properties
             transformation.forEach(({ prevKey }) => (delete data[prevKey]));
         });
     }
 
-    // Migrate transforms to Prop system and camera attributes to Props
+    /Migrate transforms to Prop system and camera attributes to Props
     if (v < 3.2) {
-        // Utility func to get vector data through a ref or directly
+        /Utility func to get vector data through a ref or directly
         const getEntry = (parent: SerializationEntry, key: string) => {
             const v = parent["data"][key];
             if (!v)
@@ -133,7 +133,7 @@ export function VersionConflictResolver(fileContents: string | Circuit): string 
             delete entry.data["transform"];
         });
 
-        // Get camera info
+        /Get camera info
         const cam = getEntry(contents["0"], "camera")!;
         const pos = getEntry(cam, "pos");
         const zoom = cam["data"]["zoom"] as number;
@@ -153,7 +153,7 @@ export function VersionConflictPostResolver(version: string, data: ContentsData)
     const designer = data.designer as DigitalCircuitDesigner;
 
     if (v < 3) {
-        // Fix issue where old ICs don't have the properly separated 'collections' so need to sort them out
+        /Fix issue where old ICs don't have the properly separated 'collections' so need to sort them out
         designer.getObjects().filter((o) => o instanceof IC).forEach((ic: IC) => {
             const INPUT_WHITELIST = [Switch, Button];
 
@@ -163,7 +163,7 @@ export function VersionConflictPostResolver(version: string, data: ContentsData)
 
             const wrongInputs = inputs.filter((i) => !INPUT_WHITELIST.some((type) => i instanceof type));
             wrongInputs.forEach((i) => {
-                // Remove from `inputs` and push into `others`
+                /Remove from `inputs` and push into `others`
                 inputs.splice(inputs.indexOf(i), 1);
                 others.push(i);
             });

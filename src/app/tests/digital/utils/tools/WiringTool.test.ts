@@ -13,7 +13,7 @@ describe("Wiring Tool", () => {
     const { Place } = GetHelpers(designer);
 
     afterEach(() => {
-        // Clear circuit
+        /Clear circuit
         designer.reset();
     });
 

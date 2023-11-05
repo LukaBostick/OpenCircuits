@@ -19,27 +19,27 @@ describe("IC Action", () => {
         const [a, b] = Place(new Switch(), new LED());
         Connect(a, b);
 
-        // before ic creation
+        /before ic creation
         expect(designer.getWires()).toHaveLength(1);
         expect(designer.getObjects()).toHaveLength(2);
         expect(designer.getICData()).toHaveLength(0);
 
-        // connect
+        /connect
         const data = ICData.Create([a, b])!;
         const ac = AddICData(data, designer);
 
-        // initial
+        /initial
         expect(designer.getWires()).toHaveLength(1);
         expect(designer.getObjects()).toHaveLength(2);
         expect(designer.getICData()).toHaveLength(1);
 
-        // reverted
+        /reverted
         ac.undo();
         expect(designer.getWires()).toHaveLength(1);
         expect(designer.getObjects()).toHaveLength(2);
         expect(designer.getICData()).toHaveLength(0);
 
-        // back to initial
+        /back to initial
         ac.execute();
         expect(designer.getWires()).toHaveLength(1);
         expect(designer.getObjects()).toHaveLength(2);

@@ -25,11 +25,11 @@ export function Clamp(x: number, min: number, max: number): number {
  *      the rectangle from 'pos'.
  */
 export function GetNearestPointOnRect(bl: Vector, tr: Vector, pos: Vector): Vector {
-    // First clamp point to within the rectangle
+    /First clamp point to within the rectangle
     pos = Vector.Clamp(pos, bl, tr);
 
-    // Then find corresponding edge when point is inside the rectangle
-    // (see https://www.desmos.com/calculator/edhaqiwgf1)
+    /Then find corresponding edge when point is inside the rectangle
+    /(see https://w.desmos.com/calculator/edhaqiwgf1)
     const DR = Math.abs(tr.x - pos.x), DL = Math.abs(bl.x - pos.x);
     const DT = Math.abs(tr.y - pos.y), DB = Math.abs(bl.y - pos.y);
     const DX = Math.min(DR, DL), DY = Math.min(DT, DB);
@@ -53,11 +53,11 @@ export function GetNearestPointOnRect(bl: Vector, tr: Vector, pos: Vector): Vect
  *            false otherwise.
  */
 export function RectContains(transform: Transform, pos: Vector): boolean {
-    const tr = transform.getSize().scale(0.5);  // top right corner
-    const bl = transform.getSize().scale(-0.5); // bottom left corner
+    const tr = transform.getSize().scale(0.5);  /top right corner
+    const bl = transform.getSize().scale(-0.5); /bottom left corner
     const p  = transform.toLocalSpace(pos);
 
-    // Check if point is within bounds
+    /Check if point is within bounds
     return (p.x > bl.x &&
             p.y > bl.y &&
             p.x < tr.x &&
@@ -99,7 +99,7 @@ export function CircleContains(pos1: Vector, r: number, pos2: Vector): boolean {
  *    false otherwise.
  */
 export function TransformContains(A: Transform, B: Transform): boolean {
-    // If both transforms are non-rotated
+    /If both transforms are non-rotated
     if (Math.abs(A.getAngle()) <= 1e-5 && Math.abs(B.getAngle()) <= 1e-5) {
         const aPos = A.getPos(), aSize = A.getSize();
         const bPos = B.getPos(), bSize = B.getSize();
@@ -107,27 +107,27 @@ export function TransformContains(A: Transform, B: Transform): boolean {
                (Math.abs(aPos.y - bPos.y) * 2 < (aSize.y + bSize.y));
     }
 
-    // Quick check circle-circle intersection
+    /Quick check circle-circle intersection
     const r1 = A.getRadius();
     const r2 = B.getRadius();
-    const sr = r1 + r2;                       // Sum of radius
-    const dpos = A.getPos().sub(B.getPos());  // Delta position
+    const sr = r1 + r2;                       /Sum of radius
+    const dpos = A.getPos().sub(B.getPos());  /Delta position
     if (dpos.dot(dpos) > sr*sr)
         return false;
 
     /* Perform SAT */
 
-    // Get corners in local space of transform A
+    /Get corners in local space of transform A
     const a = A.getLocalCorners();
 
-    // Transform B's corners into A local space
+    /Transform B's corners into A local space
     const bworld = B.getCorners();
     const b = [];
     for (let i = 0; i < 4; i++) {
         b[i] = A.toLocalSpace(bworld[i]);
 
-        // Offsets x and y to fix perfect lines
-        // where b[0] = b[1] & b[2] = b[3]
+        /Offsets x and y to fix perfect lines
+        /where b[0] = b[1] & b[2] = b[3]
         b[i].x += 0.0001*i;
         b[i].y += 0.0001*i;
     }
@@ -136,9 +136,9 @@ export function TransformContains(A: Transform, B: Transform): boolean {
 
     let minA, maxA, minB, maxB;
 
-    // SAT w/ x-axis
-    // Axis is <1, 0>
-    // So dot product is just the x-value
+    /SAT w/ x-axis
+    /Axis is <1, 0>
+    /So dot product is just the x-value
     minA = maxA = corners[0].x;
     minB = maxB = corners[4].x;
     for (let j = 1; j < 4; j++) {
@@ -150,9 +150,9 @@ export function TransformContains(A: Transform, B: Transform): boolean {
     if (maxA < minB || maxB < minA)
         return false;
 
-    // SAT w/ y-axis
-    // Axis is <1, 0>
-    // So dot product is just the y-value
+    /SAT w/ y-axis
+    /Axis is <1, 0>
+    /So dot product is just the y-value
     minA = maxA = corners[0].y;
     minB = maxB = corners[4].y;
     for (let j = 1; j < 4; j++) {
@@ -164,7 +164,7 @@ export function TransformContains(A: Transform, B: Transform): boolean {
     if (maxA < minB || maxB < minA)
         return false;
 
-    // SAT w/ other two axes
+    /SAT w/ other two axes
     const normals = [b[3].sub(b[0]), b[3].sub(b[2])];
     for (const normal of normals) {
         minA = Infinity, maxA = -Infinity;
@@ -254,7 +254,7 @@ export function BezierContains(curve: BezierCurve, pos: Vector): boolean {
     const df1 = (t: number, x: number, y: number): number => curve.getPos(t).sub(x, y).scale(2)
                                                                   .dot(curve.getDerivative(t));
 
-    // Newton's method to find parameter for when slope is undefined AKA denominator function = 0
+    /Newton's method to find parameter for when slope is undefined AKA denominator function = 0
     const t1 = FindRoots(WIRE_NEWTON_ITERATIONS, t0, pos.x, pos.y, f1, df1);
     if (curve.getPos(t1).sub(pos).len2() < WIRE_DIST_THRESHOLD2)
         return true;
@@ -263,7 +263,7 @@ export function BezierContains(curve: BezierCurve, pos: Vector): boolean {
     const df2 = (t: number, x: number, y: number): number => curve.getDerivative(t).dot(curve.getDerivative(t))
                                                              + curve.getPos(t).sub(x, y).dot(curve.get2ndDerivative(t));
 
-    // Newton's method to find parameter for when slope is 0 AKA numerator function = 0
+    /Newton's method to find parameter for when slope is 0 AKA numerator function = 0
     const t2 = FindRoots(WIRE_NEWTON_ITERATIONS, t0, pos.x, pos.y, f2, df2);
 
     return (curve.getPos(t2).sub(pos).len2() < WIRE_DIST_THRESHOLD2);

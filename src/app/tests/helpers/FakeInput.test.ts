@@ -31,7 +31,7 @@ describe("Fake Input", () => {
     });
 
     test("Move To", () => {
-        // Move to is in world position
+        /Move to is in world position
         input.moveTo(V(1, 1), 5);
 
         expect(steps).toBe(5);
@@ -41,13 +41,13 @@ describe("Fake Input", () => {
     test("Move", () => {
         input.moveTo(V(0, 0), 5);
 
-        // Move is in world position
+        /Move is in world position
         input.move(V(1, 1), 5);
 
         expect(steps).toBe(10);
         expect(input.getMousePos().sub(camera.getCenter())).toApproximatelyEqual(V(50, -50));
 
-        // Move is in world position
+        /Move is in world position
         input.move(V(2, 3), 5);
 
         expect(steps).toBe(15);

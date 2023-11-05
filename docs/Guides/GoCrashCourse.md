@@ -14,23 +14,23 @@ There is a canonical Go style, which can be enforced by running `go fmt .`.  Thi
 
 Here's the anatomy of some simple Go code:
 ```go
-// Functions can return multiple values, but they are NOT tuples.  They must be unpacked by the caller.
-// It is idiomatic for functions that fail to return an "error" type that is nil on success
+/ Functions can return multiple values, but they are NOT tuples.  They must be unpacked by the caller.
+/ It is idiomatic for functions that fail to return an "error" type that is nil on success
 func foo(param int, param1 *float64) (int, error) {
-    // Variables can be declared explicitly
+    / Variables can be declared explicitly
     var tmp int
     tmp = param
 
-    // Or declaired inline and type "int" is inferred
+    / Or declaired inline and type "int" is inferred
     tmp1 := param
 
-    // There are pointers, like in C, and they can be nil
+    / There are pointers, like in C, and they can be nil
     if param1 != nil {
-        // Casts are function-style casts
+        / Casts are function-style casts
         *param1 = float64(param)
     } else {
-        // There are no exceptions, only errors, which can be
-        //  cumbersome, but won't surprise you like exceptions
+        / There are no exceptions, only errors, which can be
+        /  cumbersome, but won't surprise you like exceptions
         return 0, errors.New("param1 was nil")
     }
 
@@ -57,26 +57,26 @@ type AuthenticationMethod interface {
 
 In a sub-package, we can define a trivial authentication method that requires no password (NoAuth, used for development).
 ```go
-// This is out private data type; it has no data since it doesn't do anything,
-//  but it serves as a type to satisfy the 'AuthenticationMethod' interface
+/ This is out private data type; it has no data since it doesn't do anything,
+/  but it serves as a type to satisfy the 'AuthenticationMethod' interface
 type noLoginAuthenticationProvider struct {
 }
 
-// At this point, the Go compiler checks that '*noLoginAuthenticationProvider' satisfies the
-//  'AuthenticationMethod' interface implicitly.  This is an idiomatic constructor for an object
+/ At this point, the Go compiler checks that '*noLoginAuthenticationProvider' satisfies the
+/  'AuthenticationMethod' interface implicitly.  This is an idiomatic constructor for an object
 func NewNoAuth() AuthenticationMethod {
-    // We can create a pointer to an object with '&' and the Go garbage collector will
-    //  make sure it will only get released when its no longer being used
+    / We can create a pointer to an object with '&' and the Go garbage collector will
+    /  make sure it will only get released when its no longer being used
     return &noLoginAuthenticationProvider{}
 }
 
-// This is the syntax for defining member functions on a struct.  You can only define member functions
-//  in the package that defines the type.
+/This is the syntax for defining member functions on a struct.  You can only define member functions
+/ in the package that defines the type.
 func (nl noLoginAuthenticationProvider) RegisterHandlers(engine *gin.Engine) {
 }
 
-// You can also define member functions on a pointer to the struct.  This allows you to modify the
-//  data in the struct in the function.  Without the pointer, the struct would be copied before calling.
+/You can also define member functions on a pointer to the struct.  This allows you to modify the
+/ data in the struct in the function.  Without the pointer, the struct would be copied before calling.
 func (nl *noLoginAuthenticationProvider) RegisterHandlers(engine *gin.Engine) {
 }
 
@@ -95,14 +95,14 @@ This might sound complicated, but its pretty simple in practice.  It means inste
 
 Here's an example from the API router.  We use it to inject authentication into routes:
 ```go
-// This is a function that converts normal routes into authenticated routes.  The '_' is a name placeholder for when the name is not needed
+/This is a function that converts normal routes into authenticated routes.  The '_' is a name placeholder for when the name is not needed
 func authenticatedHandler(manager auth.AuthenticationManager, handler func(_ *gin.Context, _ model.UserId)) func(c *gin.Context) {
-        // We can return anonymous functions (lambdas) that can bind/refer to named variables in the enclosing scope
+        /We can return anonymous functions (lambdas) that can bind/refer to named variables in the enclosing scope
 	return func(c *gin.Context) {
-                // Use the injected/bound "manager" object to find out the authentication method
+                /Use the injected/bound "manager" object to find out the authentication method
 		am := manager.MatchToken(c.GetHeader("authType"))
 		if am == nil {
-                        // Go has anonymous structs, but the type inference isn't that great
+                        /Go has anonymous structs, but the type inference isn't that great
 			c.JSON(http.StatusBadRequest, struct {
 				message string
 			}{
@@ -110,25 +110,25 @@ func authenticatedHandler(manager auth.AuthenticationManager, handler func(_ *gi
 			})
 			return
 		}
-                // Use the authentication methdo to extract an identity from the reported user's Id
+                /Use the authentication methdo to extract an identity from the reported user's Id
 		id, err := (*am).ExtractIdentity(c.GetHeader("authId"))
 		if err != nil {
 			c.JSON(http.StatusBadRequest, nil)
 			return
 		}
-                // After we retrieved the identity 'id', call the function to handle the request with the user's identity
+                /After we retrieved the identity 'id', call the function to handle the request with the user's identity
 		handler(c, id)
 	}
 }
 
-// A trivial handler for testing authenticated routes
+/A trivial handler for testing authenticated routes
 func pingHandler(c *gin.Context, userId model.UserId) {
 	c.JSON(http.StatusOK, fmt.Sprintf("Thank you for pinging: %s", userId))
 }
 
-// Registers the route in 'gin'
+/Registers the route in 'gin'
 func RegisterRoutes(router *gin.Engine, manager auth.AuthenticationManager) {
-    // This is 'Function Dependency Injection'.
+    /This is 'Function Dependency Injection'.
 	router.GET("/api/ping", authenticatedHandler(manager, pingHandler))
 }
 ```

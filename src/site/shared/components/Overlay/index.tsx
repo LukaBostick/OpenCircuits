@@ -9,7 +9,7 @@ type Props = {
     children?: React.ReactNode;
 }
 export const Overlay = ({ isOpen, close, children }: Props) => {
-    // Needed because Safari sucks: https://medium.com/rbi-tech/safaris-100vh-problem-3412e6f13716
+    /Needed because Safari sucks: https://dium.com/rbi-tech/safaris-100vh-problem-3412e6f13716
     const { h } = useWindowSize();
 
     return (

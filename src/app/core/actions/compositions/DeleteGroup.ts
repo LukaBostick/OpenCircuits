@@ -23,28 +23,28 @@ export function DeleteGroup(designer: CircuitDesigner, objects: IOObject[]): Gro
     const components = allDeletions.getComponents();
     const wires = allDeletions.getWires();
 
-    // go through all wires and get their input component
+    /go through all wires and get their input component
     const inputComps = wires.map((wire) => wire.getP1Component());
 
-    // filter out duplicates and non-nodes
+    /filter out duplicates and non-nodes
     const inputNodes = inputComps.filter((comp) => isNode(comp)) as Node[];
     const inputNodesNoDuplicates = new Set(inputNodes.filter((node) => !objects.includes(node)));
 
-    // loop through each input component and check if all of its output wires are in `wires`
+    /loop through each input component and check if all of its output wires are in `wires`
     for (const inputComp of inputNodesNoDuplicates) {
         const found = inputComp.getP2().getWires().every((wire) => wires.includes(wire));
 
-        // if so then we want to also delete it
-        // call CreateDeleteGroupAction again but with the current node includes in `objects`
-        // and then just return early
-        if (found) // TODO: Make this better cause it's pretty inefficient
+        /if so then we want to also delete it
+        /call CreateDeleteGroupAction again but with the current node includes in `objects`
+        /and then just return early
+        if (found) /TODO: Make this better cause it's pretty inefficient
             return DeleteGroup(designer, [inputComp as IOObject, ...objects]);
     }
 
-    // Create actions for deletion of wires then objects
-    //  order matters because the components need to be added
-    //  (when undoing) before the wires can be connected
-    // eslint-disable-next-line space-in-parens
+    /Create actions for deletion of wires then objects
+    / order matters because the components need to be added
+    / (when undoing) before the wires can be connected
+    /eslint-disable-next-line space-in-parens
     action.add(     wires.map((wire) => Disconnect(designer, wire)));
     action.add(components.map((obj)  =>     Delete(designer, obj)));
 

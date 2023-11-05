@@ -20,10 +20,10 @@ type Props<D extends unknown[]> = ButtonProps & {
 export const Draggable = <D extends unknown[]>({ children, data, dragDir, onDragChange, ...other }: Props<D>) => {
     const [isDragging, setIsDragging] = useState(false);
 
-    // State to keep track of when to "start" dragging for a mobile touch-down
-    //  This is necessary so that if a user tries to scroll on a Draggable
-    //   they have a tiny amount of time before it starts dragging so they can swipe
-    //  Also keep track of starting position so we can determine direction of movement
+    /State to keep track of when to "start" dragging for a mobile touch-down
+    / This is necessary so that if a user tries to scroll on a Draggable
+    /  they have a tiny amount of time before it starts dragging so they can swipe
+    / Also keep track of starting position so we can determine direction of movement
     const [state, setState] = useState({
         startTapTime: 0, startX: 0, startY: 0, touchDown: false,
     });
@@ -35,19 +35,19 @@ export const Draggable = <D extends unknown[]>({ children, data, dragDir, onDrag
         setIsDragging(false);
     }, [isDragging, data, setIsDragging]);
 
-    // Cancel placing when pressing escape
+    /Cancel placing when pressing escape
     useWindowKeyDownEvent("Escape", () => {
         setIsDragging(false);
     });
 
-    // Also cancel on Right Click
+    /Also cancel on Right Click
     useDocEvent("mouseup", (ev) => {
         if (isDragging && ev.button === RIGHT_MOUSE_BUTTON) {
             setIsDragging(false);
             ev.preventDefault();
             ev.stopPropagation();
         }
-        // v-- Essentially increases priority for this event so we can cancel the context menu
+        /v-- Essentially increases priority for this event so we can cancel the context menu
     }, [isDragging], true);
 
     useEffect(() => {
@@ -69,8 +69,8 @@ export const Draggable = <D extends unknown[]>({ children, data, dragDir, onDrag
                 if (!state.touchDown)
                     setIsDragging(true);
             }}
-            // This is necessary for mobile such that when the user is trying to
-            //  swipe to scroll, it doesn't drag too quickly
+            /This is necessary for mobile such that when the user is trying to
+            / swipe to scroll, it doesn't drag too quickly
             onTouchStart={(e) => {
                 const { clientX: x, clientY: y } = e.touches.item(0);
                 setState({ startTapTime: Date.now(), startX: x, startY: y, touchDown: true });
@@ -81,15 +81,15 @@ export const Draggable = <D extends unknown[]>({ children, data, dragDir, onDrag
                 const vx = (x - startX), vy = (y - startY);
                 const dt = (Date.now() - startTapTime);
 
-                // Wait to check for a drag
+                /Wait to check for a drag
                 if (touchDown && dt > DRAG_TIME) {
-                    // Make sure it's being dragged in correct direction
+                    /Make sure it's being dragged in correct direction
                     const dir = (Math.abs(vy) > Math.abs(vx)) ? "vertical" : "horizontal";
-                    if (dir === dragDir) { // Check for correct direction
+                    if (dir === dragDir) { /Check for correct direction
                         setIsDragging(true);
                         setState({ startTapTime: 0, startX: 0, startY: 0, touchDown: false });
                     } else if (dt > 4*DRAG_TIME) {
-                        // If waited *too* long, then we're probably not dragging, move on
+                        /If waited *too* long, then we're probably not dragging, move on
                         setState({ startTapTime: 0, startX: 0, startY: 0, touchDown: false });
                     }
                 }

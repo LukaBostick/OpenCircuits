@@ -7,10 +7,10 @@ module.exports = {
     "plugins": [
         "jsx-a11y",
     ],
-    // Disabled since we want warnings, not errors
-    // "extends": [
-    //     "plugin:jsx-a11y/strict",
-    // ],
+    /Disabled since we want warnings, not errors
+    /"extends": [
+    /    "plugin:jsx-a11y/strict",
+    /],
     "rules": {
         "jsx-a11y/autocomplete-valid": ["warn", {
             "inputComponents": ["InputField"],
@@ -82,13 +82,13 @@ module.exports = {
         "jsx-a11y/no-distracting-elements": "warn",
         "jsx-a11y/no-interactive-element-to-noninteractive-role": "warn",
         "jsx-a11y/no-noninteractive-element-interactions": [
-            // TODO: Enable one day when we really dive into making the site accessible
+            /TODO: Enable one day when we really dive into making the site accessible
             "off",
-            // {
-            //     "body": ["onwarning", "onLoad"],
-            //     "iframe": ["onwarning", "onLoad"],
-            //     "img": ["onwarning", "onLoad"],
-            // },
+            /{
+            /    "body": ["onwarning", "onLoad"],
+            /    "iframe": ["onwarning", "onLoad"],
+            /    "img": ["onwarning", "onLoad"],
+            /},
         ],
         "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
         "jsx-a11y/no-noninteractive-tabindex": "warn",

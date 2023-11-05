@@ -15,12 +15,12 @@ type Props = {
 }
 export const AnalogItemNav = ({ info }: Props) => {
     const getImgSrc = useCallback((c: Component) => {
-        // Get ID
+        /Get ID
         const id = GetIDFor(c);
         if (!id)
             throw new Error(`AnalogItemNav: Can't find ID for component ${c.getName()}`);
 
-        // Get path within config of ItemNav icon
+        /Get path within config of ItemNav icon
         const section = itemNavConfig.sections.find((s) => (s.items.find((i) => i.id === id)));
         const item = section?.items.find((i) => (i.id === id));
 

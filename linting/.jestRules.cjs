@@ -7,7 +7,7 @@ module.exports = {
         {
             "files": ["**.test.ts?(x)"],
             "rules": {
-                "jest/unbound-method": "error", // Typescript version disabled in .ts.js
+                "jest/unbound-method": "error", /Typescript version disabled in .ts.js
             }
         },
     ],
@@ -29,7 +29,7 @@ module.exports = {
         "jest/prefer-expect-resolves": "error",
         "jest/prefer-hooks-on-top": "error",
         "jest/prefer-strict-equal": "off",
-        // Disabled jest/valid-title because it is not type aware
+        /Disabled jest/valid-title because it is not type aware
         "jest/valid-title": "off",
 
         "jest-formatting/padding-around-test-blocks": "off",

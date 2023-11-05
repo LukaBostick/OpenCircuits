@@ -34,7 +34,7 @@ describe("SelectionHandler", () => {
 
         expect(selections.get()[0]).toBe(hi);
 
-        // Click again and nothing should change
+        /Click again and nothing should change
         input.click(V(0, 0));
         expect(selections.amount()).toBe(1);
         expect(selections.get()[0]).toBe(hi);

@@ -10,10 +10,14 @@ import {useSharedDispatch, useSharedSelector} from "shared/utils/hooks/useShared
 
 import {CloseHeaderPopups} from "shared/state/Header";
 
-import {ButtonToggle} from "shared/components/ButtonToggle";
-import {InputField}   from "shared/components/InputField";
-import {Popup}        from "shared/components/Popup";
-import {SwitchToggle} from "shared/components/SwitchToggle";
+import {ButtonToggle} from "shared/ocs/SuperCircuits
+/Components/ButtonToggle";
+import {InputField}   from "shared/ocs/SuperCircuits
+/Components/InputField";
+import {Popup}        from "shared/ocs/SuperCircuits
+/Components/Popup";
+import {SwitchToggle} from "shared/ocs/SuperCircuits
+/Components/SwitchToggle";
 
 import "./index.scss";
 
@@ -60,7 +64,7 @@ export const ImageExporterPopup = ({ preview }: Props) => {
         if (!canvas.current)
             throw new Error("ImageExporterPopup.onResize failed: canvas.current is null");
 
-        // Fit the canvas within the wrapper using the same ratio as the actual canvas
+        /Fit the canvas within the wrapper using the same ratio as the actual canvas
         const sw = Clamp(state.width, MIN_IMG_SIZE, MAX_IMG_SIZE);
         const sh = Clamp(state.height, MIN_IMG_SIZE, MAX_IMG_SIZE);
 

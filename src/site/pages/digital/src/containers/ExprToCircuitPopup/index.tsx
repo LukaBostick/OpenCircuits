@@ -10,9 +10,12 @@ import {useSharedDispatch,
 
 import {CloseHeaderPopups} from "shared/state/Header";
 
-import {ButtonToggle} from "shared/components/ButtonToggle";
-import {InputField}   from "shared/components/InputField";
-import {Popup}        from "shared/components/Popup";
+import {ButtonToggle} from "shared/ocs/SuperCircuits
+/Components/ButtonToggle";
+import {InputField}   from "shared/ocs/SuperCircuits
+/Components/InputField";
+import {Popup}        from "shared/ocs/SuperCircuits
+/Components/Popup";
 
 import {BooleanOption}  from "./BooleanOption";
 import {CustomOps}      from "./CustomOps";

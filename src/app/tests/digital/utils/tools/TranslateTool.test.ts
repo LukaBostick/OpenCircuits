@@ -12,7 +12,7 @@ describe("Translate Tool", () => {
 
     describe("Single Object", () => {
         afterEach(() => {
-            // Clear previous circuit
+            /Clear previous circuit
             designer.reset();
         });
 
@@ -66,12 +66,12 @@ describe("Translate Tool", () => {
             expect(obj.getPos()).toEqual(V(0, 100));
         });
 
-        // TODO: Test with holding shift key
+        /TODO: Test with holding shift key
     });
 
     describe("Multiple Objects", () => {
         afterEach(() => {
-            // Clear previous circuit
+            /Clear previous circuit
             designer.reset();
         });
 
@@ -79,10 +79,10 @@ describe("Translate Tool", () => {
             const [obj1, obj2] = Place(new Switch(), new ANDGate());
             obj1.setPos(V(100, 0));
 
-            // Select objects
+            /Select objects
             input.drag(V(-200, -200), V(200, 200));
 
-            // Drag the objects
+            /Drag the objects
             input.drag(V(0, 0), V(100, 0));
 
             expect(obj1.getPos()).toEqual(V(200, 0));
@@ -93,41 +93,41 @@ describe("Translate Tool", () => {
             const [sw, gate] = Place(new Switch(), new ANDGate());
             gate.setPos(V(100, 0));
 
-            // Select ANDGate
+            /Select ANDGate
             input.click(gate.getPos());
 
-            // Drag the Switch
+            /Drag the Switch
             input.drag(V(0, 0), V(-100, 0));
 
             expect(sw.getPos()).toEqual(V(-100, 0));
             expect(gate.getPos()).toEqual(V(100, 0));
         });
 
-        // TODO: Test with holding shift key
+        /TODO: Test with holding shift key
     });
 
     describe("Cloning", () => {
         afterEach(() => {
-            // Clear previous circuit
+            /Clear previous circuit
             designer.reset();
         });
 
         test("Clone Switch -> LED with Snapped WirePort", () => {
             const [sw, led, port] = Place(new Switch(), new LED(), new DigitalNode());
 
-            // Set port to vertically align with Switch and horizontally with LED
+            /Set port to vertically align with Switch and horizontally with LED
             port.setPos(V(sw.getOutputPortPos(0).x, led.getInputPortPos(0).y));
             sw.setPos(V(0, 0));
             led.setPos(V(100, 0));
 
-            // Connect to Port and set as straight
+            /Connect to Port and set as straight
             Connect(sw,   port)[0].getWire().setIsStraight(true);
             Connect(port,  led)[0].getWire().setIsStraight(true);
 
-            // Select all
+            /Select all
             input.drag(V(-200, -200), V(200, 200));
 
-            // Start Translating then Clone
+            /Start Translating then Clone
             input.press(V(0, 0))
                     .moveTo(V(-100, 0))
                     .pressKey(" ")
@@ -135,14 +135,14 @@ describe("Translate Tool", () => {
                     .moveTo(V(100, 0))
                     .release();
 
-            // Expect initial objects to stay relatively the same
+            /Expect initial objects to stay relatively the same
             expect(sw.getPos()).toEqual(V(100, 0));
             expect(led.getPos()).toEqual(V(200, 0));
             expect(port.getPos()).toEqual(V(sw.getOutputPortPos(0).x, led.getInputPortPos(0).y));
             expect(port.getInputs()[0].isStraight()).toBe(true);
             expect(port.getOutputs()[0].isStraight()).toBe(true);
 
-            // Find duplicated objects
+            /Find duplicated objects
             const objs = designer.getObjects();
             expect(objs).toHaveLength(6);
 
@@ -155,7 +155,7 @@ describe("Translate Tool", () => {
             const led2  = objs.find((o) => o instanceof LED) as LED;
             const port2 = objs.find((o) => o instanceof DigitalNode) as DigitalNode;
 
-            // Expect duplicated objects to be the same
+            /Expect duplicated objects to be the same
             expect(sw2.getPos()).toEqual(V(-100, 0));
             expect(led2.getPos()).toEqual(V(0, 0));
             expect(port2.getPos()).toEqual(V(sw2.getOutputPortPos(0).x, led2.getInputPortPos(0).y));
@@ -163,6 +163,6 @@ describe("Translate Tool", () => {
             expect(port2.getOutputs()[0].isStraight()).toBe(true);
         });
 
-        // TODO: More cloning tests
+        /TODO: More cloning tests
     });
 });

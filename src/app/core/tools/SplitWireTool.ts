@@ -31,13 +31,13 @@ export const SplitWireTool: Tool = (() => {
         shouldActivate(event: Event, { locked, input, currentlyPressedObject }: CircuitInfo): boolean {
             if (locked)
                 return false;
-            // Activate if the user dragged over a wire with 1 touch/finger
+            /Activate if the user dragged over a wire with 1 touch/finger
             return (event.type === "mousedrag" && event.button === LEFT_MOUSE_BUTTON &&
                     input.getTouchCount() === 1 &&
                     currentlyPressedObject instanceof Wire);
         },
         shouldDeactivate(event: Event, {}: CircuitInfo): boolean {
-            // Deactivate if stopped dragging by releasing mouse
+            /Deactivate if stopped dragging by releasing mouse
             return (event.type === "mouseup");
         },
 
@@ -47,20 +47,20 @@ export const SplitWireTool: Tool = (() => {
 
             const wire = currentlyPressedObject as Wire;
 
-            // Create wireport and set its position to the mouse
+            /Create wireport and set its position to the mouse
             port = wire.split();
             port.setPos(camera.getWorldPos(input.getMouseDownPos()));
 
             action = new GroupAction([], "Split Wire Tool");
 
-            // Set wireport as selection and being pressed
+            /Set wireport as selection and being pressed
             action.add(DeselectAll(selections));
             action.add(Select(selections, port));
             action.add(SplitWire(designer, wire, port));
 
             info.currentlyPressedObject = port;
 
-            // Set initial position
+            /Set initial position
             initialPosition = camera.getWorldPos(input.getMouseDownPos());
         },
         onDeactivate({}: Event, { history }: CircuitInfo): void {
@@ -79,12 +79,12 @@ export const SplitWireTool: Tool = (() => {
 
             const dPos = worldMousePos.sub(worldMouseDownPos);
 
-            // Calculate new position and get snapped positions if shift is held
+            /Calculate new position and get snapped positions if shift is held
             const curPosition = initialPosition.add(dPos);
             const newPosition = input.isShiftKeyDown() ? snap(curPosition) : curPosition;
 
-            // Execute translate but don't save to group
-            //  action since we do that onDeactivate
+            /Execute translate but don't save to group
+            / action since we do that onDeactivate
             Translate([port], [newPosition]);
 
             return true;

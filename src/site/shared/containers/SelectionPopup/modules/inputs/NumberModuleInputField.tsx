@@ -1,6 +1,7 @@
 import {Clamp} from "math/MathUtils";
 
-import {NumberInputField} from "shared/components/InputField";
+import {NumberInputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 import {SharedModuleInputFieldProps, useBaseModule} from "./ModuleInputField";
 
@@ -31,7 +32,7 @@ export const NumberModuleInputField = ({
 
         onSubmit,
         getCustomDisplayVal: (([v]) =>
-            // Default to rounding to two digits
+            /Default to rounding to two digits
             (getCustomDisplayVal ?? ((v) => parseFloat(v.toFixed(2))))(v)
         ),
     });

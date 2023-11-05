@@ -8,16 +8,16 @@ export const useMousePos = () => {
     });
 
     useEffect(() => {
-        // const getTouchPositions = (touches: TouchList): Vector[] => {
-        //     return Array.from(touches).map((t) => V(t.pageX, t.pageY));
-        // };
+        /const getTouchPositions = (touches: TouchList): Vector[] => {
+        /    return Array.from(touches).map((t) => V(t.pageX, t.pageY));
+        /};
 
         const mouseListener = (ev: PointerEvent) => {
             setPos({ x: ev.pageX, y: ev.pageY });
         }
-        // const touchListener = (ev: TouchEvent) => {
-        //     setPos(CalculateMidpoint(getTouchPositions(ev.touches)));
-        // }
+        /const touchListener = (ev: TouchEvent) => {
+        /    setPos(CalculateMidpoint(getTouchPositions(ev.touches)));
+        /}
 
         window.addEventListener("pointermove", mouseListener);
         return () => {

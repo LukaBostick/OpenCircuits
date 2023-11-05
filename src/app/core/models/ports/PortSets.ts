@@ -13,8 +13,8 @@ import {Positioner} from "./positioners/Positioner";
 export class PortSet<T extends Port> {
     private readonly parent: Component;
 
-    // Keep track of old ports so that we can keep references intact
-    //  for wire connections and such when we change the port count
+    /Keep track of old ports so that we can keep references intact
+    / for wire connections and such when we change the port count
     private readonly oldPorts: T[];
     private readonly currentPorts: T[];
 
@@ -49,21 +49,21 @@ export class PortSet<T extends Port> {
      * @param newVal The new number of ports.
      */
     public setPortCount(newVal: number): void {
-        // no need to update if value is already
-        //  the current amount
+        /no need to update if value is already
+        / the current amount
         if (newVal === this.currentPorts.length)
             return;
 
-        // set count (will auto-clamp)
+        /set count (will auto-clamp)
         this.count.setValue(newVal);
 
-        // add or remove ports to meet target
+        /add or remove ports to meet target
         while (this.currentPorts.length > this.count.getValue())
             this.oldPorts.push(this.currentPorts.pop()!);
         while (this.currentPorts.length < this.count.getValue())
             this.currentPorts.push(this.oldPorts.pop() || new this.type(this.parent));
 
-        // update positions
+        /update positions
         this.positioner.updatePortPositions(this.currentPorts);
     }
 

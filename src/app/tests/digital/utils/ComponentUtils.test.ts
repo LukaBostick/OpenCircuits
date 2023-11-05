@@ -178,7 +178,7 @@ describe("GetAllOutgoingPaths", () => {
 });
 
 describe("CreateGraph", () => {
-    // @TODO
+    /@TODO
 });
 
 describe("CopyGroup", () => {
@@ -203,21 +203,21 @@ describe("CopyGroup", () => {
         const components = copy.getComponents() as DigitalComponent[];
         const wires = copy.getWires() as DigitalWire[];
 
-        // Expect same amount of componnets/wires
+        /Expect same amount of componnets/wires
         expect(components).toHaveLength(types.length);
         expect(wires).toHaveLength(connections.length);
 
-        // Expect each component to be instance of the given types
+        /Expect each component to be instance of the given types
         components.forEach((c, i) => {
             expect(c).toBeInstanceOf(types[i]);
         });
 
-        // Expect each copied component not .toBe the same as the original
+        /Expect each copied component not .toBe the same as the original
         components.forEach((c, i) => {
             expect(c).not.toBe(originals[i]);
         });
 
-        // Expect each connection to be connected to the correct original component
+        /Expect each connection to be connected to the correct original component
         components.forEach((c, i) => {
             const o = originals[i];
             expect(c.numOutputs()).toBe(o.numOutputs());
@@ -292,7 +292,7 @@ describe("CopyGroup", () => {
         const objs = [new Switch(), new LED()];
         Connect(objs[0], 0, objs[1], 0);
 
-        const copy = CopyGroup([objs[0]]); // Just copy switch
+        const copy = CopyGroup([objs[0]]); /Just copy switch
 
         expect(copy.getWires()).toHaveLength(0);
         expect(copy.getComponents()).toHaveLength(1);

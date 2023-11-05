@@ -26,7 +26,7 @@ export const DeleteHandler: EventHandler = ({
 
     getResponse: ({ history, designer, selections }: CircuitInfo) => {
         const objs = selections.get().filter((o) => o instanceof IOObject) as IOObject[];
-        // Deselect the objects then remove them
+        /Deselect the objects then remove them
         history.add(new GroupAction([
             DeselectAll(selections),
             DeleteGroup(designer, objs),

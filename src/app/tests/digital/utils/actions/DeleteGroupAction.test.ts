@@ -52,7 +52,7 @@ describe("Delete Group Action", () => {
         expect(designer.getObjects()).toContain(a);
     });
 
-    // See https://github.com/OpenCircuits/OpenCircuits/issues/902
+    /See https://thub.com/OpenCircuits/OpenCircuits/issues/902
     describe("Deletion of parts of Tree", () => {
         function PlaceTree() {
             const leds = new Array(8).fill(0).map((_) => Place(new LED())[0]);
@@ -60,19 +60,19 @@ describe("Delete Group Action", () => {
             const nodes1 = new Array(2).fill(0).map((_) => Place(new DigitalNode())[0]);
             const [sw] = Place(new Switch());
 
-            // Place LEDs vertically from [5, -5] to [5, +5]
+            /Place LEDs vertically from [5, -5] to [5, +5]
             linspace(-5, 5, 8).forEach((y, i) => leds[i].setPos(V(5, y)));
 
-            // Place nodes in between the LEDs
+            /Place nodes in between the LEDs
             nodes2.forEach((n, i) => n.setPos(V(3, (leds[2*i].getPos().y +   leds[2*i+1].getPos().y)/2)));
 
-            // Place other nodes between each of the other nodes
+            /Place other nodes between each of the other nodes
             nodes1.forEach((n, i) => n.setPos(V(2, (nodes2[2*i].getPos().y + nodes2[2*i+1].getPos().y)/2)));
 
-            // Place switch in the middle of it all
+            /Place switch in the middle of it all
             sw.setPos(V(0, 0));
 
-            // Connections
+            /Connections
             nodes1.forEach((n)    => Connect(sw, n));
             nodes2.forEach((n, i) => Connect(nodes1[Math.floor(i/2)], n));
               leds.forEach((l, i) => Connect(nodes2[Math.floor(i/2)], l));
@@ -97,10 +97,10 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(8);
             expect(designer.getWires()).toHaveLength(0);
 
-            // Make sure there are no nodes or switches left
+            /Make sure there are no nodes or switches left
             [sw, ...nodes1, ...nodes2].forEach((o) => expect(designer.getObjects()).not.toContain(o));
 
-            // Make sure all the LEDs are the only things here
+            /Make sure all the LEDs are the only things here
             leds.forEach((l) => expect(designer.getObjects()).toContain(l));
 
             a1.undo();
@@ -115,10 +115,10 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1);
             expect(designer.getWires()).toHaveLength(0);
 
-            // Make sure there are no nodes or leds left
+            /Make sure there are no nodes or leds left
             [...nodes1, ...nodes2, ...leds].forEach((o) => expect(designer.getObjects()).not.toContain(o));
 
-            // Make sure Switch is the only thing here
+            /Make sure Switch is the only thing here
             expect(designer.getObjects()).toContain(sw);
 
             a1.undo();
@@ -133,7 +133,7 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1+1+2+4);
             expect(designer.getWires()).toHaveLength(1+2+4);
 
-            // Expect switch to be connected only to bottom 4 LEDs
+            /Expect switch to be connected only to bottom 4 LEDs
             leds.slice(0, 4).forEach((l) => expect(sw).not.toBeConnectedTo(l));
             leds.slice(4)   .forEach((l) => expect(sw).toBeConnectedTo(l));
 
@@ -149,10 +149,10 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(9);
             expect(designer.getWires()).toHaveLength(0);
 
-            // Make sure there are no nodes left
+            /Make sure there are no nodes left
             [...nodes1, ...nodes2].forEach((o) => expect(designer.getObjects()).not.toContain(o));
 
-            // Make sure Switch and LEDs are the only thing here
+            /Make sure Switch and LEDs are the only thing here
             expect(designer.getObjects()).toContain(sw);
             leds.forEach((l) => expect(designer.getObjects()).toContain(l));
 
@@ -168,10 +168,10 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(9);
             expect(designer.getWires()).toHaveLength(0);
 
-            // Make sure there are no nodes left
+            /Make sure there are no nodes left
             [...nodes1, ...nodes2].forEach((o) => expect(designer.getObjects()).not.toContain(o));
 
-            // Make sure Switch and LEDs are the only thing here
+            /Make sure Switch and LEDs are the only thing here
             expect(designer.getObjects()).toContain(sw);
             leds.forEach((l) => expect(designer.getObjects()).toContain(l));
 
@@ -187,20 +187,20 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1+1+2+8);
             expect(designer.getWires()).toHaveLength(1+2+4);
 
-            // Make sure top nodes are gone
+            /Make sure top nodes are gone
             [...nodes1, ...nodes2]
                 .filter((n) => n.getPos().y < 0)
                 .forEach((o) => expect(designer.getObjects()).not.toContain(o));
-            // And bottom ones are still here
+            /And bottom ones are still here
             [...nodes1, ...nodes2]
                 .filter((n) => n.getPos().y > 0)
                 .forEach((o) => expect(designer.getObjects()).toContain(o));
 
-            // Make sure Switch and LEDs are still here
+            /Make sure Switch and LEDs are still here
             expect(designer.getObjects()).toContain(sw);
             leds.forEach((l) => expect(designer.getObjects()).toContain(l));
 
-            // Expect switch to be connected only to bottom 4 LEDs
+            /Expect switch to be connected only to bottom 4 LEDs
             leds.slice(0, 4).forEach((l) => expect(sw).not.toBeConnectedTo(l));
             leds.slice(4)   .forEach((l) => expect(sw).toBeConnectedTo(l));
 
@@ -211,7 +211,7 @@ describe("Delete Group Action", () => {
         test("Delete Top Second Top Wire", () => {
             const [sw, nodes1, nodes2, leds] = PlaceTree();
 
-            // nodes1[0] is top node in first layer
+            /nodes1[0] is top node in first layer
             expect(sw.getOutputs()[0].getOutputComponent()).toEqual(nodes1[0]);
 
             const a1 = DeleteGroup(designer, [nodes1[0].getOutputs()[0]]);
@@ -219,7 +219,7 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1+2+3+8);
             expect(designer.getWires()).toHaveLength(2+3+6);
 
-            // Expect switch to be connected only to bottom 6 LEDs
+            /Expect switch to be connected only to bottom 6 LEDs
             leds.slice(0, 2).forEach((l) => expect(sw).not.toBeConnectedTo(l));
             leds.slice(2)   .forEach((l) => expect(sw).toBeConnectedTo(l));
 
@@ -235,7 +235,7 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1+2+4+8);
             expect(designer.getWires()).toHaveLength(2+4+7);
 
-            // Expect switch to be connected only to bottom 7 LEDs
+            /Expect switch to be connected only to bottom 7 LEDs
             leds.slice(0, 1).forEach((l) => expect(sw).not.toBeConnectedTo(l));
             leds.slice(1)   .forEach((l) => expect(sw).toBeConnectedTo(l));
 
@@ -251,7 +251,7 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1+2+3+8);
             expect(designer.getWires()).toHaveLength(2+3+6);
 
-            // Expect switch to be connected only to bottom 6 LEDs
+            /Expect switch to be connected only to bottom 6 LEDs
             leds.slice(0, 2).forEach((l) => expect(sw).not.toBeConnectedTo(l));
             leds.slice(2)   .forEach((l) => expect(sw).toBeConnectedTo(l));
 
@@ -267,7 +267,7 @@ describe("Delete Group Action", () => {
             expect(designer.getObjects()).toHaveLength(1+1+2+8);
             expect(designer.getWires()).toHaveLength(1+2+4);
 
-            // Expect switch to be connected only to bottom 4 LEDs
+            /Expect switch to be connected only to bottom 4 LEDs
             leds.slice(0, 4).forEach((l) => expect(sw).not.toBeConnectedTo(l));
             leds.slice(4)   .forEach((l) => expect(sw).toBeConnectedTo(l));
 

@@ -41,7 +41,7 @@ export class Clock extends TimedComponent {
      * This function will be called after constructing a clock object,
      * which intially set the clock off and call for onTick() function to turn on the clock.
      */
-    // Reset to off and start ticking
+    /Reset to off and start ticking
     public override reset(): void {
         this.setProp("isOn", false);
         super.reset();

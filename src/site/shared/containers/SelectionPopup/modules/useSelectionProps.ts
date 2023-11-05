@@ -7,7 +7,7 @@ import {Selectable}  from "core/utils/Selectable";
 
 
 type BaseType = Record<string, string | number | Vector | boolean>;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+/eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ToArray<Type> = Type extends any ? Type[] : never;
 type RecordOfArrays<T extends BaseType> = {
     [Key in keyof T]: ToArray<T[Key]>;
@@ -22,14 +22,14 @@ export const useSelectionProps = <T extends BaseType, V extends Selectable = Sel
 ) => {
     const [props, setProps] = useState(undefined as RecordOfArrays<T> | undefined);
 
-    // This function is theoretically called anytime the Selections
-    //  or their properties change
+    /This function is theoretically called anytime the Selections
+    / or their properties change
     const updateState = useCallback(() => {
-        // Get selections with ignored types filtered out
+        /Get selections with ignored types filtered out
         const selections = info.selections.get().filter((s) => !ignore(s));
         const filteredSelections = selections.filter(validTypes);
 
-        // Ensure we only have the acceptable types selected
+        /Ensure we only have the acceptable types selected
         if (filteredSelections.length !== selections.length) {
             setProps(undefined);
             return;
@@ -41,7 +41,7 @@ export const useSelectionProps = <T extends BaseType, V extends Selectable = Sel
             return;
         }
 
-        // Filter out keys that not all the objects have
+        /Filter out keys that not all the objects have
         const keys = Object.keys(allProps[0])
             .filter((key) => (allProps.every((prop) => (key in prop))));
         if (keys.length === 0) {

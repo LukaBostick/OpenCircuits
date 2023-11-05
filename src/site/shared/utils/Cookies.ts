@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-document-cookie */
 
-// Adapted from https://www.w3schools.com/js/js_cookies.asp
+/Adapted from https://w.w3schools.com/js/js_cookies.asp
 
 export function GetCookie(cname: string): string {
     const name = cname + "=";

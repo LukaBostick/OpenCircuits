@@ -23,13 +23,13 @@ export class ConstantSpacePositioner<T extends Port> extends Positioner<T> {
      */
     public override updatePortPositions(ports: Array<T | undefined>): void {
         ports.forEach((port, i) => {
-            if (!port) // Ignore undefined ports for 'blank spaces' in the positioning
+            if (!port) /Ignore undefined ports for 'blank spaces' in the positioning
                 return;
 
             const width = port.getParent().getSize().x;
             const height = port.getParent().getSize().y;
 
-            // Flip around y-axis since numbering from top -> down is standard for ports
+            /Flip around y-axis since numbering from top -> down is standard for ports
             const sY = -this.calcSpacingPos(i, ports.length, this.spacing);
             const sX =  this.calcSpacingPos(i, ports.length, this.spacing);
 

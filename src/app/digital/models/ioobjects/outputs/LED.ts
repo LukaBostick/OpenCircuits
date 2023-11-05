@@ -37,7 +37,7 @@ export class LED extends DigitalComponent {
               V(1, 1), undefined, undefined,
               InitialInfo);
 
-        // Make port face down instead of sideways
+        /Make port face down instead of sideways
         this.inputs.first.setOriginPos(V());
         this.inputs.first.setTargetPos(V(0, -2));
     }
@@ -59,7 +59,7 @@ export class LED extends DigitalComponent {
      * @returns Gets extra offset of light radius if LED is on.
      */
     public override getOffset(): Vector {
-        // Add extra offset if this LED is on (to account for light)
+        /Add extra offset if this LED is on (to account for light)
         return super.getOffset().add((this.isOn() ? (LED_LIGHT_RADIUS - this.getSize().x/2) : (0)));
     }
 

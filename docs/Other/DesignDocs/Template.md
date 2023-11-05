@@ -17,7 +17,7 @@ import Timeline from './_timeline';
 
 
 # *TITLE* Design Doc
-#### *[PERSON 1](https://github.com/Person1)*, *[PERSON 2](https://github.com/Person2)*, ... (Last updated *DATE*)
+#### *[PERSON 1](https:/ithub.com/Person1)*, *[PERSON 2](https://thub.com/Person2)*, ... (Last updated *DATE*)
 
 
 <details>

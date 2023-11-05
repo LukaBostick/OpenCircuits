@@ -14,7 +14,7 @@ describe("Node and Wire Interaction", () => {
     const { Place } = GetHelpers(designer);
 
     afterEach(() => {
-        // Clear circuit
+        /Clear circuit
         designer.reset();
     });
 
@@ -30,17 +30,17 @@ describe("Node and Wire Interaction", () => {
 
     test("Connect Switch -> LED then Split Twice into Snapped Rectangle With Right Mouse Button", () => {
         const [sw, led] = Place(new Switch(), new LED());
-        sw.setPos(V(-66, 0)); // 66 is from size of Switch (62)/2 + IO_PORT_LENGTH (35)
+        sw.setPos(V(-66, 0)); /66 is from size of Switch (62)/2 + IO_PORT_LENGTH (35)
         led.setPos(V(400, -100));
 
-        // Connect Switch -> LED
+        /Connect Switch -> LED
         input.drag(sw.getOutputPort(0).getWorldTargetPos(),
                    led.getInputPort(0).getWorldTargetPos());
 
         expect(led.getInputs()).toHaveLength(1);
         expect(sw.getOutputs()).toHaveLength(1);
 
-        // Split twice
+        /Split twice
         input.press(sw.getOutputs()[0].getShape().getPos(0.5), RIGHT_MOUSE_BUTTON)
                 .moveTo(V(0, 100))
                 .release();
@@ -59,17 +59,17 @@ describe("Node and Wire Interaction", () => {
 
     test("Connect Switch -> LED then Split Twice into Snapped Rectangle With Middle Mouse Button", () => {
         const [sw, led] = Place(new Switch(), new LED());
-        sw.setPos(V(-66, 0)); // 66 is from size of Switch (62)/2 + IO_PORT_LENGTH (35)
+        sw.setPos(V(-66, 0)); /66 is from size of Switch (62)/2 + IO_PORT_LENGTH (35)
         led.setPos(V(400, -100));
 
-        // Connect Switch -> LED
+        /Connect Switch -> LED
         input.drag(sw.getOutputPort(0).getWorldTargetPos(),
         led.getInputPort(0).getWorldTargetPos());
 
         expect(led.getInputs()).toHaveLength(1);
         expect(sw.getOutputs()).toHaveLength(1);
 
-        // Split twice
+        /Split twice
         input.press(sw.getOutputs()[0].getShape().getPos(0.5), MIDDLE_MOUSE_BUTTON)
         .moveTo(V(0, 100))
         .release();

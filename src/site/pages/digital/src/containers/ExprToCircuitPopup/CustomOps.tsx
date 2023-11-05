@@ -2,7 +2,8 @@ import React from "react";
 
 import {OperatorFormat, TokenType} from "digital/utils/ExpressionParser/Constants/DataStructures";
 
-import {InputField} from "shared/components/InputField";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 
 type Props = {
@@ -10,7 +11,7 @@ type Props = {
     setCustomOps: React.Dispatch<React.SetStateAction<OperatorFormat>>;
 }
 export const CustomOps = (({ customOps, setCustomOps }: Props) => {
-    // Contains string represenation and internal representation for operations
+    /Contains string represenation and internal representation for operations
     const operationReps: Array<[string, TokenType]> = [
         ["AND", "&"],
         ["OR", "|"],

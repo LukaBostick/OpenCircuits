@@ -2,9 +2,9 @@ import {Matcher, screen} from "@testing-library/react";
 
 
 declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
+    /eslint-disable-next-line @typescript-eslint/no-namespace
     namespace jest {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        /eslint-disable-next-line @typescript-eslint/no-unused-vars
         interface Matchers<R> {
             toBeToggledOn(): CustomMatcherResult;
             toBeToggledOff(): CustomMatcherResult;

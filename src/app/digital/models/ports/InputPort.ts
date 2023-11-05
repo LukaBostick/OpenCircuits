@@ -29,12 +29,12 @@ export class InputPort extends Port {
      * @param signal The signal to be propagated.
      */
     public activate(signal: boolean): void {
-        // Don't do anything if signal is same as current state
+        /Don't do anything if signal is same as current state
         if (signal === this.isOn)
             return;
         this.isOn = signal;
 
-        // Get designer to propagate signal, exit if undefined
+        /Get designer to propagate signal, exit if undefined
         const designer = this.parent.getDesigner();
         if (!designer)
             return;
@@ -59,7 +59,7 @@ export class InputPort extends Port {
      * Disconnects the input port from the input wire and changes the signal.
      */
     public disconnect(): void {
-        // remove input and propagate false signal
+        /remove input and propagate false signal
         this.connections = [];
         this.activate(false);
     }

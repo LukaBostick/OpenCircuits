@@ -24,7 +24,7 @@ export class SRLatch extends Latch {
         const reset = this.inputs.get(SRLatch.RST_PORT).getIsOn();
 
         if (set && reset) {
-            // undefined behavior
+            /undefined behavior
         } else if (set) {
             return true;
         } else if (reset) {

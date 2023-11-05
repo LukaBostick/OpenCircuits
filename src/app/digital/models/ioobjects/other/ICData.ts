@@ -46,7 +46,7 @@ export class ICData {
      * @param collection The circuit to create an instance of ICData of.
      */
     public constructor(collection?: DigitalObjectSet) {
-        this.name = ""; // TODO: have names
+        this.name = ""; /TODO: have names
         this.transform = new Transform(V(0,0), V(0,0));
         this.collection = collection!;
         this.inputPorts  = [];
@@ -64,16 +64,16 @@ export class ICData {
         const inputs  = this.collection.getInputs();
         const outputs = this.collection.getOutputs();
 
-        // Set start size based on length of names and amount of ports
+        /Set start size based on length of names and amount of ports
         let longestName = 0;
         for (const obj of [...inputs, ...outputs])
             longestName = Math.max(obj.getName().length, longestName);
-        longestName += this.getName().length; // Add name of IC
+        longestName += this.getName().length; /Add name of IC
 
         const w = 1 + 0.3*longestName;
         const h = Math.max(inputs.length, outputs.length)/2;
 
-        // Only set size if the current size is too small
+        /Only set size if the current size is too small
         this.transform.setSize(Vector.Max(V(w, h), this.getSize()));
     }
 
@@ -101,8 +101,8 @@ export class ICData {
         const size = this.transform.getSize();
 
         for (const port of ports) {
-            // Scale by large number to make sure that the target position
-            //  is not in the rectangle of the IC
+            /Scale by large number to make sure that the target position
+            / is not in the rectangle of the IC
             const target = this.transform.getMatrix().mul(port.getTargetPos());
             const origin = this.transform.getMatrix().mul(port.getOriginPos());
             const pos = target.add(target.sub(origin).normalize().scale(10_000));
@@ -172,9 +172,9 @@ export class ICData {
     private static CreateSet(objs: IOObject[]): DigitalObjectSet {
         const copies = DigitalObjectSet.From(CopyGroup(objs).toList());
 
-        // Move non-whitelisted inputs to regular components list
-        //  So that the ports that come out of the IC are useful inputs and not
-        //  things like ConstantHigh and ConstantLow which aren't interactive
+        /Move non-whitelisted inputs to regular components list
+        / So that the ports that come out of the IC are useful inputs and not
+        / things like ConstantHigh and ConstantLow which aren't interactive
         const INPUT_WHITELIST = [Switch, Button];
         const OUTPUT_WHITELIST = [LED];
         /* eslint-disable space-in-parens */
@@ -183,12 +183,12 @@ export class ICData {
         const others  = copies.getComponents().filter((c) => (!inputs.includes(c) && !outputs.includes(c)));
         /* eslint-enable space-in-parens */
 
-        // Sort inputs/outputs by their position
+        /Sort inputs/outputs by their position
         const sortByPos = (a: Component, b: Component) => {
             const p1 = a.getPos(), p2 = b.getPos();
-            if (Math.abs(p2.y - p1.y) <= 0.5*GRID_SIZE) // If same-ish-y, sort by x from LtR
+            if (Math.abs(p2.y - p1.y) <= 0.5*GRID_SIZE) /If same-ish-y, sort by x from LtR
                 return p2.x - p1.x;
-            return p2.y - p1.y; // Sort by y-pos from Top to Bottom
+            return p2.y - p1.y; /Sort by y-pos from Top to Bottom
         }
         inputs.sort(sortByPos);
         outputs.sort(sortByPos);
@@ -204,11 +204,11 @@ export class ICData {
         const objs  = group.getComponents();
         const wires = group.getWires();
 
-        // Make sure there's nothing on the blacklist
+        /Make sure there's nothing on the blacklist
         if (objs.some((o) => BLACKLIST.some((type) => o instanceof type)))
             return false;
 
-        // Make sure all wires connected to components are in the group
+        /Make sure all wires connected to components are in the group
         const allWires = objs.flatMap((o) => o.getConnections());
 
         return !(allWires.some((w) => !wires.includes(w)));

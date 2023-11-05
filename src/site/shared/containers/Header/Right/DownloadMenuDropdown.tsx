@@ -21,7 +21,7 @@ export const DownloadMenuDropdown = ({ helpers: { GetSerializedCircuit } }: Prop
     const onDownloadClick = () => {
         const data = GetSerializedCircuit();
 
-        // Convert to URL data
+        /Convert to URL data
         const file = new Blob([data], { type: "text/json" });
         const url = URL.createObjectURL(file);
 

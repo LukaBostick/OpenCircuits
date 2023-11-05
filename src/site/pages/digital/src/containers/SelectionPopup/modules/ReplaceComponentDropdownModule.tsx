@@ -38,11 +38,11 @@ export const ReplaceComponentDropdownModule = ({ info }: Props) => {
                                : GetIDFor(c)! })
     );
 
-    // Replace list is a utility data structure to map replacements
+    /Replace list is a utility data structure to map replacements
     const initialReplacementList = useMemo(() => GenerateReplacementList(designer, allBaseComponentIDs), [designer]);
     const [replacementList, setReplacementList] = useState(initialReplacementList);
 
-    // Need to update the replacement list whenever the ICs are changed
+    /Need to update the replacement list whenever the ICs are changed
     useEffect(() => {
         const callback = (ev: DigitalEvent) => {
             if (ev.type !== "ic")
@@ -64,9 +64,9 @@ export const ReplaceComponentDropdownModule = ({ info }: Props) => {
     if (replaceables.length <= 1)
         return null;
 
-    // updateImmediately is required because this action changes the selected item thus changing the selection popup.
-    // updateImmediately forces the selection popup to update.
-    // TODO: Remove the need for updateImmediately with/after the model refactor
+    /updateImmediately is required because this action changes the selected item thus changing the selection popup.
+    /updateImmediately forces the selection popup to update.
+    /TODO: Remove the need for updateImmediately with/after the model refactor
     return (<div>
         Replace Component
         <label>

@@ -8,8 +8,10 @@ import {CloseHeaderPopups} from "shared/state/Header";
 
 import {Login} from "shared/state/thunks/User";
 
-import {InputField} from "shared/components/InputField";
-import {Popup}      from "shared/components/Popup";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
+import {Popup}      from "shared/ocs/SuperCircuits
+/Components/Popup";
 
 import {GoogleAuthButton} from "./GoogleSignInButton";
 

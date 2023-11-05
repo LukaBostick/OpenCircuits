@@ -3,7 +3,8 @@ import React from "react";
 import {CircuitInfoHelpers} from "shared/utils/CircuitInfoHelpers";
 import {LoadFile}           from "shared/utils/Importer";
 
-import {InputField} from "shared/components/InputField";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 
 type Props = {

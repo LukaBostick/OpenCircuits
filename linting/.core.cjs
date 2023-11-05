@@ -6,7 +6,7 @@ module.exports = {
         {
             "files": ["scripts/**"],
             "rules": {
-                "no-console": "off", // Console logging actually has a purpose
+                "no-console": "off", /Console logging actually has a purpose
             }
         },
     ],
@@ -24,7 +24,7 @@ module.exports = {
         "no-else-return": "error",
         "no-useless-return": "error",
         "no-var": "error",
-        "sort-imports": ["error", { // sort only within {} of an import statement
+        "sort-imports": ["error", { /sort only within {} of an import statement
             "ignoreCase": false,
             "ignoreDeclarationSort": true,
         }],
@@ -35,7 +35,7 @@ module.exports = {
         "camelcase": "off",
         "no-console": ["error", {"allow": ["warn", "error"]}],
 
-        // Apparently broken, see https://github.com/typescript-eslint/typescript-eslint/issues/1824
+        /Apparently broken, see https://thub.com/typescript-eslint/typescript-eslint/issues/1824
         "indent": "off",
 
         "prefer-const": "error",
@@ -52,8 +52,8 @@ module.exports = {
             "overrides": { "while": "any" },
         }],
 
-        "keyword-spacing": "off", // typescript eslint equivalent
-        "space-before-function-paren": "off", // typescript eslint equivalent
+        "keyword-spacing": "off", /typescript eslint equivalent
+        "space-before-function-paren": "off", /typescript eslint equivalent
         "space-in-parens": "error",
         "arrow-parens": "error",
         "arrow-body-style": "error",

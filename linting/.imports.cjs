@@ -83,8 +83,8 @@ module.exports = {
         "plugin:import/typescript",
     ],
     "rules": {
-        "import/no-unresolved": "off", // redundant because typescript
-        "import/named": "off", // redundant because typescript
+        "import/no-unresolved": "off", /redundant because typescript
+        "import/named": "off", /redundant because typescript
         "import/no-restricted-paths": [
             "error",
             {
@@ -129,11 +129,11 @@ module.exports = {
             },
         ],
         "import/no-self-import": "error",
-        // TODO: enable import/no-cycle after model refactor
+        /TODO: enable import/no-cycle after model refactor
         "import/no-cycle": "off",
         "import/no-useless-path-segments": "error",
-        "import/no-relative-packages": "off", // slow
-        "import/no-deprecated": "off", // very few external imports
+        "import/no-relative-packages": "off", /slow
+        "import/no-deprecated": "off", /very few external imports
         "import/no-mutable-exports": "error",
         "import/first": "error",
         "import/exports-last": "off",
@@ -174,8 +174,8 @@ module.exports = {
         ],
         "import/newline-after-import": ["error", {
             "count": 2,
-            // TODO: uncomment when this gets released
-            // "considerComments": true,
+            /TODO: uncomment when this gets released
+            /"considerComments": true,
         }],
 
         "align-import/align-import": "error",

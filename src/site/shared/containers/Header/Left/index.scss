@@ -16,7 +16,7 @@
     }
 
     & > input {
-        width: 175px; // @TODO: Auto-adjust to fit within a min/max width
+        width: 175px; /@TODO: Auto-adjust to fit within a min/max width
         font-size: 24px;
         text-overflow: ellipsis;
     }
@@ -62,7 +62,7 @@
         width: 15px;
         height: 15px;
 
-        // Pulse animation
+        /Pulse animation
         @keyframes loadpulse {
             0%   { transform: scale(0.3, 0.3); }
             50%  { transform: scale(1.5, 1.5); }

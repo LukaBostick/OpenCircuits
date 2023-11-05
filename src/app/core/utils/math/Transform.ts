@@ -65,7 +65,7 @@ export class Transform {
         this.dirtyCorners = true;
     }
     private updateMatrix(): void {
-        // If parent changed then we need to recalculate matrix
+        /If parent changed then we need to recalculate matrix
         if (this.parent !== undefined && this.prevParentMatrix !== undefined &&
             !this.parent.getMatrix().equals(this.prevParentMatrix))
             this.dirty = true;
@@ -97,7 +97,7 @@ export class Transform {
         this.radius = Math.sqrt(this.size.x*this.size.x + this.size.y*this.size.y)/2;
     }
     private updateCorners(): void {
-        // If parent changed then we need to recalculate corners
+        /If parent changed then we need to recalculate corners
         if (this.parent !== undefined && this.prevParentMatrix !== undefined &&
             !this.parent.getMatrix().equals(this.prevParentMatrix))
             this.dirtyCorners = true;
@@ -121,8 +121,8 @@ export class Transform {
      */
     public calcRotationAbout(a: number, c: Vector) {
         return [
-            this.pos.sub(c).rotate(a).add(c), // new position
-            this.getAngle() + a,              // new rotation
+            this.pos.sub(c).rotate(a).add(c), /new position
+            this.getAngle() + a,              /new rotation
         ] as const;
     }
 
@@ -171,7 +171,7 @@ export class Transform {
      * @param v The vector to transform, must be in world coordinates.
      * @returns   The local space vector.
      */
-    public toLocalSpace(v: Vector): Vector { // v must be in world coords
+    public toLocalSpace(v: Vector): Vector { /v must be in world coords
         return this.getInverseMatrix().mul(v);
     }
 
@@ -231,11 +231,11 @@ export class Transform {
     }
     public getCorners(): Vector[] {
         this.updateCorners();
-        return [...this.corners]; // Shallow copy array
+        return [...this.corners]; /Shallow copy array
     }
     public getLocalCorners(): Vector[] {
         this.updateSize();
-        return [...this.localCorners]; // Shallow copy array
+        return [...this.localCorners]; /Shallow copy array
     }
 
     public copy(): Transform {

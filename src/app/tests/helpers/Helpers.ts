@@ -22,13 +22,13 @@ export function GetHelpers(designer: DigitalCircuitDesigner) {
         return [...objs, PlaceGroup(designer, objs)] as [...T, Action];
     }
 
-    // type ObjConnectInfo = { c: DigitalComponent, i?: number };
-    // function Connect(c1: ObjConnectInfo, c2: ObjConnectInfo): ConnectionAction[] {
-    //     if (c1.i && c2.i) {
-    //         return [new ConnectionAction(designer, c1.c.getOutputPort(c1.i),
-    //                                      c2.c.getInputPort(c2.i)) as ConnectionAction];
-    //     }
-    // }
+    /type ObjConnectInfo = { c: DigitalComponent, i?: number };
+    /function Connect(c1: ObjConnectInfo, c2: ObjConnectInfo): ConnectionAction[] {
+    /    if (c1.i && c2.i) {
+    /        return [new ConnectionAction(designer, c1.c.getOutputPort(c1.i),
+    /                                     c2.c.getInputPort(c2.i)) as ConnectionAction];
+    /    }
+    /}
     function Connect(c1: DigitalComponent, c2: DigitalComponent): ConnectionAction[];
     function Connect(c1: DigitalComponent, i1: number, c2: DigitalComponent, i2: number): ConnectionAction;
     function Connect(...args: [DigitalComponent, DigitalComponent] |
@@ -36,7 +36,7 @@ export function GetHelpers(designer: DigitalCircuitDesigner) {
         switch (args.length) {
             case 2: {
                 const [c1, c2] = args;
-                // Connect each port
+                /Connect each port
                 const outs = c1.getOutputPorts();
                 const ins = c2.getInputPorts().filter((i) => i.getWires().length === 0);
 
@@ -55,18 +55,18 @@ export function GetHelpers(designer: DigitalCircuitDesigner) {
     return {
         Place,
         Connect,
-        // Given a DigitalComponent
-        // Creates Switches for each input and LEDs for each output
-        // Connects them together, and returns them
+        /Given a DigitalComponent
+        /Creates Switches for each input and LEDs for each output
+        /Connects them together, and returns them
         AutoPlace: <T extends DigitalComponent>(obj: T) => {
-            // Create switches/leds
+            /Create switches/leds
             const switches = new Array(obj.numInputs()).fill(0).map((_) => new Switch());
             const leds = new Array(obj.numOutputs()).fill(0).map((_) => new LED());
 
             const group = new GroupAction();
             group.add(PlaceGroup(designer, [obj, ...switches, ...leds]));
 
-            // Create connections
+            /Create connections
             const wires = [] as Wire[];
             switches.forEach((s, i) => {
                 const action = CreateConnection(designer, s.getOutputPort(0), obj.getInputPort(i));

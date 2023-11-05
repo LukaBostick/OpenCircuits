@@ -12,8 +12,8 @@ import {OutputPort} from "../OutputPort";
 
 @serializable("MuxSelectPositioner")
 export class MuxSelectPositioner extends Positioner<InputPort> {
-    // Multiplier for slope, since Multiplexer and Demultiplexer angle on the
-    // lower edge are different, so the offsets are opposite of each other
+    /Multiplier for slope, since Multiplexer and Demultiplexer angle on the
+    /lower edge are different, so the offsets are opposite of each other
     private readonly slopeMultiplier: number;
 
     public constructor(isMultiplexer = true) {
@@ -27,7 +27,7 @@ export class MuxSelectPositioner extends Positioner<InputPort> {
      * @param ports The array of input ports.
      */
     public override updatePortPositions(ports: InputPort[]): void {
-        // Calculations for parameters to use in determining origin positions
+        /Calculations for parameters to use in determining origin positions
         const size = ports[0].getParent().getSize();
         const width = size.x;
         const height = size.y;

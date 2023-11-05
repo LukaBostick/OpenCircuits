@@ -1,11 +1,11 @@
 ![](/img/external_image.png)
 
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
 
 
-1. [ksa4bit](//Simulation/ksa4bit.md)
+1. [ksa4bit](/imulation/ksa4bit.md)
         ---
-        2. # 4-bit Kogge–Stone adder [Verification](//Simulation/ksa4bit-verification.md)
+        2. # 4-bit Kogge–Stone adder [Verification](/imulation/ksa4bit-verification.md)
         ![](/img/ex_ksa4bit_figure.png)
         ---

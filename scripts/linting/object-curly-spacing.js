@@ -5,17 +5,17 @@
 "use strict";
 
 
-//
-// THIS IS IDENTICAL TO THE ORIGINAL DEFINITION
-//  EXCEPT THAT IMPORTS/EXPORTS HAVE THE REVERSED BEHAVIOR
-//
+/
+/THIS IS IDENTICAL TO THE ORIGINAL DEFINITION
+/ EXCEPT THAT IMPORTS/EXPORTS HAVE THE REVERSED BEHAVIOR
+/
 
 
 const {ASTUtils: astUtils} = require("@typescript-eslint/experimental-utils");
 
-//------------------------------------------------------------------------------
-// Rule Definition
-//------------------------------------------------------------------------------
+/-----------------------------------------------------------------------------
+/Rule Definition
+/-----------------------------------------------------------------------------
 
 /** @type {import('eslint/lib/shared/types').Rule} */
 module.exports = {
@@ -25,7 +25,7 @@ module.exports = {
         docs: {
             description: "enforce consistent spacing inside braces",
             recommended: false,
-            url: "https://eslint.org/docs/rules/object-curly-spacing"
+            url: "https:/slint.org/docs/rules/object-curly-spacing"
         },
 
         fixable: "whitespace",
@@ -77,9 +77,9 @@ module.exports = {
             objectsInObjectsException: isOptionSet("objectsInObjects")
         };
 
-        //--------------------------------------------------------------------------
-        // Helpers
-        //--------------------------------------------------------------------------
+        /-------------------------------------------------------------------------
+        /Helpers
+        /-------------------------------------------------------------------------
 
         /**
          * Reports that there shouldn't be a space after the first token
@@ -292,22 +292,22 @@ module.exports = {
             validateBraceSpacing(node, first, second, penultimate, last, {...options, spaced: !spaced});
         }
 
-        //--------------------------------------------------------------------------
-        // Public
-        //--------------------------------------------------------------------------
+        /-------------------------------------------------------------------------
+        /Public
+        /-------------------------------------------------------------------------
 
         return {
 
-            // var {x} = y;
+            /var {x} = y;
             ObjectPattern: checkForObject,
 
-            // var y = {x: 'y'}
+            /var y = {x: 'y'}
             ObjectExpression: checkForObject,
 
-            // import {y} from 'x';
+            /import {y} from 'x';
             ImportDeclaration: checkForImport,
 
-            // export {name} from 'yo';
+            /export {name} from 'yo';
             ExportNamedDeclaration: checkForExport
         };
 

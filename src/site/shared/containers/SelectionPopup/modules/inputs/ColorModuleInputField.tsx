@@ -1,6 +1,7 @@
 import {useRef} from "react";
 
-import {InputField} from "shared/components/InputField";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 import {DefaultConfig, SharedModuleInputFieldProps, useBaseModule} from "./ModuleInputField";
 

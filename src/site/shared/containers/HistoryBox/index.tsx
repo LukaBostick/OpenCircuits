@@ -12,7 +12,8 @@ import {useSharedDispatch, useSharedSelector} from "shared/utils/hooks/useShared
 
 import {CloseHistoryBox} from "shared/state/ItemNav";
 
-import {AdjustableElement} from "shared/components/AdjustableElement";
+import {AdjustableElement} from "shared/ocs/SuperCircuits
+/Components/AdjustableElement";
 
 import "./index.scss";
 
@@ -29,7 +30,7 @@ const HistoryEntry = ({ a, isRedo }: HistoryEntryProps) => {
         <div className={`historybox__entry ${isRedo ? "historybox__entry--dashed" : ""}`}
              role="button" tabIndex={0}
              onClick={(e) => {
-                 // Necessary to stop child entries from collapsing the parent history entry
+                 /Necessary to stop child entries from collapsing the parent history entry
                  e.stopPropagation();
                  setDisplayExtraInfo(!displayExtraInfo);
              }}>
@@ -59,7 +60,7 @@ const GroupActionEntry = ({ g, isRedo }: GroupActionEntryProps) => {
         <div className={`historybox__groupentry ${isRedo ? "historybox__groupentry--dashed" : ""}`}
              role="button" tabIndex={0}
              onClick={(e) => {
-                 // Necessary to stop child entries from collapsing the parent history entry
+                 /Necessary to stop child entries from collapsing the parent history entry
                  e.stopPropagation();
                  setIsCollapsed(!isCollapsed);
              }}>
@@ -69,8 +70,8 @@ const GroupActionEntry = ({ g, isRedo }: GroupActionEntryProps) => {
                         <img src="img/icons/info.svg"
                              alt="Display extra info"
                              onClick={(e) => {
-                                 // Necessary to stop child entries from displaying
-                                 //  extra info about the parent history entry
+                                 /Necessary to stop child entries from displaying
+                                 / extra info about the parent history entry
                                  e.stopPropagation();
                                  setDisplayExtraInfo(!displayExtraInfo);
                              }} />
@@ -108,7 +109,7 @@ export const HistoryBox = ({ info }: Props) => {
     useEvent("mousedrag", (_) => setIsDragging(true),  info.input, [setIsDragging]);
     useDocEvent("mouseup", () => setIsDragging(false), [setIsDragging]);
 
-    // Make history box passthrough if dragging on canvas or from ItemNav
+    /Make history box passthrough if dragging on canvas or from ItemNav
     const passthrough = isDragging || !!curItemID;
 
     return (

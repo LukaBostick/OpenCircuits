@@ -50,7 +50,7 @@ const ModulePropInputField = ({
                 getText={info.getText} getNewState={info.getNewState} />
         );
     case "boolean":
-        return null; // TODO
+        return null; /TODO
     case "string":
         return <TextModuleInputField {...otherProps} props={vals as string[]} />
     case "color":
@@ -63,8 +63,8 @@ const ModulePropInputField = ({
                 kind={type} props={vals as string[] | number[]} options={info.options}
                 onSubmit={(info) => {
                     otherProps.onSubmit(info);
-                    forceUpdate(); // Need to force update since these can trigger info-state changes
-                                   //  and feel less inituitive to the user about focus/blur
+                    forceUpdate(); /Need to force update since these can trigger info-state changes
+                                   / and feel less inituitive to the user about focus/blur
                 }} />
         );
     case "int":
@@ -82,7 +82,7 @@ const ModulePropInputField = ({
         const units = vals.map((_, i) => objs[i].getProp(`${propKey}_U`)) as string[];
         const transformedVals = vals.map((v, i) => (v as number) / unit[units[i]].val);
 
-        // val is ALWAYS the unit value, and gets transformed on UI-end to unit-full value
+        /val is ALWAYS the unit value, and gets transformed on UI-end to unit-full value
         return (<div>
             <span style={{ display: "inline-block", width: "70%" }}>
                 <NumberModuleInputField
@@ -90,7 +90,7 @@ const ModulePropInputField = ({
                     kind={type} min={info.min} max={info.max} step={info.step}
                     props={transformedVals}
                     getAction={(newVals) => (
-                        // Scale new value by the current unit
+                        /Scale new value by the current unit
                         otherProps.getAction(newVals.map((v) => (v * unit[units[0]].val)))
                     )} />
             </span>
@@ -104,8 +104,8 @@ const ModulePropInputField = ({
                     )}
                     onSubmit={(info) => {
                         otherProps.onSubmit(info);
-                        forceUpdate(); // Need to force update since these can trigger info-state changes
-                                       //  and feel less inituitive to the user about focus/blur
+                        forceUpdate(); /Need to force update since these can trigger info-state changes
+                                       / and feel less inituitive to the user about focus/blur
                     }} />
             </span>
         </div>);
@@ -133,7 +133,7 @@ type PropertyModuleWrapperProps = {
 }
 const PropertyModuleWrapper = ({ label, children }: PropertyModuleWrapperProps) => {
     if (!label)
-        // eslint-disable-next-line react/jsx-no-useless-fragment
+        /eslint-disable-next-line react/jsx-no-useless-fragment
         return <>{children}</>;
 
     return (<div>
@@ -161,19 +161,19 @@ export const PropertyModule = ({ info }: Props) => {
         return null;
 
     return (<>{Object.entries(props)
-        // Filter out props that are without info, since they are private
+        /Filter out props that are without info, since they are private
         .filter(([key]) => (!!objs[0].getPropInfo(key)))
         .map(([key, vals]) => {
-            // Assumes all Info's are the same for each key
+            /Assumes all Info's are the same for each key
             const info = objs[0].getPropInfo(key);
             if (!info)
                 throw new Error(`Failed to get prop info for ${key}!`);
 
-            // Get state of props
+            /Get state of props
             const allProps = objs.map((c) => c.getProps());
 
-            // Check if this property should be active, if the info defines an `isActive`
-            //  function, then we need to make sure all components satisfy it
+            /Check if this property should be active, if the info defines an `isActive`
+            / function, then we need to make sure all components satisfy it
             const isActive = (info.isActive) ? (info.isActive(allProps)) : (true);
             if (!isActive)
                 return null;
@@ -181,7 +181,7 @@ export const PropertyModule = ({ info }: Props) => {
             const label = (
                 typeof info.label === "string"
                 ? info.label
-                : info.label?.(allProps) // Dynamic display based on prop states
+                : info.label?.(allProps) /Dynamic display based on prop states
             );
 
             const getAction = (newVals: Prop[]) => new GroupAction(

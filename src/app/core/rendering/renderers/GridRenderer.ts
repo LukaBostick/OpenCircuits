@@ -25,7 +25,7 @@ export const GridRenderer = ({
         if (cpy < 0)
             cpy += step;
 
-        // Batch-render the lines = uglier code + way better performance
+        /Batch-render the lines = uglier code + way better performance
         renderer.save();
         renderer.setStyle(new Style(undefined, GRID_LINE_COLOR, GRID_LINE_WIDTH / camera.getZoom()));
         renderer.beginPath();

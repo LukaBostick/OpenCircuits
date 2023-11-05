@@ -1,22 +1,31 @@
 ![A quick mockup of what the area might look like](/img/external_image.png)
 
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
 
 ###   1. [Phase Source](#PhaseSource)
 
 
 
-1. [Current Controlled Current Source](/Components/CurrentControlledCurrentSource.md)
-1. [Resistor](/Components/Resistor.md)
+1. [Current Controlled Current Source](/ocs/SuperCircuits
+/Components/CurrentControlledCurrentSource.md)
+1. [Resistor](/ocs/SuperCircuits
+/Components/Resistor.md)
 1. [Introduction](/OpenCircuits/README.md)
-1. [Inductor](/Components/Inductor.md)
-1. [JosephsonJunction](/Components/JosephsonJunction.md)
-1. [Voltage Source](/Components/VoltageSource.md)
-1. [TransmissionLine](/Components/TransmissionLine.md)
-1. [Mutual inductance](/Components/Mutualinductance.md)
-1. [Voltage Controlled Current Source](/Components/VoltageControlledCurrentSource.md)
-1. [Voltage Controlled Voltage Source](/Components/VoltageControlledCurrentSource.md)
+1. [Inductor](/ocs/SuperCircuits
+/Components/Inductor.md)
+1. [JosephsonJunction](/ocs/SuperCircuits
+/Components/JosephsonJunction.md)
+1. [Voltage Source](/ocs/SuperCircuits
+/Components/VoltageSource.md)
+1. [TransmissionLine](/ocs/SuperCircuits
+/Components/TransmissionLine.md)
+1. [Mutual inductance](/ocs/SuperCircuits
+/Components/Mutualinductance.md)
+1. [Voltage Controlled Current Source](/ocs/SuperCircuits
+/Components/VoltageControlledCurrentSource.md)
+1. [Voltage Controlled Voltage Source](/ocs/SuperCircuits
+/Components/VoltageControlledCurrentSource.md)
 
 1. [Resistor](#Resistor)
 1. [Introduction](#introduction)

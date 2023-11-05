@@ -16,14 +16,14 @@ export default ({ isProd, publicPath }: Config): Configuration => ({
     module: {
         rules: [
             {
-                // Test for: .sass, .scss, or .css
+                /Test for: .sass, .scss, or .css
                 test: /\.(s[ac]|c)ss$/i,
 
-                // Reads right to left
-                // So first processes it w/ sass-loader, which turns it into css
-                //  then it gets processed into postcss-loader which makes it browser-compatible
-                //  and then it goes through css-loader to actually load it into the jsbundle
-                //  then shoots it into mini-css-extract-plugin to extract it out of the bundle and into a separate file
+                /Reads right to left
+                /So first processes it w/ sass-loader, which turns it into css
+                / then it gets processed into postcss-loader which makes it browser-compatible
+                / and then it goes through css-loader to actually load it into the jsbundle
+                / then shoots it into mini-css-extract-plugin to extract it out of the bundle and into a separate file
                 use: [
                     {
                         loader:  MiniCssExtractPlugin.loader,
@@ -56,7 +56,7 @@ export default ({ isProd, publicPath }: Config): Configuration => ({
 
     plugins: [
         new MiniCssExtractPlugin(isProd ? {
-            // Extract the css to /static/css/
+            /Extract the css to /static/css/
             filename:      "static/css/[name].[contenthash:8].css",
             chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
         } : undefined),

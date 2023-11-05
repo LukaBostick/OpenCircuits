@@ -40,14 +40,14 @@ function GetNumInputsAndOutputs(itemId: string, info: DigitalCircuitInfo): [numb
 
     const component = Create<DigitalComponent>(itemId);
     return [
-        // Need to do it like this rather then comp.getInputPorts() since this can
-        //  account for things like the Select ports on Multiplexers
+        /Need to do it like this rather then comp.getInputPorts() since this can
+        / account for things like the Select ports on Multiplexers
         component.getPorts().filter((p) => p instanceof InputPort).length,
         component.getPorts().filter((p) => p instanceof OutputPort).length,
     ];
 }
 
-// List that represents the order of smart place options cycle
+/List that represents the order of smart place options cycle
 const SmartPlaceOrder = [
     SmartPlaceOptions.Off,
     SmartPlaceOptions.Full,
@@ -65,21 +65,21 @@ export const DigitalItemNav = ({ info }: Props) => {
     const { designer, history } = info;
     const [{ ics }, setState] = useState({ ics: [] as ItemNavItem[] });
 
-    // State for if we should 'Smart Place' (issue #689)
+    /State for if we should 'Smart Place' (issue #689)
     const [smartPlace, setSmartPlace] = useState(SmartPlaceOptions.Off);
 
-    // Cycle through Smart Place options on Alt key press
+    /Cycle through Smart Place options on Alt key press
     useWindowKeyDownEvent("Alt", () => {
         setSmartPlace((smartPlace) => SmartPlaceOrder[
-            // Calculate index of current option and find next one in the list
+            /Calculate index of current option and find next one in the list
             (SmartPlaceOrder.indexOf(smartPlace) + 1) % SmartPlaceOrder.length]
         );
     });
 
     useEffect(() => {
-        // Subscribe to CircuitDesigner
-        //  and update the ItemNav w/
-        //  ICs whenever they're added/removed
+        /Subscribe to CircuitDesigner
+        / and update the ItemNav w/
+        / ICs whenever they're added/removed
         const onEvent = (ev: DigitalEvent) => {
             if (ev.type !== "ic")
                 return;
@@ -97,7 +97,7 @@ export const DigitalItemNav = ({ info }: Props) => {
         return () => designer.removeCallback(onEvent);
     }, [designer]);
 
-    // Generate ItemNavConfig with ICs included
+    /Generate ItemNavConfig with ICs included
     const config = useMemo(() => ({
         imgRoot:  itemNavConfig.imgRoot,
         sections: [
@@ -114,12 +114,12 @@ export const DigitalItemNav = ({ info }: Props) => {
         if (!curItemId || (smartPlace === SmartPlaceOptions.Off))
             return;
 
-        // This function shows the display for 'Smart Place' (issue #689)
+        /This function shows the display for 'Smart Place' (issue #689)
         const [numInputs, numOutputs] = GetNumInputsAndOutputs(curItemId, info);
         return (<>
             {!!(smartPlace & SmartPlaceOptions.Inputs) &&
                 new Array(numInputs).fill(0).map((_, i) => (
-                    // Show the Switches
+                    /Show the Switches
                     <img key={`digital-itemnav-inputs-${i}`}
                          src={`/${itemNavConfig.imgRoot}/inputs/switch.svg`}
                          width="80px" height="80px"
@@ -132,7 +132,7 @@ export const DigitalItemNav = ({ info }: Props) => {
                 ))}
             {!!(smartPlace & SmartPlaceOptions.Outputs) &&
                 new Array(numOutputs).fill(0).map((_, i) => (
-                    // Show the LEDs
+                    /Show the LEDs
                     <img key={`digital-itemnav-outputs-${i}`}
                          src={`/${itemNavConfig.imgRoot}/outputs/led.svg`}
                          width="80px" height="80px"
@@ -146,18 +146,18 @@ export const DigitalItemNav = ({ info }: Props) => {
         </>)
     }, [info]);
 
-    // Callbacks
+    /Callbacks
     const getImgSrc = useCallback((c: Component) => {
-        // Get ID
+        /Get ID
         const id = (c instanceof IC)
-            // IC config 'id' is based on index of its ICData
+            /IC config 'id' is based on index of its ICData
             ? (`ic/${designer.getICData().indexOf(c.getData())}`)
-            // Otherwise just get the Serialized ID
+            /Otherwise just get the Serialized ID
             : (GetIDFor(c));
         if (!id)
             throw new Error(`DigitalItemNav: Can't find ID for component ${c.getName()}`);
 
-        // Get path within config of ItemNav icon
+        /Get path within config of ItemNav icon
         const section = config.sections.find((s) => s.items.find((i) => (i.id === id)));
         const item = section?.items.find((i) => (i.id === id));
 
@@ -178,7 +178,7 @@ export const DigitalItemNav = ({ info }: Props) => {
         return true;
     }, [designer, history]);
 
-    // Append regular ItemNav items with ICs
+    /Append regular ItemNav items with ICs
     return (
         <ItemNav
             info={info}

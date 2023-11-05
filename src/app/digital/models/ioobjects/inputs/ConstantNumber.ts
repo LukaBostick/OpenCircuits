@@ -46,7 +46,7 @@ export class ConstantNumber extends DigitalComponent {
         if (key === "inputNum") {
             const inputNum = val as number;
 
-            // Set output values to be the new input value
+            /Set output values to be the new input value
             const outputs = DecimalToBCD(inputNum);
             this.getOutputPorts().forEach((_, i) =>
                 super.activate((i < outputs.length && outputs[i]), i)

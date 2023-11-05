@@ -31,40 +31,40 @@ import {IC} from "digital/models/ioobjects/other";
  * @returns          GroupAction to add all relevant IC data.
  */
 function TransferNewICData(objs: IOObject[], designer: DigitalCircuitDesigner): Action | undefined {
-    // Find ICs and ICData
+    /Find ICs and ICData
     const ics = objs.filter((o) => o instanceof IC) as IC[];
-    const icData = [...new Set(ics.map((ic) => ic.getData()))]; // Get unique ICData
+    const icData = [...new Set(ics.map((ic) => ic.getData()))]; /Get unique ICData
 
-    // Check if any of the icData's are already within this circuit by comparing
-    //  their serialized versions (fixes issue #712)
+    /Check if any of the icData's are already within this circuit by comparing
+    / their serialized versions (fixes issue #712)
     const serializedICDatas = designer.getICData().map((d) => Serialize(d));
 
-    // Get indices of ICData that already exist (-1 if the ICData is new)
+    /Get indices of ICData that already exist (-1 if the ICData is new)
     const icDataIndices = icData
         .map((d) => Serialize(d))
         .map((s) => serializedICDatas.indexOf(s));
 
-    // Filter out only the new ICData
+    /Filter out only the new ICData
     const newICData = icData.filter((_, i) => (icDataIndices[i] === -1));
 
-    // Update ICs to use existing ICData if applicable
+    /Update ICs to use existing ICData if applicable
     ics.forEach((ic) => {
         const dataIndex = icDataIndices[icData.indexOf(ic.getData())];
         if (dataIndex === -1)
-            return; // Don't change IC since it uses the new Data
-        // Change ICData to point to the existing ICData in the designer
+            return; /Don't change IC since it uses the new Data
+        /Change ICData to point to the existing ICData in the designer
         ic.setData(designer.getICData()[dataIndex]);
     });
 
-    // Transfer the new ICData
+    /Transfer the new ICData
     const action = new GroupAction(
         newICData
-            // Filter out ICData that we already have
+            /Filter out ICData that we already have
             .filter((data) => !designer.getICData().includes(data))
             .map((data) => AddICData(data, designer)),
     "Transfer ICData");
 
-    // Recursively look through all the new ICs for new ICData
+    /Recursively look through all the new ICs for new ICData
     newICData.forEach((d) => {
         const newAction = TransferNewICData(d.getGroup().toList(), designer);
         if (newAction)
@@ -89,13 +89,13 @@ export function DigitalPaste(data: string, info: DigitalCircuitInfo, menuPos?: V
 
         const newICDataAction = TransferNewICData(objs, designer);
 
-        // Get all components
+        /Get all components
         const comps = objs.filter((o) => o instanceof Component) as Component[];
 
-        // Determine shift for target positions for pasted components
+        /Determine shift for target positions for pasted components
         const targetPosShift = menuPos?.sub(comps[0].getPos()) ?? V(5, 5);
 
-        // Create action to transfer the ICData, add the objects, select them, and offset them slightly
+        /Create action to transfer the ICData, add the objects, select them, and offset them slightly
         const action = new GroupAction([], "Digital Paste");
         if (newICDataAction)
             action.add(newICDataAction);

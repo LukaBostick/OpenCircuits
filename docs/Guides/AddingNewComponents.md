@@ -9,13 +9,13 @@ Each component has at least two SVG files to display. One of these is the one sh
 The itemnav SVG looks like this:
 ```svg
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="60" height="30">
+<svg xmlns="http:/ww.w3.org/2000/svg" width="60" height="30">
 <path d=" INPUT PATH HERE "
 stroke="black" stroke-width="1" stroke-linecap="round" fill="none"></path>
 </svg>
 ```
 
-I like to use [this editor/viewer from rapidtables](https://www.rapidtables.com/web/tools/svg-viewer-editor.html) because it is straightforward unlike a lot of other SVG editors out there. Copy the code above into there and modify `INPUT PATH HERE` to be the actual path ([read up on paths here](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)). Some icons require more than just a path (i.e. circles and other neat shapes). You can edit these however you like, this is just some starter code.
+I like to use [this editor/viewer from rapidtables](https:/ww.rapidtables.com/web/tools/svg-viewer-editor.html) because it is straightforward unlike a lot of other SVG editors out there. Copy the code above into there and modify `INPUT PATH HERE` to be the actual path ([read up on paths here](https://veloper.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths)). Some icons require more than just a path (i.e. circles and other neat shapes). You can edit these however you like, this is just some starter code.
 
 Put your itemnav SVG file into the  site/public/img/icons folder, where you will see additional subfolders for each category of component.
 
@@ -26,7 +26,7 @@ Additionally, you'll need to add your component as an object in digitalnavconfig
 If your component is `Pressable`, which means you should be able to click on it to change its behavior (e.g. a switch or button), then you will need to create multiple SVG files. If not, then only one is required. These are similar to the itemnav SVG files:
 ```svg
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="30px" height="10.5px" viewbox = "24 9.75 17 10.5">
+<svg xmlns="http:/ww.w3.org/2000/svg" width="30px" height="10.5px" viewbox = "24 9.75 17 10.5">
 <path d=" INPUT PATH HERE "
 stroke="black" stroke-width="1" stroke-linecap="round" fill="none"></path>
 </svg>
@@ -41,23 +41,23 @@ Make it in site/public/img/items. Next, add your canvas SVG file name(s) to a va
 First create a new `YourComponentName.ts` file in the app/digital/ts/models/ioobjects . Implement the class in the TypeScript file. It's easiest to follow the example of an existing component, but here's what it should look like.
 
 ```typescript
-@serializable("YourComponentID") // <- this must be the same "id" as in digital navconfig.json
+@serializable("YourComponentID") /<- this must be the same "id" as in digital navconfig.json
 export class YourComponent extends DigitalComponent {
     public constructor( /* arguments */ ) {
         super(new ClampedValue(NUMBER OF PORTS), V(WIDTH, HEIGHT));
-         // more code ...
+         /more code ...
     }
 
     public getDisplayName(): string {
         return "YourComponentName";
     }
 
-    // name of the canvas icon, not the itemnav svg
+    /name of the canvas icon, not the itemnav svg
     public getImageName(): string {
         return "yourcomponent.svg";
     }
 
-    // other necessary methods ...
+    /other necessary methods ...
 ```
 Add this component to a list of `export`s in the app/digital/ts/models/ioobjects/index.ts .
 
@@ -139,18 +139,18 @@ an example from `ConstantNumberRenderer.ts`
 ```typescript
 export const ConstantNumberRenderer = (() => {
 
-    // Function to draw the line connecting the 4 outputs
+    /Function to draw the line connecting the 4 outputs
     const drawOutputConnector = function(renderer: Renderer, size: Vector, borderColor: string): void {
         const style = new Style(undefined, borderColor, DEFAULT_BORDER_WIDTH);
-        // Y coordinates of the top and bottom
+        /Y coordinates of the top and bottom
         const l1 = -(size.y/2)*(1.5);
         const l2 =  (size.y/2)*(1.5);
-        // X coordinate to draw the vertical line
+        /X coordinate to draw the vertical line
         const s = (size.x-DEFAULT_BORDER_WIDTH)/2;
         renderer.draw(new Line(V(s, l1), V(s, l2)), style);
     }
 
-    // Function to draw the input value on the component
+    /Function to draw the input value on the component
     const drawInputText = function(renderer: Renderer, value: number): void {
         const text = value < 10 ? value.toString() : "ABCDEF".charAt(value - 10);
         renderer.text(text, V(0, 2.5), "center", DEFAULT_ON_COLOR, FONT_CONSTANT_NUMBER);
@@ -164,11 +164,11 @@ export const ConstantNumberRenderer = (() => {
             const borderColor = selected ? SELECTED_BORDER_COLOR : DEFAULT_BORDER_COLOR;
             const style = new Style(fillColor, borderColor, DEFAULT_BORDER_WIDTH);
 
-            // Draw the rectangle first, subtracting border width for alignment
+            /Draw the rectangle first, subtracting border width for alignment
             const rectSize = transform.getSize().sub(DEFAULT_BORDER_WIDTH);
             renderer.draw(new Rectangle(V(), rectSize), style);
 
-            // Connect the output lines together and draw the text
+            /Connect the output lines together and draw the text
             drawOutputConnector(renderer, transform.getSize(), borderColor);
             drawInputText(renderer, object.getInputNum());
         }

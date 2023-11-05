@@ -30,7 +30,7 @@ describe("Graph", () => {
         test("Test 2", () => {
             const graph = new Graph<string, string>();
 
-            // Full-Adder
+            /Full-Adder
             graph.createNode("A");
             graph.createNode("B");
             graph.createNode("Cin");

@@ -8,7 +8,8 @@ import {useSharedDispatch, useSharedSelector} from "shared/utils/hooks/useShared
 
 import {SetAutoSave} from "shared/state/UserInfo";
 
-import {SwitchToggle} from "shared/components/SwitchToggle";
+import {SwitchToggle} from "shared/ocs/SuperCircuits
+/Components/SwitchToggle";
 
 
 type Props = {
@@ -21,24 +22,24 @@ export const AutoSaveToggle = ({ helpers }: Props) => {
     const dispatch = useSharedDispatch();
 
     useEffect(() => {
-        // This function will get called everytime isSaved or isAutoSave is changed
-        //  The moment `isSaved` is set to false, this function will get activated
-        //  and set a timeout to save the circuit
+        /This function will get called everytime isSaved or isAutoSave is changed
+        / The moment `isSaved` is set to false, this function will get activated
+        / and set a timeout to save the circuit
 
-        // Don't start autosave if user doesn't have it enabled
-        //  or if the circuit is already currently saved
-        // or if the user is not logged in
+        /Don't start autosave if user doesn't have it enabled
+        / or if the circuit is already currently saved
+        /or if the user is not logged in
         if (!autoSave || isSaved || !isLoggedIn)
             return;
 
-        let attempts = 1; // Track attempted saves
+        let attempts = 1; /Track attempted saves
         let timeout: number;
 
         async function Save() {
             const success = await helpers.SaveCircuitRemote();
             attempts++;
             if (!success)
-                // Wait longer each successsive, failed save
+                /Wait longer each successsive, failed save
                 timeout = window.setTimeout(Save, SAVE_TIME * attempts);
         }
 

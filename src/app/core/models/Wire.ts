@@ -70,7 +70,7 @@ export abstract class Wire extends CullableObject {
         const pos = port.getWorldTargetPos();
         const dir = port.getWorldDir();
 
-        // For straight bezier curves, Control point needs to be at the Point
+        /For straight bezier curves, Control point needs to be at the Point
         const c = (this.straight) ? (pos) : (pos.add(dir.scale(1)));
 
         return [pos, c];

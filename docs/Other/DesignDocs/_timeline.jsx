@@ -62,7 +62,7 @@ export default function Timeline({start, milestones, end}) {
             <rect x="calc(100% - 1px)" y={`-${TICK_H_LG/2}px`} width="1px" height={`${TICK_H_LG}px`} fill="gray" />
             <text x="100%" y={`${-TICK_H_LG/2 - 5}px`} fill="gray" textAnchor="end" alignmentBaseline="baseline">{end}</text>
 
-            { // Display other grid lines
+            { /Display other grid lines
                 milestones
                     .map((_, i) => ((i + 1) / (milestones.length + 1) * 100))
                     .map((x, i) => <>

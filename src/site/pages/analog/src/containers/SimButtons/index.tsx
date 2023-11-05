@@ -8,7 +8,8 @@ import {Oscilloscope} from "analog/models/eeobjects";
 import {NetlistAnalysis}  from "analog/models/sim/Netlist";
 import {CircuitToNetlist} from "analog/models/sim/NetlistGenerator";
 
-import {InputField} from "shared/components/InputField";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 import {useAnalogDispatch, useAnalogSelector} from "site/analog/utils/hooks/useAnalog";
 
@@ -49,14 +50,14 @@ export const SimButtons = ({ info }: Props) => {
         info.sim?.run();
         info.renderer.render();
 
-        // Add all current plots to all current Oscilloscopes
+        /Add all current plots to all current Oscilloscopes
         const o = info.designer.getObjects().filter((a) => a instanceof Oscilloscope) as Oscilloscope[];
         o.forEach((o) => {
             o.setConfig({
                 ...o.getConfig(),
                 vecs: Object.fromEntries(info.sim!.getFullVecIDs().map(
                     (key, i, arr) => [key, {
-                        // Last data-array is x/time data, disabled by default
+                        /Last data-array is x/time data, disabled by default
                         enabled: (i < arr.length-1),
                         color:   GetCol(i, arr.length),
                     }]
@@ -75,7 +76,7 @@ export const SimButtons = ({ info }: Props) => {
     };
 
 
-    // INITIALLY UPLOAD CAUSE IM TIRED OF DOING IT MANUALLY
+    /INITIALLY UPLOAD CAUSE IM TIRED OF DOING IT MANUALLY
     useEffect(() => {
         if (info.designer.getAll().length > 0) {
             try {
@@ -85,18 +86,18 @@ export const SimButtons = ({ info }: Props) => {
                 console.error("Failed to upload:", e);
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    /eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    // --------------
+    /--------------
 
 
 
-    // TODO:
-    // NOTE: Ngspice requires that the following topological constraints are satisfied:
-    //   > The circuit cannot contain a loop of voltage sources and/or inductors and cannot
-    //      contain a cut-set of current sources and/or capacitors.
-    //   > Each node in the circuit must have a dc path to ground.
-    //   > Every node must have at least two connections
+    /TODO:
+    /NOTE: Ngspice requires that the following topological constraints are satisfied:
+    /  > The circuit cannot contain a loop of voltage sources and/or inductors and cannot
+    /     contain a cut-set of current sources and/or capacitors.
+    /  > Each node in the circuit must have a dc path to ground.
+    /  > Every node must have at least two connections
 
     return (<>
         {analysis?.kind === "tran" && (<div className="sim-analysis-panel">
@@ -133,19 +134,19 @@ export const SimButtons = ({ info }: Props) => {
             </select>
 
             <button type="button" disabled={!hasData} onClick={() => {
-                // console.log(info.sim?.getPlotIDs());
-                // const curPlot = info.sim?.getCurPlotID();
-                // console.log("cur", curPlot);
-                // const vecs = info.sim?.getVecIDs(curPlot);
-                // console.log("vecs", vecs);
-                // const vecIDs = vecs?.map(v => `${curPlot!}.${v}` as const);
+                /console.log(info.sim?.getPlotIDs());
+                /const curPlot = info.sim?.getCurPlotID();
+                /console.log("cur", curPlot);
+                /const vecs = info.sim?.getVecIDs(curPlot);
+                /console.log("vecs", vecs);
+                /const vecIDs = vecs?.map(v => `${curPlot!}.${v}` as const);
 
-                // const dataLens = vecIDs?.map(id => info.sim?.getVecLen(id));
-                // console.log(dataLens);
+                /const dataLens = vecIDs?.map(id => info.sim?.getVecLen(id));
+                /console.log(dataLens);
 
-                // const datas = vecIDs?.map((id => info.sim?.getVecData(id)));
-                // console.log(datas);
-                // // info.sim?.printData();
+                /const datas = vecIDs?.map((id => info.sim?.getVecData(id)));
+                /console.log(datas);
+                ///nfo.sim?.printData();
             }}>Print</button>
         </div>
     </>);

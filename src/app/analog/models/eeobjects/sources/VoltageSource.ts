@@ -45,9 +45,9 @@ const SineInfo: PropInfoLayout = {
     infos: {
         ...VoltageInfo("v1", "Offset Voltage", 0),
         ...VoltageInfo("V", "Amplitude Voltage", 5),
-        // TODO: Add dependent variables
-        //  so we can `period` and `frequency` which are inverses and update
-        //  each-other as they update
+        /TODO: Add dependent variables
+        / so we can `period` and `frequency` which are inverses and update
+        / each-other as they update
         ...FrequencyInfo("f", "Frequency", 5),
         ...TimeInfo("td", "Delay Time", 0),
          "d": { label: "Damping Factor", initial: 0, type: "float", min: 0 },
@@ -57,7 +57,7 @@ const SineInfo: PropInfoLayout = {
 
 const [Info, InitialProps] = GenPropInfo({
     infos: {
-        "waveform": { // Select
+        "waveform": { /Select
             label:   "Waveform",
             type:    "string[]",
             initial: "DC",
@@ -94,7 +94,7 @@ export class VoltageSource extends AnalogComponent {
 
         const type = this.props["waveform"] as "DC"|"DC PULSE"|"DC SINE";
 
-        // Filter out unit keys
+        /Filter out unit keys
         const keys = Object.keys(InfoMap[type].infos).filter((key) => !key.endsWith("_U"));
 
         return [`${type}(${keys.map((k) => this.props[k]!).join(" ")})`];

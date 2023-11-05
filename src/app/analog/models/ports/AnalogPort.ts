@@ -23,7 +23,7 @@ export class AnalogPort extends Port {
     }
 
     public disconnect(w: AnalogWire): void {
-        // find index and splice
+        /find index and splice
         const i = this.connections.indexOf(w);
         if (i !== -1)
             this.connections.splice(i, 1);

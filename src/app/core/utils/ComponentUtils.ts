@@ -87,10 +87,10 @@ export function CreateGroup(objects: IOObject[]): IOObjectSet {
     const objs = group.getComponents();
     const wires = [
             ...group.getWires(),
-            // Add all connections from every object
+            /Add all connections from every object
             ...objs.flatMap((o) => o.getConnections()),
-         // Filter out any connection that isn't connected
-         //  to two objects in the objects list
+         /Filter out any connection that isn't connected
+         / to two objects in the objects list
         ].filter((w) => objs.includes(w.getP1Component()) &&
                         objs.includes(w.getP2Component()));
 
@@ -110,7 +110,7 @@ export function CreateGroup(objects: IOObject[]): IOObjectSet {
 export function GetPath(w: Wire | Node, full = true): Array<Wire | Node> {
     const path: Array<Wire | Node> = [];
 
-    // Breadth First Search
+    /Breadth First Search
     const queue = new Array<Wire | Node>(w);
     const visited = new Set<Wire | Node>();
 
@@ -137,7 +137,7 @@ export function GetPath(w: Wire | Node, full = true): Array<Wire | Node> {
             }
 
         } else {
-            // Push all of the Node's connecting wires, filtered by if they've been visited
+            /Push all of the Node's connecting wires, filtered by if they've been visited
             queue.push(...q.getConnections().filter((w) => !visited.has(w)));
         }
     }
@@ -155,7 +155,7 @@ export function GetPath(w: Wire | Node, full = true): Array<Wire | Node> {
 export function GetComponentPath(c: Component): Component[] {
     const path: Component[] = [];
 
-    // Breadth First Search
+    /Breadth First Search
     const queue = new Array<Component>(c);
     const visited = new Set<Component>();
 
@@ -185,10 +185,10 @@ export function GetComponentPath(c: Component): Component[] {
  * @returns      An array of connections + WirePorts.
  */
 export function GetAllPaths(obj: Component, full = true): Array<Wire | Node> {
-    // Get all distinct connections
+    /Get all distinct connections
     const wires = [...new Set(obj.getConnections())];
 
-    // Get all distinct paths
+    /Get all distinct paths
 
     return [...new Set(wires.flatMap((w) => GetPath(w,full)))];
 
@@ -206,7 +206,7 @@ export function GetAllPaths(obj: Component, full = true): Array<Wire | Node> {
 export function GatherGroup(objects: IOObject[], full = true): IOObjectSet {
     const group = new IOObjectSet(objects);
 
-    // Gather all connecting paths
+    /Gather all connecting paths
     const wires = group.getWires();
     const components = group.getComponents();
 
@@ -238,13 +238,13 @@ export function CreateGraph(groups: IOObjectSet): Graph<number, number> {
     const wires = groups.getWires();
     const map = new Map<Component, number>();
 
-    // Create nodes and map
+    /Create nodes and map
     for (const [i, obj] of objs.entries()) {
         graph.createNode(i);
         map.set(obj, i);
     }
 
-    // Create edges
+    /Create edges
     for (const [j, wire] of wires.entries()) {
         const c1 = map.get(wire.getP1Component())!;
         const c2 = map.get(wire.getP2Component())!;
@@ -255,14 +255,14 @@ export function CreateGraph(groups: IOObjectSet): Graph<number, number> {
 }
 
 export function SerializeForCopy(objects: IOObject[]): string {
-    // Make sure to get all immediate connections
+    /Make sure to get all immediate connections
     const group = CreateGroup(objects);
 
-    // Remove floating paths in the list
-    //  This is to prevent individual (floating) Nodes from be pasted
-    //  Do this by getting all nodes marked as "end nodes" in a graph and then if
-    //  any of the end nodes are actually Nodes, remove the paths with them since
-    //  being end nodes would imply they only have 0/1 connections
+    /Remove floating paths in the list
+    / This is to prevent individual (floating) Nodes from be pasted
+    / Do this by getting all nodes marked as "end nodes" in a graph and then if
+    / any of the end nodes are actually Nodes, remove the paths with them since
+    / being end nodes would imply they only have 0/1 connections
     const components = group.getComponents();
     const graph = CreateGraph(group);
     const ends = graph.getEndNodes();
@@ -272,13 +272,13 @@ export function SerializeForCopy(objects: IOObject[]): string {
 
     objects = group.toList().filter((obj) => !badBoys.includes(obj));
 
-    // Serialize with custom functionality
-    //  The idea is to serialize just the objects and connections in `objects`
-    //  So we filter out any connections that are not part of the list so that
-    //  nothing else connected to those connections (that aren't in the list)
-    //  get serialized.
-    //  Also ignore serializing the CircuitDesigner from any IOObjects so that
-    //  the entire circuit doesn't get serialized
+    /Serialize with custom functionality
+    / The idea is to serialize just the objects and connections in `objects`
+    / So we filter out any connections that are not part of the list so that
+    / nothing else connected to those connections (that aren't in the list)
+    / get serialized.
+    / Also ignore serializing the CircuitDesigner from any IOObjects so that
+    / the entire circuit doesn't get serialized
     return Serialize(objects, [
         {
             type:           Port,
@@ -287,13 +287,13 @@ export function SerializeForCopy(objects: IOObject[]): string {
                     const parent = port.getParent();
                     const data = serializer.defaultSerialization(port);
 
-                    // check if we're serializing an object that isn't an IC
-                    //  (since it's in our original list and any objects outside
-                    //   that list should either not be serialized [which we're
-                    //   about to prevent] or be in an IC)
+                    /check if we're serializing an object that isn't an IC
+                    / (since it's in our original list and any objects outside
+                    /  that list should either not be serialized [which we're
+                    /  about to prevent] or be in an IC)
                     let connections = port.getWires();
                     if (objects.includes(parent)) {
-                        // prevent connections not in our list from being serialized
+                        /prevent connections not in our list from being serialized
                         connections = connections.filter((wire) => (objects.includes(wire)));
                     }
 
@@ -302,7 +302,7 @@ export function SerializeForCopy(objects: IOObject[]): string {
                     return data;
                 },
                 customKeyFilter: (_: Port, key: string) =>
-                     (key !== "connections") // don't serialize connections (handle them above)
+                     (key !== "connections") /don't serialize connections (handle them above)
                 ,
             },
         },
@@ -310,7 +310,7 @@ export function SerializeForCopy(objects: IOObject[]): string {
             type:           IOObject,
             customBehavior: {
                 customKeyFilter: (_: IOObject, key: string) =>
-                     (key !== "designer") // don't serialize designer
+                     (key !== "designer") /don't serialize designer
                 ,
             },
         },
@@ -330,12 +330,12 @@ export function CopyGroup(objects: IOObject[]): IOObjectSet {
 
     const copies = Deserialize<IOObject[]>(SerializeForCopy(objects));
 
-    // CAREFUL THIS MIGHT BE NECESSARY SOMEWHERE
-    // // It's assumed that every object has the same designer
-    // copies.forEach(c => c.setDesigner(objects[0].getDesigner()));
+    /CAREFUL THIS MIGHT BE NECESSARY SOMEWHERE
+    ///t's assumed that every object has the same designer
+    /copies.forEach(c => c.setDesigner(objects[0].getDesigner()));
 
-    // Unpresses button of newly placed copy
-    //  See: https://github.com/OpenCircuits/OpenCircuits/issues/545
+    /Unpresses button of newly placed copy
+    / See: https://thub.com/OpenCircuits/OpenCircuits/issues/545
     for (const object of copies) {
         if (isPressable(object))
             object.release();
@@ -344,8 +344,8 @@ export function CopyGroup(objects: IOObject[]): IOObjectSet {
     return new IOObjectSet(copies);
 }
 
-// Find a minimal bounding box enclosing all cullable objects in a given array
-// Note that if the array is empty, min and max will both be (0, 0)
+/Find a minimal bounding box enclosing all cullable objects in a given array
+/Note that if the array is empty, min and max will both be (0, 0)
 export function CircuitBoundingBox(all: CullableObject[]): BoundingBox {
     const min = Vector.Min(...all.map((o) => o.getMinPos()));
     const max = Vector.Max(...all.map((o) => o.getMaxPos()));
@@ -364,7 +364,7 @@ export function CircuitBoundingBox(all: CullableObject[]): BoundingBox {
  * @returns         Tuple of desired camera position and zoom.
  */
 export function GetCameraFit(camera: Camera, objs: CullableObject[], padding: number): [Vector, number] {
-    // If no objects return to default zoom
+    /If no objects return to default zoom
     if (objs.length === 0)
         return [V(), 1];
 
@@ -374,27 +374,27 @@ export function GetCameraFit(camera: Camera, objs: CullableObject[], padding: nu
 
     const bbox = CircuitBoundingBox(objs);
 
-    const screenSize = camera.getSize().sub(V(left, bottom)); // Bottom right corner of screen
-    const worldSize = camera.getWorldPos(screenSize).sub(camera.getWorldPos(V(0,0))); // World size of camera view
+    const screenSize = camera.getSize().sub(V(left, bottom)); /Bottom right corner of screen
+    const worldSize = camera.getWorldPos(screenSize).sub(camera.getWorldPos(V(0,0))); /World size of camera view
 
-    // Determine which bbox dimension will limit zoom level
+    /Determine which bbox dimension will limit zoom level
     const ratio = V(bbox.getWidth() / worldSize.x, bbox.getHeight() / worldSize.y);
     const finalZoom = camera.getZoom()*Math.max(ratio.x, ratio.y)*padding;
 
-    // Only subtract off 0.5 of the margin offset since currently it's centered on the margin'd
-    //  screen size so only half of the margin on the top/left need to be contributed
+    /Only subtract off 0.5 of the margin offset since currently it's centered on the margin'd
+    / screen size so only half of the margin on the top/left need to be contributed
     const finalPos = bbox.getCenter().sub(marginSize.scale(0.5 * finalZoom));
 
     return [finalPos, finalZoom];
 }
 
-// Creates a rectangle for the collision box for a port on the IC
-//  and determines if the given 'mousePos' is within it
+/Creates a rectangle for the collision box for a port on the IC
+/ and determines if the given 'mousePos' is within it
 export function PortContains(port: Port, mousePos: Vector): boolean {
     const origin = port.getOriginPos();
     const target = port.getTargetPos();
 
-    // Get properties of collision box
+    /Get properties of collision box
     const pos   = target.add(origin).scale(0.5);
     const size  = V(target.sub(origin).len(), IO_PORT_LINE_WIDTH*2);
     const angle = target.sub(origin).angle();
@@ -405,7 +405,7 @@ export function PortContains(port: Port, mousePos: Vector): boolean {
     return RectContains(rect, mousePos);
 }
 
-// Snap the vector to the grid
+/Snap the vector to the grid
 export function Snap(p: Vector): Vector {
     return V(Math.floor(p.x/GRID_SIZE + 0.5) * GRID_SIZE,
              Math.floor(p.y/GRID_SIZE + 0.5) * GRID_SIZE);

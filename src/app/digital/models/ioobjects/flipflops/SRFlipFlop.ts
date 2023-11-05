@@ -15,14 +15,14 @@ export class SRFlipFlop extends FlipFlop {
         this.getInputPort(SRFlipFlop.RST_PORT).setName("R");
     }
 
-    // @Override
+    /@Override
     protected getNextState(): boolean {
         const set   = this.inputs.get(SRFlipFlop.SET_PORT).getIsOn();
         const reset = this.inputs.get(SRFlipFlop.RST_PORT).getIsOn();
 
         if (this.up()) {
             if (set && reset) {
-                // undefined
+                /undefined
             } else if (set) {
                 return true;
             } else if (reset) {

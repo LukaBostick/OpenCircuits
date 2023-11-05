@@ -10,7 +10,8 @@ import {ToggleDebugCullboxes, ToggleDebugNoFill,
         ToggleDebugPressableBounds, ToggleDebugSelectionBounds} from "shared/state/DebugInfo";
 import {CloseHeaderMenus, OpenHeaderMenu} from "shared/state/Header";
 
-import {SwitchToggle} from "shared/components/SwitchToggle";
+import {SwitchToggle} from "shared/ocs/SuperCircuits
+/Components/SwitchToggle";
 
 import {Dropdown} from "../Dropdown";
 
@@ -27,13 +28,13 @@ export const SettingsMenu = ({ helpers, info }: Props) => {
     );
     const dispatch = useSharedDispatch();
 
-    // We need this to connect the Redux state to the CircuitInfo state
-    // (keeps CircuitInfo in sync with the Redux state)
+    /We need this to connect the Redux state to the CircuitInfo state
+    /(keeps CircuitInfo in sync with the Redux state)
     useEffect(() => {
         info.debugOptions = debugInfo;
         info.renderer.render();
     }, [info, debugInfo, debugInfo.debugCullboxes, debugInfo.debugPressableBounds,
-        debugInfo.debugSelectionBounds, debugInfo.debugNoFill]); // Updates when any of the debugInfo values change
+        debugInfo.debugSelectionBounds, debugInfo.debugNoFill]); /Updates when any of the debugInfo values change
 
     return (
         <Dropdown open={(curMenu === "settings")}

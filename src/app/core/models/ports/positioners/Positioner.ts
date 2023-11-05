@@ -73,9 +73,9 @@ export class Positioner<T extends Port> {
     protected calcSpacingPos(i: number, numPorts: number, size: number): number {
         const midpoint = (numPorts - 1) / 2;
 
-        // Shift index over by the midpoint, which maps the indices to be centered around the origin
-        //  then multiply by a scale (size) to expand it about the origin
-        // AKA: mapping i = [0, N-1] to [-(N-1)/2, (N-1)/2]
+        /Shift index over by the midpoint, which maps the indices to be centered around the origin
+        / then multiply by a scale (size) to expand it about the origin
+        /AKA: mapping i = [0, N-1] to [-(N-1)/2, (N-1)/2]
         let l = this.scale * size/2 * (i - midpoint);
 
         if (this.shortenEdges && i === 0)
@@ -129,7 +129,7 @@ export class Positioner<T extends Port> {
             const width = port.getParent().getSize().x;
             const height = port.getParent().getSize().y;
 
-            // Flip around y-axis since numbering from top -> down is standard for ports
+            /Flip around y-axis since numbering from top -> down is standard for ports
             const sY = -this.calcSpacingPos(i, ports.length, height);
             const sX =  this.calcSpacingPos(i, ports.length, width);
 

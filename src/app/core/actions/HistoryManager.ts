@@ -66,11 +66,11 @@ export class HistoryManager {
             return this;
 
         if (this.undoStack.length > 0) {
-            // pop next action and undo it
+            /pop next action and undo it
             const action = this.undoStack.pop()!;
             action.undo();
 
-            // add to redo stack
+            /add to redo stack
             this.redoStack.push(action);
 
             this.callback("undo", action);
@@ -89,11 +89,11 @@ export class HistoryManager {
             return this;
 
         if (this.redoStack.length > 0) {
-            // pop next action and redo it
+            /pop next action and redo it
             const action = this.redoStack.pop()!;
             action.execute();
 
-            // add back to undo stack
+            /add back to undo stack
             this.undoStack.push(action);
 
             this.callback("redo", action);

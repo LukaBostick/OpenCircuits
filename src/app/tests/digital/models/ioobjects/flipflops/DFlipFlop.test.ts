@@ -55,7 +55,7 @@ describe("DFlipFlop", () => {
         expectState(OFF);
     });
     test("Toggle Data after Clock", () => {
-        // Toggling on
+        /Toggling on
         C.activate(ON);
         D.activate(ON);
 
@@ -66,14 +66,14 @@ describe("DFlipFlop", () => {
         expectState(OFF);
 
 
-        // Set on
+        /Set on
         D.activate(ON);
         C.activate(ON);
         expectState(ON);
         C.activate(OFF);
 
 
-        // Toggling off
+        /Toggling off
         C.activate(ON);
         D.activate(OFF);
 

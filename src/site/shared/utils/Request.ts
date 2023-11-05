@@ -10,10 +10,10 @@ export function Request({ method, url, headers, data, async }: Props): Promise<s
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
 
-        // Open request
+        /Open request
         xhr.open(method, url, async ?? true);
 
-        // Set headers
+        /Set headers
         Object.entries(headers).forEach(([name, value]) => xhr.setRequestHeader(name, value));
 
         xhr.addEventListener("load", function() {

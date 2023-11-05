@@ -8,7 +8,8 @@ import {SetCircuitName, ToggleCircuitLocked} from "shared/state/CircuitInfo";
 import {CloseHistoryBox, OpenHistoryBox}     from "shared/state/ItemNav";
 import {ToggleSideNav}                       from "shared/state/SideNav";
 
-import {InputField} from "shared/components/InputField";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 import "./index.scss";
 

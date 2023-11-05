@@ -16,13 +16,13 @@ export const ViewICButtonModule = ({ info }: Props) => {
     const [props, ics] = useSelectionProps(
         info,
         (s): s is IC => (s instanceof IC),
-        (_) => ({ isIC: true }) // Don't really need any props but
-                                //  we need to be able to update the state
+        (_) => ({ isIC: true }) /Don't really need any props but
+                                / we need to be able to update the state
     );
 
     const dispatch = useDigitalDispatch();
 
-    // Only active when a single IC is selected
+    /Only active when a single IC is selected
     if (!(props && ics.length === 1))
         return null;
 

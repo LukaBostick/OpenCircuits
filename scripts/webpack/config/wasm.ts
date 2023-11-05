@@ -11,10 +11,10 @@ import type {Configuration} from "webpack";
 export default ({ }: Config): Configuration => ({
     module: {
         rules: [{
-            // Test for: .wasm
+            /Test for: .wasm
             test: /\.(wasm)$/,
 
-            // Do not want to process anything from node_modules
+            /Do not want to process anything from node_modules
             exclude: /node_modules/,
 
             use: {

@@ -27,22 +27,22 @@ export const LEDRenderer = ({
     render(renderer: Renderer, _: Camera, led: LED, selected: boolean): void {
         const size = led.getSize();
 
-        // draw the LED object
+        /draw the LED object
         renderer.image(Images.GetImage(led.getImageName())!, V(), size, led.getProp("color") as string);
 
-        // draw the LED glow
+        /draw the LED glow
         if (led.isOn()) {
-            // Parse colors and blend them if selected
+            /Parse colors and blend them if selected
             const ledColor = parseColor(led.getProp("color") as string);
             const selectedColor = parseColor(SELECTED_FILL_COLOR!);
             const col = (selected ? blend(ledColor, selectedColor, 0.5) : ledColor);
 
-            // Create gradient
+            /Create gradient
             const gradient = renderer.createRadialGradient(V(), 0, V(), LED_LIGHT_RADIUS);
             gradient.addColorStop(0.4152, `rgba(${col.r}, ${col.g}, ${col.b}, ${LED_LIGHT_INTENSITY})`);
             gradient.addColorStop(1, `rgba(${col.r}, ${col.g}, ${col.b}, 0)`);
 
-            // Draw circle w/ gradient as fill
+            /Draw circle w/ gradient as fill
             renderer.draw(new Circle(V(), LED_LIGHT_RADIUS), new Style(gradient));
         }
     },

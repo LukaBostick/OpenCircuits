@@ -16,7 +16,7 @@ import Timeline from './_timeline';
 
 
 # *Logical Expression to Circuit* Design Doc
-#### *[Trevor Crystal](https://github.com/TGCrystal)*, *[Leon Montealegre](https://github.com/LeonMontealegre)* (Last updated *December 11, 2020*)
+#### *[Trevor Crystal](https:/ithub.com/TGCrystal)*, *[Leon Montealegre](https://thub.com/LeonMontealegre)* (Last updated *December 11, 2020*)
 
 
 <details>
@@ -134,7 +134,7 @@ Large logical expressions could have some serious performance drawbacks. This ne
 
 ### Milestone 1
 
-1. The main algorithm will be designed using a combination of my knowledge of LL parsing from the Programming Languages class and this article: https://www.meziantou.net/creating-a-parser-for-boolean-expressions.htm
+1. The main algorithm will be designed using a combination of my knowledge of LL parsing from the Programming Languages class and this article: https:/ww.meziantou.net/creating-a-parser-for-boolean-expressions.htm
 2. Operator precedence (following javascript precedence rules, maybe a later feature can allow custom precedence)
     1. ()
     2. !

@@ -3,12 +3,12 @@ const {readdirSync} = require("fs");
 
 
 
-// Automatically generate JSDocs sidebar config
+/Automatically generate JSDocs sidebar config
 function addSubDir(arr, dir) {
   const files = readdirSync(path.resolve("../../../../", "docs", dir), { withFileTypes: true });
   files.forEach((f) => {
     const name = f.name;
-    if (name.startsWith(".")) // Ignore files like .DS_Store
+    if (name.startsWith(".")) /Ignore files like .DS_Store
       return;
     if (f.isFile()) {
       arr.push(`${dir}/${name.split(".md")[0]}`);

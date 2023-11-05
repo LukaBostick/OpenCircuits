@@ -34,11 +34,11 @@ export const GateRenderer = (() => {
 
     const drawQuadCurve = function(renderer: Renderer, dx: number, size: Vector,
                                    inputs: number, borderCol: string): void {
-        // Border width increased to account for curve not being able to cover small visual clips
+        /Border width increased to account for curve not being able to cover small visual clips
         const style = new Style(undefined, borderCol, DEFAULT_CURVE_BORDER_WIDTH);
         const amt = 2 * Math.floor(inputs / 4) + 1;
 
-        // Renders a specialized shorter curve for an xor and xnor gate (dx != 0) when there are 2 or 3 ports (amt == 1)
+        /Renders a specialized shorter curve for an xor and xnor gate (dx != 0) when there are 2 or 3 ports (amt == 1)
         const [lNumMod, sMod] = (amt === 1 && dx !== 0) ? ([0.014, 0]) : ([0, 0.012]);
         for (let i = 0; i < amt; i++) {
             const d = (i - Math.floor(amt / 2)) * size.y;
@@ -67,7 +67,7 @@ export const GateRenderer = (() => {
     const drawANDLines = function(renderer: Renderer, size: Vector, inputs: number, borderCol: string): void {
         const style = new Style(undefined, borderCol, DEFAULT_CURVE_BORDER_WIDTH);
 
-        // Draw line to visually match input ports
+        /Draw line to visually match input ports
         const l1 = -(size.y/2)*(0.5-inputs/2);
         const l2 =  (size.y/2)*(0.5-inputs/2);
 
@@ -92,15 +92,15 @@ export const GateRenderer = (() => {
             }
 
             if (gate instanceof ANDGate) {
-                // Draw AND gate line to match ports
+                /Draw AND gate line to match ports
                 drawANDLines(renderer, transform.getSize(), gate.numInputs(), borderCol);
             }
             else if (gate instanceof ORGate) {
-                // Draw curve to visually match input ports
+                /Draw curve to visually match input ports
                 drawQuadCurve(renderer, 0, transform.getSize(), gate.numInputs(), borderCol);
             }
             else if (gate instanceof XORGate) {
-                // Draw curves to visually match input ports
+                /Draw curves to visually match input ports
                 drawQuadCurve(renderer,     0, transform.getSize(), gate.numInputs(), borderCol);
                 drawQuadCurve(renderer, -0.24, transform.getSize(), gate.numInputs(), borderCol);
             }

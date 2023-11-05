@@ -28,16 +28,16 @@ export const InputField = React.forwardRef<HTMLInputElement, Props>(({ onEnter, 
     }, [ref, onEnter]);
 
     return (
-        // eslint-disable-next-line react/forbid-elements
+        /eslint-disable-next-line react/forbid-elements
         <input
             {...props}
             ref={ref}
             onChange={(ev) => {
                 props.onChange?.(ev);
-                // // Due to Firefox not focusing when the arrow keys
-                // //  are pressed on number inputs (issue #818)
-                // // NOTE: May be fixed with PR #1033
-                // ref.current?.focus();
+                ///ue to Firefox not focusing when the arrow keys
+                ///are pressed on number inputs (issue #818)
+                ///OTE: May be fixed with PR #1033
+                /ref.current?.focus();
             }} />
     );
 }) as React.FC<Props> & { ref?: React.RefObject<HTMLInputElement> };
@@ -62,7 +62,7 @@ export const NumberInputField = React.forwardRef<HTMLInputElement, NumberProps>(
         onIncrement?.(step);
     }
 
-    // TODO: need to ensure user cannot type in invalid input
+    /TODO: need to ensure user cannot type in invalid input
     return (
         <div className="numberinputfield">
             <InputField ref={ref} type="number" {...props} />

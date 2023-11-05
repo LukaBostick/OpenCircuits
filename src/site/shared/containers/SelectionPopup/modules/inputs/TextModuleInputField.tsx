@@ -1,12 +1,13 @@
 import {useRef} from "react";
 
-import {InputField} from "shared/components/InputField";
+import {InputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 import {DefaultConfig, SharedModuleInputFieldProps, useBaseModule} from "./ModuleInputField";
 
 
 type Props = SharedModuleInputFieldProps<string>;
-// TODO: Add regex prop to pass into `isValid` maybe
+/TODO: Add regex prop to pass into `isValid` maybe
 export const TextModuleInputField = ({
     placeholder, alt, ...props
 }: Props) => {

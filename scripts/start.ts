@@ -11,7 +11,7 @@ import getDirs      from "./utils/getDirs.js";
 import startWebpack from "./webpack/index.js";
 
 
-// Do this as the first thing so that any code reading it knows the right env.
+/Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = "development";
 process.env.NODE_ENV = "development";
 
@@ -19,7 +19,7 @@ process.env.NODE_ENV = "development";
 function StartServer() {
     const isWin = (os.platform() === "win32");
 
-    // Check if server is built
+    /Check if server is built
     if (!existsSync(path.resolve(process.cwd(), "build", (isWin ? "server.exe" : "server")))) {
         console.log(
             `\n${chalk.red("Failed to start server!")}\n`+
@@ -38,7 +38,7 @@ function StartClient(dir: string, project: string, open: boolean) {
 }
 
 
-// CLI
+/CLI
 (async () => {
     const { open } = await yargs(process.argv.slice(2))
         .boolean("open")
@@ -46,7 +46,7 @@ function StartClient(dir: string, project: string, open: boolean) {
 
     const dirs = getDirs(true, false, false);
 
-    // Prompt for project type
+    /Prompt for project type
     const { value } = await prompts({
         type:    "select",
         name:    "value",
@@ -58,12 +58,12 @@ function StartClient(dir: string, project: string, open: boolean) {
     if (!value)
         return;
 
-    // Start server
+    /Start server
     if (value === "server") {
         StartServer();
         return;
     }
 
-    // Start digital/analog/landing page
+    /Start digital/analog/landing page
     StartClient(`src/site/pages/${value}`, value, open);
 })();

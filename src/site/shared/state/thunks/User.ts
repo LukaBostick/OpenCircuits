@@ -19,17 +19,17 @@ export function LoadUserCircuits(): ThunkResult<Promise<boolean>> {
 
         dispatch(_LoadCircuitsStart());
         try {
-            // Attempt to load circuits from backend
+            /Attempt to load circuits from backend
             const circuits = await QueryUserCircuits(auth!);
             if (!circuits)
                 throw new Error("LoadUserCircuits failed: circuits is undefined");
             dispatch(_LoadCircuitsFinish(circuits));
 
-            return true; // success
+            return true; /success
         } catch (e) {
             dispatch(_LoadCircuitsFinish([], e));
 
-            return false; // failure
+            return false; /failure
         }
     }
 }

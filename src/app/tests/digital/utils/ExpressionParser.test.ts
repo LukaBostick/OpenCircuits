@@ -68,9 +68,9 @@ function testInputs(inputs: Array<[string, Switch]>, circuit: DigitalObjectSet, 
     const designer = new DigitalCircuitDesigner(0);
     AddGroup(designer, circuit);
 
-    // Decrements because there can be weird propagation issues when trying to read initial state
-    // For more, see issues #468 and #613
-    // TODO: Make this increment rather than decrement if/when #468 and #613 are fixed
+    /Decrements because there can be weird propagation issues when trying to read initial state
+    /For more, see issues #468 and #613
+    /TODO: Make this increment rather than decrement if/when #468 and #613 are fixed
     for (let num = 2**inputs.length - 1; num >= 0; num--) {
         let testTitle = "Inputs on:";
         for (let index = 0; index < inputs.length; index++)
@@ -79,7 +79,7 @@ function testInputs(inputs: Array<[string, Switch]>, circuit: DigitalObjectSet, 
         if (testTitle === "Inputs on:")
             testTitle += " [none]";
 
-        // The loop is repeated because the activation needs to happen within the test
+        /The loop is repeated because the activation needs to happen within the test
         test(testTitle, () => {
             for (let index = 0; index < inputs.length; index++)
                 inputs[index][1].activate(!!(num & (2**index)));
@@ -108,9 +108,9 @@ function testInputsSimple(inputs: Array<[string, Switch]>, circuit: DigitalObjec
     const designer = new DigitalCircuitDesigner(0);
     AddGroup(designer, circuit);
 
-    // Decrements because there can be weird propagation issues when trying to read initial state
-    // For more, see issues #468 and #613
-    // TODO: Make this increment rather than decrement if/when #468 and #613 are fixed
+    /Decrements because there can be weird propagation issues when trying to read initial state
+    /For more, see issues #468 and #613
+    /TODO: Make this increment rather than decrement if/when #468 and #613 are fixed
     test("Test all states", () => {
         for (let num = 2 ** inputs.length - 1; num >= 0; num--) {
             for (let index = 0; index < inputs.length; index++)
@@ -569,7 +569,7 @@ describe("Expression Parser", () => {
         });
     });
 
-    // 0, a, b, (a, b)
+    /0, a, b, (a, b)
     describe("2 Inputs", () => {
         runTests(2, "a&b", [false, false, false, true]);
 
@@ -598,7 +598,7 @@ describe("Expression Parser", () => {
         runTests(2, "!(a|b)", [true, false, false, false]);
     });
 
-    // 0, a, b, (a,b), c, (a,c), (b,c), (a,b,c)
+    /0, a, b, (a,b), c, (a,c), (b,c), (a,b,c)
     describe("3 Inputs", () => {
         runTests(3, "a&b&c", [false, false, false, false, false, false, false, true]);
 
@@ -685,7 +685,7 @@ describe("Expression Parser", () => {
                 const bigGate = getOutputComponent(inputs[0][1]);
                 for (let i = 1; i < 7; i++)
                     expect(getOutputComponent(inputs[i][1])).toBe(bigGate);
-                // Doesn't matter if input 8 is connected to bigGate or the other or gate
+                /Doesn't matter if input 8 is connected to bigGate or the other or gate
                 expect(getOutputComponent(inputs[8][1])).not.toBe(bigGate);
             });
         });

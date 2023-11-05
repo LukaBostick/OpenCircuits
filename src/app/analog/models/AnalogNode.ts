@@ -18,7 +18,7 @@ export class AnalogNode extends AnalogComponent implements Node {
     public constructor() {
         super(new ClampedValue(2), V(2*IO_PORT_RADIUS));
 
-        // Set origin = target position so that they overlap and look like 1 dot
+        /Set origin = target position so that they overlap and look like 1 dot
         this.ports.first.setOriginPos(V(0, 0));
         this.ports.first.setTargetPos(V(0, 0));
         this.ports.last .setOriginPos(V(0, 0));

@@ -8,12 +8,12 @@ import {PortsToDecimal} from "digital/utils/ComponentUtils";
 import {ASCIIFont}      from "./ASCIIFont";
 import {SegmentDisplay} from "./SegmentDisplay";
 
-// Index for ASCIIFont can be found at https://en.wikipedia.org/wiki/ASCII
+/Index for ASCIIFont can be found at https://.wikipedia.org/wiki/ASCII
 
 @serializable("ASCIIDisplay")
 export class ASCIIDisplay extends SegmentDisplay {
     public constructor() {
-        // Always 7 inputs since number of segments is independent of number of inputs
+        /Always 7 inputs since number of segments is independent of number of inputs
         super(new ClampedValue(7));
     }
 

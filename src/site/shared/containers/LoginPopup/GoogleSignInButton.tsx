@@ -13,17 +13,17 @@ export const GoogleAuthButton = () => {
     const dispatch = useSharedDispatch();
 
     useEffect(() => {
-        if (!("gapi" in window)) // GAPI failed to load for some reason
+        if (!("gapi" in window)) /GAPI failed to load for some reason
             return;
 
         function onLogin(success: boolean) {
             if (success) {
                 dispatch(Login(new GoogleAuthState()));
                 dispatch(CloseHeaderPopups());
-            } // Else don't login or close
+            } /Else don't login or close
         }
 
-        // Render sign in button
+        /Render sign in button
         gapi.signin2.render("login-popup-google-signin", {
             "scope":     "profile email",
             "width":     180,

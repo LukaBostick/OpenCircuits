@@ -13,7 +13,7 @@ import {Curve} from "core/rendering/shapes/Curve";
 import {Wire} from "core/models";
 
 
-// @TODO @leon - Move this function to "svg2canvas"
+/@TODO @leon - Move this function to "svg2canvas"
 function ColorToHex(col: Color): string {
     return `#${[col.r, col.g, col.b].map((x) => {
         const hex = Math.round(x).toString(16);
@@ -35,23 +35,23 @@ export const WireRenderer = ({
 
         const selected = selections.has(wire);
 
-        // Changes color of wires: when wire is selected it changes to the color
-        //  selected blended with constant color SELECTED_FILL_COLOR
+        /Changes color of wires: when wire is selected it changes to the color
+        / selected blended with constant color SELECTED_FILL_COLOR
         const selectedColor = ColorToHex(blend(
             parseColor(wire.getProp("color") as string),
             parseColor(SELECTED_FILL_COLOR!), 0.2
         ));
 
-        // @TODO move to function for getting color based on being selection/on/off
+        /@TODO move to function for getting color based on being selection/on/off
         const color = (selected ? selectedColor : wire.getDisplayColor());
         const style = new Style(undefined, color, WIRE_THICKNESS / camera.getZoom());
 
-        // get curve and start/end positions
+        /get curve and start/end positions
         const curve = wire.getShape();
         const p1 = camera.getScreenPos(curve.getP1());
         const p2 = camera.getScreenPos(curve.getP2());
 
-        // get bezier points
+        /get bezier points
         const c1 = camera.getScreenPos(curve.getC1());
         const c2 = camera.getScreenPos(curve.getC2());
 

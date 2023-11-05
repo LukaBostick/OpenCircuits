@@ -24,14 +24,14 @@ export function SplitWire(designer: CircuitDesigner, w: Wire, port: Node): Group
     action.add(Disconnect(designer, w));
     action.add(Place(designer, port));
 
-    // Creates and saves new ConnectionAction to a var and then executes the action.
+    /Creates and saves new ConnectionAction to a var and then executes the action.
     const con1 = Connect(designer, w.getP1(), port.getP1());
     action.add(con1);
 
-    // After execution the color of the first half of the new wire is set to the color of the old wire.
+    /After execution the color of the first half of the new wire is set to the color of the old wire.
     action.add(SetProperty(con1.getWire(), "color", w.getProp("color")));
 
-    // Repeats same process for the other half of the split wire.
+    /Repeats same process for the other half of the split wire.
     const con2 = Connect(designer, port.getP2(), w.getP2());
     action.add(con2);
     action.add(SetProperty(con2.getWire(), "color", w.getProp("color")));
@@ -66,7 +66,7 @@ export function SnipWire(designer: CircuitDesigner, port: Node): GroupAction {
     const con1 = Connect(designer, ports[0], ports[1]);
     action.add(con1);
 
-    // Change color on new wire that's a blend between the two wires
+    /Change color on new wire that's a blend between the two wires
     action.add(SetProperty(
         con1.getWire(), "color",
         ColorToHex(blend(

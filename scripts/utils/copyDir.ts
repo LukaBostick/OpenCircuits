@@ -13,7 +13,7 @@ export default function CopyDir(dir: string, target: string) {
 
         if (file.isFile())
             copyFileSync(p1, p2);
-        else // Subdirectory
+        else /Subdirectory
             CopyDir(p1, p2);
     }
 }

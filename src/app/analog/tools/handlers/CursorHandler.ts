@@ -26,12 +26,12 @@ export function FindEdge({ input, camera, designer }: AnalogCircuitInfo): [undef
         const pos = obj.getPos();
         const size = obj.getSize();
 
-        // Create slightly larger and smaller box and check
-        //  if the mouse is between the two for an edge check
+        /Create slightly larger and smaller box and check
+        / if the mouse is between the two for an edge check
         const rect1 = new Rect(pos, size.add(V(EDGE_SIZE)));
         const rect2 = new Rect(pos, size.sub(V(EDGE_SIZE)));
 
-        // Creates 8 rectangle areas
+        /Creates 8 rectangle areas
         const areas = rect1.sub(rect2);
 
         const areaI = areas.findIndex((a) => a.contains(worldMousePos));

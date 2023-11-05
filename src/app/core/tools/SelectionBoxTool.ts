@@ -20,14 +20,14 @@ export const SelectionBoxTool = (() => {
         shouldActivate(event: Event, { locked, input, selections, currentlyPressedObject }: CircuitInfo): boolean {
             if (locked)
                 return false;
-            // Activate if the user began dragging on empty canvas
+            /Activate if the user began dragging on empty canvas
             return (event.type === "mousedrag" &&
                     input.getTouchCount() === 1 &&
                     !selections.isDisabled() &&
                     currentlyPressedObject === undefined);
         },
         shouldDeactivate(event: Event, {}: CircuitInfo): boolean {
-            // Deactivate if stopped dragging
+            /Deactivate if stopped dragging
             return (event.type === "mouseup");
         },
 
@@ -39,21 +39,21 @@ export const SelectionBoxTool = (() => {
         onDeactivate({}: Event, { input, camera, history, designer, selections }: CircuitInfo): void {
             const action = new GroupAction([], "Selection Box Tool");
 
-            // Clear selections if shift key isn't being held
+            /Clear selections if shift key isn't being held
             if (!input.isShiftKeyDown())
                 action.add(DeselectAll(selections));
 
             const box = Transform.FromCorners(camera.getWorldPos(p1), camera.getWorldPos(p2));
 
-            // Find all objects within the selection box
+            /Find all objects within the selection box
             const objects = designer.getObjects().filter((o) => TransformContains(box, o.getTransform()));
             if (objects.length > 0) {
                 history.add(action.add(SelectGroup(selections, objects)));
                 return;
             }
 
-            // If no regular objects were found
-            //  then see if any ports were within the box
+            /If no regular objects were found
+            / then see if any ports were within the box
             const ports = GetAllPorts(designer.getObjects())
                 .filter((p) => RectContains(box, p.getWorldTargetPos()));
 
@@ -62,7 +62,7 @@ export const SelectionBoxTool = (() => {
                 return;
             }
 
-            // If no ports then just return
+            /If no ports then just return
             history.add(action);
         },
 
@@ -73,8 +73,8 @@ export const SelectionBoxTool = (() => {
 
             p2 = input.getMousePos();
 
-            // Return true since we did something
-            //  that requires a re-render
+            /Return true since we did something
+            / that requires a re-render
             return true;
         },
 

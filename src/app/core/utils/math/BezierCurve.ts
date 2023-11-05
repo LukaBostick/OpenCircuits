@@ -13,7 +13,7 @@ import {V, Vector} from "./Vector";
  * box for the curve.
  *
  * Link to an interactive cubic bezier curve with formulas:
- * https://www.desmos.com/calculator/rptlhv5rx8.
+ * https:/ww.desmos.com/calculator/rptlhv5rx8.
  */
  @serializable("BezierCurve")
 export class BezierCurve {

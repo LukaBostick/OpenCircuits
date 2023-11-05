@@ -12,7 +12,7 @@ import getDirs      from "./utils/getDirs.js";
 import startWebpack from "./webpack/index.js";
 
 
-// Do this as the first thing so that any code reading it knows the right env.
+/Do this as the first thing so that any code reading it knows the right env.
 process.env.BABEL_ENV = "production";
 process.env.NODE_ENV = "production";
 
@@ -23,7 +23,7 @@ const DIR_MAP = Object.fromEntries(DIRS.map((d) => [d.value, d]));
 
 function BuildServer(prod: boolean) {
     return new Promise<void>((resolve, _) => {
-        // GCP requires raw go files, so no need to build server
+        /GCP requires raw go files, so no need to build server
         if (prod) {
             CopyDir("src/server", "build")
             resolve();
@@ -45,7 +45,7 @@ async function BuildDir(dir: string, project: string) {
 }
 
 
-// CLI
+/CLI
 (async () => {
     const argv = await yargs(process.argv.slice(2))
         .boolean("ci")
@@ -57,10 +57,10 @@ async function BuildDir(dir: string, project: string) {
 
     let dirs = argv._ as string[];
     if (ci && dirs.length === 0) {
-        // Run tests on all directories
+        /Run tests on all directories
         dirs = Object.keys(DIR_MAP);
     } else if (dirs.length === 0) {
-        // Prompt user for directory
+        /Prompt user for directory
         const { value } = await prompts({
             type:    "select",
             name:    "value",
@@ -73,19 +73,19 @@ async function BuildDir(dir: string, project: string) {
         dirs = [value];
     }
 
-    // If prod, clear build directory first
+    /If prod, clear build directory first
     if (prod) {
         readdirSync("build")
-            // Don't clear scripts directory though
+            /Don't clear scripts directory though
             .filter((name) => (name !== "scripts"))
             .forEach((name) => rmSync(`./build/${name}`, { recursive: true, force: true }));
     }
 
-    // If manual production build, copy secrets
+    /If manual production build, copy secrets
     if (prod && !ci && existsSync("src/secrets"))
     CopyDir("src/secrets", "build");
 
-    // Launch build in each directory
+    /Launch build in each directory
     for (const dir of dirs) {
         const info = DIR_MAP[dir];
 

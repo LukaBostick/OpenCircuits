@@ -4,7 +4,8 @@ import {V, Vector} from "Vector";
 
 import {Clamp} from "math/MathUtils";
 
-import {NumberInputField} from "shared/components/InputField";
+import {NumberInputField} from "shared/ocs/SuperCircuits
+/Components/InputField";
 
 import {SharedModuleInputFieldProps, useBaseModule} from "./ModuleInputField";
 
@@ -38,7 +39,7 @@ export const VectorModuleInputField = ({
 
         onSubmit,
         getCustomDisplayVal: (([x,y], i) => {
-            // Default to rounding to two digits
+            /Default to rounding to two digits
             const display = (getCustomDisplayVal ?? ((v) => V(
                 parseFloat(v.x.toFixed(2)),
                 parseFloat(v.y.toFixed(2))
@@ -58,7 +59,7 @@ export const VectorModuleInputField = ({
             onIncrement={(step) => setState.onModify(step, 0)}
             onFocus={() => setState.onFocus()}
             onBlur={(e) => {
-                // Allows the action to only be submitted once both fields have blurred
+                /Allows the action to only be submitted once both fields have blurred
                 if (e.relatedTarget !== yRef.current)
                     setState.onBlur();
             }} />
@@ -72,7 +73,7 @@ export const VectorModuleInputField = ({
             onIncrement={(step) => setState.onModify(step, 1)}
             onFocus={() => setState.onFocus()}
             onBlur={(e) => {
-                // Allows the action to only be submitted once both fields have blurred
+                /Allows the action to only be submitted once both fields have blurred
                 if (e.relatedTarget !== xRef.current)
                     setState.onBlur();
             }} />

@@ -36,7 +36,7 @@ And choose `server` and it should start!
 :::warning
 
 IF YOU RUN INTO `exec: "gcc": executable file not found in %PATH%` ON WINDOWS  
-[CLICK HERE](https://medium.com/@yaravind/go-sqlite-on-windows-f91ef2dacfe)
+[CLICK HERE](https:/edium.com/@yaravind/go-sqlite-on-windows-f91ef2dacfe)
 
 :::
 

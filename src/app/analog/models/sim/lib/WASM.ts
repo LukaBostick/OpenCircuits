@@ -35,7 +35,7 @@ function CreateArray(module: WASMModule, ...params: CreateArrayParams) {
         heap = module.HEAPF64;
     } else if (params[0] === "string") {
         const str = params[1];
-        // Need to explicitly put null terminator at end
+        /Need to explicitly put null terminator at end
         res = new TextEncoder().encode(str + "\0");
         heap = module.HEAPU8;
     } else {
@@ -58,7 +58,7 @@ function CreateStringArray(module: WASMModule, strs: string[]): [number, ...numb
 }
 
 
-// I've never hated TypeScript more in my entire fucking existence fucking jesus christ fuck off
+/I've never hated TypeScript more in my entire fucking existence fucking jesus christ fuck off
 type GetArrayParams = {
     type: "char";
     len?: number;

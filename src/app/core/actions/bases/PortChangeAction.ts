@@ -29,8 +29,8 @@ export abstract class PortChangeAction<T extends Component> implements Action {
         const action = new GroupAction([], "Port Change Action");
         const ports = this.getPorts();
 
-        // Disconnect all wires from each port
-        //  that will be remove if target < ports.length
+        /Disconnect all wires from each port
+        / that will be remove if target < ports.length
         while (ports.length > this.targetCount) {
             const wires = ports.pop()!.getWires();
             if (wires.length > 0 && !this.designer)
@@ -44,8 +44,8 @@ export abstract class PortChangeAction<T extends Component> implements Action {
     protected abstract getPorts(): Port[];
 
     public execute(): Action {
-        // If executing for the first time, then get
-        //  all wires that are going to be removed
+        /If executing for the first time, then get
+        / all wires that are going to be removed
         if (!this.wireDeletionAction)
             this.wireDeletionAction = this.createAction();
         else

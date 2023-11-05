@@ -22,7 +22,7 @@ export class Decoder extends DigitalComponent {
               new ConstantSpacePositioner<InputPort>("left", 1),
               new ConstantSpacePositioner<OutputPort>("right", 1));
 
-        // activate 0th port for initial state
+        /activate 0th port for initial state
         super.activate(true, 0);
 
         this.updatePortNames();
@@ -40,25 +40,25 @@ export class Decoder extends DigitalComponent {
     }
 
     public override setInputPortCount(val: number): void {
-        // Update size
+        /Update size
         const newSize = V((1 + (val - 1)/20), Math.pow(2, val)/2);
         this.setSize(newSize);
 
         super.setInputPortCount(val);
 
-        // Update port names
+        /Update port names
         this.inputs.updatePortPositions();
         this.outputs.updatePortPositions();
         this.updatePortNames();
     }
 
     public override activate(): void {
-        // Convert binary input to index of which output should be on
+        /Convert binary input to index of which output should be on
         const num = this.getInputPorts()
                 .map((port) => (port.getIsOn() ? 1 : 0))
                 .reduce((prev, cur, i) => prev | (cur << i), 0);
 
-        // Turn everything off except i === num
+        /Turn everything off except i === num
         this.getOutputPorts().forEach((_, i) => {
             super.activate(i === num, i);
         });

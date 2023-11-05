@@ -9,7 +9,7 @@ module.exports = {
         {
             "files": ["src/site/**/*.tsx"],
             "rules": {
-                // TODO: Remove this exception when https://github.com/microsoft/TypeScript/issues/21699 is fixed
+                /TODO: Remove this exception when https://thub.com/microsoft/TypeScript/issues/21699 is fixed
                 "unicorn/no-null": "off",
             }
         },
@@ -26,7 +26,7 @@ module.exports = {
                 "pascalCase": true,
             },
             "ignore": [
-                // Ignore things with words like IC, ID, etc. (i.e. ICViewer)
+                /Ignore things with words like IC, ID, etc. (i.e. ICViewer)
                 /(.*?)(IC|ID|IO|BCD|LED|JK|SR|AND|BUF|OR|XOR|SR|WASM|ASCII|OS|NG)(.*)/,
             ],
         }],

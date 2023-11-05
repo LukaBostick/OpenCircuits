@@ -26,13 +26,13 @@ export function SaveImage(canvas: HTMLCanvasElement, name: string, options: Imag
 
 function SaveImg(canvas: HTMLCanvasElement, projectName: string, options: ImageExportOptions) {
     if (options.useBg) {
-        // From https://stackoverflow.com/a/50126796
-        const ctx = canvas.getContext("2d")!; // get the context to overwrite the background of the canvas
-        ctx.save(); // save the current state of the context
-        ctx.globalCompositeOperation = "destination-over"; // set the composite operation to overwrite the background
+        /From https://ackoverflow.com/a/50126796
+        const ctx = canvas.getContext("2d")!; /get the context to overwrite the background of the canvas
+        ctx.save(); /save the current state of the context
+        ctx.globalCompositeOperation = "destination-over"; /set the composite operation to overwrite the background
         ctx.fillStyle = options.bgColor;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.restore() // restore the context to its previous state (back to default bg and operation)
+        ctx.restore() /restore the context to its previous state (back to default bg and operation)
     }
 
     const data = canvas.toDataURL(`image/${options.type}, 1.0`);
@@ -47,11 +47,11 @@ function SavePDF(canvas: HTMLCanvasElement, projectName: string, options: ImageE
     const data = canvas.toDataURL("image/png", 1);
     const pdf = new jsPDF("l", "px", [width, height]);
 
-    // Get name
+    /Get name
     if (projectName.replace(/\s+/g, "") === "")
         projectName = "Untitled Circuit";
 
-    // Fill background
+    /Fill background
     if (options.useBg) {
         pdf.setFillColor(options.bgColor);
         pdf.rect(0, 0, width, height, "F");

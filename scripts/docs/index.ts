@@ -30,22 +30,22 @@ function generateDocumentation(fileNames: string[], outPath: string, compilerOpt
         }
     }
 
-    // If a class with the same name as the file is within the list of classes, then move to top so it displays first
+    /If a class with the same name as the file is within the list of classes, then move to top so it displays first
     docs.forEach((doc) => {
         const i = doc.classes.map((c) => c.name).indexOf(doc.fileName.split(".")[0]);
         if (i === -1 || i === 0)
             return;
         const c = doc.classes[i];
-        // Move class from `i` to `0`
+        /Move class from `i` to `0`
         doc.classes.splice(i, 1);
         doc.classes.splice(0, 0, c);
     });
 
-    // Create output dir if it doesn't exist
+    /Create output dir if it doesn't exist
     if (!fs.existsSync(path.resolve(outPath)))
         fs.mkdirSync(path.resolve(outPath), { recursive: true });
 
-    // Export each doc
+    /Export each doc
     docs.forEach((doc) => {
         const outDir = path.resolve(
             outPath,
@@ -56,7 +56,7 @@ function generateDocumentation(fileNames: string[], outPath: string, compilerOpt
         );
         const outFile = path.resolve(outDir, doc.fileName.split(".")[0] + ".md");
 
-        // Create dir if it doesn't exist
+        /Create dir if it doesn't exist
         if (!fs.existsSync(path.resolve(outDir)))
             fs.mkdirSync(path.resolve(outDir), { recursive: true });
 

@@ -38,20 +38,20 @@ export abstract class PressableComponent extends DigitalComponent implements Pre
     }
 
     public override isWithinSelectBounds(v: Vector): boolean {
-        // Only true if we're normally in bounds and also not in the press bounds
-        //   i.e. prevents selecting when pressing the button part of the Button
+        /Only true if we're normally in bounds and also not in the press bounds
+        /  i.e. prevents selecting when pressing the button part of the Button
         return super.isWithinSelectBounds(v) && !this.isWithinPressBounds(v);
     }
 
     public getPressableBox(): Transform {
-        if (this.dirtyTransform) // Update transform
+        if (this.dirtyTransform) /Update transform
             super.getTransform();
         return this.pressTransform;
     }
 
     public override getMinPos(): Vector {
         const min = super.getMinPos();
-        // Find minimum pos from corners of selection box
+        /Find minimum pos from corners of selection box
         const corners = this.getPressableBox().getCorners().map((v) =>
             v.sub(this.getOffset())
         );
@@ -60,7 +60,7 @@ export abstract class PressableComponent extends DigitalComponent implements Pre
 
     public override getMaxPos(): Vector {
         const max = super.getMaxPos();
-        // Find maximum pos from corners of selection box
+        /Find maximum pos from corners of selection box
         const corners = this.getPressableBox().getCorners().map((v) =>
             v.add(this.getOffset())
         );

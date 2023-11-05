@@ -22,7 +22,7 @@ export const SnipWirePortsHandler: EventHandler = ({
     getResponse: ({ history, designer, selections }: CircuitInfo) => {
         const ports = selections.get().filter((o) => isNode(o)) as Node[];
 
-        // Deselect the ports and then snip them
+        /Deselect the ports and then snip them
         history.add(new GroupAction([
             DeselectAll(selections),
             SnipGroup(designer, ports),

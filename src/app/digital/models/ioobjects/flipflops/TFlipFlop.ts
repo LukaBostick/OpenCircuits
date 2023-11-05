@@ -13,7 +13,7 @@ export class TFlipFlop extends FlipFlop {
         this.getInputPort(TFlipFlop.TGL_PORT).setName("T");
     }
 
-    // @Override
+    /@Override
     protected getNextState(): boolean {
         const toggle = this.inputs.get(TFlipFlop.TGL_PORT).getIsOn();
 

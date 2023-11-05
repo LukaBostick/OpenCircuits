@@ -24,7 +24,7 @@ export class BCDDisplay extends SegmentDisplay {
      * Initializes a BCD Display with 4 input ports.
      */
     public constructor() {
-        // Always 4 inputs since number of segments is independent of number of inputs
+        /Always 4 inputs since number of segments is independent of number of inputs
         super(new ClampedValue(4), new Positioner<InputPort>("left", 0.6));
     }
 

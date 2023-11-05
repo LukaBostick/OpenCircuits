@@ -30,12 +30,12 @@ export class OutputPort extends Port {
      * @param signal The signal to send.
      */
     public activate(signal: boolean): void {
-        // Don't do anything if signal is same as current state
+        /Don't do anything if signal is same as current state
         if (signal === this.isOn)
             return;
         this.isOn = signal;
 
-        // Get designer to propagate signal, exit if undefined
+        /Get designer to propagate signal, exit if undefined
         const designer = this.parent.getDesigner();
         if (!designer)
             return;
@@ -60,7 +60,7 @@ export class OutputPort extends Port {
      * @param w The output wire to disconnect.
      */
     public disconnect(w: DigitalWire): void {
-        // find index and splice
+        /find index and splice
         const i = this.connections.indexOf(w);
         if (i !== -1)
             this.connections.splice(i, 1);
@@ -72,7 +72,7 @@ export class OutputPort extends Port {
      * @returns A shallow copy of the all the connections.
      */
     public getConnections(): DigitalWire[] {
-        return [...this.connections]; // Shallow copy array
+        return [...this.connections]; /Shallow copy array
     }
 
     /**

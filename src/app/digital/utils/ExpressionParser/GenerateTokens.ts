@@ -16,11 +16,11 @@ const TokenTypesArray: TokenType[] = ["(", ")", "&", "^", "|", "!"];
 function getInput(expression: string, index: number, ops: OperatorFormat): InputToken {
     const endIndex = Array.from({ length: expression.length - index - 1 }, (_, i) => i + index + 1)
                           .find((endIndex) =>
-                               // Check if the substring from index to endIndex is a token [|, ^, &, !, (, )]
+                               /Check if the substring from index to endIndex is a token [|, ^, &, !, (, )]
                                TokenTypesArray.find((tokenType) => SubStrEquals(expression,
                                                                                 endIndex,
                                                                                 ops.ops[tokenType]))
-                               // Check if the substring from index to endIndex is the separator, usually " "
+                               /Check if the substring from index to endIndex is the separator, usually " "
                                || SubStrEquals(expression, endIndex, ops.separator)
                           );
     if (endIndex)

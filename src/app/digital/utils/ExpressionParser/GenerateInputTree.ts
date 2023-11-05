@@ -7,7 +7,7 @@ import {FORMATS} from "./Constants/Formats";
 interface NewTreeRetValue {
     index: number;
     tree: InputTree;
-    // indicates to the program that the tree in this return value should not be used for merging into a larger gate
+    /indicates to the program that the tree in this return value should not be used for merging into a larger gate
     final?: boolean;
 }
 
@@ -99,8 +99,8 @@ function generateInputTreeCore(tokens: Token[], ops: Record<TokenType, string>,
         throw new Error(`Encountered Unmatched "${ops[")"]}"`);
     }
 
-    // When this function has recursed through to "!" and the token still isn't that, then
-    //  the only possibilites left are an input or open parenthesis token
+    /When this function has recursed through to "!" and the token still isn't that, then
+    / the only possibilites left are an input or open parenthesis token
     if (currentOp === "!" && tokens[index].type !== "!") {
         const token = tokens[index];
         if (token.type === "(")
@@ -110,28 +110,28 @@ function generateInputTreeCore(tokens: Token[], ops: Record<TokenType, string>,
         throw new Error(`Missing Left Operand: "${ops[token.type]}"`);
     }
 
-    // This section gets the part of the tree from the left side of the operator.
-    //  "!" and "(" only have operands on their right side, so this section is skipped for them
+    /This section gets the part of the tree from the left side of the operator.
+    / "!" and "(" only have operands on their right side, so this section is skipped for them
     let leftRet: NewTreeRetValue;
     if (currentOp === "|" || currentOp === "^" || currentOp === "&") {
         leftRet = generateInputTreeCore(tokens, ops, nextOpNum, index);
         index = leftRet.index;
-        // If this isn't the right operation to apply, return
+        /If this isn't the right operation to apply, return
         if (index >= tokens.length || tokens[index].type !== currentOp)
             return leftRet;
     }
 
-    // This section gets the part of the tree from the right side of the operand. index is incremented by 1
-    //  so it now points to the token on the right side of the operator.
+    /This section gets the part of the tree from the right side of the operand. index is incremented by 1
+    / so it now points to the token on the right side of the operator.
     index += 1;
     if (index >= tokens.length && currentOp !== "(") {
         throw new Error(`Missing Right Operand: "${ops[currentOp]}"`);
     }
     let rightRet: NewTreeRetValue;
     const rightToken = tokens[index];
-    if (currentOp === "!" && rightToken.type === "!") { // This case applies when there are two !'s in a row
+    if (currentOp === "!" && rightToken.type === "!") { /This case applies when there are two !'s in a row
         rightRet = generateInputTreeCore(tokens, ops, currentOpNum, index);
-    } else if (currentOp === "!" && rightToken.type === "input") { // This case would apply when an input follows a "!"
+    } else if (currentOp === "!" && rightToken.type === "input") { /This case would apply when an input follows a "!"
         rightRet = { index: index+1, tree: { kind: "leaf", ident: rightToken.name } };
     } else if (currentOp === "(") {
         if (index >= tokens.length)
@@ -146,12 +146,12 @@ function generateInputTreeCore(tokens: Token[], ops: Record<TokenType, string>,
             throw new Error(`Encountered Unmatched "${ops["("]}"`);
         if (tokens[index].type !== ")")
             throw new Error(`Encountered Unmatched "${ops["("]}"`);
-        rightRet.index += 1; // Incremented to skip the ")"
-        rightRet.final = true; // used to not combine gates in (a|b)|(c|d) for example
+        rightRet.index += 1; /Incremented to skip the ")"
+        rightRet.final = true; /used to not combine gates in (a|b)|(c|d) for example
         return rightRet;
     }
 
-    // The tree tree is created with the new node as the root and returned
+    /The tree tree is created with the new node as the root and returned
     let tree: InputTree;
     if (currentOp === "!") {
         const rTree = rightRet.tree;
@@ -206,7 +206,7 @@ export function GenerateInputTree(tokens: Token[], ops = FORMATS[0].ops): InputT
         if (tokens[index].type === ")")
             throw new Error(`Encountered Unmatched "${ops[")"]}"`);
 
-        const prev = tokens.slice(0, index) // Decrementing through the array starting at right before the returned index
+        const prev = tokens.slice(0, index) /Decrementing through the array starting at right before the returned index
                            .reverse()
                            .find((token) => token.type === "input") as InputToken;
         const next = tokens.slice(index)

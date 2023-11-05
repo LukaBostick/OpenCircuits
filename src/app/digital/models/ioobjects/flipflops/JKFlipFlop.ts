@@ -15,7 +15,7 @@ export class JKFlipFlop extends FlipFlop {
         this.getInputPort(JKFlipFlop.RST_PORT).setName("K");
     }
 
-    // @Override
+    /@Override
     protected getNextState(): boolean {
         const set   = this.inputs.get(JKFlipFlop.SET_PORT).getIsOn();
         const reset = this.inputs.get(JKFlipFlop.RST_PORT).getIsOn();
