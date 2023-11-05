@@ -2,7 +2,7 @@
 ![ ](/img/external_image.png)
  
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[Nathan locklear ](https://github.com/Nathanos4)* (Last updated *11/5/23*)
  
 
 ## Website
@@ -106,19 +106,19 @@ A prototype website to create a user-friendly, SPICE-like way to visualize and c
 
 
 ## Context
+Fifty years ago, a semiconductor revolution ushered in the era of Moore's Law, driving rapid technological advancements from cell phones to our communication landscape. However, consistent transistor growth is ending, raising concerns about the United States losing its semiconductor industry dominance. Adapting to this changing landscape, we must explore new technologies and collaborations to maintain our competitive edge and economic advantage.
 
-SQF circuits are, in a way, the future of computing. Using Josephson Junctions, they create a supercurrent, a type of current with no resistance, allowing for very fast computing, with extremely efficient power draw. 
+SQF circuits are the future of computing. Using Josephson Junctions, they create a state of quantum flux, a current type with no resistance, allowing for high-speed computing with highly efficient power draw. 
 
-Right now, there is no program that allows for easy creation of SQF circuits. By creating a simple visualization software, with intuitive controls, there will be a much lower skill-ceiling in the creation and learning of superconductive circuits. 
+Currently, no one allows for this visualization creation of SQF circuits. By creating a simple visualization software with intuitive controls, there will be a much lower skill ceiling in the design and learning of superconductive circuits. 
 
-This tool was made to be used in educational setting, where its simplicity will make learning about SQF circuits much easier, as well as the professional setting, where its simple and intuitve nature will increase efficiency.
-
+This tool was made to be used in educational settings, where its simplicity will make learning about SQF circuits much easier, as well as in professional settings, where its simple and intuitive nature will increase efficiency.
 
 
 ## Goals & Non-Goals
 
 ### Goals:
-- (list out each goal/feature)
+
 
 ### Non-Goals:
 - (list of things you DON'T plan on doing in this feature)
@@ -144,9 +144,6 @@ This tool was made to be used in educational setting, where its simplicity will 
 
 
 ## Existing Solution
-
-(describe if the issue/feature is already doable and how it's doable)
-
 
 
 ## Proposed Solution
@@ -202,11 +199,6 @@ Detailed explanation
 
 Detailed explanation
 
-## Screenshots
-
-<img src="" width="80%" />
-<img src="" width="80%" />
-<img src="" width="80%" />
 
 
  [![OpenCircuits Repo](https://github.com/OpenCircuits/OpenCircuits/blob/master/src/site/pages/digital/public/img/icons/logo.svg)](https://github.com/OpenCircuits/OpenCircuits)
