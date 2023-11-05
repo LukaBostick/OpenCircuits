@@ -13,7 +13,7 @@
 
 ## Website
 
-Found at [OpenCircuits.io](http://www.opencircuits.io/).
+Found at [supercircuit.tech](http://www.supercircuit.tech/).
 
 ## Usage
 
@@ -44,7 +44,7 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 
 ## Contact Us
 
-If you have a question or would like to recommend a feature, please reach out to contact@opencircuits.io.
+If you have a question or would like to recommend a feature, please reach out to contact@supercircuit.tech.
 
 
 ## LICENSING

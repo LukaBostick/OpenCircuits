@@ -67,5 +67,5 @@ jobs:
       uses: google-github-actions/upload-cloud-storage@main
       with:
         path: src/site/pages/docs/build
-        destination: docs.opencircuits.io
+        destination: docs.supercircuit.tech
         parent: false

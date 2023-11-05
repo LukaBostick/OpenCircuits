@@ -33,7 +33,7 @@ export const TutorialDropdown = () => {
                 <span>Quick Start</span>
             </div>
             <div>
-                <a className="hide-link" target="_blank" href="http://docs.opencircuits.io" rel="noreferrer">
+                <a className="hide-link" target="_blank" href="http://docs.supercircuit.tech" rel="noreferrer">
                     <img src="img/icons/github.svg" height="100%" alt="Check out our Documentation" />
                     <span>Documentation</span>
                 </a>

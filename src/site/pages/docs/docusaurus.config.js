@@ -4,7 +4,7 @@ const math = require("remark-math");
 module.exports = {
   title: "OpenCircuits",
   tagline: "The free, online, circuit designer",
-  url: "https://docs.opencircuits.io",
+  url: "https://docs.supercircuit.tech",
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
