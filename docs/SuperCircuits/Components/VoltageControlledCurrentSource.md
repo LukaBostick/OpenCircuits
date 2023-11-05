@@ -5,31 +5,21 @@
 #### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[Storm McCauley](https://thub.com/StormMcCauley)*, *[Nathan locklear ](https:/g/hub.com/Nathanos4)* (Last updated *11/5/23*)
  ###   1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
 
-=======
 #### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
 
 
  ###   1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
 
-11. [Current Controlled Current Source](/ocs/SuperCircuits
-/Components/CurrentControlledCurrentSource.md)
-1. [Resistor](/ocs/SuperCircuits
-/Components/Resistor.md)
+11. [Current Controlled Current Source](/ocs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+1. [Resistor](/ocs/SuperCircuits/Components/Resistor.md)
 1. [Introduction](/OpenCircuits/README.md)
-1. [Inductor](/ocs/SuperCircuits
-/Components/Inductor.md)
-1. [JosephsonJunction](/ocs/SuperCircuits
-/Components/JosephsonJunction.md)
-1. [Voltage Source](/ocs/SuperCircuits
-/Components/VoltageSource.md)
-1. [Phase Source](/ocs/SuperCircuits
-/Components/PhaseSource.md)
-1. [TransmissionLine](/ocs/SuperCircuits
-/Components/TransmissionLine.md)
-1. [Mutual inductance](/ocs/SuperCircuits
-/Components/Mutualinductance.md)
-1. [Voltage Controlled Voltage Source](/ocs/SuperCircuits
-/Components/VoltageControlledCurrentSource.md)
+1. [Inductor](/ocs/SuperCircuits/Components/Inductor.md)
+1. [JosephsonJunction](/ocs/SuperCircuits/Components/JosephsonJunction.md)
+1. [Voltage Source](/ocs/SuperCircuits/Components/VoltageSource.md)
+1. [Phase Source](/ocs/SuperCircuits/Components/PhaseSource.md)
+1. [TransmissionLine](/ocs/SuperCircuits/Components/TransmissionLine.md)
+1. [Mutual inductance](/ocs/SuperCircuits/Components/Mutualinductance.md)
+1. [Voltage Controlled Voltage Source](/ocs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
 
 1. [Resistor](#Resistor)
 1. [Introduction](#introduction)
@@ -44,10 +34,7 @@
 1. [Current Controlled Current Source](#CurrentControlledCurrentSource)
 1. [Current Controlled Voltage Source](#CurrentControlledVoltageSource)
 1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> parent of d33be997 (fix readme)
+
 =======
 >>>>>>> parent of d33be997 (fix readme)
 >>>>>>> d6e1203881d9facd26d03a14b0c32954cdd641b1
