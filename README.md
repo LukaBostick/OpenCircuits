@@ -23,17 +23,17 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 1. [Introduction](###introduction)
 2. [Components](###Components)
     1. [Resistor](/docs/SuperCircuits/Components/Resistor.md)
-    1. [Inductor](###Inductor)
-    1. [JosephsonJunction](###JosephsonJunction)
-    1. [Voltage Source](###VoltageSource)
-    1. [Current Source](###CurrentSource)
-    1. [Phase Source](###PhaseSource)
-    1. [TransmissionLine](###TransmissionLine)
-    1. [Mutual inductance](###Mutualinductance)
-    1. [Current Controlled Current Source](###CurrentControlledCurrentSource)
-    1. [Current Controlled Voltage Source](###CurrentControlledVoltageSource)
-    1. [Voltage Controlled Current Source](###VoltageControlledCurrentSource)
-    1. [Voltage Controlled Voltage Source](###VoltageControlledVoltageSource)
+    1. [Inductor](/docs/SuperCircuits/Components/Inductor.md)
+    1. [JosephsonJunction](/docs/SuperCircuits/Components/JosephsonJunction.md)
+    1. [Voltage Source](/docs/SuperCircuits/Components/VoltageSource.md)
+    1. [Current Source](/docs/SuperCircuits/Components/CurrentSourceor.md)
+    1. [Phase Source](/docs/SuperCircuits/Components/PhaseSource.md)
+    1. [TransmissionLine](/docs/SuperCircuits/Components/TransmissionLine.mde)
+    1. [Mutual inductance](/docs/SuperCircuits/Components/Mutualinductance.md)
+    1. [Current Controlled Current Source](/docs/SuperCircuits/Components/CurrentControlledCurrentSourc.md)
+    1. [Current Controlled Voltage Source](/docs/SuperCircuits/Components/CurrentControlledVoltageSourcer.md)
+    1. [Voltage Controlled Current Source](/docs/SuperCircuits/Components/VoltageControlledCurrentSourc.md)
+    1. [Voltage Controlled Voltage Source](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
 
 
 
@@ -139,50 +139,64 @@ Detailed explanation
 
 ### Components
 
-
+---
 # Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md)
 ![A quick mockup of what the area might look like](/img/Resistor.jpg)
+---
 
+---
+# Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md)
+![A quick mockup of what the area might look like](/img/Resistor.jpg)
+---
+
+---
  # Inductor [Visualzation](/docs/SuperCircuits/Components/Inductor.md)
 ![A quick mockup of what the area might look like](/img/Inductor.jpg)
-
+---
+---
 # Josephson Junction [Visualzation](/docs/SuperCircuits/Components/JosephsonJunction.md)
 ![A quick mockup of what the area might look like](/img/jj.jpg)
+---
 
+---
 # Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageSource.md)
 ![A quick mockup of what the area might look like](/img/VoltageSource.jpg)
+---
 
+---
 # Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentSource.md)
 ![A quick mockup of what the area might look like](/img/CurrentSource.jpg)
+---
 
 # Transmission Line [Visualzation](/docs/SuperCircuits/Components/TransmissionLine.md)
 ![A quick mockup of what the area might look like](/img/TransmissionLine.jpg)
+---
 
+---
 # Mutual inductance [Visualzation](/docs/SuperCircuits/Components/Mutualinductance.md)
 ![A quick mockup of what the area might look like](/img/MutualInductance.jpg)
+---
 
+---
 # Current Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
 ![A quick mockup of what the area might look like](/img/CurrentControlledCurrentSource.jpg)
+---
 
+---
 # Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
 ![A quick mockup of what the area might look like](/img/CurrentControlledVoltageSource.jpg)
+---
 
+---
 # Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledCurrentSourcer.md)
 ![A quick mockup of what the area might look like](/img/VoltageControlledCurrentSource.jpg)
+---
 
+---
 # Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
 ![A quick mockup of what the area might look like](/img/VoltageControlledVoltageSource.jpg)
-## Key Features
+---
 
-*   
-*   
-*  
-*   
-*  
-*   
-*   
-*   
-*   
 
 ## Screenshots
 
