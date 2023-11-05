@@ -2,7 +2,7 @@
 ![ ](/img/external_image.png)
  
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[Nathan locklear ](https://github.com/Nathanos4)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[Nathan Locklear ](https://github.com/Nathanos4)* (Last updated *11/5/23*)
  
 
 ## Website
@@ -118,7 +118,9 @@ This tool was made to be used in educational settings, where its simplicity will
 ## Goals & Non-Goals
 
 ### Goals:
-
+- Create a user-friendly way for users to make SFQ circuits
+- Keep the low-overhead and system cost to make the program run smoothly
+- Rework the UI of OpenCircuits to be more respective towards proper SFQ circuits
 
 ### Non-Goals:
 - (list of things you DON'T plan on doing in this feature)
@@ -201,7 +203,7 @@ Detailed explanation
 
 
 
- [![OpenCircuits Repo](https://github.com/OpenCircuits/OpenCircuits/blob/master/src/site/pages/digital/public/img/icons/logo.svg)](https://github.com/OpenCircuits/OpenCircuits)
+ [![OpenCircuits Repo](https://github.com/LukaBostick/OpenCircuits/blob/master/src/site/pages/digital/public/img/icons/superlogo.svg)](https://github.com/LukaBostick/OpenCircuits)
 
 [![GitHub license](https://img.shields.io/github/license/OpenCircuits/OpenCircuits.svg)](https://github.com/OpenCircuits/OpenCircuits/blob/master/LICENSE)
 [![GitHub contributors](https://img.shields.io/github/contributors/OpenCircuits/OpenCircuits.svg)](https://github.com/OpenCircuits/OpenCircuits/graphs/contributors)
