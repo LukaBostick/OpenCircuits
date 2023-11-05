@@ -3,7 +3,7 @@
 ![ ](/img/external_image.png)
  
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https://github.com/LukaBostick)*, *[PERSON 2](https://github.com/Person2)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[PERSON 3](https://github.com/Person3)* (Last updated *11/5/23*)
  
 
 ## Website
@@ -16,7 +16,7 @@ Instructions and tutorials located in the [wiki](https://github.com/OpenCircuits
 
 ## Background
 
-Super Circuits is an open source circuit designer created by [Leon Montealegre](https://leonmontealegre.com/), originally for an independent study for [Professor Paul Wilkinson](http://www.drpjw.org/) of Pasadena City College.
+Super Circuits is an open source Single Flux Quantum circuit designer, based on OpenCircuits, which was created by [Leon Montealegre](https://leonmontealegre.com/), originally for an independent study for [Professor Paul Wilkinson](http://www.drpjw.org/) of Pasadena City College.
 OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits).
 
 
@@ -40,13 +40,17 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 
 ## Overview
 
-(insert high-level summary of what you're trying to accomplish that anyone can understand)
+A prototype website to create a user-friendly, SPICE-like way to visualize and create Single Flux Quantum (SQF) circuits, based off of OpenCircuit, and with integration from JoSIM. Eventually, we want to fully-realize this software by building it from scratch, to be as efficient, and as accurate as possible.
 
 
 
 ## Context
 
-(a description of why this is necessary and the problem this aims to solve)
+SQF circuits are, in a way, the future of computing. Using Josephson Junctions, they create a supercurrent, a type of current with no resistance, allowing for very fast computing, with extremely efficient power draw. 
+
+Right now, there is no program that allows for easy creation of SQF circuits. By creating a simple visualization software, with intuitive controls, there will be a much lower skill-ceiling in the creation and learning of superconductive circuits. 
+
+This tool was made to be used in educational setting, where its simplicity will make learning about SQF circuits much easier, as well as the professional setting, where its simple and intuitve nature will increase efficiency.
 
 
 
