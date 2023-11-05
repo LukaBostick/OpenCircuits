@@ -8,7 +8,7 @@
 2. #[Simulation](###Simulation)
   ---
     1. [jtl-basic]
-        ## [Verification](/docs/SuperCircuits/Simulation/jtl_basic.md)
+        ## [Verification](//Simulation/jtl_basic.md)
         ![1](/img/Screenshot2023-11-05063716.png)
         ---
 # [2] Naoki Takeuchi et al 2020 Supercond. Sci. Technol. 33 065002

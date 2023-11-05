@@ -5,8 +5,8 @@
 
 1. [Introduction](/OpenCircuits/README.md)
 2. [Simulation](###Simulation)
-    1. [jtl-basic](/docs/SuperCircuits/Simulation/jtl_basic.md)
+    1. [jtl-basic](//Simulation/jtl_basic.md)
         ---
-        2.  # Josephson transmission line basic  [Verification](/docs/SuperCircuits/Simulation/jtl-basic-verification.md) 
+        2.  # Josephson transmission line basic  [Verification](//Simulation/jtl-basic-verification.md) 
         ![](/img/ex_jtl_basic_figure.png)
         ---

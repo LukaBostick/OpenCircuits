@@ -21,80 +21,80 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 
 1. [Introduction](###introduction)
 2. [Components](###Components)
-    1. [Resistor](/docs/SuperCircuits/Components/Resistor.md)
+    1. [Resistor](//Components/Resistor.md)
         ---
-        2. # Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md) 
+        2. # Resistor  [Visualzation](//Components/Resistor.md) 
         ![](/img/Resistor.jpg)
         ---
-    1. [Inductor](/docs/SuperCircuits/Components/Inductor.md)
+    1. [Inductor](//Components/Inductor.md)
         ---
-        2. # Inductor [Visualzation](/docs/SuperCircuits/Components/Inductor.md)
+        2. # Inductor [Visualzation](//Components/Inductor.md)
         ![](/img/Inductor.jpg)
         ---
 
-    1. [Josephson Junction](/docs/SuperCircuits/Components/JosephsonJunction.md)
+    1. [Josephson Junction](//Components/JosephsonJunction.md)
         ---
-        2. # Josephson Junction [Visualzation](/docs/SuperCircuits/Components/JosephsonJunction.md)
+        2. # Josephson Junction [Visualzation](//Components/JosephsonJunction.md)
         ![](/img/jj.jpg)
         ---
 
-    1. [Voltage Source](/docs/SuperCircuits/Components/VoltageSource.md)
+    1. [Voltage Source](//Components/VoltageSource.md)
         ---
-        2. # Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageSource.md)
+        2. # Voltage Source [Visualzation](//Components/VoltageSource.md)
         ![](/img/VoltageSource.jpg)
         ---
 
-    1. [Current Source](/docs/SuperCircuits/Components/CurrentSource.md)
+    1. [Current Source](//Components/CurrentSource.md)
 
         ---
-    2.  # Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentSource.md)
+    2.  # Current Source [Visualzation](//Components/CurrentSource.md)
         ![](/img/CurrentSource.jpg)
         ---
 
 
-    1. [Phase Source](/docs/SuperCircuits/Components/PhaseSource.md)
+    1. [Phase Source](//Components/PhaseSource.md)
 
         ---
         2. Pending Results
         ---
 
-    1. [Transmission Line](/docs/SuperCircuits/Components/TransmissionLine.md)
+    1. [Transmission Line](//Components/TransmissionLine.md)
         ---
-        2. # Transmission Line [Visualzation](/docs/SuperCircuits/Components/TransmissionLine.md)
+        2. # Transmission Line [Visualzation](//Components/TransmissionLine.md)
             ![](/img/TransmissionLine.jpg)
         ---
 
-    1. [Mutual inductance](/docs/SuperCircuits/Components/Mutualinductance.md)
+    1. [Mutual inductance](//Components/Mutualinductance.md)
         ---
-      2.  # Mutual inductance [Visualzation](/docs/SuperCircuits/Components/Mutualinductance.md)
+      2.  # Mutual inductance [Visualzation](//Components/Mutualinductance.md)
             ![](/img/MutualInductance.jpg)
         ---
 
     
-    1. [Current Controlled Current Source](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+    1. [Current Controlled Current Source](//Components/CurrentControlledCurrentSource.md)
         ---
-    2.   # Current Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+    2.   # Current Controlled Current Source [Visualzation](//Components/CurrentControlledCurrentSource.md)
             ![](/img/CurrentControlledCurrentSource.jpg)
         ---
 
     
-    1. [Current Controlled Voltage Source](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
+    1. [Current Controlled Voltage Source](//Components/CurrentControlledVoltageSource.md)
         ---
-     2.  # Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
+     2.  # Current Controlled Voltage Source [Visualzation](//Components/CurrentControlledVoltageSource.md)
             ![](/img/CurrentControlledVoltageSource.jpg)
         ---
 
     
-    1. [Voltage Controlled Current Source](/docs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
+    1. [Voltage Controlled Current Source](//Components/VoltageControlledCurrentSource.md)
         ---
-       2.  # Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledCurrentSourcer.md)
+       2.  # Voltage Controlled Current Source [Visualzation](//Components/VoltageControlledCurrentSourcer.md)
         ![](/img/VoltageControlledCurrentSource.jpg)
         ---
     
-    1. [Voltage Controlled Voltage Source](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
+    1. [Voltage Controlled Voltage Source](//Components/VoltageControlledVoltageSource.md)
 
          ---
-        2. # Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
+        2. # Voltage Controlled Voltage Source [Visualzation](//Components/VoltageControlledVoltageSource.md)
         ![](/img/VoltageControlledVoltageSource.jpg)
         ---
 

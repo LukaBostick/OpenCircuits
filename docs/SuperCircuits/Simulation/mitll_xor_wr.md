@@ -3,7 +3,7 @@
 # *SuperCircuits* Superconducting Circuit Simulator
 #### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[Nathan locklear ](https://github.com/Nathanos4)* (Last updated *11/5/23*)
 
-  1. [mitll-xor-wr](/docs/SuperCircuits/Simulation/mitll_xor_wr.md)
+  1. [mitll-xor-wr](//Simulation/mitll_xor_wr.md)
         ---
         2. # mitll-xor-wr [Pending Verification]()
         ![](/img/ex_mitll_xor_wr_figure.png)

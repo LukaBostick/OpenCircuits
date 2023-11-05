@@ -3,7 +3,7 @@
 # *SuperCircuits* Superconducting Circuit Simulator
 #### *[Luka Bostick](https://github.com/LukaBostick)*, *[Storm McCauley](https://github.com/StormMcCauley)*, *[Nathan locklear ](https://github.com/Nathanos4)* (Last updated *11/5/23*)
 
-1. [pi-DQFP-buffer-chan](/docs/SuperCircuits/Simulation/pi_DQFP_buffer_chan.md)
+1. [pi-DQFP-buffer-chan](//Simulation/pi_DQFP_buffer_chan.md)
         ---
         2. # [Pending Verification]()
         ![](/img/ex_pi_DQFP_buffer_chan_figure.png)

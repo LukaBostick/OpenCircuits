@@ -5,6 +5,6 @@
 
 ### 1. [Simulations](#CurrentControlledCurrentSource)
 ##  2. [dcsfq-jtl-sink]
-# [Verification](/docs/SuperCircuits/Simulation/dcsfq_jtl_sink.md)
+# [Verification](//Simulation/dcsfq_jtl_sink.md)
 ![](/img/ex_dcsfq_jtl_sink_figure.png)
 
