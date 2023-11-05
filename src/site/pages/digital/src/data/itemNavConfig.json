@@ -7,32 +7,32 @@
         "items": [
           {
             "id": "Button",
-            "label": "Button",
+            "label": "Capacitor",
             "icon": "button.svg"
           },
           {
             "id": "Switch",
-            "label": "Switch",
+            "label": "CCCS",
             "icon": "switch.svg"
           },
           {
             "id": "ConstantLow",
-            "label": "Constant Low",
+            "label": "CCVS",
             "icon": "constantlow.svg"
           },
           {
             "id": "ConstantHigh",
-            "label": "Constant High",
+            "label": "CS",
             "icon": "constanthigh.svg"
           },
           {
             "id": "ConstantNumber",
-            "label": "Constant Number",
+            "label": "Inductor",
             "icon": "constantnumber.svg"
           },
           {
             "id": "Clock",
-            "label": "Clock",
+            "label": "JJ",
             "icon": "clock.svg"
           }
         ]
@@ -43,27 +43,13 @@
         "items": [
           {
             "id": "LED",
-            "label": "LED",
+            "label": "Mutual",
             "icon": "led.svg"
           },
-          {
-            "id": "SegmentDisplay",
-            "label": "Segment Display",
-            "icon": "sevensegmentdisplay.svg"
-          },
-          {
-            "id": "BCDDisplay",
-            "label": "BCD Display",
-            "icon": "sevensegmentdisplay.svg"
-          },
-          {
-            "id": "ASCIIDisplay",
-            "label": "ASCII Display",
-            "icon": "sevensegmentdisplay.svg"
-          },
+          
           {
             "id": "Oscilloscope",
-            "label": "Oscillo-scope",
+            "label": "Resistor",
             "icon": "oscilloscope.svg"
           }
         ]
@@ -74,123 +60,26 @@
         "items": [
           {
             "id": "BUFGate",
-            "label": "Buffer",
+            "label": "TX",
             "icon": "bufgate.svg"
           },
           {
             "id": "NOTGate",
-            "label": "NOT",
+            "label": "VCCS",
             "icon": "notgate.svg"
           },
           {
             "id": "ANDGate",
-            "label": "AND",
+            "label": "VCVS",
             "icon": "andgate.svg"
           },
           {
             "id": "NANDGate",
-            "label": "NAND",
+            "label": "VS",
             "icon": "nandgate.svg"
-          },
-          {
-            "id": "ORGate",
-            "label": "OR",
-            "icon": "orgate.svg"
-          },
-          {
-            "id": "NORGate",
-            "label": "NOR",
-            "icon": "norgate.svg"
-          },
-          {
-            "id": "XORGate",
-            "label": "XOR",
-            "icon": "xorgate.svg"
-          },
-          {
-            "id": "XNORGate",
-            "label": "XNOR",
-            "icon": "xnorgate.svg"
-          }
-        ]
-      },
-      {
-        "id": "flipflops",
-        "label": "Flip Flops",
-        "items": [
-          {
-            "id": "SRFlipFlop",
-            "label": "SR",
-            "icon": "srflipflop.svg"
-          },
-          {
-            "id": "JKFlipFlop",
-            "label": "JK",
-            "icon": "jkflipflop.svg"
-          },
-          {
-            "id": "DFlipFlop",
-            "label": "D",
-            "icon": "dflipflop.svg"
-          },
-          {
-            "id": "TFlipFlop",
-            "label": "T",
-            "icon": "tflipflop.svg"
-          }
-        ]
-      },
-      {
-        "id": "latches",
-        "label": "Latches",
-        "items": [
-          {
-            "id": "DLatch",
-            "label": "D",
-            "icon": "dlatch.svg"
-          },
-          {
-            "id": "SRLatch",
-            "label": "SR",
-            "icon": "srlatch.svg"
-          }
-        ]
-      },
-      {
-        "id": "other",
-        "label": "Other",
-        "items": [
-          {
-            "id": "Multiplexer",
-            "label": "Mux",
-            "icon": "multiplexer.svg"
-          },
-          {
-            "id": "Demultiplexer",
-            "label": "Demux",
-            "icon": "demultiplexer.svg"
-          },
-          {
-            "id": "Encoder",
-            "label": "Encoder",
-            "icon": "encoder.svg"
-          },
-          {
-            "id": "Decoder",
-            "label": "Decoder",
-            "icon": "decoder.svg"
-          },
-          {
-            "id": "Comparator",
-            "label": "Comparator",
-            "icon": "decoder.svg"
-          },
-          {
-            "id": "Label",
-            "label": "Label",
-            "icon": "label.svg"
           }
         ]
       }
+
     ]
   }
