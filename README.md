@@ -21,80 +21,80 @@ OpenCircuits is hosted on [GitHub](https://github.com/OpenCircuits/OpenCircuits)
 
 1. [Introduction](###introduction)
 2. [Components](###Components)
-    1. [Resistor](/docs/SuperCircuits/Components/Resistor.md)
+    1. [Resistor](//Components/Resistor.md)
         ---
-        2. # Resistor  [Visualzation](/docs/SuperCircuits/Components/Resistor.md) 
+        2. # Resistor  [Visualzation](//Components/Resistor.md) 
         ![](/img/Resistor.jpg)
         ---
-    1. [Inductor](/docs/SuperCircuits/Components/Inductor.md)
+    1. [Inductor](//Components/Inductor.md)
         ---
-        2. # Inductor [Visualzation](/docs/SuperCircuits/Components/Inductor.md)
+        2. # Inductor [Visualzation](//Components/Inductor.md)
         ![](/img/Inductor.jpg)
         ---
 
-    1. [Josephson Junction](/docs/SuperCircuits/Components/JosephsonJunction.md)
+    1. [Josephson Junction](//Components/JosephsonJunction.md)
         ---
-        2. # Josephson Junction [Visualzation](/docs/SuperCircuits/Components/JosephsonJunction.md)
+        2. # Josephson Junction [Visualzation](//Components/JosephsonJunction.md)
         ![](/img/jj.jpg)
         ---
 
-    1. [Voltage Source](/docs/SuperCircuits/Components/VoltageSource.md)
+    1. [Voltage Source](//Components/VoltageSource.md)
         ---
-        2. # Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageSource.md)
+        2. # Voltage Source [Visualzation](//Components/VoltageSource.md)
         ![](/img/VoltageSource.jpg)
         ---
 
-    1. [Current Source](/docs/SuperCircuits/Components/CurrentSource.md)
+    1. [Current Source](//Components/CurrentSource.md)
 
         ---
-    2.  # Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentSource.md)
+    2.  # Current Source [Visualzation](//Components/CurrentSource.md)
         ![](/img/CurrentSource.jpg)
         ---
 
 
-    1. [Phase Source](/docs/SuperCircuits/Components/PhaseSource.md)
+    1. [Phase Source](//Components/PhaseSource.md)
 
         ---
         2. Pending Results
         ---
 
-    1. [Transmission Line](/docs/SuperCircuits/Components/TransmissionLine.md)
+    1. [Transmission Line](//Components/TransmissionLine.md)
         ---
-        2. # Transmission Line [Visualzation](/docs/SuperCircuits/Components/TransmissionLine.md)
+        2. # Transmission Line [Visualzation](//Components/TransmissionLine.md)
             ![](/img/TransmissionLine.jpg)
         ---
 
-    1. [Mutual inductance](/docs/SuperCircuits/Components/Mutualinductance.md)
+    1. [Mutual inductance](//Components/Mutualinductance.md)
         ---
-      2.  # Mutual inductance [Visualzation](/docs/SuperCircuits/Components/Mutualinductance.md)
+      2.  # Mutual inductance [Visualzation](//Components/Mutualinductance.md)
             ![](/img/MutualInductance.jpg)
         ---
 
     
-    1. [Current Controlled Current Source](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+    1. [Current Controlled Current Source](//Components/CurrentControlledCurrentSource.md)
         ---
-    2.   # Current Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
+    2.   # Current Controlled Current Source [Visualzation](//Components/CurrentControlledCurrentSource.md)
             ![](/img/CurrentControlledCurrentSource.jpg)
         ---
 
     
-    1. [Current Controlled Voltage Source](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
+    1. [Current Controlled Voltage Source](//Components/CurrentControlledVoltageSource.md)
         ---
-     2.  # Current Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/CurrentControlledVoltageSource.md)
+     2.  # Current Controlled Voltage Source [Visualzation](//Components/CurrentControlledVoltageSource.md)
             ![](/img/CurrentControlledVoltageSource.jpg)
         ---
 
     
-    1. [Voltage Controlled Current Source](/docs/SuperCircuits/Components/VoltageControlledCurrentSource.md)
+    1. [Voltage Controlled Current Source](//Components/VoltageControlledCurrentSource.md)
         ---
-       2.  # Voltage Controlled Current Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledCurrentSourcer.md)
+       2.  # Voltage Controlled Current Source [Visualzation](//Components/VoltageControlledCurrentSourcer.md)
         ![](/img/VoltageControlledCurrentSource.jpg)
         ---
     
-    1. [Voltage Controlled Voltage Source](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
+    1. [Voltage Controlled Voltage Source](//Components/VoltageControlledVoltageSource.md)
 
          ---
-        2. # Voltage Controlled Voltage Source [Visualzation](/docs/SuperCircuits/Components/VoltageControlledVoltageSource.md)
+        2. # Voltage Controlled Voltage Source [Visualzation](//Components/VoltageControlledVoltageSource.md)
         ![](/img/VoltageControlledVoltageSource.jpg)
         ---
 
@@ -106,21 +106,19 @@ A prototype website to create a user-friendly, SPICE-like way to visualize and c
 
 
 ## Context
-Fifty years ago, a semiconductor revolution ushered in the era of Moore's Law, driving rapid technological advancements from cell phones to our communication landscape. However, consistent transistor growth is ending, raising concerns about the United States losing its semiconductor industry dominance. Adapting to this changing landscape, we must explore new technologies and collaborations to maintain our competitive edge and economic advantage.
 
-SQF circuits are the future of computing. Using Josephson Junctions, they create a state of quantum flux, a current type with no resistance, allowing for high-speed computing with highly efficient power draw. 
+SQF circuits are, in a way, the future of computing. Using Josephson Junctions, they create a supercurrent, a type of current with no resistance, allowing for very fast computing, with extremely efficient power draw. 
 
-Currently, no one allows for this visualization creation of SQF circuits. By creating a simple visualization software with intuitive controls, there will be a much lower skill ceiling in the design and learning of superconductive circuits. 
+Right now, there is no program that allows for easy creation of SQF circuits. By creating a simple visualization software, with intuitive controls, there will be a much lower skill-ceiling in the creation and learning of superconductive circuits. 
 
-This tool was made to be used in educational settings, where its simplicity will make learning about SQF circuits much easier, as well as in professional settings, where its simple and intuitive nature will increase efficiency.
+This tool was made to be used in educational setting, where its simplicity will make learning about SQF circuits much easier, as well as the professional setting, where its simple and intuitve nature will increase efficiency.
+
 
 
 ## Goals & Non-Goals
 
 ### Goals:
-- Create a user-friendly way for users to make SFQ circuits
-- Keep the low-overhead and system cost to make the program run smoothly
-- Rework the UI of OpenCircuits to be more respective towards proper SFQ circuits
+
 
 ### Non-Goals:
 - (list of things you DON'T plan on doing in this feature)
@@ -146,6 +144,9 @@ This tool was made to be used in educational settings, where its simplicity will
 
 
 ## Existing Solution
+
+(describe if the issue/feature is already doable and how it's doable)
+
 
 
 ## Proposed Solution
@@ -201,6 +202,11 @@ Detailed explanation
 
 Detailed explanation
 
+## Screenshots
+
+<img src="" width="80%" />
+<img src="" width="80%" />
+<img src="" width="80%" />
 
 
  [![OpenCircuits Repo](https://github.com/LukaBostick/OpenCircuits/blob/master/src/site/pages/digital/public/img/icons/superlogo.svg)](https://github.com/LukaBostick/OpenCircuits)
