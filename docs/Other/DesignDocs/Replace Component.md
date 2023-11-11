@@ -133,7 +133,7 @@ Using a Popup would likely be the easiest way to do this. Flexbox can be used to
 There are a few ways to go about the UI, but the presented ideas are as follows:
 
 1. An area within the SelectionPopup directly that has a visual list of all the components that are able to replace the currently selected ones. The user could then click on one and press the "Replace Component" button to replace it. Potentially it could even "temporarily" replace as the user clicks on them and does a permanent replace when the button is pressed.
-![A quick mockup of what the area might look like](img/ReplaceComponent/ReplaceComponentIdea.jpg)
+![ ](img/ReplaceComponent/ReplaceComponentIdea.jpg)
 
 2. The alternative idea would have the same display but in a larger popup that shows up when the "Replace Component" button is pressed. This may be better on mobile or smaller screens since (1) may be too cluttered or small to see/press.
 

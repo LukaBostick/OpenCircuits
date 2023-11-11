@@ -1,10 +1,10 @@
 #### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[Storm McCauley](https://thub.com/StormMcCauley)*, *[Nathan locklear ](https:/g/hub.com/Nathanos4)* (Last updated *11/5/23*)
-![A quick mockup of what the area might look like](/img/external_image.png)
+![ ](/img/external_image.png)
 
 # *SuperCircuits* Superconducting Circuit Simulator
  ###   1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
 
-#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[ Storm McCauley](https://thub.com/Person2)*, *[Nathan Locklear ](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
 
 
  ###   1. [Voltage Controlled Current Source](#VoltageControlledCurrentSource)
@@ -39,4 +39,4 @@
 >>>>>>> d6e1203881d9facd26d03a14b0c32954cdd641b1
 
 
-![A quick mockup of what the area might look like](/img/vccs_figure.png)
+![ ](/img/vccs_figure.png)

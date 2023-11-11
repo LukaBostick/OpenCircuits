@@ -1,10 +1,10 @@
-![A quick mockup of what the area might look like](/img/external_image.png)
+![ ](/img/external_image.png)
 
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[ Storm McCauley](https://thub.com/Person2)*, *[Nathan Locklear ](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
 
  ###   1. [TransmissionLine](#TransmissionLine)
-![A quick mockup of what the area might look like](/img/tx_figure.png)
+![ ](/img/tx_figure.png)
 
 1. [Current Controlled Current Source](/ocs/SuperCircuits/Components/CurrentControlledCurrentSource.md)
 1. [Resistor](/ocs/SuperCircuits/Components/Resistor.md)

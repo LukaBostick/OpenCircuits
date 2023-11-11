@@ -1,7 +1,7 @@
-![A quick mockup of what the area might look like](/img/external_image.png)
+![](/img/external_image.png)
 
 # *SuperCircuits* Superconducting Circuit Simulator
-#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[PERSON 2](https://thub.com/Person2)*, *[PERSON 3](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
+#### *[Luka Bostick](https:/ithub.com/LukaBostick)*, *[ Storm McCauley](https://thub.com/Person2)*, *[Nathan Locklear ](https:/g/hub.com/Person3)* (Last updated *11/5/23*)
 
 1. [Current Controlled Voltage Source](#CurrentControlledVoltageSource)
 
@@ -35,4 +35,4 @@
 1. [Voltage Controlled Voltage Source](#VoltageControlledVoltageSource)
 
 
-![A quick mockup of what the area might look like](/img/ccvs_figure.png)
+![](/img/ccvs_figure.png)
